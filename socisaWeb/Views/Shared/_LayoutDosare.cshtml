@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sistem de Compensare intre Asiguratori</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/Scripts/SocisaApp.js")
+    @Scripts.Render("~/Scripts/DosareNavigatorController.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body onload="openNav()" ng-app="SocisaApp">
+    @Html.Partial("_PartialHeaderNavBar")
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            @{
+                Html.RenderAction("Index", "Actions");
+            }
+        </div>
+        <div id="main" style="background-color:white;" ng-controller="DosareNavigatorController">
+            @RenderBody()
+        </div>
+        <div class="sidenavRight">
+            @{
+                Html.RenderAction("Index", "Dashboard");
+            }
+        </div>
+    @Html.Partial("_PartialFooter")
+
+
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "300px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "50px";
+    }
+    </script>
+</body>
+</html>

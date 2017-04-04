@@ -1,0 +1,34 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top" onclick="openNav()">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--
+            @Html.ActionLink("Sistem de compensare intre asiguratori", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            -->
+            <a href="@Url.Action("Index", "Home")" title="Sistem de compensare intre asiguratori">
+                <img alt="Sistem de compensare intre asiguratori" src="@Url.Content("~/Content/logo-cabinet-white.png")" width="190" height="50">
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <!--
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Utilizatori")</li>
+                -->
+                <li>@Html.ActionLink("Despre", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                @{
+                    if (Session["CURENT_USER"] != null)
+                    {
+                        <li>@Html.ActionLink(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).USER_NAME + (Session["ID_SOCIETATE"] == null ? "" : (" [" + ((SOCISA.Models.SocietateAsigurare)Session["SOCIETATE_ASIGURARE"]).DENUMIRE_SCURTA + "]")) + " | Logout", "Logout", "Utilizatori")</li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+

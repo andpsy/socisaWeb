@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SOCISA.Models.SocietateAsigurare>
+
+@{
+    ViewBag.Title = "Selectare societate";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container body-content" style="opacity:0.9;filter:alpha(opacity=90)">
+        <h2>Selectati societatea pentru sesiunea curenta de lucru</h2>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <table class="table table-hover">
+                        @foreach (var item in Model)
+                {
+                            <tr>
+                                <td>
+                                    @Html.RadioButtonFor(modelItem => item.ID, item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DENUMIRE)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div class="form-group">
+
+                    <input type="submit" value="Continua >>" class="btn btn-default" />
+
+                </div>
+            </div>
+        </div>
+        </div>
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
