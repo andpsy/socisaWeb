@@ -10,6 +10,7 @@ namespace socisaWeb
 {
     public class DosarView
     {
+        public Dosar Dosar { get; set; }
         public DosarJson dosarJson { get; set; }
         public Dosar[] DosareResult { get; set; }
         public SocietateAsigurare[] SocietatiCASCO { get; set; }
@@ -17,13 +18,15 @@ namespace socisaWeb
 
         public DosarView(int _CURENT_USER_ID, int _ID_SOCIETATE, string conStr)
         {
+            this.Dosar = new Dosar(_CURENT_USER_ID, conStr);
+            this.Dosar.ID_SOCIETATE_CASCO = _ID_SOCIETATE;
             this.dosarJson = new DosarJson(_CURENT_USER_ID, _ID_SOCIETATE, conStr);
             SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(_CURENT_USER_ID, conStr);
             this.SocietatiCASCO = this.SocietatiRCA = (SocietateAsigurare[])sar.GetAll().Result;
         }
     }
 
-    public class DosarJson : Dosar
+    public class DosarJson
     {
         //public Dosar Dosar { get; set; }
         //public SocietateAsigurare[] SocietatiCASCO { get; set; }
@@ -76,8 +79,8 @@ namespace socisaWeb
                 this.GetType().GetProperty(pi.Name).SetValue(this, pi.GetValue(d));
             }
             */
-            this.ID = _CURENT_USER_ID;
-            this.ID_SOCIETATE_CASCO = _ID_SOCIETATE;
+            //this.Dosar.ID = _CURENT_USER_ID;
+            //this.Dosar.ID_SOCIETATE_CASCO = _ID_SOCIETATE;
         }
     }
 }

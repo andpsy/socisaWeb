@@ -35,12 +35,13 @@ namespace socisaWeb.Controllers
             DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
             string jsonFilter = JsonConvert.SerializeObject(DosarJson);
             JObject f = (JObject)JsonConvert.DeserializeObject(Request.Form[0]);
-            JToken j = f["dosarJson"];
-            if(j["DataEvenimentStart"] != null && !String.IsNullOrEmpty(j["DataEvenimentStart"].ToString()) && j["DataEvenimentEnd"] != null && !String.IsNullOrEmpty(j["DataEvenimentEnd"].ToString()))
+            JToken jDosar = f["Dosar"];
+            JToken jdosarJson = f["dosarJson"];
+            if (jdosarJson["DataEvenimentStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataEvenimentStart"].ToString()) && jdosarJson["DataEvenimentEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataEvenimentEnd"].ToString()))
             {
-                j["DATA_EVENIMENT"] = CommonFunctions.ToMySqlFormatDate(Convert.ToDateTime(j["DataEvenimentStart"].ToString())) + "?" + CommonFunctions.ToMySqlFormatDate(Convert.ToDateTime(j["DataEvenimentEnd"].ToString()));
+                jDosar["DATA_EVENIMENT"] = CommonFunctions.ToMySqlFormatDate(Convert.ToDateTime(jdosarJson["DataEvenimentStart"].ToString())) + "?" + CommonFunctions.ToMySqlFormatDate(Convert.ToDateTime(jdosarJson["DataEvenimentEnd"].ToString()));
             }
-            response r = dr.GetFiltered(null, null, JsonConvert.SerializeObject(j), null);
+            response r = dr.GetFiltered(null, null, JsonConvert.SerializeObject(jDosar), null);
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 

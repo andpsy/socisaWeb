@@ -8,6 +8,14 @@ namespace socisaWeb
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // Number format
+            bundles.Add(new ScriptBundle("~/bundles/hashtable").Include(
+                        "~/Scripts/hashtable.js"));
+            bundles.Add(new ScriptBundle("~/bundles/hashset").Include(
+                        "~/Scripts/hashset.js"));
+            bundles.Add(new ScriptBundle("~/bundles/numberformat").Include(
+                        "~/Scripts/jquery.numberformatter-1.2.4.js"));
+
             // Angular scripts
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js"));
