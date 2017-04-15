@@ -111,3 +111,40 @@ a.logoLink
 .toToDates{
     padding-right:10px;
 }
+
+.disabled {
+    cursor:not-allowed;
+    pointer-events:none;
+}
+
+.lista_documente {
+    position:relative;
+    top:0;
+    bottom:0;
+    left:0;
+    width:320px;
+    height:700px;
+    background-color:white;
+    margin: 10px;
+}
+
+.main_documente{
+    position:relative;
+    top:-710px;
+    left: 340px;
+    /* bottom:1400px; */
+    margin:10px;
+    width:960px;
+    /* height: 680px; */
+    background-color:white;
+}
+
+.drop-box{
+    border: 2px dashed lightsalmon;
+    color:lightsalmon;
+    text-align:center;
+    vertical-align: middle;
+    width:100%;
+    height:100px;
+    margin-top:5px;
+}

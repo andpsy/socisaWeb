@@ -16,6 +16,27 @@ namespace socisaWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ModelBinders.Binders[typeof(DateTime)] = new DateTimeModelBinder("dd.MM.yyyy");
+            ModelBinders.Binders[typeof(DateTime?)] = new DateTimeModelBinder("dd.MM.yyyy");
+        }
+    }
+
+    public class DateTimeModelBinder : IModelBinder
+    {
+        private readonly string _customFormat;
+        public DateTimeModelBinder(string CustomFormat)
+        {
+            this._customFormat = CustomFormat;
+        }
+        object IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+        {
+            ValueProviderResult value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+            if (value == null || String.IsNullOrEmpty(value.AttemptedValue)) return null;
+            try
+            {
+                return DateTime.ParseExact(value.AttemptedValue, this._customFormat, System.Globalization.CultureInfo.InvariantCulture);
+            }catch(Exception exp) { return null; }
         }
     }
 }

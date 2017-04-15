@@ -1,23 +1,23 @@
 ﻿@model socisaWeb.DosarView
-
+<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
         <!-- Lista dosare -->
-    <div id="dosareSideNav" style="display:none;width:250px;height:630px;overflow-y:auto;position:absolute;top:150px;left:300px;margin:5px;border-right:1px solid black;background-color:#111;opacity:0.8;filter:alpha(opacity=80);z-index:3;">
+    <div id="dosareSideNav" style="width:0px;height:0px;overflow-y:auto;position:absolute;top:0px;left:0px;margin:5px;border-right:1px solid black;background-color:#111;opacity:0.8;filter:alpha(opacity=80);z-index:3;transition: 0.5s;">
 
         <table style="width:95%;padding:5px;margin:5px;">
             <tr style="border-bottom:1px solid white;">
                 <td style="padding:5px;">Lista dosare:</td>
-                <td style="padding:5px;text-align:right"><a href="#" onclick="document.getElementById('dosareSideNav').style.display = 'none';">X</a></td>
+                <td style="padding:5px;text-align:right"><a href="#" onclick="showDosareSideNav(false)">X</a></td>
             </tr>
-            <tr ng-if="DosarFiltru.DosareResult == null || DosarFiltru.DosareResult.length === 0">
+            <tr ng-if="DosarFiltru.DosareResult == null || compareObjects(DosarFiltru.DosareResult, {})">
                 <td colspan="2" style="padding:5px;">
                     Nu sunt dosare filtrate
                 </td>
             </tr>
             <tr ng-repeat="dosar in DosarFiltru.DosareResult">
-                <td ng-if="$index === curDosarIndex" colspan="2" style="padding:5px;color:red;font-weight:bold;">
+                <td ng-if="$index == curDosarIndex" colspan="2" style="padding:5px;color:red;font-weight:bold;">
                     Numar Dosar CASCO: <a href="#" ng-click="ShowDosar($index);">{{dosar.NR_DOSAR_CASCO}}</a><br />
                     Numar SCA: <b>{{dosar.NR_SCA}} / {{dosar.DATA_SCA | dateFilter | date:"dd.MM.yyyy"}}</b>
                 </td>
@@ -30,6 +30,13 @@
     </div>
 
     <div id="DosareSearch" style="left:220px;top:0px;">
+        <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+            <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+            <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br /> 
+            <p ng-repeat="s in result.Message.split(';')">
+                {{s}}
+            </p>
+        </div>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Dosar.ID, new {data_ng_model = "DosarFiltru.Dosar.ID", data_ng_init = string.Format("DosarFiltru.Dosar.ID = '{0}'", Model.Dosar.ID) })
         <table style="width:100%;border-width:0px; margin:10px;padding:10px;">
@@ -37,82 +44,119 @@
                 <td style="width:25%;">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.NR_DOSAR_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.NR_DOSAR_CASCO, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_keyup="Afisare21($event)", data_ng_model = "DosarFiltru.Dosar.NR_DOSAR_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.NR_DOSAR_CASCO = '{0}'", Model.Dosar.NR_DOSAR_CASCO) } })
+                        @Html.EditorFor(model => model.Dosar.NR_DOSAR_CASCO, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus="SwitchBackToSearchMode()", data_ng_keyup="Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.NR_DOSAR_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.NR_DOSAR_CASCO = '{0}'", Model.Dosar.NR_DOSAR_CASCO) } })
                         @Html.ValidationMessageFor(model => model.Dosar.NR_DOSAR_CASCO, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td style="width:25%;">
                     <div class="form-group">
                         <table>
-                            <tr>
+                            <tr ng-show="searchMode == 2">
                                 <td class="toToDates">
                                     @Html.LabelFor(model => model.dosarJson.DataEvenimentStart, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataEvenimentStart, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataEvenimentStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataEvenimentStart = '{0}'", Model.dosarJson.DataEvenimentStart), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataEvenimentStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;re", data_ng_model = "DosarFiltru.dosarJson.DataEvenimentStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataEvenimentStart = '{0}'", Model.dosarJson.DataEvenimentStart), jqdatepicker = "" })
                                     </div>
                                 </td>
                                 <td>
                                     @Html.LabelFor(model => model.dosarJson.DataEvenimentEnd, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataEvenimentEnd, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataEvenimentEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataEvenimentEnd = '{0}'", Model.dosarJson.DataEvenimentEnd), jqdatepicker = "", data_ng_blur = "Afisare21($event)" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataEvenimentEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataEvenimentEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataEvenimentEnd = '{0}'", Model.dosarJson.DataEvenimentEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_EVENIMENT, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_EVENIMENT, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_EVENIMENT, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_EVENIMENT", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_EVENIMENT = new Date(parseInt({0}.substr(6)))", Model.Dosar.DATA_EVENIMENT), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        @Html.ValidationMessageFor(model => model.Dosar.DATA_EVENIMENT, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Dosar.DATA_EVENIMENT, new { data_ng_model = "DosarFiltru.Dosar.DATA_EVENIMENT", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_EVENIMENT = '{0}'", Model.Dosar.DATA_EVENIMENT) })
                     </div>
                 </td>
                 <td style="width:25%;">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.NR_SCA, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.NR_SCA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.NR_SCA", data_ng_init = string.Format("DosarFiltru.Dosar.NR_SCA = '{0}'", Model.Dosar.NR_SCA), data_ng_keyup = "Afisare21($event)" } })
+                        @Html.EditorFor(model => model.Dosar.NR_SCA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_model = "DosarFiltru.Dosar.NR_SCA", data_ng_init = string.Format("DosarFiltru.Dosar.NR_SCA = '{0}'", Model.Dosar.NR_SCA), data_ng_keyup = "Afisare($event.target.value)" } })
                         @Html.ValidationMessageFor(model => model.Dosar.NR_SCA, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td style="width:25%;">
                     <div class="form-group">
                         <table>
-                            <tr>
+                            <tr ng-show="searchMode == 2">
                                 <td class="toToDates">
                                     @Html.LabelFor(model => model.dosarJson.DataScaStart, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataScaStart, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataScaStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataScaStart = '{0}'", Model.dosarJson.DataScaStart), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataScaStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataScaStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataScaStart = '{0}'", Model.dosarJson.DataScaStart), jqdatepicker = "" })
                                     </div>
                                 </td>
                                 <td>
                                     @Html.LabelFor(model => model.dosarJson.DataScaEnd, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataScaEnd, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataScaEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataScaEnd = '{0}'", Model.dosarJson.DataScaEnd), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataScaEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataScaEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataScaEnd = '{0}'", Model.dosarJson.DataScaEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_SCA, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_SCA, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_SCA, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_SCA", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_SCA = new Date(parseInt({0}.substr(6)))", Model.Dosar.DATA_SCA), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        @Html.ValidationMessageFor(model => model.Dosar.DATA_SCA, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Dosar.DATA_SCA, new { data_ng_model = "DosarFiltru.Dosar.DATA_SCA", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_SCA = '{0}'", Model.Dosar.DATA_SCA) })
                     </div>
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dosar.ID_SOCIETATE_CASCO, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_CASCO, new SelectList(Model.SocietatiCASCO, "ID", "DENUMIRE", Model.Dosar.ID_SOCIETATE_CASCO), new { @class = "form-control input-sm", @disabled = "disabled", data_ng_init = String.Format("DosarFiltru.SocietatiCASCO = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiCASCO)) })
+                        @Html.HiddenFor(model => model.Dosar.ID_SOCIETATE_CASCO, new { @id = "Hidden_Dosar_ID_SOCIETATE_CASCO", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_CASCO = '{0}'", Model.Dosar.ID_SOCIETATE_CASCO) })
+                        <!--
+                        @Html.EditorFor(model => model.Dosar.ID_SOCIETATE_CASCO, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                        @Html.ValidationMessageFor(model => model.Dosar.ID_SOCIETATE_CASCO, "", new { @class = "text-danger" })
+                        -->
+                    </div>
+                </td>
+                <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_ASIGURAT_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.dosarJson.NumeAsiguratCasco, new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.dosarJson.NumeAsiguratCasco", data_ng_init = string.Format("DosarFiltru.dosarJson.NumeAsiguratCasco = '{0}'", Model.dosarJson.NumeAsiguratCasco) })
+                        @Html.TextBoxFor(model => model.dosarJson.NumeAsiguratCasco, new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.dosarJson.NumeAsiguratCasco", data_ng_init = string.Format("DosarFiltru.dosarJson.NumeAsiguratCasco = '{0}'", Model.dosarJson.NumeAsiguratCasco) })
                         <!--
                         @Html.EditorFor(model => model.Dosar.ID_ASIGURAT_CASCO, new { htmlAttributes = new { @class = "form-control input-sm" } })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_ASIGURAT_CASCO, "", new { @class = "text-danger" })
                         -->
-                        @Html.HiddenFor(model => model.Dosar.ID_ASIGURAT_CASCO, new { data_ng_model = "DosarFiltru.Dosar.ID_ASIGURAT_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.ID_ASIGURAT_CASCO = '{0}'", Model.Dosar.ID_ASIGURAT_CASCO) })
                     </div>
                 </td>
-                <td colspan="2">
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dosar.ID_SOCIETATE_RCA, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_RCA, new SelectList(Model.SocietatiRCA, "ID", "DENUMIRE"), new { @class = "form-control input-sm", @disabled = "disabled", data_ng_model="ID_SOCIETATE_RCA", data_ng_init=String.Format("DosarFiltru.SocietatiRCA = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiRCA)) })
+                        @Html.HiddenFor(model => model.Dosar.ID_SOCIETATE_RCA, new { @id= "Hidden_Dosar_ID_SOCIETATE_RCA", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_RCA = '{0}'", Model.Dosar.ID_SOCIETATE_RCA) })
+                        <!--
+                        @Html.EditorFor(model => model.Dosar.ID_SOCIETATE_RCA, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                        @Html.ValidationMessageFor(model => model.Dosar.ID_SOCIETATE_RCA, "", new { @class = "text-danger" })
+                        -->
+                    </div>
+                </td>
+                <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_ASIGURAT_RCA, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.dosarJson.NumeAsiguratRca, new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.dosarJson.NumeAsiguratRca", data_ng_init = string.Format("DosarFiltru.dosarJson.NumeAsiguratRca = '{0}'", Model.dosarJson.NumeAsiguratRca) })
+                        @Html.TextBoxFor(model => model.dosarJson.NumeAsiguratRca, new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.dosarJson.NumeAsiguratRca", data_ng_init = string.Format("DosarFiltru.dosarJson.NumeAsiguratRca = '{0}'", Model.dosarJson.NumeAsiguratRca) })
                         <!--
                         @Html.EditorFor(model => model.Dosar.ID_ASIGURAT_RCA, new { htmlAttributes = new { @class = "form-control input-sm" } })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_ASIGURAT_RCA, "", new { @class = "text-danger" })
@@ -122,39 +166,17 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Dosar.ID_SOCIETATE_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_CASCO, new SelectList(Model.SocietatiCASCO, "ID", "DENUMIRE", Model.Dosar.ID_SOCIETATE_CASCO), new { @class = "form-control input-sm", @disabled = "disabled", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_CASCO = '{0}'", Model.Dosar.ID_SOCIETATE_CASCO) })
-                        <!--
-                        @Html.EditorFor(model => model.Dosar.ID_SOCIETATE_CASCO, new { htmlAttributes = new { @class = "form-control input-sm" } })
-                        @Html.ValidationMessageFor(model => model.Dosar.ID_SOCIETATE_CASCO, "", new { @class = "text-danger" })
-                        -->
-                    </div>
-                </td>
-                <td colspan="2">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Dosar.ID_SOCIETATE_RCA, htmlAttributes: new { @class = "control-label" })
-                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_RCA, new SelectList(Model.SocietatiRCA, "ID", "DENUMIRE"), new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_RCA = '{0}'", Model.Dosar.ID_SOCIETATE_RCA) })
-                        <!--
-                        @Html.EditorFor(model => model.Dosar.ID_SOCIETATE_RCA, new { htmlAttributes = new { @class = "form-control input-sm" } })
-                        @Html.ValidationMessageFor(model => model.Dosar.ID_SOCIETATE_RCA, "", new { @class = "text-danger" })
-                        -->
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.NR_POLITA_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.NR_POLITA_CASCO, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.NR_POLITA_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.NR_POLITA_CASCO = '{0}'", Model.Dosar.NR_POLITA_CASCO) } })
+                        @Html.EditorFor(model => model.Dosar.NR_POLITA_CASCO, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.NR_POLITA_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.NR_POLITA_CASCO = '{0}'", Model.Dosar.NR_POLITA_CASCO) } })
                         @Html.ValidationMessageFor(model => model.Dosar.NR_POLITA_CASCO, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_AUTO_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.dosarJson.NumarAutoCasco, new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.dosarJson.NumarAutoCasco", data_ng_init = string.Format("DosarFiltru.dosarJson.NumarAutoCasco = '{0}'", Model.dosarJson.NumarAutoCasco) })
+                        @Html.TextBoxFor(model => model.dosarJson.NumarAutoCasco, new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.dosarJson.NumarAutoCasco", data_ng_init = string.Format("DosarFiltru.dosarJson.NumarAutoCasco = '{0}'", Model.dosarJson.NumarAutoCasco) })
                         <!--
                         @Html.EditorFor(model => model.Dosar.ID_AUTO_CASCO, new { htmlAttributes = new { @class = "form-control input-sm" } })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_AUTO_CASCO, "", new { @class = "text-danger" })
@@ -165,14 +187,14 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.NR_POLITA_RCA, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.NR_POLITA_RCA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.NR_POLITA_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.NR_POLITA_RCA = '{0}'", Model.Dosar.NR_POLITA_RCA) } })
+                        @Html.EditorFor(model => model.Dosar.NR_POLITA_RCA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.NR_POLITA_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.NR_POLITA_RCA = '{0}'", Model.Dosar.NR_POLITA_RCA) } })
                         @Html.ValidationMessageFor(model => model.Dosar.NR_POLITA_RCA, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_AUTO_RCA, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.dosarJson.NumarAutoRca, new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.dosarJson.NumarAutoRca", data_ng_init = string.Format("DosarFiltru.dosarJson.NumarAutoRca = '{0}'", Model.dosarJson.NumarAutoRca) })
+                        @Html.TextBoxFor(model => model.dosarJson.NumarAutoRca, new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.dosarJson.NumarAutoRca", data_ng_init = string.Format("DosarFiltru.dosarJson.NumarAutoRca = '{0}'", Model.dosarJson.NumarAutoRca) })
                         <!--
                         @Html.EditorFor(model => model.Dosar.ID_AUTO_RCA, new { htmlAttributes = new { @class = "form-control input-sm" } })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_AUTO_RCA, "", new { @class = "text-danger" })
@@ -185,28 +207,28 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.VALOARE_DAUNA, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.VALOARE_DAUNA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.VALOARE_DAUNA", data_ng_init = string.Format("DosarFiltru.Dosar.VALOARE_DAUNA = '{0}'", Model.Dosar.VALOARE_DAUNA) } })
+                        @Html.EditorFor(model => model.Dosar.VALOARE_DAUNA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.VALOARE_DAUNA", data_ng_init = string.Format("DosarFiltru.Dosar.VALOARE_DAUNA = '{0}'", Model.Dosar.VALOARE_DAUNA) } })
                         @Html.ValidationMessageFor(model => model.Dosar.VALOARE_DAUNA, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.VALOARE_REGRES, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.VALOARE_REGRES, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.VALOARE_REGRES", data_ng_init = string.Format("DosarFiltru.Dosar.VALOARE_REGRES = '{0}'", Model.Dosar.VALOARE_REGRES) } })
+                        @Html.EditorFor(model => model.Dosar.VALOARE_REGRES, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.VALOARE_REGRES", data_ng_init = string.Format("DosarFiltru.Dosar.VALOARE_REGRES = '{0}'", Model.Dosar.VALOARE_REGRES) } })
                         @Html.ValidationMessageFor(model => model.Dosar.VALOARE_REGRES, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.VMD, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.VMD, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.VMD", data_ng_init = string.Format("DosarFiltru.Dosar.VMD = '{0}'", Model.Dosar.VMD) } })
+                        @Html.EditorFor(model => model.Dosar.VMD, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.VMD", data_ng_init = string.Format("DosarFiltru.Dosar.VMD = '{0}'", Model.Dosar.VMD) } })
                         @Html.ValidationMessageFor(model => model.Dosar.VMD, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.REZERVA_DAUNA, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.REZERVA_DAUNA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.REZERVA_DAUNA", data_ng_init = string.Format("DosarFiltru.Dosar.REZERVA_DAUNA = '{0}'", Model.Dosar.REZERVA_DAUNA) } })
+                        @Html.EditorFor(model => model.Dosar.REZERVA_DAUNA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.REZERVA_DAUNA", data_ng_init = string.Format("DosarFiltru.Dosar.REZERVA_DAUNA = '{0}'", Model.Dosar.REZERVA_DAUNA) } })
                         @Html.ValidationMessageFor(model => model.Dosar.REZERVA_DAUNA, "", new { @class = "text-danger" })
                     </div>
                 </td>
@@ -215,21 +237,21 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.SUMA_IBNR, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.SUMA_IBNR, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.SUMA_IBNR", data_ng_init = string.Format("DosarFiltru.Dosar.SUMA_IBNR = '{0}'", Model.Dosar.SUMA_IBNR) } })
+                        @Html.EditorFor(model => model.Dosar.SUMA_IBNR, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.SUMA_IBNR", data_ng_init = string.Format("DosarFiltru.Dosar.SUMA_IBNR = '{0}'", Model.Dosar.SUMA_IBNR) } })
                         @Html.ValidationMessageFor(model => model.Dosar.SUMA_IBNR, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.CAZ, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.CAZ, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.CAZ", data_ng_init = string.Format("DosarFiltru.Dosar.CAZ = '{0}'", Model.Dosar.CAZ) } })
+                        @Html.EditorFor(model => model.Dosar.CAZ, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.CAZ", data_ng_init = string.Format("DosarFiltru.Dosar.CAZ = '{0}'", Model.Dosar.CAZ) } })
                         @Html.ValidationMessageFor(model => model.Dosar.CAZ, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_INTERVENIENT, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.dosarJson.NumeIntervenient, new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.dosarJson.NumeIntervenient", data_ng_init = string.Format("DosarFiltru.dosarJson.NumeIntervenient = '{0}'", Model.dosarJson.NumeIntervenient) })
+                        @Html.TextBoxFor(model => model.dosarJson.NumeIntervenient, new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.dosarJson.NumeIntervenient", data_ng_init = string.Format("DosarFiltru.dosarJson.NumeIntervenient = '{0}'", Model.dosarJson.NumeIntervenient) })
                         <!--
                         @Html.EditorFor(model => model.Dosar.ID_INTERVENIENT, new { htmlAttributes = new { @class = "form-control input-sm" } })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_INTERVENIENT, "", new { @class = "text-danger" })
@@ -240,7 +262,7 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_TIP_DOSAR, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.dosarJson.TipDosar, new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.dosarJson.TipDosar", data_ng_init = string.Format("DosarFiltru.dosarJson.TipDosar = '{0}'", Model.dosarJson.TipDosar) })
+                        @Html.TextBoxFor(model => model.dosarJson.TipDosar, new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.dosarJson.TipDosar", data_ng_init = string.Format("DosarFiltru.dosarJson.TipDosar = '{0}'", Model.dosarJson.TipDosar) })
                         <!--
                         @Html.EditorFor(model => model.Dosar.ID_TIP_DOSAR, new { htmlAttributes = new { @class = "form-control input-sm" } })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_TIP_DOSAR, "", new { @class = "text-danger" })
@@ -253,181 +275,222 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.NR_IESIRE_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.NR_IESIRE_CASCO, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.NR_IESIRE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.NR_IESIRE_CASCO = '{0}'", Model.Dosar.NR_IESIRE_CASCO) } })
+                        @Html.EditorFor(model => model.Dosar.NR_IESIRE_CASCO, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.NR_IESIRE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.NR_IESIRE_CASCO = '{0}'", Model.Dosar.NR_IESIRE_CASCO) } })
                         @Html.ValidationMessageFor(model => model.Dosar.NR_IESIRE_CASCO, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         <table>
-                            <tr>
+                            <tr ng-show="searchMode == 2">
                                 <td class="toToDates">
                                     @Html.LabelFor(model => model.dosarJson.DataIesireCascoStart, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataIesireCascoStart, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIesireCascoStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIesireCascoStart = '{0}'", Model.dosarJson.DataIesireCascoStart), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataIesireCascoStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIesireCascoStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIesireCascoStart = '{0}'", Model.dosarJson.DataIesireCascoStart), jqdatepicker = "" })
                                     </div>
                                 </td>
                                 <td>
                                     @Html.LabelFor(model => model.dosarJson.DataIesireCascoEnd, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataIesireCascoEnd, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIesireCascoEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIesireCascoEnd = '{0}'", Model.dosarJson.DataIesireCascoEnd), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataIesireCascoEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIesireCascoEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIesireCascoEnd = '{0}'", Model.dosarJson.DataIesireCascoEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_IESIRE_CASCO, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_IESIRE_CASCO, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_IESIRE_CASCO, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_IESIRE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_IESIRE_CASCO = new Date(parseInt({0}.substr(6)))", Model.Dosar.DATA_IESIRE_CASCO), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        @Html.ValidationMessageFor(model => model.Dosar.DATA_IESIRE_CASCO, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Dosar.DATA_IESIRE_CASCO, new { data_ng_model = "DosarFiltru.Dosar.DATA_IESIRE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_IESIRE_CASCO = '{0}'", Model.Dosar.DATA_IESIRE_CASCO) })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.NR_INTRARE_RCA, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Dosar.NR_INTRARE_RCA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.NR_INTRARE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.NR_INTRARE_RCA = '{0}'", Model.Dosar.NR_INTRARE_RCA) } })
+                        @Html.EditorFor(model => model.Dosar.NR_INTRARE_RCA, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value)", data_ng_model = "DosarFiltru.Dosar.NR_INTRARE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.NR_INTRARE_RCA = '{0}'", Model.Dosar.NR_INTRARE_RCA) } })
                         @Html.ValidationMessageFor(model => model.Dosar.NR_INTRARE_RCA, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         <table>
-                            <tr>
+                            <tr ng-show="searchMode == 2">
                                 <td class="toToDates">
                                     @Html.LabelFor(model => model.dosarJson.DataIntrareRcaStart, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataIntrareRcaStart, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIntrareRcaStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIntrareRcaStart = '{0}'", Model.dosarJson.DataIntrareRcaStart), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataIntrareRcaStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIntrareRcaStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIntrareRcaStart = '{0}'", Model.dosarJson.DataIntrareRcaStart), jqdatepicker = "" })
                                     </div>
                                 </td>
                                 <td>
                                     @Html.LabelFor(model => model.dosarJson.DataIntrareRcaEnd, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataIntrareRcaEnd, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIntrareRcaEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIntrareRcaEnd = '{0}'", Model.dosarJson.DataIntrareRcaEnd), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataIntrareRcaEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataIntrareRcaEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataIntrareRcaEnd = '{0}'", Model.dosarJson.DataIntrareRcaEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_INTRARE_RCA, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_INTRARE_RCA, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_INTRARE_RCA, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_INTRARE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_INTRARE_RCA = new Date(parseInt({0}.substr(6)))", Model.Dosar.DATA_INTRARE_RCA), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        @Html.ValidationMessageFor(model => model.Dosar.DATA_INTRARE_RCA, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Dosar.DATA_INTRARE_RCA, new { data_ng_model = "DosarFiltru.Dosar.DATA_INTRARE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_INTRARE_RCA = '{0}'", Model.Dosar.DATA_INTRARE_RCA) })
                     </div>
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.OBSERVATII, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.Dosar.OBSERVATII, new { @class = "form-control input-sm", @style = "height:30px;", data_ng_model = "DosarFiltru.Dosar.OBSERVATII", data_ng_init = string.Format("DosarFiltru.Dosar.OBSERVATII = '{0}'", Model.Dosar.OBSERVATII) })
+                        @Html.TextAreaFor(model => model.Dosar.OBSERVATII, new { @class = "form-control input-sm", @style = "height:30px;", data_ng_focus = "SwitchBackToSearchMode()", data_ng_model = "DosarFiltru.Dosar.OBSERVATII", data_ng_init = string.Format("DosarFiltru.Dosar.OBSERVATII = '{0}'", Model.Dosar.OBSERVATII) })
                         @Html.ValidationMessageFor(model => model.Dosar.OBSERVATII, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Dosar.AVIZAT, htmlAttributes: new { @class = "control-label" })
-                        @Html.CheckBoxFor(model => model.Dosar.AVIZAT, new { @class = "form-control input-sm", data_ng_model = "DosarFiltru.Dosar.AVIZAT", data_ng_init = string.Format("DosarFiltru.Dosar.AVIZAT = '{0}'", Model.Dosar.AVIZAT) })
-                        @Html.ValidationMessageFor(model => model.Dosar.AVIZAT, "", new { @class = "text-danger" })
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group">
                         <table>
-                            <tr>
-                                <td class="toToDates">
-                                    @Html.LabelFor(model => model.dosarJson.DataAvizareStart, htmlAttributes: new { @class = "control-label" })
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataAvizareStart, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataAvizareStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataAvizareStart = '{0}'", Model.dosarJson.DataAvizareStart), jqdatepicker = "" })
-                                    </div>
-                                </td>
-                                <td>
-                                    @Html.LabelFor(model => model.dosarJson.DataAvizareEnd, htmlAttributes: new { @class = "control-label" })
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataAvizareEnd, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataAvizareEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataAvizareEnd = '{0}'", Model.dosarJson.DataAvizareEnd), jqdatepicker = "" })
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                        @Html.ValidationMessageFor(model => model.Dosar.DATA_AVIZARE, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Dosar.DATA_AVIZARE, new { data_ng_model = "DosarFiltru.Dosar.DATA_AVIZARE", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_AVIZARE = '{0}'", Model.Dosar.DATA_AVIZARE) })
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <div class="form-group">
-                        <table>
-                            <tr>
+                            <tr ng-show="searchMode == 2">
                                 <td class="toToDates">
                                     @Html.LabelFor(model => model.dosarJson.DataNotificareStart, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataNotificareStart, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataNotificareStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataNotificareStart = '{0}'", Model.dosarJson.DataNotificareStart), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataNotificareStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataNotificareStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataNotificareStart = '{0}'", Model.dosarJson.DataNotificareStart), jqdatepicker = "" })
                                     </div>
                                 </td>
                                 <td>
                                     @Html.LabelFor(model => model.dosarJson.DataNotificareEnd, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataNotificareEnd, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataNotificareEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataNotificareEnd = '{0}'", Model.dosarJson.DataNotificareEnd), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataNotificareEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataNotificareEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataNotificareEnd = '{0}'", Model.dosarJson.DataNotificareEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_NOTIFICARE, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_NOTIFICARE, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_NOTIFICARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_NOTIFICARE", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_NOTIFICARE = new Date(parseInt({0}.substr(6)))", Model.Dosar.DATA_NOTIFICARE), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        @Html.ValidationMessageFor(model => model.Dosar.DATA_NOTIFICARE, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Dosar.DATA_NOTIFICARE, new { data_ng_model = "DosarFiltru.Dosar.DATA_NOTIFICARE", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_NOTIFICARE = '{0}'", Model.Dosar.DATA_NOTIFICARE) })
                     </div>
                 </td>
-                <td colspan="2">
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dosar.AVIZAT, htmlAttributes: new { @class = "control-label" })
+                        @Html.CheckBoxFor(model => model.Dosar.AVIZAT, new { @class = "checkbox", data_ng_model = "DosarFiltru.Dosar.AVIZAT"})
+                        @Html.ValidationMessageFor(model => model.Dosar.AVIZAT, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
                     <div class="form-group">
                         <table>
-                            <tr>
+                            <tr ng-show="searchMode == 2">
+                                <td class="toToDates">
+                                    @Html.LabelFor(model => model.dosarJson.DataAvizareStart, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.dosarJson.DataAvizareStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataAvizareStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataAvizareStart = '{0}'", Model.dosarJson.DataAvizareStart), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.dosarJson.DataAvizareEnd, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.dosarJson.DataAvizareEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataAvizareEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataAvizareEnd = '{0}'", Model.dosarJson.DataAvizareEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_AVIZARE, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_AVIZARE, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_AVIZARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_AVIZARE", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_AVIZARE = new Date(parseInt({0}.substr(6)))", Model.Dosar.DATA_AVIZARE), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div class="form-group">
+                        <table>
+                            <tr ng-show="searchMode == 2">
                                 <td class="toToDates">
                                     @Html.LabelFor(model => model.dosarJson.DataUltimeiModificariStart, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataUltimeiModificariStart, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataUltimeiModificariStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataUltimeiModificariStart = '{0}'", Model.dosarJson.DataUltimeiModificariStart), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataUltimeiModificariStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataUltimeiModificariStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataUltimeiModificariStart = '{0}'", Model.dosarJson.DataUltimeiModificariStart), jqdatepicker = "" })
                                     </div>
                                 </td>
                                 <td>
                                     @Html.LabelFor(model => model.dosarJson.DataUltimeiModificariEnd, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.dosarJson.DataUltimeiModificariEnd, new { @class = "form-control input-sm", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataUltimeiModificariEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataUltimeiModificariEnd = '{0}'", Model.dosarJson.DataUltimeiModificariEnd), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.dosarJson.DataUltimeiModificariEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataUltimeiModificariEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataUltimeiModificariEnd = '{0}'", Model.dosarJson.DataUltimeiModificariEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI = new Date(parseInt({0}.substr(6)))", Model.Dosar.DATA_ULTIMEI_MODIFICARI), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        @Html.ValidationMessageFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, new { data_ng_model = "DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI", data_ng_init = string.Format("DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI = '{0}'", Model.Dosar.DATA_ULTIMEI_MODIFICARI) })
                     </div>
                 </td>
             </tr>
             <tr>
-                <td colspan="4">
-                    <div class="btn-toolbar">
+                <td colspan="4" style="text-align:center;">
+                    <div class="btn-toolbar" style="text-align:center;">
                         <div class="btn-group">
                             <div style="width:100%;text-align:center;">&nbsp;</div>
-                            <a href="#" class="btn btn-default" ng-disabled="searchMode > 0 ? 'disabled' : ''">Cautare</a>
-                            <a href="#" class="btn btn-default" ng-disabled="searchMode === 0 && DosarFiltru.Dosar <> null ? 'disabled' : ''">Editare</a>
-                            <a href="#" class="btn btn-default" ng-disabled="searchMode === 0 ? 'disabled' : ''">Adaugare</a>
-                            <a href="#" class="btn btn-default" ng-disabled="searchMode === 0 && DosarFiltru.Dosar <> null ? 'disabled' : ''">Stergere</a>
+                            <a href="#" class="btn btn-default" ng-show="false" ng-disabled="searchMode > 0 || editMode == 1">Cautare</a>
+                            <a href="#" class="btn btn-default" ng-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" ng-click="EnterEditMode()">Editare</a>
+                            <a href="#" class="btn btn-default" ng-disabled="searchMode == 2 || editMode == 1" ng-click="EnterAddMode()">Adaugare</a>
+                            <a href="#" class="btn btn-default" ng-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">Stergere</a>
                         </div>
 
-                        <div class="btn-group" ng-show="searchMode > 0" ng-disabled="DosarFiltru.DosareResult === null || DosarFiltru.DosareResult.length === 0 ? 'disabled' : ''">
-                            <div style="width:100%;text-align:center;">{{DosarFiltru.DosareResult == null ? 0 : DosarFiltru.DosareResult.length}} inregistrari gasite</div>
-                            <a href="#" class="btn btn-default" ng-click="firstDosar()">|&lt;</a>
-                            <a href="#" class="btn btn-default" ng-click="prevDosar()">&lt;</a>
-                            <a href="#" class="btn btn-default">&Chi;</a>
-                            <a href="#" class="btn btn-default" onclick="document.getElementById('dosareSideNav').style.display = 'block';">&equiv;</a>
-                            <a href="#" class="btn btn-default" ng-click="nextDosar()">&gt;</a>
-                            <a href="#" class="btn btn-default" ng-click="lastDosar()">&gt;|</a>
+                        <div class="btn-group" ng-show="searchMode > 0">
+                            <div ng-show="searchMode > 0" style="width:100%;text-align:center;">{{DosarFiltru.DosareResult == null || compareObjects(DosarFiltru.DosareResult, {}) ? 0 : DosarFiltru.DosareResult.length}} inregistrari gasite</div>
+                            <a href="#" class="btn btn-default" title="Navigare la primul dosar" ng-click="firstDosar()">|&lt;</a>
+                            <a href="#" class="btn btn-default" title="Navigare la dosarul anterior" ng-click="prevDosar()">&lt;</a>
+                            <a href="#" class="btn btn-default" title="Afisare campuri filtru activ" ng-click="SwitchBackToSearchMode()">&yen;</a>
+                            <a href="#" class="btn btn-default" title="Anulare filtre active" ng-click="ClearFilters()">&Chi;</a>
+                            <a href="#" class="btn btn-default" title="Afisare lista dosare gasite" onclick="showDosareSideNav(true)">&equiv;</a>
+                            <a href="#" class="btn btn-default" title="Navigare la dosarul urmator" ng-click="nextDosar()">&gt;</a>
+                            <a href="#" class="btn btn-default" title="Navigare la ultimul dosar" ng-click="lastDosar()">&gt;|</a>
                         </div>
 
-                        <div class="btn-group" ng-show="searchMode === 0 && editMode === 1">
+                        <div class="btn-group" ng-show="searchMode == 0 && editMode == 1">
                             <div style="width:100%;text-align:center;">&nbsp;</div>
-                            <a href="#" class="btn btn-default">Salveaza</a>
-                            <a href="#" class="btn btn-default">Renunta</a>
+                            <a href="#" class="btn btn-default" ng-click="SaveEdit()">Salveaza</a>
+                            <a href="#" class="btn btn-default" ng-click="CancelEdit()">Renunta</a>
                         </div>
                     </div>
                 </td>
@@ -435,77 +498,3 @@
         </table>
     </div>
 }
-<script>
-/*
-  $(function() {
-      $("#dosarJson_DataEvenimentStart").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataEvenimentEnd").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataScaStart").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataScaEnd").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataAvizareStart").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataAvizareEnd").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataNotificareStart").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataNotificareEnd").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataUltimeiModificariStart").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataUltimeiModificariEnd").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataIesireCascoStart").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataIesireCascoEnd").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataIntrareRcaStart").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-  $(function () {
-      $("#dosarJson_DataIntrareRcaEnd").datepicker({
-          dateFormat: "dd.mm.yy"
-      });
-  });
-*/
-</script>

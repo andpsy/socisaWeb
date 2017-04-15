@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SOCISA.Models;
-using System.Reflection;
+﻿using SOCISA.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace socisaWeb
@@ -15,6 +11,8 @@ namespace socisaWeb
         public Dosar[] DosareResult { get; set; }
         public SocietateAsigurare[] SocietatiCASCO { get; set; }
         public SocietateAsigurare[] SocietatiRCA { get; set; }
+
+        public DosarView() { }
 
         public DosarView(int _CURENT_USER_ID, int _ID_SOCIETATE, string conStr)
         {
@@ -28,11 +26,6 @@ namespace socisaWeb
 
     public class DosarJson
     {
-        //public Dosar Dosar { get; set; }
-        //public SocietateAsigurare[] SocietatiCASCO { get; set; }
-        //public SocietateAsigurare[] SocietatiRCA { get; set; }
-        //public string NumeSocietateCasco { get; set; }
-        //public string NumeSocietateRca { get; set; }
         public string NumeAsiguratCasco { get; set; }
         public string NumeAsiguratRca { get; set; }
         public string NumarAutoCasco { get; set; }
@@ -70,17 +63,6 @@ namespace socisaWeb
 
         public DosarJson() { }
 
-        public DosarJson(int _CURENT_USER_ID, int _ID_SOCIETATE, string conStr)
-        {
-            /*
-            PropertyInfo[] pis = d.GetType().GetProperties();
-            foreach (PropertyInfo pi in pis)
-            {
-                this.GetType().GetProperty(pi.Name).SetValue(this, pi.GetValue(d));
-            }
-            */
-            //this.Dosar.ID = _CURENT_USER_ID;
-            //this.Dosar.ID_SOCIETATE_CASCO = _ID_SOCIETATE;
-        }
+        public DosarJson(int _CURENT_USER_ID, int _ID_SOCIETATE, string conStr) {}
     }
 }

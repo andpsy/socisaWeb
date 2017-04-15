@@ -8,17 +8,19 @@ namespace socisaWeb
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            // Number format
-            bundles.Add(new ScriptBundle("~/bundles/hashtable").Include(
-                        "~/Scripts/hashtable.js"));
-            bundles.Add(new ScriptBundle("~/bundles/hashset").Include(
-                        "~/Scripts/hashset.js"));
-            bundles.Add(new ScriptBundle("~/bundles/numberformat").Include(
-                        "~/Scripts/jquery.numberformatter-1.2.4.js"));
-
             // Angular scripts
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js"));
+
+            //Angular file upload
+            bundles.Add(new ScriptBundle("~/bundles/ngfileuploadshim").Include(
+                        "~/Scripts/ng-file-upload-shim.js"));
+            bundles.Add(new ScriptBundle("~/bundles/ngfileupload").Include(
+                        "~/Scripts/ng-file-upload.js"));
+
+            //Spinner script
+            bundles.Add(new ScriptBundle("~/bundles/spinner").Include(
+                        "~/Scripts/spinner.js"));
 
             // JQuery scripts
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -36,6 +38,10 @@ namespace socisaWeb
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
+                      "~/Scripts/Controllers/*Controller.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/jquery-ui.css",

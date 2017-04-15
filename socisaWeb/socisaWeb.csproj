@@ -125,30 +125,40 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActionsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DocumenteScanateController.cs" />
     <Compile Include="Controllers\DosareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UtilizatoriController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dosare\DosarJson.cs" />
+    <Compile Include="Models\Dosare\DocumentView.cs" />
+    <Compile Include="Models\Dosare\DosarView.cs" />
     <Compile Include="Models\Utilizatori\DashboardJson.cs" />
     <Compile Include="Models\Utilizatori\LoginJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ErrorMessages.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap_init.css" />
     <Content Include="Content\bootstrap.min_init.css" />
     <Content Include="Content\calendar.gif" />
     <Content Include="Content\citysky.jpg" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
+    <Content Include="Content\loading2.gif" />
     <Content Include="Content\logo-cabinet-white.png" />
     <Content Include="Content\logo-white.png" />
     <Content Include="favicon.ico" />
@@ -161,24 +171,32 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\socisaWeb.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\DosareNavigatorController.js" />
-    <Content Include="Scripts\hashset.js" />
-    <Content Include="Scripts\hashtable.js" />
+    <Content Include="Scripts\Controllers\DocumenteScanateController.js" />
+    <Content Include="Scripts\Controllers\DosareNavigatorController.js" />
+    <Content Include="Scripts\FileAPI.flash.swf" />
+    <Content Include="Scripts\FileAPI.js" />
+    <Content Include="Scripts\FileAPI.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
-    <Content Include="Scripts\jquery.numberformatter-1.2.4.js" />
-    <Content Include="Scripts\jquery.numberformatter-1.2.4.jsmin.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ng-file-upload-all.js" />
+    <Content Include="Scripts\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ng-file-upload.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\spinner.js" />
     <Content Include="Scripts\SocisaApp.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -205,10 +223,9 @@
     <Content Include="Views\Dosare\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LayoutDosare.cshtml" />
     <Content Include="Views\Dosare\Index.cshtml" />
-    <Content Include="Views\Dosare\_DosareEdit.cshtml" />
+    <Content Include="Views\DocumenteScanate\_DocumenteScanate.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Actions\" />
     <Folder Include="Views\Dashboard\" />
   </ItemGroup>

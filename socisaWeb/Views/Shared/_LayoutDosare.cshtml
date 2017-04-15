@@ -8,14 +8,14 @@
     @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/Scripts/SocisaApp.js")
-    @Scripts.Render("~/Scripts/DosareNavigatorController.js")
+    @Scripts.Render("~/bundles/ngfileuploadshim")
+    @Scripts.Render("~/bundles/ngfileupload")
+    @Scripts.Render("~/bundles/spinner")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/hashtable")
-    @Scripts.Render("~/bundles/hashset")
-    @Scripts.Render("~/bundles/numberformat")
+    @Scripts.Render("~/Scripts/SocisaApp.js")
+    @Scripts.Render("~/bundles/controllers")
 </head>
 <body onload="openNav()" ng-app="SocisaApp">
     @Html.Partial("_PartialHeaderNavBar")
@@ -34,8 +34,6 @@
             }
         </div>
     @Html.Partial("_PartialFooter")
-
-
 
     @RenderSection("scripts", required: false)
 
