@@ -14,7 +14,7 @@
             <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="model.TipuriDocumente[curDocumentIndex].ID != tipDoc.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocument($index)">
                 <span ng-if="showMandatory(tipDoc)" style="font-weight:bold;color:red;">!</span>&nbsp;{{tipDoc.DENUMIRE}}
                 <span ng-if="areDocumentAvizat(tipDoc.ID) > 0" class="badge" style="background-color:{{areDocumentAvizat(tipDoc.ID) == 2 ? 'darkseagreen':'pink'}};">
-                    <input type="checkbox" ng-model="getDocument(tipDoc.ID).VIZA_CASCO" title="Adauga/Inlatura documentul scanat in/din dosar" />
+                    <input type="checkbox" ng-model="getDocument(tipDoc.ID).VIZA_CASCO" ng-change="SaveEdit()" title="Adauga/Inlatura documentul scanat in/din dosar" />
                 </span>
             </li>
         </ul>
@@ -31,8 +31,8 @@
                     <div class="btn-group btn-group-justified">
                         <a href="#" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'block';">Incarcare fisier</a>
                         <a href="#" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'block'; document.getElementById('incarcareFisiere').style.display = 'none';">Detalii</a>
-                        <a href="#" class="btn btn-default">Stergere</a>
-                        <a href="#" class="btn btn-default">Vizualizare</a>
+                        <a href="#" class="btn btn-default" ng-click="deleteDoc()" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Stergere</a>
+                        <a href="scans/{{model.CurDocumentScanat.CALE_FISIER}}" class="btn btn-default" target="_blank" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Vizualizare</a>
                     </div>
 
                     <div id="detaliiDocument" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
@@ -46,7 +46,8 @@
                         @Html.HiddenFor(model => model.CurDocumentScanat.DIMENSIUNE_FISIER, new { data_ng_model = "model.CurDocumentScanat.DIMENSIUNE_FISIER" })
                         @Html.HiddenFor(model => model.CurDocumentScanat.EXTENSIE_FISIER, new { data_ng_model = "model.CurDocumentScanat.EXTENSIE_FISIER" })
                         @Html.HiddenFor(model => model.CurDocumentScanat.SMALL_ICON, new { data_ng_model = "model.CurDocumentScanat.SMALL_ICON" })
-                        <a href="#" class="btn btn-default">Salvare</a>
+                        <br />
+                        <a href="#" class="btn btn-default" ng-click="SaveEdit()">Salvare</a>
                     </div>
 
                     <div id="incarcareFisiere" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
@@ -58,13 +59,13 @@
                             </div>
                         </div>
                         -->
-                        <div class="btn btn-primary" ngf-pattern="'image/jpg,image/jpeg,image/png,image/bmp,application/pdf'" ngf-select="upload($file)" ng-show="curDocumentIndex > -1">Incarca fisier...</div>
+                        <div class="btn btn-primary" ngf-pattern="'image/jpg,image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="20MB" ngf-select="upload($file)" ng-show="curDocumentIndex > -1">Incarca fisier...</div>
                         <!--
                         <div class="button" ngf-select="uploadFiles($files)" multiple="multiple">Upload on file select</div>
                         -->
                         <br />
                         <div ngf-drop="upload($file)" class="drop-box"
-                             ngf-drag-over-class="'dragover'" ngf-multiple="false"
+                             ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-max-size="20MB"
                              ngf-pattern="'image/jpg,image/jpeg,image/png,image/bmp,application/pdf'">... sau Drag&Drop imagine sau fisier PDF aici</div>
                         <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
                         <p>Sunt admise doar fisiere .jpg, .jpeg, .png, .bmp si .pdf cu dimensiunea maxima de 20Mb!</p>

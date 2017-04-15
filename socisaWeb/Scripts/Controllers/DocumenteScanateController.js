@@ -7,7 +7,6 @@ function ($scope, $http, $filter, $rootScope, Upload) {
     $scope.model.TipuriDocumente = [{}];
     $scope.model.DocumenteScanate = [{}];
     $scope.model.CurDocumentScanat = {};
-    $scope.editMode = 0;
 
     $scope.showDocument = function (index) {
         $scope.curDocumentIndex = index;
@@ -57,33 +56,13 @@ function ($scope, $http, $filter, $rootScope, Upload) {
             return tipDoc.MANDATORY;
         } catch (e) { return false;}
     };
-
+    /*
     $scope.$watch('model.CurDocumentScanat.VIZA_CASCO', function (newValue, oldValue) {
         if (newValue != oldValue) {
-
-        }
-    });
-
-    /*
-    $scope.$watch('model.CurDocumentScanat.FILE_CONTENT', function (newValue, oldValue) {
-        if (newValue != oldValue && $scope.editMode == 1) {
-            alert($scope.model.CurDocumentScanat.ID + ' - ' + $scope.model.CurDocumentScanat.ID_DOSAR + ' - ' + $scope.model.CurDocumentScanat.FILE_CONTENT);
             $scope.SaveEdit();
-            $scope.editMode = 0;
         }
     });
     */
-
-    /*
-    $scope.$watch('editMode', function (newValue, oldValue) {
-        if (newValue != oldValue && newValue == 1) {
-            alert($scope.model.CurDocumentScanat.ID + ' - ' + $scope.model.CurDocumentScanat.ID_DOSAR + ' - ' + $scope.model.CurDocumentScanat.FILE_CONTENT);
-            //$scope.SaveEdit();
-            $scope.editMode = 0;
-        }
-    });
-    */
-
     $rootScope.$watch('ID_DOSAR', function (newValue, oldValue) {
         if (newValue != null && newValue != undefined) {
             $scope.model.ID_DOSAR = newValue;
@@ -108,6 +87,21 @@ function ($scope, $http, $filter, $rootScope, Upload) {
         });
     };
 
+    $scope.ShowDocument = function (id_document) {
+        //spinner = new Spinner(opts).spin(document.getElementById('main'));
+        //spinner.spin(document.getElementById('main'));
+        $http.get('/DocumenteScanate/Detail/' + id_document).then(function (response) {
+            if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
+                $scope.model.CurDocumentScanat = response.data.Result;
+                angular.copy($scope.model.CurDocumentScanat, $scope.model.DocumenteScanate[$scope.curDocumentIndex]);
+            }
+            //spinner.stop();
+        }, function (response) {
+            alert('Erroare: ' + response.status + ' - ' + response.data);
+            //spinner.stop();
+        });
+    };
+
     $scope.findValue = function (searchValues, enteredValue) {
         if (searchValues != null && searchValues != undefined) {
             var found = $filter('getById')(searchValues, enteredValue);
@@ -115,9 +109,31 @@ function ($scope, $http, $filter, $rootScope, Upload) {
         }
     };
 
+    $scope.deleteDoc = function () {
+        spinner.spin(document.getElementById('main'));
+        var id = $scope.model.CurDocumentScanat.ID;
+        alert(id);
+        $http.get('/DocumenteScanate/Delete/' + id)
+            .then(function (response) {
+                if (response != 'null' && response != null && response.data != null) {
+                    $scope.showMessage = true;
+                    $scope.result = response.data;
+                    if ($scope.result.Status) {
+                        $scope.model.CurDocumentScanat = {};
+                        $scope.model.DocumenteScanate.splice($scope.curDocumentIndex, 1);
+                        $scope.curDocumentIndex = -1;
+                    }
+                }
+                spinner.stop();
+            }, function (response) {
+                spinner.stop();
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+            });
+    };
+
     $scope.SaveEdit = function () {
-        spinner.spin(document.getElementById('main'))
-        var data = $scope.model;
+        spinner.spin(document.getElementById('main'));
+        var data = $scope.model.CurDocumentScanat;
         //alert(data.CurDocumentScanat.ID + ' - ' + data.CurDocumentScanat.ID_DOSAR + ' - ' + data.CurDocumentScanat.ID_TIP_DOCUMENT + ' - ' + data.CurDocumentScanat.CALE_FISIER + ' - ' + data.CurDocumentScanat.DENUMIRE_FISIER + ' - ' + data.CurDocumentScanat.EXTENSIE_FISIER);
         $http.post('/DocumenteScanate/Edit', data)
             .then(function (response) {
@@ -127,20 +143,22 @@ function ($scope, $http, $filter, $rootScope, Upload) {
                     if ($scope.result.Status) {
                         if ($scope.result.InsertedId != null) {
                             $scope.model.CurDocumentScanat.ID = $scope.result.InsertedId;
+                            $scope.model.DocumenteScanate.push($scope.model.CurDocumentScanat);
                         }
-                        else {
-                        }
+                        $scope.ShowDocument($scope.model.CurDocumentScanat.ID);
                     }
                 }
                 spinner.stop();
             }, function (response) {
-                alert('Erroare: ' + response.status + ' - ' + response.data);
                 spinner.stop();
+                alert('Erroare: ' + response.status + ' - ' + response.data);
             });
     };
 
     // upload on file select or drop
     $scope.upload = function (file) {
+        spinner.spin(document.getElementById('main'));
+        if (!Upload.isFile(file)) return;
         Upload.upload({
             url: '/DocumenteScanate/PostFile',
             data: {file: file}
@@ -151,9 +169,12 @@ function ($scope, $http, $filter, $rootScope, Upload) {
             $scope.model.CurDocumentScanat.EXTENSIE_FISIER = j.EXTENSIE_FISIER;
             $scope.model.CurDocumentScanat.CALE_FISIER = j.CALE_FISIER;
             //console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            spinner.stop();
             $scope.SaveEdit();
         }, function (resp) {
+            alert(resp.status + ' - ' + resp.data);
             console.log('Error status: ' + resp.status);
+            spinner.stop();
         }, function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);

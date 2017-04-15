@@ -34,31 +34,53 @@ namespace socisaWeb.Controllers
             Dosar d = (Dosar)dr.Find(id).Result;
             response r = d.GetDocumente();
 
-            return Json(r, JsonRequestBehavior.AllowGet);
+            //return Json(r, JsonRequestBehavior.AllowGet);
+            JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = Int32.MaxValue;
+            return result;
         }
-        
+
+        public JsonResult Detail(int id)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            response r = dsr.Find(id);
+
+            //return Json(r, JsonRequestBehavior.AllowGet);
+            JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = Int32.MaxValue;
+            return result;
+        }
+
         [HttpPost]
-        public JsonResult Edit(DocumentView DocumentView)
+        public JsonResult Edit(DocumentScanat CurDocumentScanat)
         {
             response r = new response();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-            if (DocumentView.CurDocumentScanat.ID == null) // insert
+            if (CurDocumentScanat.ID == null) // insert
             {
                 DocumentScanat d = new DocumentScanat(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
-                PropertyInfo[] pis = DocumentView.CurDocumentScanat.GetType().GetProperties();
+                PropertyInfo[] pis = CurDocumentScanat.GetType().GetProperties();
                 foreach(PropertyInfo pi in pis)
                 {
-                    pi.SetValue(d, pi.GetValue(DocumentView.CurDocumentScanat));
+                    pi.SetValue(d, pi.GetValue(CurDocumentScanat));
                 }
                 r = d.Insert();
-                return Json(r, JsonRequestBehavior.AllowGet);
-            }else // edit
+                //return Json(r, JsonRequestBehavior.AllowGet);
+                JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
+                result.MaxJsonLength = Int32.MaxValue;
+                return result;
+            }
+            else // edit
             {
                 DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
-                DocumentScanat d = (DocumentScanat)dsr.Find(Convert.ToInt32(DocumentView.CurDocumentScanat.ID)).Result;
-                string s = JsonConvert.SerializeObject(DocumentView.CurDocumentScanat, Formatting.None, new Newtonsoft.Json.Converters.IsoDateTimeConverter() { DateTimeFormat = "dd.MM.yyyy" });
+                DocumentScanat d = (DocumentScanat)dsr.Find(Convert.ToInt32(CurDocumentScanat.ID)).Result;
+                string s = JsonConvert.SerializeObject(CurDocumentScanat, Formatting.None, new Newtonsoft.Json.Converters.IsoDateTimeConverter() { DateTimeFormat = "dd.MM.yyyy" });
                 r = d.Update(s);
-                return Json(r, JsonRequestBehavior.AllowGet);
+                //return Json(r, JsonRequestBehavior.AllowGet);
+                JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
+                result.MaxJsonLength = Int32.MaxValue;
+                return result;
             }
         }
 
@@ -71,7 +93,33 @@ namespace socisaWeb.Controllers
             string newFName = Guid.NewGuid() + extension;
             Request.Files[0].SaveAs(System.IO.Path.Combine(CommonFunctions.GetScansFolder(), newFName));
             string toReturn = "{\"DENUMIRE_FISIER\":\"" + initFName + "\",\"EXTENSIE_FISIER\":\"" + extension + "\",\"CALE_FISIER\":\"" + newFName + "\"}";
-            return Json(toReturn, JsonRequestBehavior.AllowGet);
+            //return Json(toReturn, JsonRequestBehavior.AllowGet);
+
+            JsonResult result = Json(toReturn, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = Int32.MaxValue;
+            return result;
+        }
+
+        [HttpGet]
+        public JsonResult Delete(int id)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            DocumentScanat d = (DocumentScanat)dsr.Find(id).Result;
+            response r = d.Delete();
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
+        protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
+        {
+            return new JsonResult()
+            {
+                Data = data,
+                ContentType = contentType,
+                ContentEncoding = contentEncoding,
+                JsonRequestBehavior = behavior,
+                MaxJsonLength = Int32.MaxValue
+            };
         }
     }
 }
