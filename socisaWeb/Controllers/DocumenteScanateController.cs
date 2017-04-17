@@ -75,7 +75,8 @@ namespace socisaWeb.Controllers
             {
                 DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
                 DocumentScanat d = (DocumentScanat)dsr.Find(Convert.ToInt32(CurDocumentScanat.ID)).Result;
-                string s = JsonConvert.SerializeObject(CurDocumentScanat, Formatting.None, new Newtonsoft.Json.Converters.IsoDateTimeConverter() { DateTimeFormat = "dd.MM.yyyy" });
+                //string s = JsonConvert.SerializeObject(CurDocumentScanat, Formatting.None, new Newtonsoft.Json.Converters.IsoDateTimeConverter() { DateTimeFormat = "dd.MM.yyyy" });
+                string s = CommonFunctions.GenerateJsonFromModifiedFields(d, CurDocumentScanat);
                 r = d.Update(s);
                 //return Json(r, JsonRequestBehavior.AllowGet);
                 JsonResult result = Json(r, JsonRequestBehavior.AllowGet);

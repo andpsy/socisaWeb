@@ -2,76 +2,93 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
-        <button type="button" class="close" ng-click="showMessage = false">&times;</button>
-        <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
-        <p ng-repeat="s in result.Message.split(';')">
-            {{s}}
-        </p>
-    </div>
-    <div class="lista_documente" data-ng-init="@String.Format("model.TipuriDocumente = {0}", Newtonsoft.Json.JsonConvert.SerializeObject( Model.TipuriDocumente))">
-        <ul class="list-group">
-            <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="model.TipuriDocumente[curDocumentIndex].ID != tipDoc.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocument($index)">
-                <span ng-if="showMandatory(tipDoc)" style="font-weight:bold;color:red;">!</span>&nbsp;{{tipDoc.DENUMIRE}}
-                <span ng-if="areDocumentAvizat(tipDoc.ID) > 0" class="badge" style="background-color:{{areDocumentAvizat(tipDoc.ID) == 2 ? 'darkseagreen':'pink'}};">
-                    <input type="checkbox" ng-model="getDocument(tipDoc.ID).VIZA_CASCO" ng-change="SaveEdit()" title="Adauga/Inlatura documentul scanat in/din dosar" />
-                </span>
-            </li>
-        </ul>
-    </div>
-    <div class="main_documente" ng-show="curDocumentIndex > -1">
-        <table style="width:100%;">
-            <tr>
-                <td style="height:80%;text-align:center;vertical-align:middle;padding:10px;">
-                    <img ng-if="model.CurDocumentScanat.MEDIUM_ICON != null" ng-src="data:image/JPEG;base64,{{model.CurDocumentScanat.MEDIUM_ICON | bytetobase}}" width="300" height="420"><br />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="btn-group btn-group-justified">
-                        <a href="#" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'block';">Incarcare fisier</a>
-                        <a href="#" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'block'; document.getElementById('incarcareFisiere').style.display = 'none';">Detalii</a>
-                        <a href="#" class="btn btn-default" ng-click="deleteDoc()" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Stergere</a>
-                        <a href="scans/{{model.CurDocumentScanat.CALE_FISIER}}" class="btn btn-default" target="_blank" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Vizualizare</a>
+    <table style="width:100%;height:100%;">
+        <tr>
+            <td>
+                <div class="lista_documente" data-ng-init="@String.Format("model.TipuriDocumente = {0}", Newtonsoft.Json.JsonConvert.SerializeObject( Model.TipuriDocumente))">
+                    <ul class="list-group">
+                        <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="model.TipuriDocumente[curDocumentIndex].ID != tipDoc.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocumentByIndex($index)">
+                            <span ng-if="showMandatory(tipDoc)" style="font-weight:bold;color:red;">!</span>&nbsp;{{tipDoc.DENUMIRE}}
+                            <span ng-if="areDocumentAvizat(tipDoc.ID) > 0" class="badge" style="background-color:{{areDocumentAvizat(tipDoc.ID) == 2 ? 'darkseagreen':'pink'}};">
+                                <input ng-disabled="model.TipuriDocumente[curDocumentIndex].ID != tipDoc.ID" type="checkbox" ng-model="getDocument(tipDoc.ID).VIZA_CASCO" ng-change="model.CurDocumentScanat.VIZA_CASCO = getDocument(tipDoc.ID).VIZA_CASCO; SaveEdit()" title="Adauga/Inlatura documentul scanat in/din dosar" />
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <div class="main_documente" ng-show="curDocumentIndex > -1">
+                    <div id="resultMessageBox" ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+                        <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+                        <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
+                        <p ng-repeat="s in result.Message.split(';')">
+                            {{s}}
+                        </p>
                     </div>
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="height:460px;text-align:center;vertical-align:middle;padding:10px;">
+                                <span ng-if="model.CurDocumentScanat.VIZA_CASCO" style="color:#8FB78D;">&#9745; Documentul este inclus in dosar si este avizat!</span><br /><br />
+                                <img ng-if="model.CurDocumentScanat.MEDIUM_ICON != null" ng-src="data:image/JPEG;base64,{{model.CurDocumentScanat.MEDIUM_ICON | bytetobase}}" width="300" height="420"><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height:240px;">
+                                <div class="btn-group btn-group-justified">
+                                    <a href="#" title="Ataseaza document scanat la dosar" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'block';">Incarcare fisier</a>
+                                    <a href="#" title="Adauga detalii la documentul scanat" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'block'; document.getElementById('incarcareFisiere').style.display = 'none';">Detalii</a>
+                                    <a href="#" title="Elimina documentul scanat din dosar" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" ng-click="deleteDoc()" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Stergere</a>
+                                    <a href="scans/{{model.CurDocumentScanat.CALE_FISIER}}" title="Deschide documentul intr-o fereastra noua" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" target="_blank" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Vizualizare</a>
+                                </div>
 
-                    <div id="detaliiDocument" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
-                        @Html.LabelFor(model => model.CurDocumentScanat.DETALII, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.CurDocumentScanat.DETALII, new { @class = "form-control input-sm", @style = "width:100%", data_ng_model = "model.CurDocumentScanat.DETALII" })
-                        @Html.ValidationMessageFor(model => model.CurDocumentScanat.DETALII, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.ID_DOSAR, new { data_ng_model = "ID_DOSAR" })
-                        @Html.HiddenFor(model => model.CurDocumentScanat.CALE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FISIER" })
-                        @Html.HiddenFor(model => model.CurDocumentScanat.DATA_INCARCARE, new { data_ng_model = "model.CurDocumentScanat.DATA_INCARCARE" })
-                        @Html.HiddenFor(model => model.CurDocumentScanat.DENUMIRE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FDENUMIRE_FISIERISIER" })
-                        @Html.HiddenFor(model => model.CurDocumentScanat.DIMENSIUNE_FISIER, new { data_ng_model = "model.CurDocumentScanat.DIMENSIUNE_FISIER" })
-                        @Html.HiddenFor(model => model.CurDocumentScanat.EXTENSIE_FISIER, new { data_ng_model = "model.CurDocumentScanat.EXTENSIE_FISIER" })
-                        @Html.HiddenFor(model => model.CurDocumentScanat.SMALL_ICON, new { data_ng_model = "model.CurDocumentScanat.SMALL_ICON" })
-                        <br />
-                        <a href="#" class="btn btn-default" ng-click="SaveEdit()">Salvare</a>
-                    </div>
+                                <div id="detaliiDocument" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
+                                    @Html.LabelFor(model => model.CurDocumentScanat.DETALII, htmlAttributes: new { @class = "control-label" })
+                                    @Html.TextAreaFor(model => model.CurDocumentScanat.DETALII, new { @class = "form-control input-sm", @style = "width:100%", data_ng_model = "model.CurDocumentScanat.DETALII" })
+                                    @Html.ValidationMessageFor(model => model.CurDocumentScanat.DETALII, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.ID_DOSAR, new { data_ng_model = "ID_DOSAR" })
+                                    @Html.HiddenFor(model => model.CurDocumentScanat.CALE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FISIER" })
+                                    @Html.HiddenFor(model => model.CurDocumentScanat.DATA_INCARCARE, new { data_ng_model = "model.CurDocumentScanat.DATA_INCARCARE" })
+                                    @Html.HiddenFor(model => model.CurDocumentScanat.DENUMIRE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FDENUMIRE_FISIERISIER" })
+                                    @Html.HiddenFor(model => model.CurDocumentScanat.DIMENSIUNE_FISIER, new { data_ng_model = "model.CurDocumentScanat.DIMENSIUNE_FISIER" })
+                                    @Html.HiddenFor(model => model.CurDocumentScanat.EXTENSIE_FISIER, new { data_ng_model = "model.CurDocumentScanat.EXTENSIE_FISIER" })
+                                    @Html.HiddenFor(model => model.CurDocumentScanat.SMALL_ICON, new { data_ng_model = "model.CurDocumentScanat.SMALL_ICON" })
+                                    <br />
+                                    <a href="#" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" ng-click="SaveEdit()">Salvare</a>
+                                </div>
 
-                    <div id="incarcareFisiere" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
-                        <!--
-                        <div class="form-group" ng-show="curDocumentIndex > -1"  style="border:1px solid lightgray;border-radius: 4px; padding:10px;">
-                            <label class="control-label">Incarcare fisier:</label>
-                            <div class="input-group">
-                                <input type="file" fileread="model.CurDocumentScanat.FILE_CONTENT" ng-click="editMode = 1" id="loadedFile" name="loadedFile">
-                            </div>
-                        </div>
-                        -->
-                        <div class="btn btn-primary" ngf-pattern="'image/jpg,image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="20MB" ngf-select="upload($file)" ng-show="curDocumentIndex > -1">Incarca fisier...</div>
-                        <!--
-                        <div class="button" ngf-select="uploadFiles($files)" multiple="multiple">Upload on file select</div>
-                        -->
-                        <br />
-                        <div ngf-drop="upload($file)" class="drop-box"
-                             ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-max-size="20MB"
-                             ngf-pattern="'image/jpg,image/jpeg,image/png,image/bmp,application/pdf'">... sau Drag&Drop imagine sau fisier PDF aici</div>
-                        <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
-                        <p>Sunt admise doar fisiere .jpg, .jpeg, .png, .bmp si .pdf cu dimensiunea maxima de 20Mb!</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+                                <div id="incarcareFisiere" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
+                                    <div class="btn btn-primary" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="'20MB'" ngf-select="upload($file)" ng-show="curDocumentIndex > -1">Incarca fisier...</div>
+                                    <br />
+                                    <div ngf-drop="upload($file)" class="drop-box"
+                                         ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'"  ngf-max-size="'20MB'"
+                                         ngf-pattern="'image/*.jpg,image/*.jpeg,image/*.png,image/*.bmp,application/pdf'">... sau Drag&Drop imagine sau fisier PDF aici</div>
+                                    <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
+                                    <p>Sunt admise doar fisiere .jpg, .jpeg, .png, .bmp si .pdf cu dimensiunea maxima de 20Mb!</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
 }
+<script type="text/ng-template" id="dialog">
+    <div id="modal" class="modal" style="width:100%;height:100%;z-index:1050; display:table;">
+        <div class="modal-dialog" style="display:table-cell;vertical-align:middle;">
+            <div class="modal-content" style="margin-left:auto;margin-right:auto;width:500px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeThisDialog(0)">&times;</button>
+                    <h4 class="modal-title">Confirmare stergere</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirmati stergerea?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeThisDialog(0)">Nu</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirm(1)">Da</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

@@ -13,7 +13,6 @@ namespace socisaWeb
         public TipDocument[] TipuriDocumente { get; set; }
         public DocumentScanat[] DocumenteScanate { get; set; }
         public DocumentScanat CurDocumentScanat { get; set; }
-        //public HttpPostedFileBase loadedFile { get; set; }
 
         public DocumentView() {
             //this.TipuriDocumente = new List<TipDocument>().ToArray();

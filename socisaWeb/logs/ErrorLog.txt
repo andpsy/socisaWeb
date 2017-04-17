@@ -225,3 +225,73 @@ File name: 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb
    at SOCISA.FileManager.UploadFile(String filePath) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 40
    at SOCISA.Models.DocumentScanat.Update() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\DocumenteScanate.cs:line 236
 =====================================================
+17.04.2017 23:16:20
+System.IO.FileNotFoundException: Could not find file 'C:\Program Files (x86)\IIS Express\arialbold.ttf'.
+File name: 'C:\Program Files (x86)\IIS Express\arialbold.ttf'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at SOCISA.PdfGenerator.GeneratePdfContent(List`1 pdfText, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 192
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 117
+=====================================================
+17.04.2017 23:16:21
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.PdfGenerator.ExportDosarCompletToPdf(Int32 authenticatedUserId, String connectionString, String templateFileName, Dosar Dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 472
+=====================================================
+17.04.2017 23:21:10
+System.IO.FileNotFoundException: Could not find file 'C:\Program Files (x86)\IIS Express\arialbold.ttf'.
+File name: 'C:\Program Files (x86)\IIS Express\arialbold.ttf'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at SOCISA.PdfGenerator.GeneratePdfContent(List`1 pdfText, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 192
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 117
+=====================================================
+17.04.2017 23:21:11
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.PdfGenerator.ExportDosarCompletToPdf(Int32 authenticatedUserId, String connectionString, String templateFileName, Dosar Dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 472
+=====================================================
+17.04.2017 23:21:26
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\AA89989898_cerere.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 94
+=====================================================
+17.04.2017 23:21:26
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.PdfGenerator.ExportDosarCompletToPdf(Int32 authenticatedUserId, String connectionString, String templateFileName, Dosar Dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 472
+=====================================================
+17.04.2017 23:37:06
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\AA89989898_cerere.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 94
+=====================================================
+17.04.2017 23:37:07
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\AA89989898_documente.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 390
+=====================================================
+17.04.2017 23:56:46
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\AA89989898_cerere.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 94
+=====================================================
+17.04.2017 23:56:47
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.PdfGenerator.ExportDosarCompletToPdf(Int32 authenticatedUserId, String connectionString, String templateFileName, Dosar Dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 472
+=====================================================

@@ -25,7 +25,7 @@ function showDosareSideNav(on_off) {
 }
 
 app.controller('DosareNavigatorController',
-function ($scope, $http, $filter, $rootScope) {
+function ($scope, $http, $filter, $rootScope, $window) {
     $scope.searchMode = 1;
     $scope.TempDosarFilter = {};
     $scope.editMode = 0;
@@ -382,5 +382,24 @@ function ($scope, $http, $filter, $rootScope) {
         $scope.editMode = 0;
         $scope.searchMode = 1;
         angular.copy($scope.TempDosarEdit, $scope.DosarFiltru);
+    };
+
+    $scope.TiparireDosar = function () {
+        var data = $scope.DosarFiltru.Dosar.ID;
+        $http.get('/Dosare/Print/' + data, {
+            headers:
+            { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function (response) {
+            if (response != 'null' && response != null && response.data != null) {
+                try {
+                    if (response.data.Status)
+                        $window.open("pdfs/" + response.data.Message);
+                } catch (e) { }
+            }
+            //spinner.stop();
+        }, function (response) {
+            alert('Erroare: ' + response.status + ' - ' + response.data);
+            //spinner.stop();
+        });
     };
 });

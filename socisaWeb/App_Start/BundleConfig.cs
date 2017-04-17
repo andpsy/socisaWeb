@@ -18,6 +18,14 @@ namespace socisaWeb
             bundles.Add(new ScriptBundle("~/bundles/ngfileupload").Include(
                         "~/Scripts/ng-file-upload.js"));
 
+            //Angular animate
+            bundles.Add(new ScriptBundle("~/bundles/angularanimate").Include(
+                        "~/Scripts/angular-animate.js"));
+
+            //Angular dialog
+            bundles.Add(new ScriptBundle("~/bundles/angulardialog").Include(
+                        "~/Scripts/ngDialog.js"));
+
             //Spinner script
             bundles.Add(new ScriptBundle("~/bundles/spinner").Include(
                         "~/Scripts/spinner.js"));

@@ -1,14 +1,21 @@
 ﻿'use strict';
 
+app.factory('myService', function ($http) {
+    var getData = function (id_dosar) {
+        return $http.get('/DocumenteScanate/Details/' + id_dosar);
+    }
+    return { getData: getData }
+});
+
 app.controller('DocumenteScanateController',
-function ($scope, $http, $filter, $rootScope, Upload) {
+function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils, myService) {
     $scope.model = {};
     $scope.curDocumentIndex = -1;
     $scope.model.TipuriDocumente = [{}];
     $scope.model.DocumenteScanate = [{}];
     $scope.model.CurDocumentScanat = {};
 
-    $scope.showDocument = function (index) {
+    $scope.showDocumentByIndex = function (index) {
         $scope.curDocumentIndex = index;
         try {
             angular.copy($scope.getDocument($scope.model.TipuriDocumente[index].ID), $scope.model.CurDocumentScanat);
@@ -52,13 +59,14 @@ function ($scope, $http, $filter, $rootScope, Upload) {
     $scope.showMandatory = function (tipDoc) {
         try{
             if($scope.model.DocumenteScanate != null && $scope.model.DocumenteScanate != undefined)
-                return !$scope.areDocumentAvizat(tipDoc.ID) && tipDoc.MANDATORY;
+                return !($scope.areDocumentAvizat(tipDoc.ID) == 2) && tipDoc.MANDATORY;
             return tipDoc.MANDATORY;
         } catch (e) { return false;}
     };
     /*
     $scope.$watch('model.CurDocumentScanat.VIZA_CASCO', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            alert('xxx');
             $scope.SaveEdit();
         }
     });
@@ -71,8 +79,41 @@ function ($scope, $http, $filter, $rootScope, Upload) {
     });
 
     $scope.ShowDocuments = function (id_dosar) {
-        //spinner = new Spinner(opts).spin(document.getElementById('main'));
-        //spinner.spin(document.getElementById('main'));
+        var myDataPromise = myService.getData(id_dosar);
+        myDataPromise.then(function (response) {
+            if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
+                $scope.model.DocumenteScanate = response.data.Result;
+            }
+            else {
+                $scope.model.DocumenteScanate = null;
+            }
+            if ($scope.curDocumentIndex > -1) {
+                alert($scope.curDocumentIndex);
+                $scope.showDocumentByIndex($scope.curDocumentIndex);
+            }
+        }, function (response) {
+            alert('Erroare: ' + response.status + ' - ' + response.data);
+        });
+
+        /*
+        PromiseUtils.getPromiseHttpResult($http.get('/DocumenteScanate/Details/' + id_dosar))
+            .then(function(response){
+                if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
+                    $scope.model.DocumenteScanate = response.data.Result;
+                }
+                else {
+                    $scope.model.DocumenteScanate = null;
+                }
+                if ($scope.curDocumentIndex > -1) {
+                    alert($scope.curDocumentIndex);
+                    $scope.showDocumentByIndex($scope.curDocumentIndex);
+                }
+            }, function (response) {
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+            });
+        */
+
+        /*
         $http.get('/DocumenteScanate/Details/' + id_dosar).then(function (response) {
             if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
                 $scope.model.DocumenteScanate = response.data.Result;
@@ -80,11 +121,12 @@ function ($scope, $http, $filter, $rootScope, Upload) {
             else {
                 $scope.model.DocumenteScanate = null;
             }
-            //spinner.stop();
+            if ($scope.curDocumentIndex > -1)
+                $scope.showDocumentByIndex($scope.curDocumentIndex);
         }, function (response) {
             alert('Erroare: ' + response.status + ' - ' + response.data);
-            //spinner.stop();
         });
+        */
     };
 
     $scope.ShowDocument = function (id_document) {
@@ -110,25 +152,42 @@ function ($scope, $http, $filter, $rootScope, Upload) {
     };
 
     $scope.deleteDoc = function () {
-        spinner.spin(document.getElementById('main'));
-        var id = $scope.model.CurDocumentScanat.ID;
-        alert(id);
-        $http.get('/DocumenteScanate/Delete/' + id)
-            .then(function (response) {
-                if (response != 'null' && response != null && response.data != null) {
-                    $scope.showMessage = true;
-                    $scope.result = response.data;
-                    if ($scope.result.Status) {
-                        $scope.model.CurDocumentScanat = {};
-                        $scope.model.DocumenteScanate.splice($scope.curDocumentIndex, 1);
-                        $scope.curDocumentIndex = -1;
-                    }
-                }
-                spinner.stop();
-            }, function (response) {
-                spinner.stop();
-                alert('Erroare: ' + response.status + ' - ' + response.data);
-            });
+
+        //document.getElementById("modal").style.display = 'table';
+
+        var conf = ngDialog.openConfirm({
+            template: 'dialog',
+            scope: $scope
+        }).then(
+			function (value) {
+			    document.getElementById("modal").style.display = "none";
+			    spinner.spin(document.getElementById('main'));
+			    var id = $scope.model.CurDocumentScanat.ID;
+			    $http.get('/DocumenteScanate/Delete/' + id)
+                    .then(function (response) {
+                        if (response != 'null' && response != null && response.data != null) {
+                            $scope.showMessage = true;
+                            $scope.result = response.data;
+                            if ($scope.result.Status) {
+                                //$scope.model.DocumenteScanate.splice($scope.model.DocumenteScanate.indexOf($scope.CurDocumentScanat), 1);
+                                //$scope.model.CurDocumentScanat = {};
+                                //$scope.curDocumentIndex = -1;
+                                $scope.model.CurDocumentScanat = null;
+                                $scope.ShowDocuments($rootScope.ID_DOSAR);
+                                //$scope.showDocumentByIndex($scope.curDocumentIndex);
+                            }
+                        }
+                        spinner.stop();
+                    }, function (response) {
+                        spinner.stop();
+                        alert('Erroare: ' + response.status + ' - ' + response.data);
+                    });
+			},
+			function (value) {
+			    document.getElementById("modal").style.display = "none";
+			    return;
+			}
+        );
     };
 
     $scope.SaveEdit = function () {
@@ -140,12 +199,18 @@ function ($scope, $http, $filter, $rootScope, Upload) {
                 if (response != 'null' && response != null && response.data != null) {
                     $scope.showMessage = true;
                     $scope.result = response.data;
+                    //$("#resultMessageBox").fadeOut(3000);
                     if ($scope.result.Status) {
+                        /*
                         if ($scope.result.InsertedId != null) {
                             $scope.model.CurDocumentScanat.ID = $scope.result.InsertedId;
                             $scope.model.DocumenteScanate.push($scope.model.CurDocumentScanat);
                         }
                         $scope.ShowDocument($scope.model.CurDocumentScanat.ID);
+                        */
+                        $scope.model.CurDocumentScanat = null;
+                        $scope.ShowDocuments($rootScope.ID_DOSAR);
+                        //$scope.showDocumentByIndex($scope.curDocumentIndex);
                     }
                 }
                 spinner.stop();
@@ -157,8 +222,8 @@ function ($scope, $http, $filter, $rootScope, Upload) {
 
     // upload on file select or drop
     $scope.upload = function (file) {
+        if (file == null || !Upload.isFile(file)) return;
         spinner.spin(document.getElementById('main'));
-        if (!Upload.isFile(file)) return;
         Upload.upload({
             url: '/DocumenteScanate/PostFile',
             data: {file: file}
@@ -168,6 +233,8 @@ function ($scope, $http, $filter, $rootScope, Upload) {
             $scope.model.CurDocumentScanat.DENUMIRE_FISIER = j.DENUMIRE_FISIER;
             $scope.model.CurDocumentScanat.EXTENSIE_FISIER = j.EXTENSIE_FISIER;
             $scope.model.CurDocumentScanat.CALE_FISIER = j.CALE_FISIER;
+            $scope.model.CurDocumentScanat.DATA_INCARCARE = j.DATA_INCARCARE;
+            $scope.model.CurDocumentScanat.DIMENSIUNE_FISIER = j.DIMENSIUNE_FISIER;
             //console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
             spinner.stop();
             $scope.SaveEdit();
@@ -189,5 +256,5 @@ function ($scope, $http, $filter, $rootScope, Upload) {
             // or send them all together for HTML5 browsers:
             //Upload.upload({..., data: {file: files}, ...})...;
         }
-    }
+    };
 });

@@ -19,6 +19,8 @@ namespace socisaWeb
 
             ModelBinders.Binders[typeof(DateTime)] = new DateTimeModelBinder("dd.MM.yyyy");
             ModelBinders.Binders[typeof(DateTime?)] = new DateTimeModelBinder("dd.MM.yyyy");
+            //ModelBinders.Binders.Remove(typeof(byte[]));
+            //ModelBinders.Binders.Add(typeof(byte[]), new CustomByteArrayModelBinder());
         }
     }
 
@@ -37,6 +39,20 @@ namespace socisaWeb
             {
                 return DateTime.ParseExact(value.AttemptedValue, this._customFormat, System.Globalization.CultureInfo.InvariantCulture);
             }catch(Exception exp) { return null; }
+        }
+    }
+
+    public class CustomByteArrayModelBinder : IModelBinder
+    {
+        object IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+        {
+            ValueProviderResult value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+            if (value == null || String.IsNullOrEmpty(value.AttemptedValue)) return null;
+            try
+            {
+                return Convert.FromBase64String(value.AttemptedValue);
+            }
+            catch (Exception exp) { return null; }
         }
     }
 }

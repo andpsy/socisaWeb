@@ -474,6 +474,17 @@
                             <a href="#" class="btn btn-default" ng-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" ng-click="EnterEditMode()">Editare</a>
                             <a href="#" class="btn btn-default" ng-disabled="searchMode == 2 || editMode == 1" ng-click="EnterAddMode()">Adaugare</a>
                             <a href="#" class="btn btn-default" ng-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">Stergere</a>
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">
+                                    Optiuni
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Avizare</a></li>
+                                    <li><a href="#" ng-click="TiparireDosar()">Tiparire</a></li>
+                                    <li><a href="#">Email</a></li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="btn-group" ng-show="searchMode > 0">

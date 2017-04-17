@@ -333,5 +333,20 @@ namespace socisaWeb.Controllers
                 return Json(r, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpGet]
+        public JsonResult Print(int id)
+        {
+            response r = new response();
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
+            r = dr.ExportDosarCompletToPdf(id);
+            if (r.Status)
+            {
+                r.Result = r.Message = r.Message.Substring(r.Message.LastIndexOf("\\") + 1);
+            }
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
     }
 }

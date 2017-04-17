@@ -1,4 +1,4 @@
-﻿var app = angular.module('SocisaApp', ['ngFileUpload']);
+﻿var app = angular.module('SocisaApp', ['ngFileUpload', 'ngAnimate', 'ngDialog']);
 
 app.config(['$compileProvider',
   function($compileProvider) {
@@ -100,3 +100,16 @@ app.directive('jqdatepicker', function () {
     };
 });
 
+app.service("PromiseUtils", function ($q) {
+    return {
+        getPromiseHttpResult: function (httpPromise) {
+            var deferred = $q.defer();
+            httpPromise.then(function (data) {
+                deferred.resolve(data);
+            },function () {
+                deferred.reject(arguments);
+            });
+            return deferred.promise;
+        }
+    }
+});
