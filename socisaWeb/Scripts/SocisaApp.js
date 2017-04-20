@@ -1,4 +1,17 @@
-﻿var app = angular.module('SocisaApp', ['ngFileUpload', 'ngAnimate', 'ngDialog']);
+﻿function setRequiredFields() {
+    $('*').each(function () {
+        var req = $(this).attr('data-val-required');
+        if (undefined != req) {
+            var label = $('label[for="' + $(this).attr('id') + '"]');
+            var text = label.text();
+            if (text.length > 0) {
+                label.append('<span style="color:red"> *</span>');
+            }
+        }
+    });
+};
+
+var app = angular.module('SocisaApp', ['ngFileUpload', 'ngAnimate', 'ngDialog']);
 
 app.config(['$compileProvider',
   function($compileProvider) {
@@ -112,4 +125,28 @@ app.service("PromiseUtils", function ($q) {
             return deferred.promise;
         }
     }
+});
+
+app.factory('myService', function ($http, $q) {
+
+    this.getlist = function (url) {
+        return $http.get(url)
+            .then(function (response) {
+                return response;
+            }, function (response) { return response; })
+    }
+    return this;
+});
+
+app.directive('dynamic', function ($compile) {
+    return {
+        restrict: 'A',
+        replace: true,
+        link: function (scope, ele, attrs) {
+            scope.$watch(attrs.dynamic, function (html) {
+                ele.html(html);
+                $compile(ele.contents())(scope);
+            });
+        }
+    };
 });

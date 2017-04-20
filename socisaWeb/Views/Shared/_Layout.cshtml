@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body onload="openNav()">
+<body onload="openNav(); setRequiredFields();">
     @Html.Partial("_PartialHeaderNavBar")
 
     @RenderBody()
@@ -29,6 +29,7 @@
         document.getElementById("mySidenav").style.width = "0";
         document.getElementById("main").style.marginLeft= "0";
     }
+
     </script>
 </body>
 </html>

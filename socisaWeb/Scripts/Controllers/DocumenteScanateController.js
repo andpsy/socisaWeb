@@ -1,14 +1,7 @@
 ﻿'use strict';
 
-app.factory('myService', function ($http) {
-    var getData = function (id_dosar) {
-        return $http.get('/DocumenteScanate/Details/' + id_dosar);
-    }
-    return { getData: getData }
-});
-
 app.controller('DocumenteScanateController',
-function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils, myService) {
+function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, myService) {
     $scope.model = {};
     $scope.curDocumentIndex = -1;
     $scope.model.TipuriDocumente = [{}];
@@ -18,7 +11,11 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
     $scope.showDocumentByIndex = function (index) {
         $scope.curDocumentIndex = index;
         try {
-            angular.copy($scope.getDocument($scope.model.TipuriDocumente[index].ID), $scope.model.CurDocumentScanat);
+            var doc = $scope.getDocument($scope.model.TipuriDocumente[index].ID);
+            //alert('index - ' + $scope.curDocumentIndex + 'doc - ' + doc);
+            //alert('icon - ' + doc.MEDIUM_ICON);
+            angular.copy(doc, $scope.model.CurDocumentScanat);
+            //alert('icon - ' + $scope.model.CurDocumentScanat.MEDIUM_ICON);
             //$scope.model.CurDocumentScanat = $scope.getDocument($scope.model.TipuriDocumente[index].ID);
             if ($scope.model.CurDocumentScanat == null || $scope.model.CurDocumentScanat.ID == null) {
                 $scope.model.CurDocumentScanat = {};
@@ -79,6 +76,25 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
     });
 
     $scope.ShowDocuments = function (id_dosar) {
+        spinner.spin(document.getElementById('main'));
+        myService.getlist('/DocumenteScanate/Details/' + id_dosar)
+          .then(function (response) {
+              if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
+                  $scope.model.DocumenteScanate = response.data.Result;
+              }
+              else {
+                  $scope.model.DocumenteScanate = null;
+              }
+              if ($scope.curDocumentIndex > -1) {
+                  $scope.showDocumentByIndex($scope.curDocumentIndex);
+              }
+              spinner.stop();
+          }, function (response) {
+              spinner.stop();
+              alert('Erroare: ' + response.status + ' - ' + response.data);
+          });
+
+        /*
         var myDataPromise = myService.getData(id_dosar);
         myDataPromise.then(function (response) {
             if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
@@ -94,6 +110,7 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
         }, function (response) {
             alert('Erroare: ' + response.status + ' - ' + response.data);
         });
+        */
 
         /*
         PromiseUtils.getPromiseHttpResult($http.get('/DocumenteScanate/Details/' + id_dosar))
@@ -121,8 +138,10 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
             else {
                 $scope.model.DocumenteScanate = null;
             }
+            
             if ($scope.curDocumentIndex > -1)
                 $scope.showDocumentByIndex($scope.curDocumentIndex);
+            
         }, function (response) {
             alert('Erroare: ' + response.status + ' - ' + response.data);
         });
@@ -154,13 +173,14 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
     $scope.deleteDoc = function () {
 
         //document.getElementById("modal").style.display = 'table';
-
-        var conf = ngDialog.openConfirm({
-            template: 'dialog',
-            scope: $scope
+        /*
+        ngDialog.openConfirm({
+            template: '<div><p>De ce? </p><button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">Nu</button><button type="button" class="btn btn-primary" ng-click="confirm(1)">Da</button></div>',
+                plain: true
         }).then(
 			function (value) {
 			    document.getElementById("modal").style.display = "none";
+        */
 			    spinner.spin(document.getElementById('main'));
 			    var id = $scope.model.CurDocumentScanat.ID;
 			    $http.get('/DocumenteScanate/Delete/' + id)
@@ -169,12 +189,8 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
                             $scope.showMessage = true;
                             $scope.result = response.data;
                             if ($scope.result.Status) {
-                                //$scope.model.DocumenteScanate.splice($scope.model.DocumenteScanate.indexOf($scope.CurDocumentScanat), 1);
-                                //$scope.model.CurDocumentScanat = {};
-                                //$scope.curDocumentIndex = -1;
-                                $scope.model.CurDocumentScanat = null;
+                                $scope.model.CurDocumentScanat = {};
                                 $scope.ShowDocuments($rootScope.ID_DOSAR);
-                                //$scope.showDocumentByIndex($scope.curDocumentIndex);
                             }
                         }
                         spinner.stop();
@@ -182,12 +198,13 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
                         spinner.stop();
                         alert('Erroare: ' + response.status + ' - ' + response.data);
                     });
+        /*
 			},
 			function (value) {
 			    document.getElementById("modal").style.display = "none";
-			    return;
 			}
         );
+        */
     };
 
     $scope.SaveEdit = function () {
@@ -208,7 +225,7 @@ function ($scope, $http, $filter, $rootScope, $q, Upload, ngDialog, PromiseUtils
                         }
                         $scope.ShowDocument($scope.model.CurDocumentScanat.ID);
                         */
-                        $scope.model.CurDocumentScanat = null;
+                        $scope.model.CurDocumentScanat = {};
                         $scope.ShowDocuments($rootScope.ID_DOSAR);
                         //$scope.showDocumentByIndex($scope.curDocumentIndex);
                     }

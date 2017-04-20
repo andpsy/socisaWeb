@@ -19,7 +19,7 @@
     @Scripts.Render("~/Scripts/SocisaApp.js")
     @Scripts.Render("~/bundles/controllers")
 </head>
-<body onload="openNav()" ng-app="SocisaApp">
+<body onload="openNav(); setRequiredFields();" ng-app="SocisaApp">
     @Html.Partial("_PartialHeaderNavBar")
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

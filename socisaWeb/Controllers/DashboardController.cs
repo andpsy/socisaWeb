@@ -19,8 +19,8 @@ namespace socisaWeb.Controllers
             Utilizator u = (Utilizator)Session["CURENT_USER"];
             DosareRepository dr = new DosareRepository(Convert.ToInt32(u.ID), conStr);
             dj.DOSARE_TOTAL = Convert.ToInt32(dr.CountAll().Result);
-            dj.DOSARE_FROM_LAST_LOGIN = 30;
-            dj.MESAJE_NOI = 25;
+            dj.DOSARE_FROM_LAST_LOGIN = Convert.ToInt32(dr.CountFromLastLogin().Result);
+            dj.MESAJE_NOI = 0;
 
             return PartialView("_Dashboard", dj);
         }

@@ -37,6 +37,9 @@ namespace socisaWeb
             if (r.Result != null)
             {
                 Utilizator u = (Utilizator)r.Result;
+                u.IS_ONLINE = true;
+                Session["LAST_LOGIN"] = DateTime.Now;
+                u.Update();
                 Session["CURENT_USER"] = u;
                 Session["CURENT_USER_ID"] = u.ID;
                 FormsAuthentication.SetAuthCookie(u.USER_NAME, false);
@@ -66,7 +69,7 @@ namespace socisaWeb
             }
             else
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("", "Autentificare esuata!");
                 return View(model);
             }
         }
@@ -97,6 +100,14 @@ namespace socisaWeb
 
         public ActionResult Logout()
         {
+            try
+            {
+                Utilizator u = (Utilizator)Session["CURENT_USER"];
+                u.IS_ONLINE = false;
+                u.LAST_LOGIN = Convert.ToDateTime(Session["LAST_LOGIN"]);
+                u.Update();
+            }
+            catch { }
             Session["CURENT_USER"] = null;
             Session["CURENT_USER_ID"] = null;
             Session["ID_SOCIETATE"] = null;
@@ -106,6 +117,7 @@ namespace socisaWeb
             Session["CURENT_USER_ACTIONS"] = null;
             Session["CURENT_USER_SETTINGS"] = null;
             Session["CURENT_USER_SOCIETATI_ADMINISTRATE"] = null;
+
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }

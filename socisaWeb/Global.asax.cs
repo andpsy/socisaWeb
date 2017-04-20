@@ -22,6 +22,19 @@ namespace socisaWeb
             //ModelBinders.Binders.Remove(typeof(byte[]));
             //ModelBinders.Binders.Add(typeof(byte[]), new CustomByteArrayModelBinder());
         }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            try
+            {
+                string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+                SOCISA.Models.Utilizator u = (SOCISA.Models.Utilizator)Session["CURENT_USER"];
+                u.IS_ONLINE = false;
+                u.Update();
+                System.Web.Security.FormsAuthentication.SignOut();
+            }
+            catch (Exception exp) { SOCISA.LogWriter.Log(exp); }
+        }
     }
 
     public class DateTimeModelBinder : IModelBinder

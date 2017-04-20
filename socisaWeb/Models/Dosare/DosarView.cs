@@ -11,6 +11,8 @@ namespace socisaWeb
         public Dosar[] DosareResult { get; set; }
         public SocietateAsigurare[] SocietatiCASCO { get; set; }
         public SocietateAsigurare[] SocietatiRCA { get; set; }
+        public Nomenclator[] TipuriCaz { get; set; }
+        public Nomenclator[] TipuriDosar { get; set; }
 
         public DosarView() { }
 
@@ -21,6 +23,9 @@ namespace socisaWeb
             this.dosarJson = new DosarJson(_CURENT_USER_ID, _ID_SOCIETATE, conStr);
             SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(_CURENT_USER_ID, conStr);
             this.SocietatiCASCO = this.SocietatiRCA = (SocietateAsigurare[])sar.GetAll().Result;
+            NomenclatoareRepository nr = new NomenclatoareRepository(_CURENT_USER_ID, conStr);
+            this.TipuriCaz = (Nomenclator[])nr.GetAll("tip_caz").Result;
+            this.TipuriDosar = (Nomenclator[])nr.GetAll("tip_dosare").Result;
         }
     }
 
@@ -31,7 +36,7 @@ namespace socisaWeb
         public string NumarAutoCasco { get; set; }
         public string NumarAutoRca { get; set; }
         public string NumeIntervenient { get; set; }
-        public string TipDosar { get; set; }
+        //public string TipDosar { get; set; }
         [Display(Name = "Data Eveniment de la:")]
         public DateTime? DataEvenimentStart { get; set; }
         [Display(Name = "pana la:")]

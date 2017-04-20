@@ -211,7 +211,7 @@ namespace socisaWeb.Controllers
                             */
                         }
                     }
-
+                    /*
                     if (!String.IsNullOrEmpty(DosarView.dosarJson.TipDosar))
                     {
                         NomenclatoareRepository ar = new NomenclatoareRepository(_CURENT_USER_ID, conStr);
@@ -226,11 +226,11 @@ namespace socisaWeb.Controllers
                             tipDosar.DENUMIRE = DosarView.dosarJson.TipDosar;
                             r = tipDosar.Insert();
                             if (r.Status) d.ID_TIP_DOSAR = Convert.ToInt32(tipDosar.ID);
-                            /* -- nu e obligatoriu
-                            else toReturn.AddResponse(r);
-                            */
+                            // -- nu e obligatoriu
+                            //else toReturn.AddResponse(r);
                         }
                     }
+                    */
                 }
                 if (!toReturn.Status)
                     return Json(toReturn, JsonRequestBehavior.AllowGet);
@@ -312,6 +312,7 @@ namespace socisaWeb.Controllers
                     if (!r.Status)
                         toReturn.AddResponse(r);
                 }
+                /*
                 if (DosarView.dosarJson.TipDosar != tipDosar.DENUMIRE)
                 {
                     tipDosar.DENUMIRE = DosarView.dosarJson.TipDosar;
@@ -325,6 +326,7 @@ namespace socisaWeb.Controllers
                     if (!r.Status)
                         toReturn.AddResponse(r);
                 }
+                */
                 if (!toReturn.Status)
                     return Json(toReturn, JsonRequestBehavior.AllowGet);
 

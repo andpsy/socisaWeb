@@ -1,0 +1,66 @@
+﻿@model socisaWeb.MesajView
+
+<div style="border:solid 1px lightgray; padding:10px; background-color:#FAFAFA; margin:5px;">
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <a href="#" class="btn btn-default">Mesaj nou</a>
+            <a href="#" class="btn btn-default">Raspunde</a>
+            <a href="#" class="btn btn-default">Redirectioneaza</a>
+        </div>
+    </div>
+    <div class="treeview">
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Subiect</th>
+                    <th>De la</th>
+                    <th>Data mesaj</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Mesaje != null && Model.Mesaje.Length > 0)
+                {
+                    @TreeView.GetTreeView(Model.Mesaje, Model.Mesaje[0].REPLY_TO, 0, 0)
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@if (Model != null)
+{
+    <div style="border:solid 1px lightgray; padding:10px; background-color:#FAFAFA; margin:5px;">
+        <div class="form-group">
+            @Html.HiddenFor(model => model.Mesaj.ID, new { data_ng_model = "model.Mesaj.ID" })
+            @Html.HiddenFor(model => model.Mesaj.ID_DOSAR, new { data_ng_model = "model.Mesaj.ID_DOSAR" })
+            @Html.Label("Catre: ", new { @class = "control-label" })<div id="receivers" style="margin:5px;padding:5px;"></div>
+            @Html.HiddenFor(model => model.Receivers, new { data_ng_model = "model.Receivers" })
+            @Html.ValidationMessageFor(model => model.Receivers, "", new { @class = "text-danger" })
+            @Html.DropDownList("Catre", new SelectList(Model.InvolvedParties, "ID", "NUME_COMPLET"), new { @id = "select_involvedParties", @class = "form-control input-sm", data_ng_model = "involvedParty", data_ng_change = "AddReceiver()", data_ng_init = String.Format("model.InvolvedParties = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.InvolvedParties)) })
+        </div>
+        <div class="form-group">
+            @Html.Label("Subiect: ", new { @class = "control-label" })
+            @Html.EditorFor(model => model.Mesaj.SUBIECT, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "model.Mesaj.SUBIECT" } })
+            @Html.ValidationMessageFor(model => model.Mesaj.SUBIECT, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.TextAreaFor(model => model.Mesaj.BODY, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "model.Mesaj.BODY" } })
+            @Html.ValidationMessageFor(model => model.Mesaj.BODY, "", new { @class = "text-danger" })
+        </div>
+        <a href="#" class="btn btn-primary btn-sm">Trimite</a>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $(".treeview li>ul").css('display', 'none'); // Hide all 2-level ul
+        $(".collapsible").click(function (e) {
+            e.preventDefault();
+            $(this).toggleClass("treeview_collapse expand");
+            $(this).closest('li').children('ul').slideToggle();
+        });
+    });
+</script>
+
+
+
+
