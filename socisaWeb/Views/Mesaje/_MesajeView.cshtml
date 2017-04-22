@@ -3,9 +3,8 @@
 <div style="border:solid 1px lightgray; padding:10px; background-color:#FAFAFA; margin:5px;">
     <div class="btn-toolbar">
         <div class="btn-group">
-            <a href="#" class="btn btn-default">Mesaj nou</a>
-            <a href="#" class="btn btn-default">Raspunde</a>
-            <a href="#" class="btn btn-default">Redirectioneaza</a>
+            <a href="#" class="btn btn-default btn-sm" ng-click="NewMessage()">Mesaj nou</a>
+            <a href="#" class="btn btn-default btn-sm" ng-click="Refresh()">Refresh</a>
         </div>
     </div>
     <div class="treeview">
@@ -29,25 +28,43 @@
 </div>
 @if (Model != null)
 {
-    <div style="border:solid 1px lightgray; padding:10px; background-color:#FAFAFA; margin:5px;">
+    <div style="border:solid 1px lightgray; padding:10px; background-color:#FAFAFA; margin:5px;" ng-show="model.Mesaj != null">
+        <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+            <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+            <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
+            <p ng-repeat="s in result.Message.split(';')">
+                {{s}}
+            </p>
+        </div>
+        <div class="btn-toolbar" ng-show="model.Mesaj.ID != null">
+            <div class="btn-group">
+                <a href="#" class="btn btn-default btn-sm">Raspunde</a>
+                <a href="#" class="btn btn-default btn-sm">Redirectioneaza</a>
+            </div>
+        </div>
+        @Html.Label("", new { data_ng_init = String.Format("model.Mesaje = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.Mesaje)) })
         <div class="form-group">
             @Html.HiddenFor(model => model.Mesaj.ID, new { data_ng_model = "model.Mesaj.ID" })
             @Html.HiddenFor(model => model.Mesaj.ID_DOSAR, new { data_ng_model = "model.Mesaj.ID_DOSAR" })
-            @Html.Label("Catre: ", new { @class = "control-label" })<div id="receivers" style="margin:5px;padding:5px;"></div>
-            @Html.HiddenFor(model => model.Receivers, new { data_ng_model = "model.Receivers" })
-            @Html.ValidationMessageFor(model => model.Receivers, "", new { @class = "text-danger" })
-            @Html.DropDownList("Catre", new SelectList(Model.InvolvedParties, "ID", "NUME_COMPLET"), new { @id = "select_involvedParties", @class = "form-control input-sm", data_ng_model = "involvedParty", data_ng_change = "AddReceiver()", data_ng_init = String.Format("model.InvolvedParties = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.InvolvedParties)) })
+            @Html.Label("Catre: ", new { @class = "control-label" })<div id="receivers" style="margin:5px;padding:5px;" dynamic2="html2"></div>
+            @Html.DropDownList("Catre", new SelectList(Model.InvolvedParties, "ID", "NUME_COMPLET"), new { @id = "select_involvedParties", @class = "form-control input-sm", data_ng_disabled = "model.Mesaj.ID != null", data_ng_model = "involvedParty", data_ng_change = "AddReceiver()", data_ng_init = String.Format("model.InvolvedParties = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.InvolvedParties)) })
+        </div>
+        <div class="form-group">
+            @Html.Label("Tip mesaj: ", new { @class = "control-label" })
+            @Html.DropDownList("TipMesaj", new SelectList(Model.TipuriMesaj, "ID", "DENUMIRE"), new { @id = "select_TipuriMesaj", @class = "form-control input-sm", data_ng_disabled = "model.Mesaj.ID != null", data_ng_model = "tipMesaj", data_ng_init = String.Format("model.TipuriMesaj = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.TipuriMesaj)) })
+            @Html.HiddenFor(model => model.Mesaj.ID_TIP_MESAJ, new { data_ng_model = "model.Mesaj.ID_TIP_MESAJ" })
         </div>
         <div class="form-group">
             @Html.Label("Subiect: ", new { @class = "control-label" })
-            @Html.EditorFor(model => model.Mesaj.SUBIECT, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "model.Mesaj.SUBIECT" } })
-            @Html.ValidationMessageFor(model => model.Mesaj.SUBIECT, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Mesaj.SUBIECT, new { htmlAttributes = new {  @class = "form-control input-sm", data_ng_model = "model.Mesaj.SUBIECT", data_ng_disabled = "model.Mesaj.ID != null" } })
         </div>
         <div class="form-group">
-            @Html.TextAreaFor(model => model.Mesaj.BODY, new { htmlAttributes = new { @class = "form-control input-sm", data_ng_model = "model.Mesaj.BODY" } })
-            @Html.ValidationMessageFor(model => model.Mesaj.BODY, "", new { @class = "text-danger" })
+            @Html.TextAreaFor(model => model.Mesaj.BODY, new { @class = "form-control input-sm", data_ng_disabled = "model.Mesaj.ID != null", data_ng_model = "model.Mesaj.BODY" })
         </div>
-        <a href="#" class="btn btn-primary btn-sm">Trimite</a>
+        <div class="btn-toolbar" ng-show="model.Mesaj.ID == null">
+            <a href="#" class="btn btn-primary btn-sm" ng-click="SendMessage()">Trimite</a>
+            <a href="#" class="btn btn-default btn-sm" ng-click="CancelMessage()">Renunta</a>
+        </div>
     </div>
 }
 <script>

@@ -1,10 +1,10 @@
-﻿var lastkeytime = new Date();
+﻿'use strict';
+var lastkeytime = new Date();
 var lastruntime = new Date();
 var waiting_interval = 1000; // miliseconds
 var lastfiltervalue = "";
 
 var spinner = new Spinner(opts);
-'use strict';
 
 function showDosareSideNav(on_off) {
     var x = document.getElementById("dosareSideNav");
@@ -428,7 +428,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
                 try {
                     if (response.data.Status)
                         $window.open("pdfs/" + response.data.Message);
-                } catch (e) { }
+                } catch (e) {;}
             }
             //spinner.stop();
         }, function (response) {

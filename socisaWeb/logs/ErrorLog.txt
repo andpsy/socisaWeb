@@ -397,3 +397,38 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at System.Web.Security.FormsAuthentication.SignOut()
    at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 34
 =====================================================
+21.04.2017 08:01:56
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 34
+=====================================================
+21.04.2017 10:09:43
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 34
+=====================================================
+22.04.2017 00:05:11
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'ID_UTILIZATOR' in 'where clause'
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Mesaj.GetReceiversByIdDosar() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 342
+=====================================================
+22.04.2017 00:07:09
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'ID_UTILIZATOR' in 'where clause'
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Mesaj.GetReceiversByIdDosar() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 342
+=====================================================
+22.04.2017 00:07:41
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'ID_UTILIZATOR' in 'where clause'
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Mesaj.GetReceiversByIdDosar() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 342
+=====================================================
+22.04.2017 10:19:27
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 34
+=====================================================
+22.04.2017 11:50:01
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 34
+=====================================================

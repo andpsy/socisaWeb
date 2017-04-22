@@ -13,9 +13,9 @@ foreach (var i in mesaje.Where(a => a.REPLY_TO.Equals(parentID)))
 
             </td>
             @{var submenu = mesaje.Where(a => a.REPLY_TO.Equals(i.ID)).Count();}
-            @{string bullet = indent == 0 ? "" : index == (_parentcount - 1) ? "└" : "├";}
+            @{string bullet = indent == 0 ? "" : index == (_parentcount - 1) ? "└" : "┊";}
             <td>
-                <a href="#" ng-click="SelectMessage(@i.ID)">@sIndent @bullet @i.SUBIECT</a>
+                <a href="#" ng-click="SelectMessage(@Newtonsoft.Json.JsonConvert.SerializeObject(i))">@sIndent @bullet @i.SUBIECT</a>
             </td>
             <td>
                 @{ var u = (SOCISA.Models.Utilizator)i.GetSender().Result;}
@@ -27,7 +27,7 @@ foreach (var i in mesaje.Where(a => a.REPLY_TO.Equals(parentID)))
         </tr>
         if (submenu > 0)
         {
-            @TreeView.GetTreeView(mesaje, Convert.ToInt32(i.ID), ++indent, submenu)
+            @TreeView.GetTreeView(mesaje, Convert.ToInt32(i.ID), indent+1, submenu)
         }
         ++index;
     }
