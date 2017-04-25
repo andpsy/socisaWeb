@@ -117,6 +117,12 @@ a.logoLink
     pointer-events:none;
 }
 
+a.disabled {
+    color: #AAAAAA;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .lista_documente {
     position:relative;
     top:0;
@@ -143,6 +149,18 @@ a.logoLink
 }
 
 /* tree view */
+.treeview_tbody {
+    display:block;
+    overflow-y:auto;
+    overflow-x:auto;
+    height:250px;
+}
+
+.treeview_thead{
+    display:block;
+    /*table-layout:fixed;*/
+}
+
 .treeview_collapse {
     width:15px;
     background-image: url('../Content/images/treeview/ui-icons_454545_256x240.png');
@@ -196,4 +214,54 @@ a.logoLink
 }
 .fade.ng-leave.ng-leave-active {
   opacity:0;
+}
+
+.label_casco{
+    min-height: 20px;
+    padding-left: 25px !important;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+    margin-right: 20px;
+    background-color: green;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight:bold;
+    font-size:14px;
+    color:white;
+    border-radius: 4px;
+}
+
+.label_rca{
+    min-height: 20px;
+    padding-left: 25px !important;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+    margin-right: 20px;
+    background-color: red;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight:bold;
+    font-size:14px;
+    color:white;
+    border-radius: 4px;
+}
+
+.label_a{
+    display: block ;
+    padding: 3px 20px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333333;
+    white-space: nowrap;
+    font-size:14px;
+}
+.label_a:hover,
+.label_a:focus {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #446e9b;
 }

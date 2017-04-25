@@ -1,34 +1,43 @@
-﻿@helper GetTreeView(SOCISA.Models.Mesaj[] mesaje, int? parentID, int _indent, int _parentcount)
+﻿@helper GetTreeView(socisaWeb.MesajJson[] MesajeJson, int? parentID, int _indent, int _parentcount)
 {
 var indent = _indent;
 string sIndent = "";
 if (indent > 0) {
-    sIndent = new string(' ', indent);
+    sIndent = new string('-', indent * 3);
 }
-int index = 0;
-foreach (var i in mesaje.Where(a => a.REPLY_TO.Equals(parentID)))
+//int index = 0;
+foreach (var i in MesajeJson.Where(a => a.Mesaj.REPLY_TO.Equals(parentID)))
 {
         <tr>
+            @{var submenu = MesajeJson.Where(a => a.Mesaj.REPLY_TO.Equals(i.Mesaj.ID)).Count();}
+            @{
+                //string bullet = indent == 0 ? "" : index == (_parentcount - 1) ? "└" : "┊";
+                string bullet = "";
+            }
             <td>
-
+                <a href="#" ng-click="SelectMessage(@Newtonsoft.Json.JsonConvert.SerializeObject(i))">@sIndent @bullet @i.Mesaj.SUBIECT</a>
             </td>
-            @{var submenu = mesaje.Where(a => a.REPLY_TO.Equals(i.ID)).Count();}
-            @{string bullet = indent == 0 ? "" : index == (_parentcount - 1) ? "└" : "┊";}
             <td>
-                <a href="#" ng-click="SelectMessage(@Newtonsoft.Json.JsonConvert.SerializeObject(i))">@sIndent @bullet @i.SUBIECT</a>
-            </td>
-            <td>
-                @{ var u = (SOCISA.Models.Utilizator)i.GetSender().Result;}
+                @{ var u = (SOCISA.Models.Utilizator)i.Mesaj.GetSender().Result;}
                 @u.NUME_COMPLET ( @u.EMAIL )
             </td>
             <td>
-                @i.DATA.ToString("dd.MM.yyyy HH:mm:ss")
+                @{ var to = "";}
+                @foreach(var ut in i.Receivers)
+                {
+                    to = (ut.NUME_COMPLET + " (" + ut.EMAIL + "); ");
+                    @to
+                    <br />
+                }
+            </td>
+            <td>
+                @i.Mesaj.DATA.ToString("dd.MM.yyyy HH:mm:ss")
             </td>
         </tr>
         if (submenu > 0)
         {
-            @TreeView.GetTreeView(mesaje, Convert.ToInt32(i.ID), indent+1, submenu)
+            @TreeView.GetTreeView(MesajeJson, Convert.ToInt32(i.Mesaj.ID), ++indent, submenu)
         }
-        ++index;
+        //index += 1;
     }
 }

@@ -1,173 +1,162 @@
 ﻿'use strict';
+function toggleDivs(activeDiv) {
+    document.getElementById('detaliiDocument').style.display = activeDiv == "detaliiDocument" ? 'block' : 'none'; 
+    document.getElementById('incarcareFisiere').style.display = activeDiv == "incarcareFisiere" ? 'block' : 'none';
+}
 
 app.controller('DocumenteScanateController',
 function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, myService) {
+    $scope.lastActiveIdDosar = "";
     $scope.model = {};
     $scope.curDocumentIndex = -1;
-    $scope.model.TipuriDocumente = [{}];
-    $scope.model.DocumenteScanate = [{}];
+    $scope.curDocumentSubIndex = 0;
+    $scope.model.TipuriDocumente = [];
     $scope.model.CurDocumentScanat = {};
+    $scope.fileIndex = $scope.filesLength = -1;
 
     $scope.showDocumentByIndex = function (index) {
+        //if (index == $scope.curDocumentIndex) return;
+
         $scope.curDocumentIndex = index;
-        try {
-            var doc = $scope.getDocument($scope.model.TipuriDocumente[index].ID);
-            //alert('index - ' + $scope.curDocumentIndex + 'doc - ' + doc);
-            //alert('icon - ' + doc.MEDIUM_ICON);
+        try
+        {
+            var doc = $scope.model.TipuriDocumente[index].DocumenteScanate[$scope.curDocumentSubIndex];
             angular.copy(doc, $scope.model.CurDocumentScanat);
-            //alert('icon - ' + $scope.model.CurDocumentScanat.MEDIUM_ICON);
-            //$scope.model.CurDocumentScanat = $scope.getDocument($scope.model.TipuriDocumente[index].ID);
-            if ($scope.model.CurDocumentScanat == null || $scope.model.CurDocumentScanat.ID == null) {
+
+            if ($scope.model.CurDocumentScanat == null || $scope.model.CurDocumentScanat.ID == null)
+            {
                 $scope.model.CurDocumentScanat = {};
                 $scope.model.CurDocumentScanat.FILE_CONTENT = null;
                 $scope.model.CurDocumentScanat.MEDIUM_ICON = null;
-                $scope.model.CurDocumentScanat.ID_TIP_DOCUMENT = $scope.model.TipuriDocumente[index].ID;
+                $scope.model.CurDocumentScanat.ID_TIP_DOCUMENT = $scope.model.TipuriDocumente[index].TipDocument.ID;
                 $scope.model.CurDocumentScanat.ID_DOSAR = $rootScope.ID_DOSAR;
             }
         } catch (e) {
             $scope.model.CurDocumentScanat = {};
             $scope.model.CurDocumentScanat.FILE_CONTENT = null;
             $scope.model.CurDocumentScanat.MEDIUM_ICON = null;
-            $scope.model.CurDocumentScanat.ID_TIP_DOCUMENT = $scope.model.TipuriDocumente[index].ID;
+            $scope.model.CurDocumentScanat.ID_TIP_DOCUMENT = $scope.model.TipuriDocumente[index].TipDocument.ID;
             $scope.model.CurDocumentScanat.ID_DOSAR = $rootScope.ID_DOSAR;
         }
     };
 
+    $scope.SetCurDocument = function (doc, index) {
+        $scope.curDocumentSubIndex = index;
+        angular.copy(doc, $scope.model.CurDocumentScanat);
+        //model.CurDocumentScanat = documentScanat;
+    };
+
     $scope.areDocumentAvizat = function (id_tip_document) {
         try {
-            var doc = $scope.getDocument(id_tip_document);
-            return doc.VIZA_CASCO ? 2 : 1; // 2 = AVIZAT / 1 = are document, dar nu e avizat.
+            for (var i = 0; i < $scope.model.TipuriDocumente.length; i++) {
+                if ($scope.model.TipuriDocumente[i].TipDocument.ID == id_tip_document) {
+                    if ($scope.model.TipuriDocumente[i].DocumenteScanate == null || $scope.model.TipuriDocumente[i].DocumenteScanate.length == 0) return 0;
+                    for (var j = 0; j < $scope.model.TipuriDocumente[i].DocumenteScanate.length; j++) {
+                        if ($scope.model.TipuriDocumente[i].DocumenteScanate[j].VIZA_CASCO) {
+                            return 2;
+                        }
+                    }
+                }
+            }
+            return 1; // 2 = AVIZAT / 1 = are document, dar nu e avizat.
         } catch (e) { return 0; }
     };
 
-    $scope.getDocument = function(id_tip_document){
-        try {
-            var i = 0;
-            for (i = 0; i < $scope.model.DocumenteScanate.length; i++) {
-                var doc = $scope.model.DocumenteScanate[i];
-                if (doc.ID_TIP_DOCUMENT == id_tip_document) {
-                    return doc;
+
+    $scope.getTipDocumentByDenumire = function (denumireTipDoc) {
+        try{
+            for (var i = 0; i < $scope.model.TipuriDocumente.length; i++) {
+                var tDoc = $scope.model.TipuriDocumente[i].TipDocument;
+                if ($scope.model.TipuriDocumente[i].TipDocument.DENUMIRE == denumireTipDoc) {
+                    return tDoc;
                 }
             }
             return null;
-        } catch (e) { return null; }
+        } catch (e) { return null;}
     };
 
     $scope.showMandatory = function (tipDoc) {
-        try{
-            if($scope.model.DocumenteScanate != null && $scope.model.DocumenteScanate != undefined)
-                return !($scope.areDocumentAvizat(tipDoc.ID) == 2) && tipDoc.MANDATORY;
-            return tipDoc.MANDATORY;
-        } catch (e) { return false;}
+        try {
+            switch (tipDoc.TipDocument.DENUMIRE) {
+                case "CEDAM":
+                    var tDoc = $scope.getTipDocumentByDenumire("POLIȚĂ VINOVAT");
+                    if (tDoc != null) {
+                        if ($scope.areDocumentAvizat(tDoc.ID) == 2) {
+                            return false;
+                        }
+                    }
+                    break;
+                case "POLIȚĂ VINOVAT":
+                    var tDoc = $scope.getTipDocumentByDenumire("CEDAM");
+                    if (tDoc != null) {
+                        if ($scope.areDocumentAvizat(tDoc.ID) == 2) {
+                            return false;
+                        }
+                    }
+                    break;
+                case "FACTURĂ DE REPARAȚII":
+                    var tDoc = $scope.getTipDocumentByDenumire("CALCUL VMD");
+                    if (tDoc != null) {
+                        if ($scope.areDocumentAvizat(tDoc.ID) == 2) {
+                            return false;
+                        }
+                    }
+                    break;
+                case "CALCUL VMD":
+                    var tDoc = $scope.getTipDocumentByDenumire("FACTURĂ DE REPARAȚII");
+                    if (tDoc != null) {
+                        if ($scope.areDocumentAvizat(tDoc.ID) == 2) {
+                            return false;
+                        }
+                    }
+                    break;
+            }
+
+            return !($scope.areDocumentAvizat(tipDoc.TipDocument.ID) == 2) && tipDoc.TipDocument.MANDATORY;
+            return tipDoc.TipDocument.MANDATORY;
+        } catch (e) { return false; }
     };
-    /*
-    $scope.$watch('model.CurDocumentScanat.VIZA_CASCO', function (newValue, oldValue) {
-        if (newValue != oldValue) {
-            alert('xxx');
-            $scope.SaveEdit();
-        }
-    });
-    */
+
+    $scope.AvizareDocument = function (avizat) {
+        $scope.model.CurDocumentScanat.VIZA_CASCO = avizat;
+        $scope.SaveEdit();
+    };
+
     $rootScope.$watch('ID_DOSAR', function (newValue, oldValue) {
-        if (newValue != null && newValue != undefined) {
+        if (newValue != null && newValue != undefined && $rootScope.activeTab == 'documente') {
             $scope.model.ID_DOSAR = newValue;
             $scope.ShowDocuments(newValue);
         }
     });
 
+    $rootScope.$watch('activeTab', function (newValue, oldValue) {
+        if (newValue == 'documente' && $rootScope.ID_DOSAR != null && $rootScope.ID_DOSAR != undefined && $scope.lastActiveIdDosar != $rootScope.ID_DOSAR) {
+            $scope.model.ID_DOSAR = $rootScope.ID_DOSAR;
+            $scope.ShowDocuments($rootScope.ID_DOSAR);
+            $scope.lastActiveIdDosar = $rootScope.ID_DOSAR;
+        }
+    });
+
     $scope.ShowDocuments = function (id_dosar) {
         spinner.spin(document.getElementById('main'));
-        myService.getlist('/DocumenteScanate/Details/' + id_dosar)
+        myService.getlist('GET', '/DocumenteScanate/Details/' + id_dosar, null)
           .then(function (response) {
-              if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
-                  $scope.model.DocumenteScanate = response.data.Result;
-              }
-              else {
-                  $scope.model.DocumenteScanate = null;
-              }
-              if ($scope.curDocumentIndex > -1) {
-                  $scope.showDocumentByIndex($scope.curDocumentIndex);
+              if ($scope.fileIndex == $scope.filesLength - 1 || ($scope.fileIndex == -1 && $scope.filesLength == -1)) {
+                  if (response != 'null' && response != null && response.data != null) {
+                      $scope.model.TipuriDocumente = response.data.TipuriDocumente;
+                  }
+                  else {
+                      $scope.model.TipuriDocumente = null;
+                  }
+                  if ($scope.curDocumentIndex > -1) {
+                      $scope.showDocumentByIndex($scope.curDocumentIndex);
+                  }
               }
               spinner.stop();
           }, function (response) {
               spinner.stop();
               alert('Erroare: ' + response.status + ' - ' + response.data);
           });
-
-        /*
-        var myDataPromise = myService.getData(id_dosar);
-        myDataPromise.then(function (response) {
-            if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
-                $scope.model.DocumenteScanate = response.data.Result;
-            }
-            else {
-                $scope.model.DocumenteScanate = null;
-            }
-            if ($scope.curDocumentIndex > -1) {
-                alert($scope.curDocumentIndex);
-                $scope.showDocumentByIndex($scope.curDocumentIndex);
-            }
-        }, function (response) {
-            alert('Erroare: ' + response.status + ' - ' + response.data);
-        });
-        */
-
-        /*
-        PromiseUtils.getPromiseHttpResult($http.get('/DocumenteScanate/Details/' + id_dosar))
-            .then(function(response){
-                if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
-                    $scope.model.DocumenteScanate = response.data.Result;
-                }
-                else {
-                    $scope.model.DocumenteScanate = null;
-                }
-                if ($scope.curDocumentIndex > -1) {
-                    alert($scope.curDocumentIndex);
-                    $scope.showDocumentByIndex($scope.curDocumentIndex);
-                }
-            }, function (response) {
-                alert('Erroare: ' + response.status + ' - ' + response.data);
-            });
-        */
-
-        /*
-        $http.get('/DocumenteScanate/Details/' + id_dosar).then(function (response) {
-            if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
-                $scope.model.DocumenteScanate = response.data.Result;
-            }
-            else {
-                $scope.model.DocumenteScanate = null;
-            }
-            
-            if ($scope.curDocumentIndex > -1)
-                $scope.showDocumentByIndex($scope.curDocumentIndex);
-            
-        }, function (response) {
-            alert('Erroare: ' + response.status + ' - ' + response.data);
-        });
-        */
-    };
-
-    $scope.ShowDocument = function (id_document) {
-        //spinner = new Spinner(opts).spin(document.getElementById('main'));
-        //spinner.spin(document.getElementById('main'));
-        $http.get('/DocumenteScanate/Detail/' + id_document).then(function (response) {
-            if (response != 'null' && response != null && response.data != null && response.data.Result != null && response.data.Result != "") {
-                $scope.model.CurDocumentScanat = response.data.Result;
-                angular.copy($scope.model.CurDocumentScanat, $scope.model.DocumenteScanate[$scope.curDocumentIndex]);
-            }
-            //spinner.stop();
-        }, function (response) {
-            alert('Erroare: ' + response.status + ' - ' + response.data);
-            //spinner.stop();
-        });
-    };
-
-    $scope.findValue = function (searchValues, enteredValue) {
-        if (searchValues != null && searchValues != undefined) {
-            var found = $filter('getById')(searchValues, enteredValue);
-            return found;
-        }
     };
 
     $scope.deleteDoc = function () {
@@ -241,6 +230,13 @@ function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, my
     $scope.upload = function (file) {
         if (file == null || !Upload.isFile(file)) return;
         spinner.spin(document.getElementById('main'));
+
+        $scope.model.CurDocumentScanat = {};
+        $scope.model.CurDocumentScanat.FILE_CONTENT = null;
+        $scope.model.CurDocumentScanat.MEDIUM_ICON = null;
+        $scope.model.CurDocumentScanat.ID_TIP_DOCUMENT = $scope.model.TipuriDocumente[$scope.curDocumentIndex].TipDocument.ID;
+        $scope.model.CurDocumentScanat.ID_DOSAR = $rootScope.ID_DOSAR;
+
         Upload.upload({
             url: '/DocumenteScanate/PostFile',
             data: {file: file}
@@ -267,7 +263,10 @@ function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, my
     // for multiple files:
     $scope.uploadFiles = function (files) {
         if (files && files.length) {
+            $scope.filesLength = files.length;
             for (var i = 0; i < files.length; i++) {
+                $scope.fileIndex = i;
+                $scope.upload(files[i]);
                 //Upload.upload({..., data: {file: files[i]}, ...})...;
             }
             // or send them all together for HTML5 browsers:

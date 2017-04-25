@@ -7,9 +7,9 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#detalii" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii">DETALII DOSAR</a></li>
-        <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" class="disabled">DOCUMENTE</a></li>
-        <li class=""><a href="#mesaje" data-toggle="tab" aria-expanded="false" id="lnkMesajeDetalii" class="disabled">MESAJE</a></li>
+        <li class="active"><a href="#detalii" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
+        <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('documente')">DOCUMENTE</a></li>
+        <li class=""><a href="#mesaje" data-toggle="tab" aria-expanded="false" id="lnkMesajeDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('mesaje')">MESAJE</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="detalii">

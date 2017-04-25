@@ -129,11 +129,19 @@ app.service("PromiseUtils", function ($q) {
 
 app.factory('myService', function ($http, $q) {
 
-    this.getlist = function (url) {
-        return $http.get(url)
-            .then(function (response) {
-                return response;
-            }, function (response) { return response; })
+    this.getlist = function (method, url, data) {
+        if (method == 'GET') {
+            return $http.get(url)
+                .then(function (response) {
+                    return response;
+                }, function (response) { return response; })
+        }
+        if (method == 'POST') {
+            return $http.post(url, data)
+                .then(function (response) {
+                    return response;
+                }, function (response) { return response; })
+        }
     }
     return this;
 });
@@ -160,6 +168,31 @@ app.directive('dynamic2', function ($compile) {
                 ele.html(html);
                 $compile(ele.contents())(scope);
             });
+        }
+    };
+});
+
+app.directive('aDisabled', function() {
+    return {
+        compile: function(tElement, tAttrs, transclude) {
+            //Disable ngClick
+            tAttrs["ngClick"] = "!("+tAttrs["aDisabled"]+") && ("+tAttrs["ngClick"]+")";
+
+            //Toggle "disabled" to class when aDisabled becomes true
+            return function (scope, iElement, iAttrs) {
+                scope.$watch(iAttrs["aDisabled"], function(newValue) {
+                    if (newValue !== undefined) {
+                        iElement.toggleClass("disabled", newValue);
+                    }
+                });
+
+                //Disable href on click
+                iElement.on("click", function(e) {
+                    if (scope.$eval(iAttrs["aDisabled"])) {
+                        e.preventDefault();
+                    }
+                });
+            };
         }
     };
 });

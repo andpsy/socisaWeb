@@ -4,7 +4,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-        <!-- Lista dosare -->
+    <!-- Lista dosare -->
     <div id="dosareSideNav" style="width:0px;height:0px;overflow-y:auto;position:absolute;top:0px;left:0px;margin:5px;border-right:1px solid black;background-color:#111;opacity:0.8;filter:alpha(opacity=80);z-index:3;transition: 0.5s;">
 
         <table style="width:95%;padding:5px;margin:5px;">
@@ -29,6 +29,7 @@
             </tr>
         </table>
     </div>
+    <!-- end lista dosare -->
 
     <div id="DosareSearch" style="left:220px;top:0px;">
         <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
@@ -38,6 +39,34 @@
                 {{s}}
             </p>
         </div>
+
+        <nav class="navbar navbar-inverse" ng-show="editMode == 0">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    @{
+                        string soc = ((SOCISA.Models.SocietateAsigurare)Session["SOCIETATE_ASIGURARE"]).DENUMIRE;
+                    }
+                    <span class="navbar-brand">Calitate societate reprezentata (@soc):</span>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <div class="radio">
+                                <label class="label_casco">
+                                    <input name="optionsRadios" id="CASCO" value="CASCO" checked="" type="radio" ng-model="calitateSocietateCurenta" ng-disabled="editMode > 0">
+                                    Pagubit (CASCO)
+                                </label>
+                                <label class="label_rca">
+                                    <input name="optionsRadios" id="RCA" value="RCA" type="radio" ng-model="calitateSocietateCurenta" ng-disabled="editMode > 0">
+                                    Vinovat (RCA)
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Dosar.ID, new {data_ng_model = "DosarFiltru.Dosar.ID", data_ng_init = string.Format("DosarFiltru.Dosar.ID = '{0}'", Model.Dosar.ID) })
         <table style="width:100%;border-width:0px; margin:10px;padding:10px;">
@@ -125,8 +154,8 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_SOCIETATE_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_CASCO, new SelectList(Model.SocietatiCASCO, "ID", "DENUMIRE", Model.Dosar.ID_SOCIETATE_CASCO), new { @class = "form-control input-sm", @disabled = "disabled", data_ng_init = String.Format("DosarFiltru.SocietatiCASCO = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiCASCO)) })
-                        @Html.HiddenFor(model => model.Dosar.ID_SOCIETATE_CASCO, new { @id = "Hidden_Dosar_ID_SOCIETATE_CASCO", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_CASCO = '{0}'", Model.Dosar.ID_SOCIETATE_CASCO) })
+                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_CASCO, new SelectList(Model.SocietatiCASCO, "ID", "DENUMIRE", Model.Dosar.ID_SOCIETATE_CASCO), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_click = "Interactive=true;", data_ng_model="ID_SOCIETATE_CASCO", data_ng_init = String.Format("DosarFiltru.SocietatiCASCO = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiCASCO)) })
+                        @Html.HiddenFor(model => model.Dosar.ID_SOCIETATE_CASCO, new { @id = "Hidden_Dosar_ID_SOCIETATE_CASCO", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_CASCO = '{0}'; IDSocietateRep='{0}';", Model.Dosar.ID_SOCIETATE_CASCO) })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_SOCIETATE_CASCO, "", new { @class = "text-danger" })
                     </div>
                 </td>
@@ -141,7 +170,7 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_SOCIETATE_RCA, htmlAttributes: new { @class = "control-label" })
-                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_RCA, new SelectList(Model.SocietatiRCA, "ID", "DENUMIRE"), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_model="ID_SOCIETATE_RCA", data_ng_init=String.Format("DosarFiltru.SocietatiRCA = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiRCA)) })
+                        @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_RCA, new SelectList(Model.SocietatiRCA, "ID", "DENUMIRE"), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_click = "Interactive=true;", data_ng_model="ID_SOCIETATE_RCA", data_ng_init=String.Format("DosarFiltru.SocietatiRCA = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiRCA)) })
                         @Html.HiddenFor(model => model.Dosar.ID_SOCIETATE_RCA, new { @id= "Hidden_Dosar_ID_SOCIETATE_RCA", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_RCA = '{0}'", Model.Dosar.ID_SOCIETATE_RCA) })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_SOCIETATE_RCA, "", new { @class = "text-danger" })
                     </div>
@@ -458,17 +487,17 @@
                             <!--
                             <a href="#" class="btn btn-default" ng-show="false" ng-disabled="searchMode > 0 || editMode == 1">Cautare</a>
                             -->
-                            @Html.Label("Adaugare", new { @class = "btn btn-default", ng_disabled = "searchMode == 2 || editMode == 1", ng_click = "EnterAddMode()" }).HasRight("adaugare")
-                            @Html.Label("Editare", new { @class = "btn btn-default", ng_disabled = "(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1", ng_click = "EnterEditMode()" }).HasRight("modificare")
-                            @Html.Label("Stergere", new { @class = "btn btn-default", ng_disabled = "(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" }).HasRight("stergere")
+                            @Html.Label("Adaugare", new { @class = "btn btn-default", data_ng_if= "calitateSocietateCurenta == 'CASCO'", a_disabled = "searchMode == 2 || editMode == 1", data_ng_click = "EnterAddMode()" }).HasRight("adaugare")
+                            @Html.Label("Editare", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", a_disabled = "(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1", data_ng_click = "EnterEditMode()" }).HasRight("modificare")
+                            @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", a_disabled = "(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" }).HasRight("stergere")
 
                             <div class="btn-group">
-                                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">
+                                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" a-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">
                                     Optiuni
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.Label("Avizare", new { ng_click = "AvizareDosar(true)" }).HasRight("avizare dosar")</li>
+                                    <li>@Html.Label("Avizare", new { @class = "label_a", data_ng_show = "calitateSocietateCurenta == 'CASCO'", data_ng_click = "AvizareDosar(true)" }).HasRight("avizare dosar")</li>
                                     <li><a href="#" ng-click="TiparireDosar()">Tiparire</a></li>
                                     <li><a href="#">Email</a></li>
                                 </ul>

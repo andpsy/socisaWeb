@@ -10,10 +10,9 @@ namespace socisaWeb
 {
     public class MesajView
     {
-        public Mesaj Mesaj { get; set; }
-        public Utilizator[] Receivers { get; set; }
+        public MesajJson MesajJson { get; set; }
         public Utilizator[] InvolvedParties { get; set; }
-        public Mesaj[] Mesaje { get; set; }
+        public MesajJson[] MesajeJson { get; set; }
         public Nomenclator[] TipuriMesaj { get; set; }
 
         public MesajView() {
@@ -26,4 +25,22 @@ namespace socisaWeb
             */
         }
     }
+
+    public class MesajJson
+    {
+        public Mesaj Mesaj { get; set; }
+        public Utilizator[] Receivers { get; set; }
+
+        public MesajJson()
+        {
+
+        }
+
+        public MesajJson(Mesaj m, Utilizator[] us)
+        {
+            this.Mesaj = m;
+            this.Receivers = us;
+        }
+    }
+
 }

@@ -7,10 +7,10 @@
             <td>
                 <div class="lista_documente" data-ng-init="@String.Format("model.TipuriDocumente = {0}", Newtonsoft.Json.JsonConvert.SerializeObject( Model.TipuriDocumente))">
                     <ul class="list-group">
-                        <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="model.TipuriDocumente[curDocumentIndex].ID != tipDoc.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocumentByIndex($index)">
-                            <span ng-if="showMandatory(tipDoc)" style="font-weight:bold;color:red;">!</span>&nbsp;{{tipDoc.DENUMIRE}}
-                            <span ng-if="areDocumentAvizat(tipDoc.ID) > 0" class="badge" style="background-color:{{areDocumentAvizat(tipDoc.ID) == 2 ? 'darkseagreen':'pink'}};">
-                                <input ng-disabled="model.TipuriDocumente[curDocumentIndex].ID != tipDoc.ID" type="checkbox" ng-model="getDocument(tipDoc.ID).VIZA_CASCO" ng-change="model.CurDocumentScanat.VIZA_CASCO = getDocument(tipDoc.ID).VIZA_CASCO; SaveEdit()" title="Adauga/Inlatura documentul scanat in/din dosar" />
+                        <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="curDocumentIndex == -1 || model.TipuriDocumente[curDocumentIndex].TipDocument.ID != tipDoc.TipDocument.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocumentByIndex($index)">
+                            <span ng-if="showMandatory(tipDoc)" style="font-weight:bold;color:red;">!</span>&nbsp;{{tipDoc.TipDocument.DENUMIRE}}
+                            <span ng-if="areDocumentAvizat(tipDoc.TipDocument.ID) > 0" class="badge" style="background-color:{{areDocumentAvizat(tipDoc.TipDocument.ID) == 2 ? 'darkseagreen':'pink'}};">
+                                <input ng-disabled="true" type="checkbox" ng-model="areDocumentAvizat(tipDoc.TipDocument.ID) == 2 ? true : false" />
                             </span>
                         </li>
                     </ul>
@@ -33,12 +33,25 @@
                             </td>
                         </tr>
                         <tr>
+                            <td style="text-align:center;">
+                                <ul class="pagination pagination-sm">
+                                    <li><a href="#">&laquo;</a></li>
+                                    <li ng-repeat="documentScanat in model.TipuriDocumente[curDocumentIndex].DocumenteScanate" class={{model.TipuriDocumente[curDocumentIndex].DocumenteScanate[$index].ID == documentScanat.ID ? 'active' : ''}}>
+                                        <a href="#" ng-click="SetCurDocument(documentScanat, $index)">{{$index + 1}}</a>
+                                    </li>
+                                    <li><a href="#">&raquo;</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
                             <td style="height:240px;">
                                 <div class="btn-group btn-group-justified">
-                                    <a href="#" title="Ataseaza document scanat la dosar" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'block';">Incarcare fisier</a>
-                                    <a href="#" title="Adauga detalii la documentul scanat" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" onclick="document.getElementById('detaliiDocument').style.display = 'block'; document.getElementById('incarcareFisiere').style.display = 'none';">Detalii</a>
-                                    <a href="#" title="Elimina documentul scanat din dosar" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" ng-click="deleteDoc()" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Stergere</a>
-                                    <a href="scans/{{model.CurDocumentScanat.CALE_FISIER}}" title="Deschide documentul intr-o fereastra noua" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" target="_blank" onclick="document.getElementById('detaliiDocument').style.display = 'none'; document.getElementById('incarcareFisiere').style.display = 'none';">Vizualizare</a>
+                                    <a href="#" title="Ataseaza document scanat la dosar" class="btn btn-default" onclick="toggleDivs('incarcareFisiere')">Incarcare fisier(e)</a>
+                                    <a href="#" title="Adauga detalii la documentul scanat" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" onclick="toggleDivs('detaliiDocument')">Detalii</a>
+                                    <a href="#" title="Adauga documentul scanat in dosar (Avizare)" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" ng-click="AvizareDocument(true)" onclick="toggleDivs('null')">Avizare</a>
+                                    <a href="#" title="Exclude documentul scanat din dosar (Anulare Avizare)" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" ng-click="AvizareDocument(false)" onclick="toggleDivs('null')">Excludere</a>
+                                    <a href="#" title="Elimina documentul scanat din dosar" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" ng-click="deleteDoc()" onclick="toggleDivs('null')">Stergere</a>
+                                    <a href="scans/{{model.CurDocumentScanat.CALE_FISIER}}" title="Deschide documentul intr-o fereastra noua" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" target="_blank" onclick="toggleDivs('null')">Vizualizare</a>
                                 </div>
 
                                 <div id="detaliiDocument" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
@@ -57,10 +70,10 @@
                                 </div>
 
                                 <div id="incarcareFisiere" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
-                                    <div class="btn btn-primary" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="'20MB'" ngf-select="upload($file)" ng-show="curDocumentIndex > -1">Incarca fisier...</div>
+                                    <div class="btn btn-primary" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="'20MB'" ngf-select="uploadFiles($files)" multiple="multiple" ng-show="curDocumentIndex > -1">Incarca fisier(e)...</div>
                                     <br />
-                                    <div ngf-drop="upload($file)" class="drop-box"
-                                         ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'"  ngf-max-size="'20MB'"
+                                    <div ngf-drop="uploadFiles($files)" class="drop-box"
+                                         ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'"  ngf-max-size="'20MB'"
                                          ngf-pattern="'image/*.jpg,image/*.jpeg,image/*.png,image/*.bmp,application/pdf'">... sau Drag&Drop imagine sau fisier PDF aici</div>
                                     <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
                                     <p>Sunt admise doar fisiere .jpg, .jpeg, .png, .bmp si .pdf cu dimensiunea maxima de 20Mb!</p>

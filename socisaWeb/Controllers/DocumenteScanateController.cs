@@ -30,12 +30,17 @@ namespace socisaWeb.Controllers
         public JsonResult Details(int id)
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            /*
             DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Dosar d = (Dosar)dr.Find(id).Result;
             response r = d.GetDocumente();
-
             //return Json(r, JsonRequestBehavior.AllowGet);
             JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = Int32.MaxValue;
+            return result;
+            */
+            DocumentView dv = new DocumentView(Convert.ToInt32(Session["CURENT_USER_ID"]), id, conStr);
+            JsonResult result = Json(dv, JsonRequestBehavior.AllowGet);
             result.MaxJsonLength = Int32.MaxValue;
             return result;
         }
