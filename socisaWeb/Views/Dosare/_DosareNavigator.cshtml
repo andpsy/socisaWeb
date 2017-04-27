@@ -53,11 +53,11 @@
                         <li>
                             <div class="radio">
                                 <label class="label_casco">
-                                    <input name="optionsRadios" id="CASCO" value="CASCO" checked="" type="radio" ng-model="calitateSocietateCurenta" ng-disabled="editMode > 0">
+                                    <input name="optionsRadios" id="CASCO" value="CASCO" checked="" type="radio" ng-model="tmpCalitateSocietate" ng-disabled="editMode > 0">
                                     Pagubit (CASCO)
                                 </label>
                                 <label class="label_rca">
-                                    <input name="optionsRadios" id="RCA" value="RCA" type="radio" ng-model="calitateSocietateCurenta" ng-disabled="editMode > 0">
+                                    <input name="optionsRadios" id="RCA" value="RCA" type="radio" ng-model="tmpCalitateSocietate" ng-disabled="editMode > 0">
                                     Vinovat (RCA)
                                 </label>
                             </div>
@@ -405,7 +405,7 @@
                         @Html.LabelFor(model => model.Dosar.AVIZAT, htmlAttributes: new { @class = "control-label" })
                         -->
                         @Html.Label("Viza CASCO", new { @class = "control-label" })<br />
-                        @Html.CheckBoxFor(model => model.Dosar.AVIZAT, new { @class = "checkbox", data_ng_model = "DosarFiltru.Dosar.AVIZAT", data_ng_disabled="!(searchMode == 2)"})
+                        @Html.CheckBoxFor(model => model.Dosar.AVIZAT, new { @class = "checkbox", data_ng_model = "DosarFiltru.Dosar.AVIZAT", data_ng_disabled= "!(searchMode == 2) || calitateSocietateCurenta == 'RCA'" })
                         @Html.ValidationMessageFor(model => model.Dosar.AVIZAT, "", new { @class = "text-danger" })
                         <!--
                         <span style="font-weight:bold;font-size:18px;color:darkseagreen;">{{DosarFiltru.Dosar.AVIZAT ? "&#9745;" : "&#9744;"}}</span>

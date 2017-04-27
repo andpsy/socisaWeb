@@ -5,16 +5,16 @@
         <div class="btn-group">
             <div class="btn-group">
                 <a id="inboxLabel" href="#" class="btn btn-default btn-sm" a-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null">{{inbox}}</a>
-                <a href="#" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" ng-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null"><span class="caret"></span></a>
+                <a href="#" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" a-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#" ng-click="GetMessages(ID_DOSAR)" a-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null">Inbox</a></li>
                     <li><a href="#" ng-click="GetSentMessages(ID_DOSAR)" a-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null">Sent</a></li>
                 </ul>
             </div>
-            <a href="#" class="btn btn-default btn-sm" ng-click="NewMessage()" ng-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null">Mesaj nou</a>
-            <a href="#" class="btn btn-default btn-sm" ng-disabled="model.MesajJson.Mesaj.ID == null" ng-click="Reply()">Raspunde</a>
+            <a href="#" class="btn btn-default btn-sm" ng-click="NewMessage()" a-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null">Mesaj nou</a>
+            <a href="#" class="btn btn-default btn-sm" a-disabled="model.MesajJson.Mesaj.ID == null" ng-click="Reply()">Raspunde</a>
             <a href="#" class="btn btn-default btn-sm" ng-show="false">Redirectioneaza</a>
-            <a href="#" class="btn btn-default btn-sm" ng-click="GetMessages(ID_DOSAR)" ng-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null">Refresh {{newMessages}}</a>
+            <a href="#" class="btn btn-default btn-sm" ng-click="GetMessages(ID_DOSAR)" a-disabled="model.MesajJson.Mesaj != null && model.MesajJson.Mesaj.ID == null">Refresh {{newMessages}}</a>
         </div>
     </div>
     <div class="treeview">

@@ -4,8 +4,12 @@ function toggleDivs(activeDiv) {
     document.getElementById('incarcareFisiere').style.display = activeDiv == "incarcareFisiere" ? 'block' : 'none';
 }
 
+function toggleAllThumbs(e) {
+    $('.checkOverImage').prop('checked', e.checked);
+}
+
 app.controller('DocumenteScanateController',
-function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, myService) {
+function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, PromiseUtils, myService) {
     $scope.lastActiveIdDosar = "";
     $scope.model = {};
     $scope.curDocumentIndex = -1;
@@ -118,8 +122,18 @@ function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, my
     };
 
     $scope.AvizareDocument = function (avizat) {
-        $scope.model.CurDocumentScanat.VIZA_CASCO = avizat;
-        $scope.SaveEdit();
+        //$scope.model.CurDocumentScanat.VIZA_CASCO = avizat;
+        //$scope.SaveEdit();
+        var tDoc = $scope.model.TipuriDocumente[$scope.curDocumentIndex];
+        for (var i = 0; i < tDoc.DocumenteScanate.length; i++) {
+            var id = '#chk_' + tDoc.DocumenteScanate[i].ID;
+            var chk = $(id).prop('checked');
+            if (chk && tDoc.DocumenteScanate[i].VIZA_CASCO != avizat) {
+                tDoc.DocumenteScanate[i].VIZA_CASCO = avizat;
+                //alert(tDoc.DocumenteScanate[i].VIZA_CASCO);
+                $scope.SaveEdit(tDoc.DocumenteScanate[i]);
+            }
+        }
     };
 
     $rootScope.$watch('ID_DOSAR', function (newValue, oldValue) {
@@ -159,8 +173,11 @@ function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, my
           });
     };
 
-    $scope.deleteDoc = function () {
+    $scope.vizualizareDoc = function () {
+        $window.open("scans/" + $scope.model.CurDocumentScanat.CALE_FISIER);
+    };
 
+    $scope.deleteDoc = function () {
         //document.getElementById("modal").style.display = 'table';
         /*
         ngDialog.openConfirm({
@@ -196,27 +213,20 @@ function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, my
         */
     };
 
-    $scope.SaveEdit = function () {
+    $scope.SaveEdit = function (doc) {
         spinner.spin(document.getElementById('main'));
-        var data = $scope.model.CurDocumentScanat;
-        //alert(data.CurDocumentScanat.ID + ' - ' + data.CurDocumentScanat.ID_DOSAR + ' - ' + data.CurDocumentScanat.ID_TIP_DOCUMENT + ' - ' + data.CurDocumentScanat.CALE_FISIER + ' - ' + data.CurDocumentScanat.DENUMIRE_FISIER + ' - ' + data.CurDocumentScanat.EXTENSIE_FISIER);
+        var data = doc == null ? $scope.model.CurDocumentScanat : doc;
+        alert(data);
         $http.post('/DocumenteScanate/Edit', data)
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
                     $scope.showMessage = true;
                     $scope.result = response.data;
-                    //$("#resultMessageBox").fadeOut(3000);
-                    if ($scope.result.Status) {
-                        /*
-                        if ($scope.result.InsertedId != null) {
-                            $scope.model.CurDocumentScanat.ID = $scope.result.InsertedId;
-                            $scope.model.DocumenteScanate.push($scope.model.CurDocumentScanat);
+                    if (doc == null) {
+                        if ($scope.result.Status) {
+                            $scope.model.CurDocumentScanat = {};
+                            $scope.ShowDocuments($rootScope.ID_DOSAR);
                         }
-                        $scope.ShowDocument($scope.model.CurDocumentScanat.ID);
-                        */
-                        $scope.model.CurDocumentScanat = {};
-                        $scope.ShowDocuments($rootScope.ID_DOSAR);
-                        //$scope.showDocumentByIndex($scope.curDocumentIndex);
                     }
                 }
                 spinner.stop();
@@ -250,7 +260,7 @@ function ($scope, $http, $filter, $rootScope, Upload, ngDialog, PromiseUtils, my
             $scope.model.CurDocumentScanat.DIMENSIUNE_FISIER = j.DIMENSIUNE_FISIER;
             //console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
             spinner.stop();
-            $scope.SaveEdit();
+            $scope.SaveEdit(null);
         }, function (resp) {
             alert(resp.status + ' - ' + resp.data);
             console.log('Error status: ' + resp.status);

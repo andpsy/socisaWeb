@@ -265,3 +265,33 @@ a.disabled {
   color: #ffffff;
   background-color: #446e9b;
 }
+
+.checkOverImage{
+    position: absolute; bottom: 10px; right: 13px;
+}
+
+.checkOverImageBadge{
+    position: absolute; bottom: 3px; left: 13px;
+    font-size: 20px; color:darkseagreen;
+}
+
+#thumbScroller{
+    position:relative;
+    margin:auto;
+    width:547px;
+    overflow-x:scroll;
+    height:192px;
+}
+
+#thumbScrollerContent{
+    height:172px;
+}
+
+#thumbScrollerThumb{
+    position:relative; 
+    width:130px;
+    height:160px;
+    border:1px solid lightgray; 
+    margin:3px; 
+    padding:5px;float:left;
+}
