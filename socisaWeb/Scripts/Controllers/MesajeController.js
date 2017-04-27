@@ -1,41 +1,11 @@
 ﻿'use strict';
-function resizeTable() {
-    $(document).ready(function () {
-        //$('#messagesTable').fixedHeaderTable({});
-        /*
-    $(".treeview li>ul").css('display', 'none'); // Hide all 2-level ul
-    $(".collapsible").click(function (e) {
-        e.preventDefault();
-        $(this).toggleClass("treeview_collapse expand");
-        $(this).closest('li').children('ul').slideToggle();
-    });
-    */
-
-        // Change the selector if needed
-        var $table = $('#messagesTable'),
-            $bodyCells = $table.find('tbody tr:first').children(),
-            colWidth;
-
-        // Adjust the width of thead cells when window resizes
-        $(window).resize(function () {
-            // Get the tbody columns width array
-            colWidth = $bodyCells.map(function () {
-                return $(this).width();
-            }).get();
-
-            // Set the width of thead columns
-            $table.find('thead tr').children().each(function (i, v) {
-                $(v).width(colWidth[i]);
-            });
-        }).resize(); // Trigger resize handler
-    });
-}
 
 app.controller('MesajeController',
 function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.lastActiveIdDosar = "";
     $scope.model = {};
     $scope.model.MesajJson = {};
+    $scope.model.MesajJson.Sender = {};
     $scope.model.MesajJson.Mesaj = null;
     $scope.model.MesajJson.Receivers = [];
     $scope.model.InvolvedParties = [];
@@ -47,6 +17,9 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.html2 = "";
     $scope.inbox = "Inbox";
     $scope.newMessages = "";
+    $scope.editMode = 0;
+    $scope.propertyName = 'Mesaj.DATA';
+    $scope.reverse = true;
 
     $scope.lastRefresh = new Date();
     $interval(function () {
@@ -139,10 +112,12 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         myService.getlist('GET', '/Mesaje/GetSentMessages/' + id_dosar, null)
           .then(function (response) {
               if (response != 'null' && response != null && response.data != null) {
-                  $scope.html = response.data;
+                  //$scope.html = response.data;
+                  $scope.model = response.data;
               }
               else {
-                  $scope.html = "";
+                  //$scope.html = "";
+                  $scope.model = {};
               }
               spinner.stop();
           }, function (response) {
@@ -160,10 +135,12 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
           .then(function (response) {
               if (response != 'null' && response != null && response.data != null)
               {
-                  $scope.html = response.data;
+                  //$scope.html = response.data;
+                  $scope.model = response.data;
               }
               else {
-                  $scope.html = "";
+                  //$scope.html = "";
+                  $scope.model = {};
               }
               spinner.stop();
           }, function (response) {
@@ -172,17 +149,15 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
           });
     };
 
-    $scope.LoadMessages = function (messages) {
-        $scope.model.MesajeJson = messages;
-    };
-
     $scope.SelectMessage = function (mesaj) {
+        $scope.editMode = 1;
         /*
         $scope.model.MesajJson = {};
         angular.copy(mesaj, $scope.model.MesajJson);
         $scope.tipMesaj = mesaj.Mesaj.ID_TIP_MESAJ;
         */
-        $scope.model.MesajJson = mesaj;
+        //$scope.model.MesajJson = mesaj;
+        angular.copy(mesaj, $scope.model.MesajJson);
         //$scope.tipMesaj = mesaj.Mesaj.ID_TIP_MESAJ;
         $scope.GenerateReceivers();
     };
@@ -196,8 +171,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
 
     $scope.SendMessage = function () {
         spinner.spin(document.getElementById('main'))
-        var data = $scope.model;
-
+        var data = $scope.model.MesajJson;
         $http.post('/Mesaje/Send', data)
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
@@ -210,6 +184,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
                             $scope.model.MesajeJson.push($scope.model.MesajJson);
                         }
                         */
+                        $scope.editMode = 0;
                         $scope.GetMessages($rootScope.ID_DOSAR);
                     }
                 }
@@ -221,19 +196,38 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     };
 
     $scope.NewMessage = function () {
+        $scope.editMode = 2;
         $scope.model.MesajJson.Mesaj = {};
         $scope.model.MesajJson.Mesaj.ID_DOSAR = $rootScope.ID_DOSAR;
         $scope.model.MesajJson.Receivers = [];
-        $scope.html2 = "";
+        $scope.AddAllReceivers();
+        //$scope.html2 = "";
     };
+
+    $scope.AddAllReceivers = function () {
+        for (var i = 0; i < $scope.model.InvolvedParties.length; i++) {
+            //de omis userul curent
+            $scope.model.MesajJson.Receivers.push($scope.model.InvolvedParties[i]);
+        }
+    };
+
+    $scope.sortBy = function (propertyName) {
+        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+        $scope.propertyName = propertyName;
+    };
+
+    //$scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
+
 
     $scope.CancelMessage = function () {
-        $scope.model.MesajJson.Mesaj = null;
+        $scope.editMode = 0;
+        $scope.model.MesajJson.Mesaj = {};
         $scope.model.MesajJson.Receivers = [];
-        $scope.html2 = "";
+        //$scope.html2 = "";
     };
-
+    /*
     $scope.Reply = function () {
+        $scope.editMode = 2;
         $scope.tempMesaj = angular.copy($scope.model.MesajJson);
         $scope.model.MesajJson.Mesaj = {};
         $scope.model.MesajJson.Mesaj.SUBIECT = "Re: " + $scope.tempMesaj.Mesaj.SUBIECT;
@@ -250,5 +244,19 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
             }
         }
         $scope.GenerateReceivers();
+    };
+    */
+    $scope.Reply = function () {
+        $scope.editMode = 2;
+        $scope.tempMesaj = angular.copy($scope.model.MesajJson);
+        $scope.model.MesajJson.Mesaj = {};
+        $scope.model.MesajJson.Mesaj.SUBIECT = "Re: " + $scope.tempMesaj.Mesaj.SUBIECT;
+        $scope.model.MesajJson.Mesaj.BODY = $scope.tempMesaj.Mesaj.BODY;
+        $scope.model.MesajJson.Receivers = [];
+        $scope.AddAllReceivers();
+
+        $scope.model.MesajJson.Mesaj.REPLY_TO = $scope.tempMesaj.Mesaj.ID;
+        $scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.tempMesaj.Mesaj.ID_TIP_MESAJ;
+        $scope.model.MesajJson.Mesaj.ID_DOSAR = $scope.tempMesaj.Mesaj.ID_DOSAR;
     };
 });

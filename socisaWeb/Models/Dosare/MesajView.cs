@@ -15,14 +15,15 @@ namespace socisaWeb
         public MesajJson[] MesajeJson { get; set; }
         public Nomenclator[] TipuriMesaj { get; set; }
 
-        public MesajView() {
-            /*
-            this.Mesaj = new Mesaj();
-            this.Receivers = new List<Utilizator>().ToArray();
-            this.InvolvedParties = new List<Utilizator>().ToArray();
-            this.Mesaje = new List<Mesaj>().ToArray();
-            this.TipuriMesaj = new List<Nomenclator>().ToArray();
-            */
+        public MesajView()
+        {
+            this.MesajJson = new MesajJson();
+            MesajJson[] mesaje = new List<MesajJson>().ToArray();
+            this.MesajeJson = mesaje;
+            Utilizator[] us = new List<Utilizator>().ToArray();
+            this.InvolvedParties = us;
+            Nomenclator[] ns = new List<Nomenclator>().ToArray();
+            this.TipuriMesaj = ns;
         }
     }
 
@@ -30,15 +31,17 @@ namespace socisaWeb
     {
         public Mesaj Mesaj { get; set; }
         public Utilizator[] Receivers { get; set; }
+        public Utilizator Sender { get; set; }
 
         public MesajJson()
         {
 
         }
 
-        public MesajJson(Mesaj m, Utilizator[] us)
+        public MesajJson(Mesaj m, Utilizator s, Utilizator[] us)
         {
             this.Mesaj = m;
+            this.Sender = s;
             this.Receivers = us;
         }
     }

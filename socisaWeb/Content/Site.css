@@ -279,12 +279,13 @@ a.disabled {
     position:relative;
     margin:auto;
     width:547px;
-    overflow-x:scroll;
+    overflow-x:auto;
     height:192px;
 }
 
 #thumbScrollerContent{
     height:172px;
+    margin:auto;
 }
 
 #thumbScrollerThumb{
@@ -294,4 +295,11 @@ a.disabled {
     border:1px solid lightgray; 
     margin:3px; 
     padding:5px;float:left;
+}
+
+.sortorder:after {
+  content: '\25b2';
+}
+.sortorder.reverse:after {
+  content: '\25bc';
 }

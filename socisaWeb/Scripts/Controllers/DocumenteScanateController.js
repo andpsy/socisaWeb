@@ -24,6 +24,8 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
         $scope.curDocumentIndex = index;
         try
         {
+            if ($scope.curDocumentSubIndex > $scope.model.TipuriDocumente[index].DocumenteScanate.length) $scope.curDocumentSubIndex = 0;
+
             var doc = $scope.model.TipuriDocumente[index].DocumenteScanate[$scope.curDocumentSubIndex];
             angular.copy(doc, $scope.model.CurDocumentScanat);
 

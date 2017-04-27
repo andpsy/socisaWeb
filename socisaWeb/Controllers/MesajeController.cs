@@ -17,13 +17,13 @@ namespace socisaWeb.Controllers
         // GET: Messages
         public ActionResult Index()
         {
-            return View();
+            return PartialView("_MesajeView", new MesajView());
         }
 
         [HttpGet]
-        public ActionResult GetMessages(int? id)
+        public JsonResult GetMessages(int? id)
         {
-            if (id == null || id == -1) return PartialView("_MesajeView", null);
+            //if (id == null || id == -1) return PartialView("_MesajeView", null);
 
             MesajView mv = new MesajView();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -32,25 +32,27 @@ namespace socisaWeb.Controllers
 
             Mesaj mesaj = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Utilizator[] us = (Utilizator[])mesaj.GetReceivers().Result;
+            Utilizator s = (Utilizator)mesaj.GetSender().Result;
 
-            mv.MesajJson = new MesajJson(mesaj, us);
+            mv.MesajJson = new MesajJson(mesaj, s, us);
             mv.InvolvedParties = (Utilizator[])d.GetInvolvedParties().Result;
             Mesaj[] ms = (Mesaj[])d.GetMesaje().Result;
             List<MesajJson> ls = new List<MesajJson>();
             foreach(Mesaj m in ms)
             {
-                ls.Add(new MesajJson(m, (Utilizator[])m.GetReceivers().Result));
+                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result));
             }
 
             mv.MesajeJson = ls.ToArray();
             mv.TipuriMesaj = (Nomenclator[])(new NomenclatoareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr).GetAll("tip_mesaje").Result);
-            return PartialView("_MesajeView", mv);
+            //return PartialView("_MesajeView", mv);
+            return Json(mv, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
-        public ActionResult GetSentMessages(int? id)
+        public JsonResult GetSentMessages(int? id)
         {
-            if (id == null || id == -1) return PartialView("_MesajeView", null);
+            //if (id == null || id == -1) return PartialView("_MesajeView", null);
 
             MesajView mv = new MesajView();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -59,19 +61,21 @@ namespace socisaWeb.Controllers
 
             Mesaj mesaj = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Utilizator[] us = (Utilizator[])mesaj.GetReceivers().Result;
+            Utilizator s = (Utilizator)mesaj.GetSender().Result;
 
-            mv.MesajJson = new MesajJson(mesaj, us);
+            mv.MesajJson = new MesajJson(mesaj, s, us);
             mv.InvolvedParties = (Utilizator[])d.GetInvolvedParties().Result;
             Mesaj[] ms = (Mesaj[])d.GetSentMesaje().Result;
             List<MesajJson> ls = new List<MesajJson>();
             foreach (Mesaj m in ms)
             {
-                ls.Add(new MesajJson(m, (Utilizator[])m.GetReceivers().Result));
+                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result));
             }
 
             mv.MesajeJson = ls.ToArray();
             mv.TipuriMesaj = (Nomenclator[])(new NomenclatoareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr).GetAll("tip_mesaje").Result);
-            return PartialView("_MesajeView", mv);
+            //return PartialView("_MesajeView", mv);
+            return Json(mv, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -85,7 +89,7 @@ namespace socisaWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult Send(MesajView MesajView)
+        public JsonResult Send(MesajJson MesajJson)
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             response r = new response();
@@ -93,14 +97,14 @@ namespace socisaWeb.Controllers
             PropertyInfo[] pis = m.GetType().GetProperties();
             foreach(PropertyInfo pi in pis)
             {
-                pi.SetValue(m, pi.GetValue(MesajView.MesajJson.Mesaj));
+                pi.SetValue(m, pi.GetValue(MesajJson.Mesaj));
             }
             m.DATA = DateTime.Now;
             m.ID_SENDER = Convert.ToInt32(Session["CURENT_USER_ID"]);
             r = m.Insert();
             if (r.Status && r.InsertedId != null)
             {
-                foreach (Utilizator u in MesajView.MesajJson.Receivers)
+                foreach (Utilizator u in MesajJson.Receivers)
                 {
                     MesajUtilizator mu = new MesajUtilizator(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
                     mu.ID_MESAJ = Convert.ToInt32(r.InsertedId);
