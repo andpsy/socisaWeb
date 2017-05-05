@@ -33,14 +33,16 @@ namespace socisaWeb.Controllers
             Mesaj mesaj = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Utilizator[] us = (Utilizator[])mesaj.GetReceivers().Result;
             Utilizator s = (Utilizator)mesaj.GetSender().Result;
+            Nomenclator n = (Nomenclator)mesaj.GetTipMesaj().Result;
+            DateTime? da = (DateTime?)mesaj.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result;
 
-            mv.MesajJson = new MesajJson(mesaj, s, us);
+            mv.MesajJson = new MesajJson(mesaj, s, us, n, da);
             mv.InvolvedParties = (Utilizator[])d.GetInvolvedParties().Result;
             Mesaj[] ms = (Mesaj[])d.GetMesaje().Result;
             List<MesajJson> ls = new List<MesajJson>();
             foreach(Mesaj m in ms)
             {
-                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result));
+                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result, (Nomenclator)m.GetTipMesaj().Result, (DateTime?)m.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result));
             }
 
             mv.MesajeJson = ls.ToArray();
@@ -62,14 +64,16 @@ namespace socisaWeb.Controllers
             Mesaj mesaj = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Utilizator[] us = (Utilizator[])mesaj.GetReceivers().Result;
             Utilizator s = (Utilizator)mesaj.GetSender().Result;
+            Nomenclator n = (Nomenclator)mesaj.GetTipMesaj().Result;
+            DateTime? da = (DateTime?)mesaj.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result;
 
-            mv.MesajJson = new MesajJson(mesaj, s, us);
+            mv.MesajJson = new MesajJson(mesaj, s, us, n, da);
             mv.InvolvedParties = (Utilizator[])d.GetInvolvedParties().Result;
             Mesaj[] ms = (Mesaj[])d.GetSentMesaje().Result;
             List<MesajJson> ls = new List<MesajJson>();
             foreach (Mesaj m in ms)
             {
-                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result));
+                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result, (Nomenclator)m.GetTipMesaj().Result, (DateTime?)m.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result));
             }
 
             mv.MesajeJson = ls.ToArray();
@@ -85,7 +89,8 @@ namespace socisaWeb.Controllers
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Dosar d = (Dosar)dr.Find(Convert.ToInt32(x.id_dosar)).Result;
-            return Json(d.GetNewMesaje(Convert.ToDateTime(x.last_refresh)), JsonRequestBehavior.AllowGet);
+            //return Json(d.GetNewMesaje(Convert.ToDateTime(x.last_refresh)), JsonRequestBehavior.AllowGet);
+            return Json(d.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -112,6 +117,21 @@ namespace socisaWeb.Controllers
                     mu.Insert();
                 }
             }
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult SetDataCitire(MesajJson MesajJson)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            response r = new response();
+            Mesaj m = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            PropertyInfo[] pis = m.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(m, pi.GetValue(MesajJson.Mesaj));
+            }
+            r = m.SetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"]), (DateTime)MesajJson.DataCitire);
             return Json(r, JsonRequestBehavior.AllowGet);
         }
     }

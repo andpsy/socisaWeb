@@ -13,7 +13,6 @@
             </div>
             <a href="#" class="btn btn-default btn-sm" ng-click="NewMessage()" a-disabled="ID_DOSAR == null">Mesaj nou</a>
             <a href="#" class="btn btn-default btn-sm" a-disabled="model.MesajJson.Mesaj.ID == null" ng-click="Reply()">Raspunde</a>
-            <a href="#" class="btn btn-default btn-sm" ng-show="false">Redirectioneaza</a>
             <a href="#" class="btn btn-default btn-sm" ng-click="GetMessages(ID_DOSAR)" a-disabled="ID_DOSAR == null">Refresh {{newMessages}}</a>
         </div>
     </div>
@@ -27,7 +26,11 @@
                     </th>
                     <th style="width:300px;">
                         <a href="#" ng-click="sortBy('Mesaj.ID_SENDER')">De la</a>
-                        <span class="sortorder" ng-show="propertyName === 'Mesaj.ID_SENDER'" ng-class="{reverse: reverse}"></span>
+                        <span class="sortorder" ng-show="propertyName === 'Mesaj.Sender.NUME_COMPLET'" ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th style="width:150px;">
+                        <a href="#" ng-click="sortBy('Mesaj.ID_TIP_MESAJ')">Tip mesaj</a>
+                        <span class="sortorder" ng-show="propertyName === 'Mesaj.TipMesaj.DENUMIRE'" ng-class="{reverse: reverse}"></span>
                     </th>
                     <!--
                     <th>Catre</th>
@@ -46,13 +49,14 @@
                 }
                 -->
                 <tr>
-                    <td colspan="3">
+                    <td colspan="4">
                         <div style="width:100%; height:300px; overflow-y:auto;">
                             <table  class="table table-striped table-hover">
                                 <tr ng-repeat="mesaj in model.MesajeJson | orderBy:propertyName:reverse">
-                                    <td style="width:300px;"><a href="#" ng-click="SelectMessage(mesaj)">{{mesaj.Mesaj.SUBIECT}}</a></td>
+                                    <td style="width:300px;"><a href="#" ng-click="SelectMessage(mesaj)" style="font-weight:{{mesaj.DataCitire == null ? 'bold' : 'normal'}}">{{mesaj.Mesaj.SUBIECT}}</a></td>
                                     <td style="width:300px;">{{mesaj.Sender.NUME_COMPLET}} ({{mesaj.Sender.EMAIL}})</td>
-                                    <td style="width:150px">{{mesaj.Mesaj.DATA | dateFilter | date:"dd.MM.yyyy HH:mm:ss"}}</td>
+                                    <td style="width:150px;">{{mesaj.TipMesaj.DENUMIRE}}</td>
+                                    <td style="width:150px;">{{mesaj.Mesaj.DATA | dateFilter | date:"dd.MM.yyyy HH:mm:ss"}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -92,12 +96,17 @@
                     @Html.DropDownList("Catre", new SelectList(Model.InvolvedParties, "ID", "NUME_COMPLET"), new { @id = "select_involvedParties", @class = "form-control input-sm", data_ng_disabled = "model.MesajJson.Mesaj.ID != null", data_ng_model = "involvedParty", data_ng_change = "AddReceiver()", data_ng_init = String.Format("model.InvolvedParties = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.InvolvedParties)) })
                 </td>
             </tr>
-            <tr ng-show="false">
+            <tr>
                 <td style="width:60px; white-space:nowrap;">
                     @Html.Label("Tip mesaj: ", new { @class = "control-label" })
                 </td>
                 <td>
+                    <!--
                     @Html.DropDownList("TipMesaj", new SelectList(Model.TipuriMesaj, "ID", "DENUMIRE"), new { @id = "select_TipuriMesaj", @class = "form-control input-sm", data_ng_disabled = "model.MesajJson.Mesaj.ID != null", data_ng_model = "tipMesaj", data_ng_init = String.Format("model.TipuriMesaj = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.TipuriMesaj)) })
+                    -->
+                    <select class = "form-control input-sm" name="select_TipuriMesaj" id="select_TipuriMesaj" ng-model="tipMesaj" ng-disabled="true">
+                        <option ng-repeat="tMesaj in model.TipuriMesaj" value="{{tMesaj.ID}}">{{tMesaj.DENUMIRE}}</option>
+                    </select>
                     @Html.HiddenFor(model => model.MesajJson.Mesaj.ID_TIP_MESAJ, new { data_ng_model = "model.MesajJson.Mesaj.ID_TIP_MESAJ" })
                 </td>
             </tr>

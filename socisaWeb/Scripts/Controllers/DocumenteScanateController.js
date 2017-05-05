@@ -19,8 +19,6 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
     $scope.fileIndex = $scope.filesLength = -1;
 
     $scope.showDocumentByIndex = function (index) {
-        //if (index == $scope.curDocumentIndex) return;
-
         $scope.curDocumentIndex = index;
         try
         {
@@ -130,10 +128,26 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
         for (var i = 0; i < tDoc.DocumenteScanate.length; i++) {
             var id = '#chk_' + tDoc.DocumenteScanate[i].ID;
             var chk = $(id).prop('checked');
-            if (chk && tDoc.DocumenteScanate[i].VIZA_CASCO != avizat) {
+            if (chk && tDoc.DocumenteScanate[i].VIZA_CASCO != avizat)
+            {
                 tDoc.DocumenteScanate[i].VIZA_CASCO = avizat;
-                //alert(tDoc.DocumenteScanate[i].VIZA_CASCO);
-                $scope.SaveEdit(tDoc.DocumenteScanate[i]);
+                spinner.spin(document.getElementById('main'));
+                var data = tDoc.DocumenteScanate[i];
+                $http.post('/DocumenteScanate/Avizare', data)
+                    .then(function (response) {
+                        if (response != 'null' && response != null && response.data != null) {
+                            $scope.showMessage = true;
+                            $scope.result = response.data;
+                            if ($scope.result.Status) {
+                                $scope.model.CurDocumentScanat = {};
+                                $scope.ShowDocuments($rootScope.ID_DOSAR);
+                            }
+                        }
+                        spinner.stop();
+                    }, function (response) {
+                        spinner.stop();
+                        alert('Erroare: ' + response.status + ' - ' + response.data);
+                    });
             }
         }
     };
@@ -189,9 +203,14 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
 			function (value) {
 			    document.getElementById("modal").style.display = "none";
         */
-			    spinner.spin(document.getElementById('main'));
-			    var id = $scope.model.CurDocumentScanat.ID;
-			    $http.get('/DocumenteScanate/Delete/' + id)
+        var tDoc = $scope.model.TipuriDocumente[$scope.curDocumentIndex];
+        for (var i = 0; i < tDoc.DocumenteScanate.length; i++) {
+            var id = '#chk_' + tDoc.DocumenteScanate[i].ID;
+            var chk = $(id).prop('checked');
+            if (chk) {
+                spinner.spin(document.getElementById('main'));
+                var id = tDoc.DocumenteScanate[i].ID;
+                $http.get('/DocumenteScanate/Delete/' + id)
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
                             $scope.showMessage = true;
@@ -206,6 +225,8 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
                         spinner.stop();
                         alert('Erroare: ' + response.status + ' - ' + response.data);
                     });
+            }
+        }
         /*
 			},
 			function (value) {
@@ -218,7 +239,6 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
     $scope.SaveEdit = function (doc) {
         spinner.spin(document.getElementById('main'));
         var data = doc == null ? $scope.model.CurDocumentScanat : doc;
-        alert(data);
         $http.post('/DocumenteScanate/Edit', data)
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {

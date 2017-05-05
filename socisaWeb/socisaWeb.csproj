@@ -136,6 +136,7 @@
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Models\Dosare\DocumentView.cs" />
     <Compile Include="Models\Dosare\DosarView.cs" />
+    <Compile Include="Models\Dosare\ImportDosarView.cs" />
     <Compile Include="Models\Dosare\MesajView.cs" />
     <Compile Include="Models\Utilizatori\DashboardJson.cs" />
     <Compile Include="Models\Utilizatori\LoginJson.cs" />
@@ -149,6 +150,8 @@
     <Content Include="Content\bootstrap.min_init.css" />
     <Content Include="Content\calendar.gif" />
     <Content Include="Content\citysky.jpg" />
+    <Content Include="Content\images\error.png" />
+    <Content Include="Content\images\ok.png" />
     <Content Include="Content\images\treeview\accent.png" />
     <Content Include="Content\images\treeview\bullet.png" />
     <Content Include="Content\images\treeview\heroAccent.png" />
@@ -334,6 +337,7 @@
     <Content Include="pdfs\AA89989898_cerere.pdf" />
     <Content Include="pdfs\AA89989898_documente.pdf" />
     <Content Include="AppSettings.json" />
+    <Content Include="App_Code\ActionsTreeView.cshtml" />
     <None Include="Properties\PublishProfiles\socisaWeb.pubxml" />
     <Content Include="scans\06391c57-b7df-4ee6-b728-30b1187508ff.pdf" />
     <Content Include="scans\20a053ed-c054-4b96-8ecd-b2b811586891.pdf" />
@@ -346,6 +350,7 @@
     <Content Include="scans\bbf38e44-f941-4bf6-89a1-609a8648e762.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Controllers\DocumenteScanateController.js" />
+    <Content Include="Scripts\Controllers\DosareImportController.js" />
     <Content Include="Scripts\Controllers\DosareNavigatorController.js" />
     <Content Include="Scripts\Controllers\MesajeController.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
@@ -402,6 +407,8 @@
     <Content Include="App_Code\TreeView.cshtml" />
     <Content Include="Views\Mesaje\_MesajeView.cshtml" />
     <Content Include="Views\Mesaje\_ViewStart.cshtml" />
+    <Content Include="Views\Dosare\DosareImport.cshtml" />
+    <Content Include="Views\Shared\_LayoutImportDosare.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Actions\" />

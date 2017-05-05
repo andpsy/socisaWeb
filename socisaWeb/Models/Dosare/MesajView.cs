@@ -32,18 +32,21 @@ namespace socisaWeb
         public Mesaj Mesaj { get; set; }
         public Utilizator[] Receivers { get; set; }
         public Utilizator Sender { get; set; }
+        public Nomenclator TipMesaj { get; set; }
+        public DateTime? DataCitire { get; set; }
 
         public MesajJson()
         {
 
         }
 
-        public MesajJson(Mesaj m, Utilizator s, Utilizator[] us)
+        public MesajJson(Mesaj m, Utilizator s, Utilizator[] us, Nomenclator n, DateTime? d)
         {
             this.Mesaj = m;
             this.Sender = s;
             this.Receivers = us;
+            this.TipMesaj = n;
+            this.DataCitire = d;
         }
     }
-
 }

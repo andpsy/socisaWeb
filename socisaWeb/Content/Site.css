@@ -303,3 +303,6 @@ a.disabled {
 .sortorder.reverse:after {
   content: '\25bc';
 }
+
+.checkForImport{
+}

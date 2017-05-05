@@ -7,6 +7,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.model.MesajJson = {};
     $scope.model.MesajJson.Sender = {};
     $scope.model.MesajJson.Mesaj = null;
+    $scope.model.MesajJson.DataCitire = null;
     $scope.model.MesajJson.Receivers = [];
     $scope.model.InvolvedParties = [];
     $scope.model.MesajeJson = [];
@@ -88,7 +89,8 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.GetNewMessages = function (id_dosar) {
         if (id_dosar == null) return;
         spinner.spin(document.getElementById('main'));
-        var j = {'id_dosar': id_dosar, 'last_refresh': $scope.lastRefresh};
+        //var j = {'id_dosar': id_dosar, 'last_refresh': $scope.lastRefresh};
+        var j = { 'id_dosar': id_dosar, 'last_refresh': $filter('date')($scope.lastRefresh, 'dd.MM.yyyy HH:mm:ss') };
         myService.getlist('POST', '/Mesaje/GetNewMessages', { j: JSON.stringify(j) })
           .then(function (response) {
               if (response.data == null || !response.data.Status || response.data.Result <= 0) {
@@ -160,6 +162,26 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         angular.copy(mesaj, $scope.model.MesajJson);
         //$scope.tipMesaj = mesaj.Mesaj.ID_TIP_MESAJ;
         $scope.GenerateReceivers();
+
+        if ($scope.model.MesajJson.DataCitire == null) {
+            spinner.spin(document.getElementById('main'));
+            $scope.model.MesajJson.DataCitire = $filter('date')(new Date(), 'dd.MM.yyyy HH:mm:ss');
+            var data = $scope.model.MesajJson;
+            $http.post('/Mesaje/SetDataCitire', data)
+                .then(function (response) {
+                    if (response != 'null' && response != null && response.data != null) {
+                        //$scope.showMessage = true;
+                        $scope.result = response.data;
+                        if ($scope.result.Status) {
+                            mesaj.DataCitire = $scope.model.MesajJson.DataCitire;
+                        }
+                    }
+                    spinner.stop();
+                }, function (response) {
+                    alert('Erroare: ' + response.status + ' - ' + response.data);
+                    spinner.stop();
+                });
+        }
     };
 
     $scope.GenerateReceivers = function () {
@@ -170,7 +192,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     };
 
     $scope.SendMessage = function () {
-        spinner.spin(document.getElementById('main'))
+        spinner.spin(document.getElementById('main'));
         var data = $scope.model.MesajJson;
         $http.post('/Mesaje/Send', data)
             .then(function (response) {
@@ -199,6 +221,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         $scope.editMode = 2;
         $scope.model.MesajJson.Mesaj = {};
         $scope.model.MesajJson.Mesaj.ID_DOSAR = $rootScope.ID_DOSAR;
+        $scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.getIdTipMesajByDenumire("OBIECTIUNI");
         $scope.model.MesajJson.Receivers = [];
         $scope.AddAllReceivers();
         //$scope.html2 = "";
@@ -215,9 +238,6 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.propertyName = propertyName;
     };
-
-    //$scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
-
 
     $scope.CancelMessage = function () {
         $scope.editMode = 0;
@@ -256,7 +276,17 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         $scope.AddAllReceivers();
 
         $scope.model.MesajJson.Mesaj.REPLY_TO = $scope.tempMesaj.Mesaj.ID;
-        $scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.tempMesaj.Mesaj.ID_TIP_MESAJ;
+        //$scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.tempMesaj.Mesaj.ID_TIP_MESAJ;
+        $scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.getIdTipMesajByDenumire("RASPUNS OBIECTIUNI");
         $scope.model.MesajJson.Mesaj.ID_DOSAR = $scope.tempMesaj.Mesaj.ID_DOSAR;
+    };
+
+    $scope.getIdTipMesajByDenumire = function (denumire) {
+        for (var i = 0; i < $scope.model.TipuriMesaj.length; i++) {
+            if ($scope.model.TipuriMesaj[i].DENUMIRE == denumire) {
+                return $scope.model.TipuriMesaj[i].ID;
+            }
+        }
+        return null;
     };
 });

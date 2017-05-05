@@ -91,6 +91,17 @@ namespace socisaWeb.Controllers
         }
 
         [HttpPost]
+        public JsonResult Avizare(DocumentScanat CurDocumentScanat)
+        {
+            response r = new response();
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            DocumentScanat d = (DocumentScanat)dsr.Find(Convert.ToInt32(CurDocumentScanat.ID)).Result;
+            r = d.Avizare(CurDocumentScanat.VIZA_CASCO);
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult PostFile()
         {
             HttpPostedFileBase f = Request.Files[0];

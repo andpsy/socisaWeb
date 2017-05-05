@@ -16,7 +16,60 @@ namespace socisaWeb.Controllers
     [Authorize]
     public class DosareController : Controller
     {
-        // GET: Dosare
+        public ActionResult Import()
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            return View("DosareImport", new ImportDosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr));
+        }
+
+        [HttpPost]
+        public JsonResult PostExcelFile()
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            HttpPostedFileBase f = Request.Files[0];
+            string initFName = f.FileName;
+            string extension = f.FileName.Substring(f.FileName.LastIndexOf('.'));
+            string newFName = Guid.NewGuid() + extension;
+            Request.Files[0].SaveAs(System.IO.Path.Combine(CommonFunctions.GetImportsFolder(), newFName));
+            DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            response r = dr.GetDosareFromExcel("Sheet1", newFName);
+            bool societateDiferita = false;
+            foreach(object[] o in (object[])r.Result)
+            {
+                if( ((DosarExtended)o[1]).SocietateCasco.DENUMIRE_SCURTA != ((SocietateAsigurare)Session["SOCIETATE_ASIGURARE"]).DENUMIRE_SCURTA) // se incearca incarcarea pt. alta societate decat cea a utilizatorului curent
+                {
+                    societateDiferita = true;
+                    break;
+                }
+            }
+            if (societateDiferita)
+            {
+                response toReturn = new response(false, String.Format("Nu puteti incarca dosare pentru alta societate decat cea curenta ({0})!", ((SocietateAsigurare)Session["SOCIETATE_ASIGURARE"]).DENUMIRE), null, null, null);
+                return Json(toReturn, JsonRequestBehavior.AllowGet);
+            }
+            r = dr.ImportDosareDirect("Sheet1", newFName);
+            JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = Int32.MaxValue;
+            return result;
+        }
+
+        [HttpPost]
+        public JsonResult GetDosareFromLog(DateTime ImportDate)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            response r = dr.GetDosareFromLog(ImportDate);
+            JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = Int32.MaxValue;
+            return result;
+        }
+
+        [HttpPost]
+        public JsonResult Import(ImportDosarView ImportDosarView)
+        {
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Index()
         {
             return View();

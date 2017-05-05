@@ -1,0 +1,20 @@
+﻿@helper GetActionTreeView(SOCISA.Models.Action[] Actions, int? parentID)
+{
+foreach (var i in Actions.Where(a => a.PARENT_ID.Equals(parentID)))
+{
+    var submenu = Actions.Where(a => a.PARENT_ID.Equals(i.ID)).Count();
+    string link = i.OBJECT_NAME == "" && i.ACTION == "" ? "#" : String.Format("/{0}/{1}", i.OBJECT_NAME, i.ACTION);
+    string onclick = i.OBJECT_NAME == "" && i.ACTION == "" ? String.Format("onclick = toggleMenu('lnk_{0}')", i.ID) : "";
+
+    <li style="list-style-type:none;">
+        <a href="@link" @onclick>@i.NAME</a>
+    </li>
+
+    if (submenu > 0)
+    {
+            <ul id="lnk_@i.ID" style="padding-left:15px;display:none;">
+                @GetActionTreeView(Actions, Convert.ToInt32(i.ID))
+            </ul>
+    }
+}
+}
