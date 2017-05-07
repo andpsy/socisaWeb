@@ -8,12 +8,51 @@ using SOCISA;
 using SOCISA.Models;
 using System.Configuration;
 using System.Web.Security;
+using System.Reflection;
 
 namespace socisaWeb
 {
     [Authorize]
     public class UtilizatoriController : Controller
     {
+        public ActionResult Index()
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            UtilizatorView uv = new UtilizatorView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            return PartialView("Utilizatori", uv);
+        }
+
+        public JsonResult IndexJson()
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            UtilizatorView uv = new UtilizatorView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            return Json(uv, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Save(Utilizator Utilizator)
+        {
+            response r = new response();
+
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            UtilizatoriRepository ur = new UtilizatoriRepository(_CURENT_USER_ID, conStr);
+            Utilizator u = new Utilizator(_CURENT_USER_ID, conStr);
+            PropertyInfo[] pis = Utilizator.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(u, pi.GetValue(Utilizator));
+            }
+            if (Utilizator.ID == null) // insert
+            {
+                r = u.Insert();
+            }
+            else // update
+            {
+                r = u.Update();
+            }
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)

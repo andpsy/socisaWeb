@@ -129,7 +129,6 @@ namespace socisaWeb.Controllers
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
-        // GET: Dosare/Details/5
         public JsonResult Details(int id)
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;

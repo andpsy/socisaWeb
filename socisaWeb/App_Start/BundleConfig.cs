@@ -45,7 +45,8 @@ namespace socisaWeb
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/html5shiv.js",
+                      "~/Scripts/respond.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
                       "~/Scripts/Controllers/*Controller.js"));

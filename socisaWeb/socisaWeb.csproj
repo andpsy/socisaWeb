@@ -129,7 +129,9 @@
     <Compile Include="Controllers\DosareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MesajeController.cs" />
+    <Compile Include="Controllers\UtilizatoriActionsController.cs" />
     <Compile Include="Controllers\UtilizatoriController.cs" />
+    <Compile Include="Controllers\UtilizatoriSocietatiAdministrateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,7 +142,9 @@
     <Compile Include="Models\Dosare\MesajView.cs" />
     <Compile Include="Models\Utilizatori\DashboardJson.cs" />
     <Compile Include="Models\Utilizatori\LoginJson.cs" />
+    <Compile Include="Models\Utilizatori\UtilizatorView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controllers\UtilizatoriDrepturiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ErrorMessages.xml" />
@@ -331,7 +335,6 @@
     <Content Include="Content\arial.ttf" />
     <Content Include="Content\arialblack.ttf" />
     <Content Include="Content\arialbold.ttf" />
-    <Content Include="imports\Import dosare.xls" />
     <Content Include="imports\Import dosare.xlsx" />
     <Content Include="pdfs\AA89989898.pdf" />
     <Content Include="pdfs\AA89989898_cerere.pdf" />
@@ -343,19 +346,19 @@
     <Content Include="scans\20a053ed-c054-4b96-8ecd-b2b811586891.pdf" />
     <Content Include="scans\25b57ea1-3b6a-493b-b79d-ebc0d5bd76e3.pdf" />
     <Content Include="scans\2d9dbd07-78a3-405e-8618-d05e9c9e8610.pdf" />
-    <Content Include="scans\584da368-d911-4bfb-96f3-041211727b48.pdf" />
     <Content Include="scans\5df500eb-d49b-44b2-b452-2ec02a627b68.pdf" />
     <Content Include="scans\6c38dbf4-1f7f-4dc8-9107-d812d5839095.pdf" />
-    <Content Include="scans\99336a78-485b-4b94-bdb4-2b53736e5eb9.pdf" />
     <Content Include="scans\bbf38e44-f941-4bf6-89a1-609a8648e762.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Controllers\DocumenteScanateController.js" />
     <Content Include="Scripts\Controllers\DosareImportController.js" />
     <Content Include="Scripts\Controllers\DosareNavigatorController.js" />
     <Content Include="Scripts\Controllers\MesajeController.js" />
+    <Content Include="Scripts\Controllers\UtilizatoriController.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
     <Content Include="Scripts\FileAPI.js" />
     <Content Include="Scripts\FileAPI.min.js" />
+    <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -400,7 +403,6 @@
     <Content Include="Views\Shared\_Dashboard.cshtml" />
     <Content Include="Views\Dosare\_DosareNavigator.cshtml" />
     <Content Include="Views\Dosare\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_LayoutDosare.cshtml" />
     <Content Include="Views\Dosare\Index.cshtml" />
     <Content Include="Views\DocumenteScanate\_DocumenteScanate.cshtml" />
     <Content Include="settings\Validations.json" />
@@ -409,10 +411,15 @@
     <Content Include="Views\Mesaje\_ViewStart.cshtml" />
     <Content Include="Views\Dosare\DosareImport.cshtml" />
     <Content Include="Views\Shared\_LayoutImportDosare.cshtml" />
+    <Content Include="Views\Utilizatori\Utilizatori.cshtml" />
+    <Content Include="Views\Shared\_LayoutUtilizatori.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Actions\" />
     <Folder Include="Views\Dashboard\" />
+    <Folder Include="Views\UtilizatoriActions\" />
+    <Folder Include="Views\UtilizatoriDrepturi\" />
+    <Folder Include="Views\UtilizatoriSocietatiAdministrate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

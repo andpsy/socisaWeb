@@ -1,0 +1,220 @@
+﻿@model socisaWeb.UtilizatorView
+@{
+    Layout = "~/Views/Shared/_LayoutUtilizatori.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <nav class="navbar navbar-default">
+        <div class="container-fluid" ng-init="@String.Format("model = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" a-disabled="true">Utilizator:</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><b>{{UtilizatorJson.Utilizator.NUME_COMPLET}}</b> <span ng-if="UtilizatorJson.Utilizator.ID != null">({{UtilizatorJson.SocietateAsigurare.DENUMIRE}} | {{UtilizatorJson.TipUtilizator.DENUMIRE}})</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="utilizator in model.UtilizatorJson.UtilizatoriSubordonati"><a href="#" ng-click="setUtilizator(utilizator)">{{utilizator.Utilizator.NUME_COMPLET}} ({{utilizator.SocietateAsigurare.DENUMIRE}} | {{utilizator.TipUtilizator.DENUMIRE}})</a></li>
+                        </ul>
+                    </li>
+                    <li ng-if="UtilizatorJson.Utilizator.ID != null"><a href="#" a-disabled="true" style="{{UtilizatorJson.Utilizator.IS_ONLINE == true ? 'color:green;' : 'color:red;'}}"><b>{{UtilizatorJson.Utilizator.IS_ONLINE == true ? "ONLINE" : "OFFLINE"}} </b></a></li>
+                    <li ng-if="UtilizatorJson.Utilizator.ID != null"><a href="#" a-disabled="true">ULTIMUL LOGIN LA: {{UtilizatorJson.Utilizator.LAST_LOGIN | date : "dd.MM.yyyy HH:mm:ss"}} </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#detalii" data-toggle="tab" aria-expanded="true" id="lnkUtilizatorDetalii" ng-click="setActiveTab('detalii')">DETALII</a></li>
+        <li class=""><a href="#drepturi" data-toggle="tab" aria-expanded="false" id="lnkUtilizatorDrepturi" a-disabled="ID_UTILIZATOR == null || ID_UTILIZATOR == undefined" ng-click="setActiveTab('drepturi')">DREPTURI</a></li>
+        <li class=""><a href="#actions" data-toggle="tab" aria-expanded="false" id="lnkUtilizatorActions" a-disabled="ID_UTILIZATOR == null || ID_UTILIZATOR == undefined" ng-click="setActiveTab('actions')">ACTIUNI</a></li>
+        <li class=""><a href="#societati_administrate" data-toggle="tab" aria-expanded="false" id="lnkUtilizatorSocietati" a-disabled="ID_UTILIZATOR == null || ID_UTILIZATOR == undefined" ng-click="setActiveTab('societati_administrate')">SOCIETATI ADMINISTRATE</a></li>
+    </ul>
+    <div ng-repeat="r in result" id="resultMessageBox" ng-show="(r.Status == true || r.Status == false) && showMessage" ng-class="r.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+        <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+        <strong>{{r.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
+        <p ng-repeat="s in r.Message.split(';')">
+            {{s}}
+        </p>
+    </div>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="detalii">
+            <table ng-if="UtilizatorJson.Utilizator.ID != null" style="margin:10px;padding:10px;">
+                <tbody>
+                    <tr>
+                        <td style="padding:5px;">
+                            <label class="control-label">Tip utilizator:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <div class="btn-toolbar">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        {{TipUtilizator.DENUMIRE}}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="tipUtilizator in model.TipuriUtilizator"><a href="#" ng-click="setTipUtilizator(tipUtilizator)">{{tipUtilizator.DENUMIRE}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="padding:5px;">
+                            <label class="control-label">Societate:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <div class="btn-toolbar">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        {{SocietateAsigurare.DENUMIRE}}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="societate in model.SocietatiAsigurare"><a href="#" ng-click="setSocietate(societate)">{{societate.DENUMIRE}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px;">
+                            <label class="control-label">User name:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <input class="form-control input-sm" id="inputSmall" type="text" ng-model="UtilizatorJson.Utilizator.USER_NAME">
+                        </td>
+                        <td style="padding:5px;">
+                            <label class="control-label">Nume complet:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <input class="form-control input-sm" id="inputSmall" type="text" ng-model="UtilizatorJson.Utilizator.NUME_COMPLET">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px;">
+                            <label class="control-label">Email:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <input class="form-control input-sm" type="email" ng-model="UtilizatorJson.Utilizator.EMAIL">
+                        </td>
+                        <td style="padding:5px;">
+                            <label class="control-label">Password:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <input class="form-control input-sm" id="inputSmall" type="password" ng-model="UtilizatorJson.Utilizator.PASSWORD">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px;">
+                            <label class="control-label">IP:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <input class="form-control input-sm" id="inputSmall" type="text" ng-model="UtilizatorJson.Utilizator.IP">
+                        </td>
+                        <td style="padding:5px;">
+                            <label class="control-label">MAC:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <input class="form-control input-sm" id="inputSmall" type="text" ng-model="UtilizatorJson.Utilizator.MAC">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px;">
+                            <label class="control-label">Departament:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <input class="form-control input-sm" id="inputSmall" type="text" ng-model="UtilizatorJson.Utilizator.DEPARTAMENT">
+                        </td>
+                        <td style="padding:5px;">
+                            <label class="control-label">Detalii:</label>
+                        </td>
+                        <td style="padding:5px;">
+                            <textarea class="form-control input-sm" id="inputSmall" type="text" ng-model="UtilizatorJson.Utilizator.DETALII"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <a href="#" class="btn btn-primary btn-sm" ng-click="SaveUtilizator()">Salvare</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane fade" id="drepturi">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th style="width:10px;text-align:center;">
+                            <input ng-disabled="ID_UTILIZATOR == null" type="checkbox" name="chk_drept_all" id="chk_drept_all" ng-click="toggleDrepturiChecks('chk_drept_')" />
+                        </th>
+                        <th>
+                            DREPT
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="drept in model.Drepturi">
+                        <td style="width:10px;text-align:center;">
+                            <input ng-disabled="ID_UTILIZATOR == null" type="checkbox" name="chk_drept_{{drept.ID}}" id="chk_drept_{{drept.ID}}" ng-model="drept.selected" ng-change="AddRemoveDrept(drept)" />
+                        </td>
+                        <td>
+                            {{drept.DENUMIRE}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="#" class="btn btn-primary btn-sm" ng-click="SaveDrepturi()">Salvare</a>
+        </div>
+
+        <div class="tab-pane fade" id="actions">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th style="width:10px;text-align:center;">
+                            <input ng-disabled="ID_UTILIZATOR == null" type="checkbox" name="chk_action_all" id="chk_action_all" ng-click="toggleActionsChecks('chk_action_')" />
+                        </th>
+                        <th>
+                            ACTIUNE
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="action in model.Actions">
+                        <td style="width:10px;text-align:center;">
+                            <input ng-disabled="ID_UTILIZATOR == null" type="checkbox" name="chk_action_{{action.ID}}" id="chk_action_{{action.ID}}" ng-model="action.selected" ng-change="AddRemoveAction(action)" />
+                        </td>
+                        <td>
+                            {{action.NAME}}<span id="msg_action_{{action.ID}}"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="#" class="btn btn-primary btn-sm" ng-click="SaveActiuni()">Salvare</a>
+        </div>
+
+        <div class="tab-pane fade" id="societati_administrate">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th style="width:10px;text-align:center;">
+                            <input ng-disabled="ID_UTILIZATOR == null" type="checkbox" name="chk_societate_administrata_all" id="chk_societate_administrata_all" ng-click="toggleSocietatiAdministrateChecks('chk_societate_administrata_')" />
+                        </th>
+                        <th>
+                            DENUMIRE SOCIETATE
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="societate_administrata in model.SocietatiAsigurareAdministrate">
+                        <td style="width:10px;text-align:center;">
+                            <input ng-disabled="ID_UTILIZATOR == null" type="checkbox" name="chk_societate_administrata_{{societate_administrata.ID}}" id="chk_societate_administrata_{{societate_administrata.ID}}" ng-model="societate_administrata.selected" ng-change="AddRemoveSocietateAdministrata(societate_administrata)" />
+                        </td>
+                        <td>
+                            {{societate_administrata.DENUMIRE}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="#" class="btn btn-primary btn-sm" ng-click="SaveSocietatiAdministrate()">Salvare</a>
+        </div>
+    </div>
+}
