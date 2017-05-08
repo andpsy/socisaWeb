@@ -282,6 +282,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
     $scope.SaveActiuni = function () {
         $scope.showMessage = true;
         $scope.existaModificari = false;
+        var qs = [];
         for (var i = 0; i < $scope.NewActions.length; i++) {
             var gasit = false;
             for (var j = 0; j < $scope.UtilizatorJson.Actions.length; j++) {
@@ -292,7 +293,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
             }
             if (!gasit) {
                 spinner.spin(document.getElementById('main'));
-                $http.post('/UtilizatoriActions/Save', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_ACTION: $scope.NewActions[i].ID })
+                var x = $http.post('/UtilizatoriActions/Save', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_ACTION: $scope.NewActions[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
                             $scope.existaModificari = true;
@@ -309,6 +310,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                         spinner.stop();
                         alert('Erroare: ' + response.status + ' - ' + response.data);
                     });
+                qs.push(x);
             }
         }
 
@@ -322,7 +324,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
             }
             if (!gasit) {
                 spinner.spin(document.getElementById('main'));
-                $http.post('/UtilizatoriActions/Delete', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_ACTION: $scope.UtilizatorJson.Actions[i].ID })
+                var y = $http.post('/UtilizatoriActions/Delete', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_ACTION: $scope.UtilizatorJson.Actions[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
                             $scope.existaModificari = true;
@@ -339,13 +341,29 @@ function ($scope, $http, $filter, $rootScope, $q) {
                         spinner.stop();
                         alert('Erroare: ' + response.status + ' - ' + response.data);
                     });
+                qs.push(y);
             }
         }
+
+        $q.all(qs).then(function (response) {
+            if ($scope.existaModificari) {
+                $http.get('/Utilizatori/IndexJson').then(function (response) {
+                    $scope.model = response.data;
+                    for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
+                        if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
+                            $scope.setUtilizator($scope.model.UtilizatorJson.UtilizatoriSubordonati[i]);
+                            break;
+                        }
+                    }
+                });
+            }
+        });
     };
 
     $scope.SaveSocietatiAdministrate = function () {
         $scope.showMessage = true;
         $scope.existaModificari = false;
+        var qs = [];
         for (var i = 0; i < $scope.NewSocietatiAdministrate.length; i++) {
             var gasit = false;
             for (var j = 0; j < $scope.UtilizatorJson.SocietatiAsigurareAdministrate.length; j++) {
@@ -356,7 +374,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
             }
             if (!gasit) {
                 spinner.spin(document.getElementById('main'));
-                $http.post('/UtilizatoriSocietatiAdministrate/Save', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_SOCIETATE_ADMINISTRATA: $scope.NewSocietatiAdministrate[i].ID })
+                var x = $http.post('/UtilizatoriSocietatiAdministrate/Save', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_SOCIETATE_ADMINISTRATA: $scope.NewSocietatiAdministrate[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
                             $scope.existaModificari = true;
@@ -367,6 +385,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                         spinner.stop();
                         alert('Erroare: ' + response.status + ' - ' + response.data);
                     });
+                qs.push(x);
             }
         }
 
@@ -380,7 +399,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
             }
             if (!gasit) {
                 spinner.spin(document.getElementById('main'));
-                $http.post('/UtilizatoriSocietatiAdministrate/Delete', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_SOCIETATE_ADMINISTRATA: $scope.UtilizatorJson.SocietatiAsigurareAdministrate[i].ID })
+                var y = $http.post('/UtilizatoriSocietatiAdministrate/Delete', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_SOCIETATE_ADMINISTRATA: $scope.UtilizatorJson.SocietatiAsigurareAdministrate[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
                             $scope.existaModificari = true;
@@ -391,8 +410,23 @@ function ($scope, $http, $filter, $rootScope, $q) {
                         spinner.stop();
                         alert('Erroare: ' + response.status + ' - ' + response.data);
                     });
+                qs.push(y);
             }
         }
+
+        $q.all(qs).then(function (response) {
+            if ($scope.existaModificari) {
+                $http.get('/Utilizatori/IndexJson').then(function (response) {
+                    $scope.model = response.data;
+                    for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
+                        if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
+                            $scope.setUtilizator($scope.model.UtilizatorJson.UtilizatoriSubordonati[i]);
+                            break;
+                        }
+                    }
+                });
+            }
+        });
     };
 
 });
