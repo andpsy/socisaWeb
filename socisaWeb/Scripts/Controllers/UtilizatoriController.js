@@ -270,6 +270,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                     for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
                         if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
                             $scope.setUtilizator($scope.model.UtilizatorJson.UtilizatoriSubordonati[i]);
+                            $scope.UtilizatorJson.Utilizator.LAST_LOGIN = $filter('date')(new Date(parseInt($scope.UtilizatorJson.Utilizator.LAST_LOGIN.substr(6))), 'dd.MM.yyyy HH:mm:ss');
                             break;
                         }
                     }                    
@@ -352,6 +353,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                     for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
                         if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
                             $scope.setUtilizator($scope.model.UtilizatorJson.UtilizatoriSubordonati[i]);
+                            $scope.UtilizatorJson.Utilizator.LAST_LOGIN = $filter('date')(new Date(parseInt($scope.UtilizatorJson.Utilizator.LAST_LOGIN.substr(6))), 'dd.MM.yyyy HH:mm:ss');
                             break;
                         }
                     }
@@ -421,6 +423,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                     for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
                         if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
                             $scope.setUtilizator($scope.model.UtilizatorJson.UtilizatoriSubordonati[i]);
+                            $scope.UtilizatorJson.Utilizator.LAST_LOGIN = $filter('date')(new Date(parseInt($scope.UtilizatorJson.Utilizator.LAST_LOGIN.substr(6))), 'dd.MM.yyyy HH:mm:ss');
                             break;
                         }
                     }

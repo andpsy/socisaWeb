@@ -14,12 +14,13 @@ namespace socisaWeb.Controllers
     [Authorize]
     public class MesajeController : Controller
     {
-        // GET: Messages
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public ActionResult Index()
         {
             return PartialView("_MesajeView", new MesajView());
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpGet]
         public JsonResult GetMessages(int? id)
         {
@@ -51,6 +52,7 @@ namespace socisaWeb.Controllers
             return Json(mv, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpGet]
         public JsonResult GetSentMessages(int? id)
         {
@@ -82,6 +84,7 @@ namespace socisaWeb.Controllers
             return Json(mv, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult GetNewMessages(string j)
         {
@@ -93,6 +96,7 @@ namespace socisaWeb.Controllers
             return Json(d.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult Send(MesajJson MesajJson)
         {
@@ -120,6 +124,7 @@ namespace socisaWeb.Controllers
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult SetDataCitire(MesajJson MesajJson)
         {

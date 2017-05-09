@@ -12,6 +12,7 @@ namespace socisaWeb.Controllers
     [Authorize]
     public class DashboardController : Controller
     {
+        [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult Index()
         {
             DashboardJson dj = new DashboardJson();

@@ -14,19 +14,20 @@ namespace socisaWeb.Controllers
     [Authorize]
     public class DocumenteScanateController : Controller
     {
-        // GET: DocumenteScanate
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public ActionResult Search()
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             return PartialView("_DocumenteScanate", new DocumentView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr));
         }
 
-        
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public JsonResult Details(int id)
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -45,6 +46,7 @@ namespace socisaWeb.Controllers
             return result;
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public JsonResult Detail(int id)
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -57,6 +59,7 @@ namespace socisaWeb.Controllers
             return result;
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult Edit(DocumentScanat CurDocumentScanat)
         {
@@ -90,6 +93,7 @@ namespace socisaWeb.Controllers
             }
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult Avizare(DocumentScanat CurDocumentScanat)
         {
@@ -101,6 +105,7 @@ namespace socisaWeb.Controllers
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult PostFile()
         {
@@ -117,6 +122,7 @@ namespace socisaWeb.Controllers
             return result;
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpGet]
         public JsonResult Delete(int id)
         {

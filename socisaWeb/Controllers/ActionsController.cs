@@ -11,6 +11,7 @@ namespace socisaWeb.Controllers
     [Authorize]
     public class ActionsController : Controller
     {
+        [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult Index()
         {
             Utilizator u = (Utilizator)Session["CURENT_USER"];

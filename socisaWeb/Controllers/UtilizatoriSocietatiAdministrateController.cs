@@ -12,6 +12,7 @@ namespace socisaWeb
     [Authorize]
     public class UtilizatoriSocietatiAdministrateController : Controller
     {
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
         [HttpPost]
         public JsonResult Save(int ID_UTILIZATOR, int ID_SOCIETATE_ADMINISTRATA)
         {
@@ -24,6 +25,7 @@ namespace socisaWeb
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
         [HttpPost]
         public JsonResult Delete(int ID_UTILIZATOR, int ID_SOCIETATE_ADMINISTRATA)
         {

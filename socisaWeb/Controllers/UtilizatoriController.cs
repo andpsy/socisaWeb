@@ -15,6 +15,7 @@ namespace socisaWeb
     [Authorize]
     public class UtilizatoriController : Controller
     {
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
         public ActionResult Index()
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -22,6 +23,7 @@ namespace socisaWeb
             return PartialView("Utilizatori", uv);
         }
 
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
         public JsonResult IndexJson()
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -29,6 +31,8 @@ namespace socisaWeb
             return Json(uv, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
+        [HttpPost]
         public JsonResult Save(Utilizator Utilizator)
         {
             response r = new response();
@@ -63,7 +67,6 @@ namespace socisaWeb
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginJson model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -113,6 +116,7 @@ namespace socisaWeb
             }
         }
 
+        [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult SelectSocietate()
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -122,6 +126,7 @@ namespace socisaWeb
             return View(sas);
         }
 
+        [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         [HttpPost]
         public ActionResult SelectSocietate(FormCollection model)
         {

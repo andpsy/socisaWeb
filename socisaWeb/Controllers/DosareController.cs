@@ -16,12 +16,14 @@ namespace socisaWeb.Controllers
     [Authorize]
     public class DosareController : Controller
     {
+        [AuthorizeUser(ActionName = "Import", Recursive = false)]
         public ActionResult Import()
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             return View("DosareImport", new ImportDosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr));
         }
 
+        [AuthorizeUser(ActionName = "Import", Recursive = false)]
         [HttpPost]
         public JsonResult PostExcelFile()
         {
@@ -53,6 +55,7 @@ namespace socisaWeb.Controllers
             return result;
         }
 
+        [AuthorizeUser(ActionName = "Import", Recursive = false)]
         [HttpPost]
         public JsonResult GetDosareFromLog(DateTime ImportDate)
         {
@@ -64,17 +67,20 @@ namespace socisaWeb.Controllers
             return result;
         }
 
+        [AuthorizeUser(ActionName = "Import", Recursive = false)]
         [HttpPost]
         public JsonResult Import(ImportDosarView ImportDosarView)
         {
             return Json("", JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpGet]
         public ActionResult Search()
         {
@@ -82,6 +88,7 @@ namespace socisaWeb.Controllers
             return PartialView("_DosareNavigator", new DosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), Convert.ToInt32(Session["ID_SOCIETATE"]), conStr));
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult Search(DosarView DosarView)
         {
@@ -129,6 +136,7 @@ namespace socisaWeb.Controllers
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public JsonResult Details(int id)
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
@@ -145,6 +153,7 @@ namespace socisaWeb.Controllers
             return Json(toReturn, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult Edit(DosarView DosarView)
         {
@@ -388,6 +397,7 @@ namespace socisaWeb.Controllers
             }
         }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpGet]
         public JsonResult Print(int id)
         {

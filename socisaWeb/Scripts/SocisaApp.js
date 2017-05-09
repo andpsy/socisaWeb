@@ -13,12 +13,21 @@
 
 var app = angular.module('SocisaApp', ['ngFileUpload', 'ngAnimate', 'ngDialog']);
 
+app.run(function ($http) {
+    $http.defaults.headers.common['__RequestVerificationToken'] = angular.element('input[name="__RequestVerificationToken"]').attr('value');
+    $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+});
+
 app.config(['$compileProvider',
   function($compileProvider) {
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|ftp|blob):|data:image\//);
   }
 ]);
-
+/*
+app.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+}]);
+*/
 app.filter("dateFilter", function () {
     return function (item) {
         if (item != null) {
