@@ -414,6 +414,7 @@
     <Content Include="Views\Shared\_LayoutImportDosare.cshtml" />
     <Content Include="Views\Utilizatori\Utilizatori.cshtml" />
     <Content Include="Views\Shared\_LayoutUtilizatori.cshtml" />
+    <Content Include="Views\Shared\_LayoutDosare.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Actions\" />

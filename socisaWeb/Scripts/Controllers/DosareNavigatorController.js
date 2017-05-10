@@ -456,6 +456,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         $http.post('/Dosare/Edit', data)
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
+                    $('.alert').show();
                     $scope.showMessage = true;
                     $scope.result = response.data;
                     if ($scope.result.Status) {
@@ -482,6 +483,9 @@ function ($scope, $http, $filter, $rootScope, $window) {
                         $scope.searchMode = 0;
                         $scope.editMode = 1;
                     }
+                    
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
+
                 } else {
                     $scope.searchMode = 0;
                     $scope.editMode = 1;

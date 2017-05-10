@@ -199,6 +199,8 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
                 if (response != 'null' && response != null && response.data != null) {
                     $scope.showMessage = true;
                     $scope.result = response.data;
+                    
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                     if ($scope.result.Status) {
                         /*
                         if ($scope.result.InsertedId != null) {

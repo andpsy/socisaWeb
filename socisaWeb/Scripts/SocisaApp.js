@@ -1,4 +1,7 @@
-﻿function setRequiredFields() {
+﻿var MESSAGE_DELAY = 4000;
+var MESSAGE_FADE_OUT = 2000;
+
+function setRequiredFields() {
     $('*').each(function () {
         var req = $(this).attr('data-val-required');
         if (undefined != req) {

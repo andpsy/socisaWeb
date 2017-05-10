@@ -136,8 +136,11 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
                 $http.post('/DocumenteScanate/Avizare', data)
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
+                            $('.alert').show();
                             $scope.showMessage = true;
                             $scope.result = response.data;
+                            
+                            $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                             if ($scope.result.Status) {
                                 $scope.model.CurDocumentScanat = {};
                                 $scope.ShowDocuments($rootScope.ID_DOSAR);
@@ -244,6 +247,8 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
                 if (response != 'null' && response != null && response.data != null) {
                     $scope.showMessage = true;
                     $scope.result = response.data;
+                    
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                     if (doc == null) {
                         if ($scope.result.Status) {
                             $scope.model.CurDocumentScanat = {};

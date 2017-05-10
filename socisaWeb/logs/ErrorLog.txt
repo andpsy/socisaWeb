@@ -669,3 +669,28 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
    at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
 =====================================================
+09.05.2017 18:10:03
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
+=====================================================
+09.05.2017 23:30:26
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+09.05.2017 23:31:03
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+09.05.2017 23:49:03
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+09.05.2017 23:49:33
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================

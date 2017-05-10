@@ -139,10 +139,13 @@ function ($scope, $http, $filter, $rootScope, $q) {
         $http.post('/Utilizatori/Save', $scope.UtilizatorJson.Utilizator)
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
+                    $scope.result = [];
+                    $('.alert').show();
                     $scope.showMessage = true;
                     $scope.result.push(response.data);
                     if (response.data.Status) {
                     }
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                 }
                 spinner.stop();
             }, function (response) {
@@ -199,13 +202,9 @@ function ($scope, $http, $filter, $rootScope, $q) {
         }
     };
 
-    $scope.qSaveDrepturi = function () {
-        $q.when($scope.SaveDrepturi()).then(function (response) {
-            if ($scope.existaModificari) alert('vsdfdsfsd');
-        });
-    };
-
     $scope.SaveDrepturi = function () {
+        $scope.result = [];
+        $('.alert').show();
         $scope.showMessage = true;
         $scope.existaModificari = false;
         var qs = [];
@@ -266,6 +265,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
         $q.all(qs).then(function (response) {
             if ($scope.existaModificari) {
                 $http.get('/Utilizatori/IndexJson').then(function (response) {
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                     $scope.model = response.data;
                     for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
                         if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
@@ -281,6 +281,8 @@ function ($scope, $http, $filter, $rootScope, $q) {
 
 
     $scope.SaveActiuni = function () {
+        $scope.result = [];
+        $('.alert').show();
         $scope.showMessage = true;
         $scope.existaModificari = false;
         var qs = [];
@@ -349,6 +351,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
         $q.all(qs).then(function (response) {
             if ($scope.existaModificari) {
                 $http.get('/Utilizatori/IndexJson').then(function (response) {
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                     $scope.model = response.data;
                     for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
                         if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
@@ -363,6 +366,8 @@ function ($scope, $http, $filter, $rootScope, $q) {
     };
 
     $scope.SaveSocietatiAdministrate = function () {
+        $scope.result = [];
+        $('.alert').show();
         $scope.showMessage = true;
         $scope.existaModificari = false;
         var qs = [];
@@ -419,6 +424,8 @@ function ($scope, $http, $filter, $rootScope, $q) {
         $q.all(qs).then(function (response) {
             if ($scope.existaModificari) {
                 $http.get('/Utilizatori/IndexJson').then(function (response) {
+                    
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                     $scope.model = response.data;
                     for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
                         if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
