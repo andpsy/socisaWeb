@@ -300,8 +300,11 @@ function ($scope, $http, $filter, $rootScope, $window) {
             return;
         }
         else {
-            $scope.Afisare2(e);
-            lastkeytime = now;
+            if (filter_value != "") {
+                $scope.Afisare2(e);
+                lastkeytime = now;
+                //return;
+            }
         }
         $scope.Interactive = false;
     };

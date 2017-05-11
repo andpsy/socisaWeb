@@ -5,12 +5,12 @@
     @Html.AntiForgeryToken()
     <table style="width:100%;height:100%;">
         <tr>
-            <td>
+            <td style="vertical-align:top;">
                 <div class="lista_documente" data-ng-init="@String.Format("model.TipuriDocumente = {0}", Newtonsoft.Json.JsonConvert.SerializeObject( Model.TipuriDocumente))">
                     <ul class="list-group">
-                        <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="curDocumentIndex == -1 || model.TipuriDocumente[curDocumentIndex].TipDocument.ID != tipDoc.TipDocument.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocumentByIndex($index)">
+                        <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="curDocumentIndex == -1 || model.TipuriDocumente[curDocumentIndex].TipDocument.ID != tipDoc.TipDocument.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocumentByIndex($index)" style="cursor:pointer;padding:8px 10px;">
                             <span ng-if="showMandatory(tipDoc)" style="font-weight:bold;color:red;">!</span>&nbsp;{{tipDoc.TipDocument.DENUMIRE}}
-                            <span ng-if="areDocumentAvizat(tipDoc.TipDocument.ID) > 0" class="badge" style="background-color:{{areDocumentAvizat(tipDoc.TipDocument.ID) == 2 ? 'darkseagreen':'pink'}};">
+                            <span ng-if="areDocumentAvizat(tipDoc.TipDocument.ID) > 0" class="badge" style="background-color:{{areDocumentAvizat(tipDoc.TipDocument.ID) == 2 ? 'darkseagreen':'pink'}};margin-top:-5px;border-radius:50px;">
                                 <input ng-disabled="true" type="checkbox" ng-model="areDocumentAvizat(tipDoc.TipDocument.ID) == 2 ? true : false" />
                             </span>
                         </li>
@@ -28,9 +28,9 @@
                     </div>
                     <table style="width:100%;">
                         <tr>
-                            <td style="height:460px;text-align:center;vertical-align:middle;padding:10px;">
+                            <td style="height:450px;text-align:center;vertical-align:middle;padding:10px;">
                                 <span ng-if="model.CurDocumentScanat.VIZA_CASCO" style="color:#8FB78D;">&#9745; Documentul este inclus in dosar si este avizat</span><br /><br />
-                                <img ng-if="model.CurDocumentScanat.MEDIUM_ICON != null" ng-src="data:image/JPEG;base64,{{model.CurDocumentScanat.MEDIUM_ICON | bytetobase}}" width="300" height="420"><br />
+                                <img ng-if="model.CurDocumentScanat.MEDIUM_ICON != null" ng-src="data:image/JPEG;base64,{{model.CurDocumentScanat.MEDIUM_ICON | bytetobase}}" width="300" height="420" style="cursor:pointer;" ng-click = "vizualizareDoc()"><br />
                             </td>
                         </tr>
                         <tr>
@@ -50,11 +50,30 @@
                                     -->
                                     <div id="thumbScrollerContent" style="width:{{model.TipuriDocumente[curDocumentIndex].DocumenteScanate.length * 137}}px;">
                                         <div id="thumbScrollerThumb" ng-repeat="documentScanat in model.TipuriDocumente[curDocumentIndex].DocumenteScanate">
-                                            <img ng-src="data:image/JPEG;base64,{{documentScanat.SMALL_ICON | bytetobase}}" width="100" height="130" ng-click="SetCurDocument(documentScanat, $index)" />
+                                            <img ng-src="data:image/JPEG;base64,{{documentScanat.SMALL_ICON | bytetobase}}" width="100" height="130" ng-click="SetCurDocument(documentScanat, $index)" style="cursor:pointer;" />
                                             <input id="chk_{{documentScanat.ID}}" type="checkbox" class="checkOverImage" title="Selecteaza/Deselecteaza pentru avizare sau stergere" />
                                             <div ng-if="documentScanat.VIZA_CASCO" class="checkOverImageBadge" title="Documentul este inclus in dosar si este avizat">&#9745;</div>
                                         </div>
                                     </div>
+                                    <script>
+                                    (function () {
+                                        function scrollHorizontally(e) {
+                                            e = window.event || e;
+                                            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+                                            document.getElementById('thumbScroller').scrollLeft -= (delta * 40); // Multiplied by 40
+                                            e.preventDefault();
+                                        }
+                                        if (document.getElementById('thumbScroller').addEventListener) {
+                                            // IE9, Chrome, Safari, Opera
+                                            document.getElementById('thumbScroller').addEventListener("mousewheel", scrollHorizontally, false);
+                                            // Firefox
+                                            document.getElementById('thumbScroller').addEventListener("DOMMouseScroll", scrollHorizontally, false);
+                                        } else {
+                                            // IE 6/7/8
+                                            document.getElementById('thumbScroller').attachEvent("onmousewheel", scrollHorizontally);
+                                        }
+                                    })();
+                                    </script>
                                 </div>
                                 <input type="checkbox" title="Selecteaza/Deselecteaza toate" onchange="toggleAllThumbs(this)" ng-show="model.TipuriDocumente[curDocumentIndex].DocumenteScanate.length > 1" />
                             </td>

@@ -1,6 +1,5 @@
 ﻿@using socisaWeb.Helpers
 @model socisaWeb.DosarView
-<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -30,7 +29,7 @@
     </div>
     <!-- end lista dosare -->
 
-    <div id="DosareSearch" style="left:220px;top:0px;">
+    <div id="DosareSearch" style="left:220px;top:0px;margin-top:8px;">
         <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
             <button type="button" class="close" ng-click="showMessage = false">&times;</button>
             <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br /> 
@@ -39,13 +38,13 @@
             </p>
         </div>
 
-        <nav class="navbar navbar-inverse" ng-show="editMode == 0">
+        <nav class="navbar navbar-default" ng-show="editMode == 0">
             <div class="container-fluid">
                 <div class="navbar-header">
                     @{
                         string soc = ((SOCISA.Models.SocietateAsigurare)Session["SOCIETATE_ASIGURARE"]).DENUMIRE;
                     }
-                    <span class="navbar-brand">Calitate societate reprezentata (@soc):</span>
+                    <span class="navbar-brand" a-disabled="true">Calitate societate reprezentata (@soc):</span>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav">

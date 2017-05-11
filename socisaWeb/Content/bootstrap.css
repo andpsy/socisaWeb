@@ -4930,7 +4930,7 @@ a.label:focus {
   font-size: 12px;
   font-weight: bold;
   color: #ffffff;
-  line-height: 1;
+  /* line-height: 1; */
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
@@ -4944,7 +4944,7 @@ a.label:focus {
   font-size: 12px;
   font-weight: bold;
   color: #ffffff;
-  line-height: 1;
+  /* line-height: 1; */
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
@@ -5481,8 +5481,14 @@ button.list-group-item-danger.active:focus {
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 4px;
+  /*
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); 
+  */
+  -webkit-box-shadow: 5px 5px 10px #363636;
+  box-shadow: 5px 5px 10px #363636;
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 .panel-body {
   padding: 15px;

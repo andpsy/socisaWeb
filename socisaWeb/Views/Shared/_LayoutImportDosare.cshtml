@@ -27,9 +27,9 @@
                 Html.RenderAction("Index", "Actions");
             }
         </div>
-        <div id="main" style="background-color:white;" ng-controller="DosareImportController">
-            @RenderBody()
-        </div>
+
+        @RenderBody()
+
         <div class="sidenavRight">
             @{
                 Html.RenderAction("Index", "Dashboard");

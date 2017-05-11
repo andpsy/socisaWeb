@@ -1,11 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Dosare";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
+<div id="main" style="background-color:white;" ng-controller="DosareNavigatorController">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#detalii" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
         <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('documente')">DOCUMENTE</a></li>
@@ -31,4 +28,4 @@
             }
         </div>
     </div>
-}
+</div>

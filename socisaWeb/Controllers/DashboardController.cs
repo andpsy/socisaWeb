@@ -15,15 +15,31 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult Index()
         {
-            DashboardJson dj = new DashboardJson();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
+            DashboardJson dj = new DashboardJson(Convert.ToInt32( u.ID), conStr);
+            /*
             DosareRepository dr = new DosareRepository(Convert.ToInt32(u.ID), conStr);
             dj.DOSARE_TOTAL = Convert.ToInt32(dr.CountAll().Result);
             dj.DOSARE_FROM_LAST_LOGIN = Convert.ToInt32(dr.CountFromLastLogin().Result);
             dj.MESAJE_NOI = 0;
-
+            */
             return PartialView("_Dashboard", dj);
+        }
+
+        [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
+        public ActionResult IndexMain()
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            Utilizator u = (Utilizator)Session["CURENT_USER"];
+            DashboardJson dj = new DashboardJson(Convert.ToInt32(u.ID), conStr);
+            /*
+            DosareRepository dr = new DosareRepository(Convert.ToInt32(u.ID), conStr);
+            dj.DOSARE_TOTAL = Convert.ToInt32(dr.CountAll().Result);
+            dj.DOSARE_FROM_LAST_LOGIN = Convert.ToInt32(dr.CountFromLastLogin().Result);
+            dj.MESAJE_NOI = 0;
+            */
+            return PartialView("_DashboardMain", dj);
         }
     }
 }
