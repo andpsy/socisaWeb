@@ -68,7 +68,7 @@ namespace socisaWeb
                 //return DateTime.ParseExact(value.AttemptedValue, this._customFormat, System.Globalization.CultureInfo.InvariantCulture);
                 return DateTime.ParseExact(formatedDate, this._customFormat, System.Globalization.CultureInfo.InvariantCulture);
             }
-            catch(Exception exp) { return null; }
+            catch(Exception exp) { SOCISA.LogWriter.Log(exp); return null; }
         }
     }
 
@@ -82,7 +82,7 @@ namespace socisaWeb
             {
                 return Convert.FromBase64String(value.AttemptedValue);
             }
-            catch (Exception exp) { return null; }
+            catch (Exception exp) { SOCISA.LogWriter.Log(exp); return null; }
         }
     }
 
@@ -97,7 +97,7 @@ namespace socisaWeb
             {
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<ImportDosarView>(value.AttemptedValue);
             }
-            catch (Exception exp) { return null; }
+            catch (Exception exp) { SOCISA.LogWriter.Log(exp); return null; }
         }
     }
 

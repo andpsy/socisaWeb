@@ -7,7 +7,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div id="main" style="background-color:white;" ng-controller="DosareImportController">
+    <div id="main" style="background-color:white;" ng-controller="DosareImportController" ng-cloak>
         <nav class="navbar navbar-default">
             <div class="container-fluid" ng-init="@String.Format("model.ImportDates = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.ImportDates))">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -79,7 +79,7 @@
                         <!--
                         <td><input type="checkbox" checked class="checkForImport" id="chk_{{$index}}" ng-model="item.selected" /></td>
                         -->
-                        <td style="text-align:center;vertical-align:middle"><img src="{{item[0].Status ? '../Content/images/ok.png' : '../Content/images/error.png'}}" width="32" height="32" data-toggle="tooltip" data-placement="right" title="{{item[0].Message}}" data-original-title="{{item[0].Message}}" /></td>
+                        <td style="text-align:center;vertical-align:middle"><img src="{{item[0].Status ? '../Content/images/ok.png' : '../Content/images/error.png'}}" width="32" height="32" data-toggle="tooltip" data-placement="right" title="{{item[0].Message.split(';').join('&#13;')}}" data-original-title="{{item[0].Message.split(';').join('&#13;')}}" /></td>
                         <td>{{item[1].Dosar.NR_DOSAR_CASCO}}</td>
                         <td>{{item[1].Dosar.NR_SCA}}</td>
                         <td>{{item[1].Dosar.DATA_SCA | dateFilter | date:"dd.MM.yyyy"}}</td>

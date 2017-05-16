@@ -143,7 +143,7 @@ namespace socisaWeb
             List<UtilizatorJson> l = new List<UtilizatorJson>();
             foreach(Utilizator uu in us)
             {
-                if(uu.ID != ID_UTILIZATOR)
+                if(uu.ID != ID_UTILIZATOR && uu.ID != CURENT_USER_ID)
                     l.Add(new UtilizatorJson(CURENT_USER_ID, conStr, Convert.ToInt32(uu.ID)));
             }
 

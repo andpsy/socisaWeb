@@ -1,7 +1,7 @@
 ﻿'use strict';
 function toggleDivs(activeDiv) {
-    document.getElementById('detaliiDocument').style.display = activeDiv == "detaliiDocument" ? 'block' : 'none'; 
-    document.getElementById('incarcareFisiere').style.display = activeDiv == "incarcareFisiere" ? 'block' : 'none';
+    document.getElementById('detaliiDocument').style.display = activeDiv == "detaliiDocument" ? (document.getElementById('detaliiDocument').style.display == 'block' ? 'none' : 'block') : 'none'; 
+    document.getElementById('incarcareFisiere').style.display = activeDiv == "incarcareFisiere" ? (document.getElementById('incarcareFisiere').style.display == 'block' ? 'none' : 'block') : 'none';
 }
 
 function toggleAllThumbs(e) {
@@ -193,7 +193,7 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
     };
 
     $scope.vizualizareDoc = function () {
-        $window.open("scans/" + $scope.model.CurDocumentScanat.CALE_FISIER);
+        $window.open("../scans/" + $scope.model.CurDocumentScanat.CALE_FISIER);
     };
 
     $scope.deleteDoc = function () {

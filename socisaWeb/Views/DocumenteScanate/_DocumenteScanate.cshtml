@@ -5,7 +5,7 @@
     @Html.AntiForgeryToken()
     <table style="width:100%;height:100%;">
         <tr>
-            <td style="vertical-align:top;">
+            <td style="vertical-align:top;width:340px;">
                 <div class="lista_documente" data-ng-init="@String.Format("model.TipuriDocumente = {0}", Newtonsoft.Json.JsonConvert.SerializeObject( Model.TipuriDocumente))">
                     <ul class="list-group">
                         <li ng-repeat="tipDoc in model.TipuriDocumente" ng-class="curDocumentIndex == -1 || model.TipuriDocumente[curDocumentIndex].TipDocument.ID != tipDoc.TipDocument.ID ? 'list-group-item' : 'list-group-item active'" ng-click="showDocumentByIndex($index)" style="cursor:pointer;padding:8px 10px;">
@@ -30,7 +30,7 @@
                         <tr>
                             <td style="height:450px;text-align:center;vertical-align:middle;padding:10px;">
                                 <span ng-if="model.CurDocumentScanat.VIZA_CASCO" style="color:#8FB78D;">&#9745; Documentul este inclus in dosar si este avizat</span><br /><br />
-                                <img ng-if="model.CurDocumentScanat.MEDIUM_ICON != null" ng-src="data:image/JPEG;base64,{{model.CurDocumentScanat.MEDIUM_ICON | bytetobase}}" width="300" height="420" style="cursor:pointer;" ng-click = "vizualizareDoc()"><br />
+                                <img ng-if="model.CurDocumentScanat.MEDIUM_ICON != null" ng-src="data:image/JPEG;base64,{{model.CurDocumentScanat.MEDIUM_ICON | bytetobase}}" width="286" height="400" style="cursor:pointer;" ng-click="vizualizareDoc()"><br />
                             </td>
                         </tr>
                         <tr>
@@ -56,80 +56,91 @@
                                         </div>
                                     </div>
                                     <script>
-                                    (function () {
-                                        function scrollHorizontally(e) {
-                                            e = window.event || e;
-                                            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-                                            document.getElementById('thumbScroller').scrollLeft -= (delta * 40); // Multiplied by 40
-                                            e.preventDefault();
-                                        }
-                                        if (document.getElementById('thumbScroller').addEventListener) {
-                                            // IE9, Chrome, Safari, Opera
-                                            document.getElementById('thumbScroller').addEventListener("mousewheel", scrollHorizontally, false);
-                                            // Firefox
-                                            document.getElementById('thumbScroller').addEventListener("DOMMouseScroll", scrollHorizontally, false);
-                                        } else {
-                                            // IE 6/7/8
-                                            document.getElementById('thumbScroller').attachEvent("onmousewheel", scrollHorizontally);
-                                        }
-                                    })();
+                                        (function () {
+                                            function scrollHorizontally(e) {
+                                                e = window.event || e;
+                                                var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+                                                document.getElementById('thumbScroller').scrollLeft -= (delta * 40); // Multiplied by 40
+                                                e.preventDefault();
+                                            }
+                                            if (document.getElementById('thumbScroller').addEventListener) {
+                                                // IE9, Chrome, Safari, Opera
+                                                document.getElementById('thumbScroller').addEventListener("mousewheel", scrollHorizontally, false);
+                                                // Firefox
+                                                document.getElementById('thumbScroller').addEventListener("DOMMouseScroll", scrollHorizontally, false);
+                                            } else {
+                                                // IE 6/7/8
+                                                document.getElementById('thumbScroller').attachEvent("onmousewheel", scrollHorizontally);
+                                            }
+                                        })();
                                     </script>
                                 </div>
                                 <input type="checkbox" title="Selecteaza/Deselecteaza toate" onchange="toggleAllThumbs(this)" ng-show="model.TipuriDocumente[curDocumentIndex].DocumenteScanate.length > 1" />
                             </td>
                         </tr>
-                        <tr>
-                            <td style="height:240px;">
-                                <div class="btn-group btn-group-justified">
-                                    @Html.Label("Incarcare fisier(e)", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Ataseaza document scanat la dosar", onclick = "toggleDivs('incarcareFisiere')" }).HasRight("adaugare")
-                                    @Html.Label("Detalii", new { @class = "btn btn-default", title = "Adauga/Modifica detalii la documentul scanat", onclick = "toggleDivs('detaliiDocument')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" }).HasRight("vizualizare")
-                                    @Html.Label("Avizare", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Adauga documentele scanate selectate in dosar (Avizare)", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "AvizareDocument(true)" }).HasRight("avizare dosar")
-                                    @Html.Label("Excludere", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Exclude documentele scanate selectate din dosar (Anulare Avizare)", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "AvizareDocument(false)" }).HasRight("avizare dosar")
-                                    @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Elimina documentele scanate selectate din dosar", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "deleteDoc()" }).HasRight("stergere")
-                                    @Html.Label("Vizualizare", new { @class = "btn btn-default", title = "Deschide documentul intr-o fereastra noua", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "vizualizareDoc()" }).HasRight("vizualizare")
-
-                                    <!---
-                                    <a href="#" title="Ataseaza document scanat la dosar" class="btn btn-default" onclick="toggleDivs('incarcareFisiere')">Incarcare fisier(e)</a>
-                                    <a href="#" title="Adauga detalii la documentul scanat" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" onclick="toggleDivs('detaliiDocument')">Detalii</a>
-                                    <a href="#" title="Adauga documentul scanat in dosar (Avizare)" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" ng-click="AvizareDocument(true)" onclick="toggleDivs('null')">Avizare</a>
-                                    <a href="#" title="Exclude documentul scanat din dosar (Anulare Avizare)" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" ng-click="AvizareDocument(false)" onclick="toggleDivs('null')">Excludere</a>
-                                    <a href="#" title="Elimina documentul scanat din dosar" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" ng-click="deleteDoc()" onclick="toggleDivs('null')">Stergere</a>
-                                    <a href="scans/{{model.CurDocumentScanat.CALE_FISIER}}" title="Deschide documentul intr-o fereastra noua" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null"  class="btn btn-default" target="_blank" onclick="toggleDivs('null')">Vizualizare</a>
-                                    -->
-                                </div>
-
-                                <div id="detaliiDocument" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
-                                    @Html.LabelFor(model => model.CurDocumentScanat.DETALII, htmlAttributes: new { @class = "control-label" })
-                                    @Html.TextAreaFor(model => model.CurDocumentScanat.DETALII, new { @class = "form-control input-sm", @style = "width:100%", data_ng_model = "model.CurDocumentScanat.DETALII" })
-                                    @Html.ValidationMessageFor(model => model.CurDocumentScanat.DETALII, "", new { @class = "text-danger" })
-                                    @Html.HiddenFor(model => model.ID_DOSAR, new { data_ng_model = "ID_DOSAR" })
-                                    @Html.HiddenFor(model => model.CurDocumentScanat.CALE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FISIER" })
-                                    @Html.HiddenFor(model => model.CurDocumentScanat.DATA_INCARCARE, new { data_ng_model = "model.CurDocumentScanat.DATA_INCARCARE" })
-                                    @Html.HiddenFor(model => model.CurDocumentScanat.DENUMIRE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FDENUMIRE_FISIERISIER" })
-                                    @Html.HiddenFor(model => model.CurDocumentScanat.DIMENSIUNE_FISIER, new { data_ng_model = "model.CurDocumentScanat.DIMENSIUNE_FISIER" })
-                                    @Html.HiddenFor(model => model.CurDocumentScanat.EXTENSIE_FISIER, new { data_ng_model = "model.CurDocumentScanat.EXTENSIE_FISIER" })
-                                    @Html.HiddenFor(model => model.CurDocumentScanat.SMALL_ICON, new { data_ng_model = "model.CurDocumentScanat.SMALL_ICON" })
-                                    <br />
-                                    @Html.Label("Salvare", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Salvare detalii", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "SaveEdit(null)" }).HasRight("editare")
-                                    <!--
-                                    <a href="#" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" ng-click="SaveEdit(null)">Salvare</a>
-                                    -->
-                                </div>
-
-                                <div ng-if = "calitateSocietateCurenta == 'CASCO'" id="incarcareFisiere" style="border:1px solid lightgray;border-radius: 4px; padding:10px;display:none; margin-top:5px;">
-                                    <div class="btn btn-primary" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="'20MB'" ngf-select="uploadFiles($files)" multiple="multiple" ng-show="curDocumentIndex > -1">Incarca fisier(e)...</div>
-                                    <br />
-                                    <div ngf-drop="uploadFiles($files)" class="drop-box"
-                                         ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'"  ngf-max-size="'20MB'"
-                                         ngf-pattern="'image/*.jpg,image/*.jpeg,image/*.png,image/*.bmp,application/pdf'">... sau Drag&Drop imagine sau fisier PDF aici</div>
-                                    <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
-                                    <p>Sunt admise doar fisiere .jpg, .jpeg, .png, .bmp si .pdf cu dimensiunea maxima de 20Mb!</p>
-                                </div>
-                            </td>
-                        </tr>
                     </table>
+                <!--
+                <div class="btn-group btn-group-justified">
+                    @Html.Label("Incarcare fisier(e)", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Ataseaza document scanat la dosar", onclick = "toggleDivs('incarcareFisiere')" }).HasRight("adaugare")
+                    @Html.Label("Detalii", new { @class = "btn btn-default", title = "Adauga/Modifica detalii la documentul scanat", onclick = "toggleDivs('detaliiDocument')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" }).HasRight("vizualizare")
+                    @Html.Label("Avizare", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Adauga documentele scanate selectate in dosar (Avizare)", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "AvizareDocument(true)" }).HasRight("avizare dosar")
+                    @Html.Label("Excludere", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Exclude documentele scanate selectate din dosar (Anulare Avizare)", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "AvizareDocument(false)" }).HasRight("avizare dosar")
+                    @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Elimina documentele scanate selectate din dosar", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "deleteDoc()" }).HasRight("stergere")
+                    @Html.Label("Vizualizare", new { @class = "btn btn-default", title = "Deschide documentul intr-o fereastra noua", onclick = "toggleDivs('null')", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "vizualizareDoc()" }).HasRight("vizualizare")
                 </div>
-            </td>
+                -->
+                <div id="detaliiDocument" class="docsDetails">
+                    @Html.LabelFor(model => model.CurDocumentScanat.DETALII, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextAreaFor(model => model.CurDocumentScanat.DETALII, new { @class = "form-control input-sm", @style = "width:100%", data_ng_model = "model.CurDocumentScanat.DETALII" })
+                    @Html.ValidationMessageFor(model => model.CurDocumentScanat.DETALII, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID_DOSAR, new { data_ng_model = "ID_DOSAR" })
+                    @Html.HiddenFor(model => model.CurDocumentScanat.CALE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FISIER" })
+                    @Html.HiddenFor(model => model.CurDocumentScanat.DATA_INCARCARE, new { data_ng_model = "model.CurDocumentScanat.DATA_INCARCARE" })
+                    @Html.HiddenFor(model => model.CurDocumentScanat.DENUMIRE_FISIER, new { data_ng_model = "model.CurDocumentScanat.CALE_FDENUMIRE_FISIERISIER" })
+                    @Html.HiddenFor(model => model.CurDocumentScanat.DIMENSIUNE_FISIER, new { data_ng_model = "model.CurDocumentScanat.DIMENSIUNE_FISIER" })
+                    @Html.HiddenFor(model => model.CurDocumentScanat.EXTENSIE_FISIER, new { data_ng_model = "model.CurDocumentScanat.EXTENSIE_FISIER" })
+                    @Html.HiddenFor(model => model.CurDocumentScanat.SMALL_ICON, new { data_ng_model = "model.CurDocumentScanat.SMALL_ICON" })
+                    <br />
+                    @Html.Label("Salvare", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", title = "Salvare detalii", a_disabled = "model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null", ng_click = "SaveEdit(null)" }).HasRight("editare")
+                    <!--
+                    <a href="#" ng-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" class="btn btn-default" ng-click="SaveEdit(null)">Salvare</a>
+                    -->
+                </div>
+
+                <div ng-if="calitateSocietateCurenta == 'CASCO'" id="incarcareFisiere" class="docsDetails">
+                    <div class="btn btn-primary" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="'20MB'" ngf-select="uploadFiles($files)" multiple="multiple" ng-show="curDocumentIndex > -1">Incarca fisier(e)...</div>
+                    <br />
+                    <div ngf-drop="uploadFiles($files)" class="drop-box"
+                         ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-accept="'image/jpeg,image/png,image/bmp,application/pdf'" ngf-max-size="'20MB'"
+                         ngf-pattern="'image/*.jpg,image/*.jpeg,image/*.png,image/*.bmp,application/pdf'">... sau Drag&Drop imagine sau fisier PDF aici</div>
+                    <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
+                    <p>Sunt admise doar fisiere .jpg, .jpeg, .png, .bmp si .pdf cu dimensiunea maxima de 20Mb!</p>
+                </div>
+
+        <div class="docsRightMenu">
+            @if (Helpers.HasRight("adaugare"))
+            {
+                <div class="docsRightMenuButton" ng-if="calitateSocietateCurenta == 'CASCO'" title="Ataseaza document scanat la dosar" onclick="toggleDivs('incarcareFisiere')">&#10010;</div>
+            }
+            @if (Helpers.HasRight("vizualizare"))
+            {
+                <div class="docsRightMenuButton" title="Adauga/Modifica detalii la documentul scanat" onclick="toggleDivs('detaliiDocument')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null">&#9997;</div>
+            }
+            @if (Helpers.HasRight("avizare dosar"))
+            {
+                <div class="docsRightMenuButton" ng-style="!model.CurDocumentScanat.VIZA_CASCO ? {'background-color':'green'} : {'background-color':'red'}" ng-if="calitateSocietateCurenta == 'CASCO'" ng-attr-title="{{!model.CurDocumentScanat.VIZA_CASCO ? 'Adauga documentele scanate selectate in dosar (Avizare)' : 'Exclude documentele scanate selectate din dosar (Anulare avizare)'}}" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="AvizareDocument(!model.CurDocumentScanat.VIZA_CASCO)">&#9989;</div>
+            }
+            @if (Helpers.HasRight("stergere"))
+            {
+                <div class="docsRightMenuButton" ng-if="calitateSocietateCurenta == 'CASCO'" title="Elimina documentele scanate selectate din dosar" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="deleteDoc()">&#9851;</div>
+            }
+            @if (Helpers.HasRight("vizualizare"))
+            {
+                <div class="docsRightMenuButton" title="Deschide documentul intr-o fereastra noua" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="vizualizareDoc()">&#10021;</div>
+            }
+        </div>
+        </div>
+        </td>
         </tr>
     </table>
 }

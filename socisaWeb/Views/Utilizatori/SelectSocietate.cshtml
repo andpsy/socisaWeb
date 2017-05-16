@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SOCISA.Models.SocietateAsigurare>
+﻿@model SOCISA.Models.SocietateAsigurare[]
 
 @{
     ViewBag.Title = "Selectare societate";
@@ -13,9 +13,12 @@
             <div class="panel-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
+                    @Html.DropDownList("Societate", new SelectList( Model, "ID", "DENUMIRE"), "Selectati Societatea", new { @class = "form-control" })
+
+                    <!--
                     <table class="table table-hover">
                         @foreach (var item in Model)
-                {
+                        {
                             <tr>
                                 <td>
                                     @Html.RadioButtonFor(modelItem => item.ID, item.ID)
@@ -26,6 +29,7 @@
                             </tr>
                         }
                     </table>
+                    -->
                 </div>
                 <div class="form-group">
 

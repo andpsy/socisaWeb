@@ -515,7 +515,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
             if (response != 'null' && response != null && response.data != null) {
                 try {
                     if (response.data.Status)
-                        $window.open("pdfs/" + response.data.Message);
+                        $window.open("../pdfs/" + response.data.Message);
                 } catch (e) {;}
             }
             //spinner.stop();

@@ -1,4 +1,5 @@
-﻿@model socisaWeb.UtilizatorView
+﻿@using socisaWeb.Helpers 
+@model socisaWeb.UtilizatorView
 @{
     ViewBag.Title = "Utilizatori";
     //Layout = "~/Views/Shared/_LayoutUtilizatori.cshtml";
@@ -8,9 +9,17 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div id="main" style="background-color:white;" ng-controller="UtilizatoriController">
+    <div id="main" style="background-color:white;" ng-controller="UtilizatoriController" ng-cloak>
         <nav class="navbar navbar-default">
             <div class="container-fluid" ng-init="@String.Format("model = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav">
                         <li><a href="#" a-disabled="true">Utilizator:</a></li>
@@ -23,6 +32,14 @@
                         <li ng-if="UtilizatorJson.Utilizator.ID != null"><a href="#" a-disabled="true" style="{{UtilizatorJson.Utilizator.IS_ONLINE == true ? 'color:green;' : 'color:red;'}}"><b>{{UtilizatorJson.Utilizator.IS_ONLINE == true ? "ONLINE" : "OFFLINE"}} </b></a></li>
                         <li ng-if="UtilizatorJson.Utilizator.ID != null"><a href="#" a-disabled="true">ULTIMUL LOGIN LA: {{UtilizatorJson.Utilizator.LAST_LOGIN | date : "dd.MM.yyyy HH:mm:ss"}} </a></li>
                     </ul>
+                    @if (Helpers.HasRight("adaugare"))
+                    {
+                        <button type="button" class="btn btn-default" style="margin-top:5px" title="Adauga utilizator" ng-click="NewUtilizator()"> + </button>
+                    }
+                    @if (Helpers.HasRight("stergere"))
+                    {
+                        <button ng-if="UtilizatorJson.Utilizator.ID != null" type="button" class="btn btn-default" style="margin-top:5px" title="Sterge utilizator" ng-click="DeleteUtilizator()"> - </button>
+                    }
                 </div>
             </div>
         </nav>
@@ -41,7 +58,7 @@
         </div>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="detalii">
-                <table ng-if="UtilizatorJson.Utilizator.ID != null" style="margin:10px;padding:10px;">
+                <table ng-if="UtilizatorJson.Utilizator != null" style="margin:10px;padding:10px;">
                     <tbody>
                         <tr>
                             <td style="padding:5px;">
@@ -102,9 +119,7 @@
                                 <label class="control-label">Password:</label>
                             </td>
                             <td style="padding:5px;">
-                                <!--
-                                <input class="form-control input-sm" id="inputSmall" type="password" ng-model="UtilizatorJson.Utilizator.PASSWORD">
-                                -->
+                                <input class="form-control input-sm" id="password" type="password" ng-model="tPassword" ng-change="SetPassword()">
                             </td>
                         </tr>
                         <tr>
@@ -137,7 +152,8 @@
                         </tr>
                         <tr>
                             <td colspan="4">
-                                <a href="#" class="btn btn-primary btn-sm" ng-click="SaveUtilizator()">Salvare</a>
+                                <a href="#" ng-if="UtilizatorJson.Utilizator != null" class="btn btn-primary btn-sm" ng-click="SaveUtilizator()">Salvare</a>
+                                <a href="#" ng-if="UtilizatorJson.Utilizator != null && editMode" class="btn btn-default btn-sm" ng-click="CancelAdd()">Renunta</a>
                             </td>
                         </tr>
                     </tbody>

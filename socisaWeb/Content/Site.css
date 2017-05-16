@@ -1,4 +1,8 @@
-﻿body {
+﻿[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+body {
   background: url(citysky.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -145,6 +149,7 @@ a.disabled {
     background-color:white;
     overflow-y:auto;
     height:680px;
+    position:relative;
 }
 
 .drop-box{
@@ -314,4 +319,52 @@ a.disabled {
 }
 
 .checkForImport{
+}
+
+.docsRightMenu{
+    height: 215px;
+    width: 40px;
+    top: 210px;
+    background: gray;
+    display: inline-block;
+    position: absolute;
+    right: 16px;
+    margin: auto;
+    float: right;
+    border-radius: 2px;
+    box-shadow: 5px 5px 5px black;
+    opacity: 0.9;
+    padding:4px;
+    overflow-y:hidden;
+}
+
+.docsRightMenuButton{
+    border-radius: 50%;
+    background-color: red;
+    color: wheat;
+    text-align: center;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    font-size: 15pt;
+    box-shadow: 3px 3px 3px black;
+    cursor:pointer;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+.docsDetails{
+    position:absolute;
+    width:100%;
+    bottom:0;
+    height:240px;
+    border:1px solid lightgray;
+    border-radius: 4px; 
+    padding:10px;
+    display:none; 
+    margin-top:5px;
+    box-shadow: 3px 3px 3px black;
+    opacity: 0.9;
+    background-color:white;
 }

@@ -10,6 +10,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
     $scope.ID_UTILIZATOR = null;
     $scope.model = {};
     $scope.model.UtilizatorJson = {};
+    $scope.model.UtilizatorJson.UtilizatoriSubordonati = [];
     $scope.model.Drepturi = [];
     $scope.model.Actions = [];
     $scope.model.TipuriUtilizator = [];
@@ -17,11 +18,14 @@ function ($scope, $http, $filter, $rootScope, $q) {
     $scope.model.SocietatiAsigurareAdministrate = [];
     $scope.TipUtilizator = {};
     $scope.UtilizatorJson = {};
+    $scope.UtilizatorJson.Utilizator = null;
     $scope.SocietateAsigurare = {};
     $scope.NewRights = [];
     $scope.NewActions = [];
     $scope.NewSocietatiAdministrate = [];
     $scope.result = [];
+    $scope.editMode = false;
+    $scope.tPassword = "";
 
     $scope.toggleDrepturiChecks = function (id_prefix) {
         var e_id = "#" + id_prefix + "all";
@@ -134,6 +138,50 @@ function ($scope, $http, $filter, $rootScope, $q) {
         });
     };
 
+    $scope.SetPassword = function () {
+        var p = $("#password").val();
+        $scope.UtilizatorJson.Utilizator.PASSWORD = p;
+    };
+
+    $scope.NewUtilizator = function () {
+        $scope.ID_UTILIZATOR = null;
+        /*
+        $scope.model = {};
+        $scope.model.UtilizatorJson = {};
+        $scope.model.Drepturi = [];
+        $scope.model.Actions = [];
+        $scope.model.TipuriUtilizator = [];
+        $scope.model.SocietatiAsigurare = [];
+        $scope.model.SocietatiAsigurareAdministrate = [];
+        */
+        $scope.TipUtilizator = {};
+        $scope.UtilizatorJson = {};
+        $scope.UtilizatorJson.Utilizator = {};
+        $scope.UtilizatorJson.TipUtilizator = {};
+        $scope.UtilizatorJson.SocietateAsigurare = {};
+        $scope.UtilizatorJson.Drepturi = [];
+        $scope.UtilizatorJson.Actions = [];
+        $scope.UtilizatorJson.UtilizatoriSubordonati = [];
+        $scope.UtilizatorJson.SocietatiAsigurareAdministrate = [];        
+        $scope.SocietateAsigurare = {};
+        $scope.NewRights = [];
+        $scope.NewActions = [];
+        $scope.NewSocietatiAdministrate = [];
+        $scope.result = [];
+        $scope.setActiuniActive();
+        $scope.setDrepturiActive();
+        $scope.setSocietatiAdministrateActive();
+        $scope.editMode = true;
+        //$rootScope.setActiveTab("detalii");
+        $('.nav-tabs a[href="#detalii"]').tab('show');
+    };
+
+    $scope.CancelAdd = function () {
+        $scope.NewUtilizator();
+        $scope.UtilizatorJson.Utilizator = null;
+        $scope.editMode = false;
+    };
+
     $scope.SaveUtilizator = function () {
         spinner.spin(document.getElementById('main'));
         $http.post('/Utilizatori/Save', $scope.UtilizatorJson.Utilizator)
@@ -144,6 +192,47 @@ function ($scope, $http, $filter, $rootScope, $q) {
                     $scope.showMessage = true;
                     $scope.result.push(response.data);
                     if (response.data.Status) {
+                        if (response.data.InsertedId != null) {
+                            try {
+                                $scope.UtilizatorJson.Utilizator.ID = $scope.ID_UTILIZATOR = response.data.InsertedId;
+                                angular.copy($scope.TipUtilizator, $scope.UtilizatorJson.TipUtilizator);
+                                angular.copy($scope.SocietateAsigurare, $scope.UtilizatorJson.SocietateAsigurare);
+                                $scope.model.UtilizatorJson.UtilizatoriSubordonati.push($scope.UtilizatorJson);
+                            }
+                            catch (e) { alert(e); }
+                        }
+                    }
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
+                    $scope.editMode = false;
+                }
+                spinner.stop();
+            }, function (response) {
+                spinner.stop();
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+            });
+    };
+
+    $scope.DeleteUtilizator = function () {
+        spinner.spin(document.getElementById('main'));
+        $http.post('/Utilizatori/Delete', { id: $scope.UtilizatorJson.Utilizator.ID })
+            .then(function (response) {
+                if (response != 'null' && response != null && response.data != null) {
+                    $scope.result = [];
+                    $('.alert').show();
+                    $scope.showMessage = true;
+                    $scope.result.push(response.data);
+                    if (response.data.Status) {
+                        var uIdx = -1;
+                        for (var i = 0; i < $scope.model.UtilizatorJson.UtilizatoriSubordonati.length; i++) {
+                            if ($scope.model.UtilizatorJson.UtilizatoriSubordonati[i].Utilizator.ID === $scope.UtilizatorJson.Utilizator.ID) {
+                                uIdx = i;
+                                break;
+                            }
+                        }
+                        if(uIdx != -1)
+                            $scope.model.UtilizatorJson.UtilizatoriSubordonati.splice(uIdx, 1);
+                        $scope.NewUtilizator();
+                        $scope.UtilizatorJson.Utilizator = null;
                     }
                     $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                 }

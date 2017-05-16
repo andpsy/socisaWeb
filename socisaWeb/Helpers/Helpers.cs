@@ -35,5 +35,28 @@ namespace socisaWeb.Helpers
             }
             return hasRight ? value : MvcHtmlString.Empty;
         }
+
+        public static bool HasRight(string right)
+        {
+            bool hasRight = false;
+            SOCISA.Models.Nomenclator n = (SOCISA.Models.Nomenclator)HttpContext.Current.Session["CURENT_USER_TYPE"];
+            if (n.DENUMIRE.ToLower() == "administrator")
+            {
+                hasRight = true;
+            }
+            else
+            {
+                SOCISA.Models.Drept[] ds = (SOCISA.Models.Drept[])HttpContext.Current.Session["CURENT_USER_RIGHTS"];
+                foreach (SOCISA.Models.Drept d in ds)
+                {
+                    if (d.DENUMIRE == right || d.DENUMIRE.ToLower() == "administrare")
+                    {
+                        hasRight = true;
+                        break;
+                    }
+                }
+            }
+            return hasRight;
+        }
     }
 }

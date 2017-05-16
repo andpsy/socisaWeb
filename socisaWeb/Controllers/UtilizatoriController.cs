@@ -57,6 +57,20 @@ namespace socisaWeb
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            response r = new response();
+
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            UtilizatoriRepository ur = new UtilizatoriRepository(_CURENT_USER_ID, conStr);
+            Utilizator u = new Utilizator(_CURENT_USER_ID, conStr, id);
+            r = u.Delete();
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -130,12 +144,23 @@ namespace socisaWeb
         [HttpPost]
         public ActionResult SelectSocietate(FormCollection model)
         {
+            /* -- modelul cu lista --
             if(model["item.ID"] != null)
             {
                 string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
                 Session["ID_SOCIETATE"] = model["item.ID"];
                 SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
                 SocietateAsigurare sa = (SocietateAsigurare)sar.Find(Convert.ToInt32(model["item.ID"])).Result;
+                Session["SOCIETATE_ASIGURARE"] = sa;
+                return RedirectToAction("Index", "Home");
+            }
+            */
+            if (model["Societate"] != null)
+            {
+                string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+                Session["ID_SOCIETATE"] = model["Societate"];
+                SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+                SocietateAsigurare sa = (SocietateAsigurare)sar.Find(Convert.ToInt32(model["Societate"])).Result;
                 Session["SOCIETATE_ASIGURARE"] = sa;
                 return RedirectToAction("Index", "Home");
             }
