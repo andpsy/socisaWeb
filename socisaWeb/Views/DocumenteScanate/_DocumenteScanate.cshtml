@@ -117,29 +117,29 @@
                     <p>Sunt admise doar fisiere .jpg, .jpeg, .png, .bmp si .pdf cu dimensiunea maxima de 20Mb!</p>
                 </div>
 
-        <div class="docsRightMenu">
-            @if (Helpers.HasRight("adaugare"))
-            {
-                <div class="docsRightMenuButton" ng-if="calitateSocietateCurenta == 'CASCO'" title="Ataseaza document scanat la dosar" onclick="toggleDivs('incarcareFisiere')">&#10010;</div>
-            }
-            @if (Helpers.HasRight("vizualizare"))
-            {
-                <div class="docsRightMenuButton" title="Adauga/Modifica detalii la documentul scanat" onclick="toggleDivs('detaliiDocument')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null">&#9997;</div>
-            }
-            @if (Helpers.HasRight("avizare dosar"))
-            {
-                <div class="docsRightMenuButton" ng-style="!model.CurDocumentScanat.VIZA_CASCO ? {'background-color':'green'} : {'background-color':'red'}" ng-if="calitateSocietateCurenta == 'CASCO'" ng-attr-title="{{!model.CurDocumentScanat.VIZA_CASCO ? 'Adauga documentele scanate selectate in dosar (Avizare)' : 'Exclude documentele scanate selectate din dosar (Anulare avizare)'}}" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="AvizareDocument(!model.CurDocumentScanat.VIZA_CASCO)">&#9989;</div>
-            }
-            @if (Helpers.HasRight("stergere"))
-            {
-                <div class="docsRightMenuButton" ng-if="calitateSocietateCurenta == 'CASCO'" title="Elimina documentele scanate selectate din dosar" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="deleteDoc()">&#9851;</div>
-            }
-            @if (Helpers.HasRight("vizualizare"))
-            {
-                <div class="docsRightMenuButton" title="Deschide documentul intr-o fereastra noua" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="vizualizareDoc()">&#10021;</div>
-            }
-        </div>
-        </div>
+                <div class="docsRightMenu">
+                    @if (Helpers.HasRight("adaugare"))
+                    {
+                        <div class="docsRightMenuButton" ng-if="calitateSocietateCurenta == 'CASCO'" title="Ataseaza document scanat la dosar" onclick="toggleDivs('incarcareFisiere')">&#10010;</div>
+                    }
+                    @if (Helpers.HasRight("vizualizare"))
+                    {
+                        <div class="docsRightMenuButton" title="Adauga/Modifica detalii la documentul scanat" onclick="toggleDivs('detaliiDocument')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null">&#9997;</div>
+                    }
+                    @if (Helpers.HasRight("avizare dosar"))
+                    {
+                        <div class="docsRightMenuButton" ng-style="!model.CurDocumentScanat.VIZA_CASCO ? {'background-color':'green'} : {'background-color':'red'}" ng-if="calitateSocietateCurenta == 'CASCO'" ng-attr-title="{{!model.CurDocumentScanat.VIZA_CASCO ? 'Adauga documentele scanate selectate in dosar (Avizare)' : 'Exclude documentele scanate selectate din dosar (Anulare avizare)'}}" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="AvizareDocument(!model.CurDocumentScanat.VIZA_CASCO)">&#9989;</div>
+                    }
+                    @if (Helpers.HasRight("stergere"))
+                    {
+                        <div class="docsRightMenuButton" ng-if="calitateSocietateCurenta == 'CASCO'" title="Elimina documentele scanate selectate din dosar" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="deleteDoc()">&#9851;</div>
+                    }
+                    @if (Helpers.HasRight("vizualizare"))
+                    {
+                        <div class="docsRightMenuButton" title="Deschide documentul intr-o fereastra noua" onclick="toggleDivs('null')" a-disabled="model.CurDocumentScanat == null || model.CurDocumentScanat.ID == null" ng-click="vizualizareDoc()">&#10021;</div>
+                    }
+                </div>
+            </div>
         </td>
         </tr>
     </table>

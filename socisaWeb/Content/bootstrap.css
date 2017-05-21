@@ -4033,7 +4033,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs > li {
   float: left;
-  margin-bottom: -1px;
+  margin-bottom: -2px;
 }
 .nav-tabs > li > a {
   margin-right: 2px;
@@ -4050,7 +4050,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #666666;
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  border-bottom-color: transparent;
+  /* border-bottom-color: transparent;  */
+  border-bottom: 0px solid transparent;
   cursor: default;
 }
 .nav-tabs.nav-justified {

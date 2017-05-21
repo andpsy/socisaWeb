@@ -54,16 +54,22 @@ function ($scope, $http, $filter, $rootScope, $window, Upload, ngDialog, Promise
         try {
             for (var i = 0; i < $scope.model.TipuriDocumente.length; i++) {
                 if ($scope.model.TipuriDocumente[i].TipDocument.ID == id_tip_document) {
-                    if ($scope.model.TipuriDocumente[i].DocumenteScanate == null || $scope.model.TipuriDocumente[i].DocumenteScanate.length == 0) return 0;
+                    //alert($scope.model.TipuriDocumente[i].DocumenteScanate);
+                    if ($scope.model.TipuriDocumente[i].DocumenteScanate == null || $scope.model.TipuriDocumente[i].DocumenteScanate.length == 0) {
+                        //alert('0');
+                        return 0;
+                    }
                     for (var j = 0; j < $scope.model.TipuriDocumente[i].DocumenteScanate.length; j++) {
                         if ($scope.model.TipuriDocumente[i].DocumenteScanate[j].VIZA_CASCO) {
+                            //alert('2');
                             return 2;
                         }
                     }
                 }
             }
+            //alert('1');
             return 1; // 2 = AVIZAT / 1 = are document, dar nu e avizat.
-        } catch (e) { return 0; }
+        } catch (e) { alert(e); return 0; }
     };
 
 

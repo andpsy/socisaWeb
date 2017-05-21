@@ -58,5 +58,14 @@ namespace socisaWeb.Helpers
             }
             return hasRight;
         }
+
+        public static bool Avizare(int id)
+        {
+            string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            SOCISA.Models.Utilizator u = (SOCISA.Models.Utilizator)HttpContext.Current.Session["CURENT_USER"];
+            SOCISA.Models.DosareRepository dr = new SOCISA.Models.DosareRepository(Convert.ToInt32(u.ID), conStr);
+            SOCISA.Models.Dosar d = (SOCISA.Models.Dosar)dr.Find(id).Result;
+            return d.ValidareAvizare().Status;
+        }
     }
 }

@@ -2,9 +2,9 @@
     ViewBag.Title = "Dosare";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="main" style="background-color:white;" ng-controller="DosareNavigatorController">
+<div id="main" ng-style="dynaStyle" ng-controller="DosareNavigatorController">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#detalii" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
+        <li class="active"><a href="#detalii" class="grad_tab" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
         <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('documente')">DOCUMENTE</a></li>
         <li class=""><a href="#mesaje" data-toggle="tab" aria-expanded="false" id="lnkMesajeDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('mesaje')">MESAJE</a></li>
     </ul>
@@ -27,5 +27,33 @@
                 Html.RenderAction("Index", "Mesaje");
             }
         </div>
+    </div>
+    <div class="calitateSocietate" ng-show="activeTab == 'detalii'">
+        <table>
+            <tr>
+                <td>
+                    @{
+                        string soc = ((SOCISA.Models.SocietateAsigurare)Session["SOCIETATE_ASIGURARE"]).DENUMIRE;
+                    }
+                    <span class="navbar-brand" a-disabled="true">Calitate @soc :</span>
+                </td>
+                <td>
+                    <div class="radio">
+                        <label class="label_casco">
+                            <input name="optionsRadios" id="CASCO" value="CASCO" checked="" type="radio" ng-model="tmpCalitateSocietate" ng-disabled="editMode > 0">
+                            Pagubit (CASCO)
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="radio">
+                        <label class="label_rca">
+                            <input name="optionsRadios" id="RCA" value="RCA" type="radio" ng-model="tmpCalitateSocietate" ng-disabled="editMode > 0">
+                            Vinovat (RCA)
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

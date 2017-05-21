@@ -39,9 +39,9 @@ namespace socisaWeb
 
         public DashboardJson() { }
 
-        public DashboardJson(int ID_UTILIZATOR, string conStr)
+        public DashboardJson(int ID_UTILIZATOR, int ID_SOCIETATE, string conStr)
         {
-            DataAccess da = new DataAccess(ID_UTILIZATOR, conStr, System.Data.CommandType.StoredProcedure, "DASHBOARDsp_select");
+            DataAccess da = new DataAccess(ID_UTILIZATOR, conStr, System.Data.CommandType.StoredProcedure, "DASHBOARDsp_select", new object[] { new MySql.Data.MySqlClient.MySqlParameter("_ID_SOCIETATE", ID_SOCIETATE) });
             MySql.Data.MySqlClient.MySqlDataReader r = da.ExecuteSelectQuery();
             while (r.Read())
             {

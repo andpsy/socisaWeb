@@ -1,4 +1,4 @@
-﻿var MESSAGE_DELAY = 4000;
+﻿var MESSAGE_DELAY = 3000;
 var MESSAGE_FADE_OUT = 2000;
 
 function setRequiredFields() {
@@ -14,11 +14,46 @@ function setRequiredFields() {
     });
 };
 
+function ToggleDiv(divId) {
+    var top = document.getElementById('main').offsetTop;
+    var left = document.getElementById('main').offsetLeft;
+    var height = document.getElementById('main').offsetHeight;
+    var width = document.getElementById('main').offsetWidth;
+    var right = left + width;
+    //alert('dims: ' + top + '-' + left + '-' + height + '-' + width + '-' + right);
+    /*
+    document.getElementById('main').style.left = (left - width) + 'px';
+    document.getElementById(divId).style.top = top + 'px';
+    document.getElementById(divId).style.left = right + 'px';
+    document.getElementById(divId).style.height = height + 'px';
+    document.getElementById(divId).style.width = width + 'px';
+    document.getElementById(divId).style.left = left + 'px';
+    */
+    //document.getElementById(divId).style.top = top + 'px';
+    document.getElementById(divId).style.marginLeft = document.getElementById('main').style.marginLeft;
+    $('#main').fadeOut(1000, function () {
+        var did = '#' + divId;
+        $(did).fadeIn(1000);
+        var mDiv = document.getElementById(divId);
+        var oDiv = document.getElementById('main');
+        var tmpId = mDiv.id;
+        mDiv.id = oDiv.id;
+        oDiv.id = tmpId;
+    });
+};
+
 var app = angular.module('SocisaApp', ['ngFileUpload', 'ngAnimate', 'ngDialog']);
 
 app.run(function ($http) {
     $http.defaults.headers.common['__RequestVerificationToken'] = angular.element('input[name="__RequestVerificationToken"]').attr('value');
     $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+
+    //disable IE ajax request caching
+    //$http.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+    // extra
+    $http.defaults.headers.common['Cache-Control'] = 'no-cache';
+    $http.defaults.headers.common['Pragma'] = 'no-cache';
 });
 
 app.config(['$compileProvider',
@@ -146,13 +181,17 @@ app.factory('myService', function ($http, $q) {
             return $http.get(url)
                 .then(function (response) {
                     return response;
-                }, function (response) { return response; })
+                }, function (response) {
+                    return response;
+                })
         }
         if (method == 'POST') {
             return $http.post(url, data)
                 .then(function (response) {
                     return response;
-                }, function (response) { return response; })
+                }, function (response) {
+                    return response;
+                })
         }
     }
     return this;

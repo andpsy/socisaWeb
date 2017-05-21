@@ -148,7 +148,8 @@ namespace socisaWeb.Controllers
             Auto autoRca = (Auto)d.GetAutoRca().Result;
             Intervenient i = (Intervenient)d.GetIntervenient().Result;
             Nomenclator tipDosar = (Nomenclator)d.GetTipDosar().Result;
-            string toReturn = "{\"aCasco\":" + JsonConvert.SerializeObject(aCasco) + ",\"aRca\":" + JsonConvert.SerializeObject(aRca) + ",\"autoCasco\":" + JsonConvert.SerializeObject(autoCasco) + ",\"autoRca\":" + JsonConvert.SerializeObject(autoRca) + ",\"intervenient\":" + JsonConvert.SerializeObject(i) + ",\"tipDosar\":" + JsonConvert.SerializeObject(tipDosar) + "}";
+            bool validForAvizare = d.ValidareAvizare().Status;
+            string toReturn = "{\"aCasco\":" + JsonConvert.SerializeObject(aCasco) + ",\"aRca\":" + JsonConvert.SerializeObject(aRca) + ",\"autoCasco\":" + JsonConvert.SerializeObject(autoCasco) + ",\"autoRca\":" + JsonConvert.SerializeObject(autoRca) + ",\"intervenient\":" + JsonConvert.SerializeObject(i) + ",\"tipDosar\":" + JsonConvert.SerializeObject(tipDosar) + ",\"validForAvizare\":" + validForAvizare.ToString().ToLower() + "}";
             object j = JsonConvert.DeserializeObject(toReturn);
             return Json(toReturn, JsonRequestBehavior.AllowGet);
         }
@@ -410,6 +411,18 @@ namespace socisaWeb.Controllers
             {
                 r.Result = r.Message = r.Message.Substring(r.Message.LastIndexOf("\\") + 1);
             }
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
+        [HttpPost]
+        public JsonResult Avizare(int id, bool avizat)
+        {
+            response r = new response();
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
+            r = dr.Avizare(id, avizat);
             return Json(r, JsonRequestBehavior.AllowGet);
         }
     }

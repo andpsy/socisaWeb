@@ -26,6 +26,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
     $scope.result = [];
     $scope.editMode = false;
     $scope.tPassword = "";
+    $scope.setPassword = false;
 
     $scope.toggleDrepturiChecks = function (id_prefix) {
         var e_id = "#" + id_prefix + "all";
@@ -139,8 +140,34 @@ function ($scope, $http, $filter, $rootScope, $q) {
     };
 
     $scope.SetPassword = function () {
+        /*
         var p = $("#password").val();
         $scope.UtilizatorJson.Utilizator.PASSWORD = p;
+        */
+        var p = $("#password").val();
+        var cp = $("#confirmPassword").val();
+        spinner.spin(document.getElementById('main'));
+        $http.post('/Utilizatori/SetPassword', { id_utilizator : $scope.UtilizatorJson.Utilizator.ID, password : p, confirmPassword : cp })
+            .then(function (response) {
+                if (response != 'null' && response != null && response.data != null) {
+                    $scope.result = [];
+                    $('.alert').show();
+                    $scope.showMessage = true;
+                    $scope.result.push(response.data);
+                    if (response.data.Status) {
+                        $scope.setPassword = false;
+                    }
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
+                }
+                spinner.stop();
+            }, function (response) {
+                spinner.stop();
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+            });
+    };
+
+    $scope.showPassword = function (b) {
+        $scope.setPassword = b;
     };
 
     $scope.NewUtilizator = function () {

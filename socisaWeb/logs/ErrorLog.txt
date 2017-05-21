@@ -773,3 +773,1003 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at System.Web.Security.FormsAuthentication.SignOut()
    at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
 =====================================================
+17.05.2017 22:44:55
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
+=====================================================
+18.05.2017 07:13:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:13:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:13:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:13:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:13:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:13:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:15:26
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:15:26
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:15:26
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:15:26
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:15:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+18.05.2017 07:15:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:45
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:30:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 07:31:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 09:52:44
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
+=====================================================
+19.05.2017 16:39:51
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+19.05.2017 16:40:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 16:40:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+19.05.2017 16:40:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+20.05.2017 18:39:51
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+20.05.2017 18:39:52
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+20.05.2017 18:40:26
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+20.05.2017 18:40:26
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+20.05.2017 18:41:07
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+20.05.2017 18:41:08
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+20.05.2017 18:41:53
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+20.05.2017 18:41:54
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+20.05.2017 18:42:31
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+20.05.2017 18:42:32
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+20.05.2017 21:21:29
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
+=====================================================
+21.05.2017 10:48:49
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 10:48:49
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 10:48:49
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 10:48:50
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 13:45:27
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
+=====================================================
+21.05.2017 16:39:52
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
+=====================================================
+21.05.2017 17:40:19
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 40
+=====================================================
+21.05.2017 21:06:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:06:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:06:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:06:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:07:41
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:07:41
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:07:41
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:07:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:07:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 21:07:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:31:19
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:31:21
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:34:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:34:48
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:35:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:35:22
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:36:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:36:23
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:36:59
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:37:00
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:38:41
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:38:41
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:40:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:40:21
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:40:50
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:40:50
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:41:10
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:41:11
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:42:11
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:42:12
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:43:00
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:43:01
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:44:36
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:44:37
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:44:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:44:43
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:47:06
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 69
+=====================================================
+21.05.2017 22:47:06
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:48:00
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+21.05.2017 22:52:19
+System.ArgumentOutOfRangeException: Width cannot be less than or equal to zero.
+Parameter name: Width
+   at Xfinium.Pdf.Graphics.PdfJpegImage.set_Width(Int32 value)
+   at Xfinium.Pdf.Graphics.PdfJpegImage.DeployToolbox(Stream parentKeywords)
+   at Xfinium.Pdf.Graphics.PdfJpegImage..ctor(Stream stream)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 372
+=====================================================
+21.05.2017 23:04:15
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================

@@ -26,7 +26,8 @@ function showDosareSideNav(on_off) {
 
 app.controller('DosareNavigatorController',
 function ($scope, $http, $filter, $rootScope, $window) {
-    $rootScope.activeTab = "";
+    $rootScope.activeTab = "detalii";
+    $rootScope.dynaStyle = $rootScope.dynaStyleDefault = { 'background-color': 'white' };
     $scope.tmpCalitateSocietate = "CASCO"
     $rootScope.calitateSocietateCurenta = "CASCO";
     $scope.searchMode = 1;
@@ -38,13 +39,34 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.result = {};
     $scope.IDSocietateRep = "";
     $scope.Interactive = false;
+    $scope.validForAvizare = false;
 
     $rootScope.setActiveTab = function (atab) {
         $rootScope.activeTab = atab;
+
+        var lnkId = "#lnkDosareDetalii";
+        switch ($rootScope.activeTab) {
+            case "detalii":
+                lnkId = "#lnkDosareDetalii";
+                break;
+            case "documente":
+                lnkId = "#lnkDocumenteScanateDetalii";
+                break;
+            case "mesaje":
+                lnkId = "#lnkMesajeDetalii";
+                break;
+        }
+        $scope.switchTabsClass(lnkId);
     };
 
-    $scope.$watch('tmpCalitateSocietate', function(newValue, oldValue){
+    $scope.$watch('tmpCalitateSocietate', function (newValue, oldValue) {
+        //alert(newValue);
         $rootScope.calitateSocietateCurenta = newValue;
+        if ($scope.editMode == 0 && newValue != oldValue) {
+            //alert($scope.searchMode + ' - ' + $scope.editMode);
+            //$scope.searchMode = 2;
+            $scope.SwitchBackToSearchMode();
+        }
     });
 
     $rootScope.$watch('calitateSocietateCurenta', function (newValue, oldValue) {
@@ -340,10 +362,12 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $scope.SwitchBackToSearchMode = function () {
         if ($scope.editMode == 1) return;
-
         //$scope.tmpIdSocietateCasco = $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO;
         //$scope.tmpIdSocietateRca = $scope.DosarFiltru.Dosar.ID_SOCIETATE_RCA;
         $scope.searchMode = 2;
+        $scope.switchTabsClass("#lnkDosareDetalii");
+        $rootScope.dynaStyle = $rootScope.dynaStyleDefault;
+
         angular.copy($scope.TempDosarFilter, $scope.DosarFiltru);
         if ($rootScope.calitateSocietateCurenta == "CASCO")
             $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO = $scope.IDSocietateRep;
@@ -399,6 +423,10 @@ function ($scope, $http, $filter, $rootScope, $window) {
                     $scope.DosarFiltru.dosarJson.NumarAutoRca = j.autoRca.NR_AUTO;
                     $scope.DosarFiltru.dosarJson.NumeIntervenient = j.intervenient.DENUMIRE;
                     //$scope.DosarFiltru.dosarJson.TipDosar = j.tipDosar.DENUMIRE;
+                    $scope.validForAvizare = j.validForAvizare;
+
+                    $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : { 'background-color': '#f8eeee' };
+                    $scope.switchTabsClass("#lnkDosareDetalii");
                 } catch (e) { }
             }
             //spinner.stop();
@@ -406,6 +434,19 @@ function ($scope, $http, $filter, $rootScope, $window) {
             alert('Erroare: ' + response.status + ' - ' + response.data);
             //spinner.stop();
         });        
+    };
+
+    $scope.switchTabsClass = function (lnkId) {
+        $("#lnkDosareDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
+        $("#lnkDocumenteScanateDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
+        $("#lnkMesajeDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
+
+        var classToAdd = "";
+        if ($scope.searchMode == 2)
+            classToAdd = "grad_tab";
+        else
+            classToAdd = $scope.DosarFiltru.Dosar.AVIZAT ? "grad_tab_avizat" : "grad_tab_neavizat";
+        $(lnkId).addClass(classToAdd);
     };
 
     $scope.CheckChanged = function (e) {
@@ -516,6 +557,12 @@ function ($scope, $http, $filter, $rootScope, $window) {
                 try {
                     if (response.data.Status)
                         $window.open("../pdfs/" + response.data.Message);
+                    else {
+                        $('.alert').show();
+                        $scope.showMessage = true;
+                        $scope.result = response.data;
+                        $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
+                    }
                 } catch (e) {;}
             }
             //spinner.stop();
@@ -526,10 +573,32 @@ function ($scope, $http, $filter, $rootScope, $window) {
     };
 
     $scope.AvizareDosar = function (_avizat) {
+        /*
         $scope.DosarFiltru.Dosar.AVIZAT = _avizat;
         var d = new Date();
         var ds = (((d.getDate() < 10 ? "0" : "") + d.getDate()) + "." + ((d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1)) + "." + d.getFullYear());
         $scope.DosarFiltru.Dosar.DATA_AVIZARE = ds;
         $scope.SaveEdit();
+        */
+        spinner.spin(document.getElementById('main'))
+        $http.post('/Dosare/Avizare', { id : $scope.DosarFiltru.Dosar.ID, avizat : _avizat})
+            .then(function (response) {
+                if (response != 'null' && response != null && response.data != null) {
+                    $('.alert').show();
+                    $scope.showMessage = true;
+                    $scope.result = response.data;
+                    if ($scope.result.Status) {
+                        $scope.DosarFiltru.Dosar.AVIZAT = _avizat;
+                        var d = new Date();
+                        var ds = (((d.getDate() < 10 ? "0" : "") + d.getDate()) + "." + ((d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1)) + "." + d.getFullYear());
+                        $scope.DosarFiltru.Dosar.DATA_AVIZARE = ds;
+                    }
+                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
+                }
+                spinner.stop();
+            }, function (response) {
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+                spinner.stop();
+            });
     };
 });

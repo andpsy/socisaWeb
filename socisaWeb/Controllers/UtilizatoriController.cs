@@ -59,6 +59,23 @@ namespace socisaWeb
 
         [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
         [HttpPost]
+        public JsonResult SetPassword(int id_utilizator, string password, string confirmPassword)
+        {
+            response r = new response();
+            if(password != confirmPassword) // alte validari aici !!!
+            {
+                r = new response(false, "Parolele nu coincid!", null, null, new List<Error>() { ErrorParser.ErrorMessage("passwordsDontMatch") });
+                return Json(r, JsonRequestBehavior.AllowGet);
+            }
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            UtilizatoriRepository ur = new UtilizatoriRepository(_CURENT_USER_ID, conStr);
+            r = ur.SetPassword(id_utilizator, password);
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
+        [HttpPost]
         public JsonResult Delete(int id)
         {
             response r = new response();
@@ -95,6 +112,7 @@ namespace socisaWeb
                 Utilizator u = (Utilizator)r.Result;
                 u.IS_ONLINE = true;
                 Session["LAST_LOGIN"] = DateTime.Now;
+                //string s = "{'IS_ONLINE':true}";
                 u.Update();
                 Session["CURENT_USER"] = u;
                 Session["CURENT_USER_ID"] = u.ID;
@@ -144,27 +162,35 @@ namespace socisaWeb
         [HttpPost]
         public ActionResult SelectSocietate(FormCollection model)
         {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            Utilizator u = (Utilizator)Session["CURENT_USER"];
+            SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(u.ID), conStr);
+            SocietateAsigurare[] sas = (SocietateAsigurare[])sar.GetAll().Result;
+            if (!ModelState.IsValid)
+            {
+                return View(sas);
+            }
             /* -- modelul cu lista --
             if(model["item.ID"] != null)
             {
-                string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
                 Session["ID_SOCIETATE"] = model["item.ID"];
-                SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
                 SocietateAsigurare sa = (SocietateAsigurare)sar.Find(Convert.ToInt32(model["item.ID"])).Result;
                 Session["SOCIETATE_ASIGURARE"] = sa;
                 return RedirectToAction("Index", "Home");
             }
             */
-            if (model["Societate"] != null)
+            if (model["Societate"] != null && model["Societate"] != "")
             {
-                string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
                 Session["ID_SOCIETATE"] = model["Societate"];
-                SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
                 SocietateAsigurare sa = (SocietateAsigurare)sar.Find(Convert.ToInt32(model["Societate"])).Result;
                 Session["SOCIETATE_ASIGURARE"] = sa;
                 return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            else
+            {
+                ModelState.AddModelError("", "Selectati societatea!");
+                return View(sas);
+            }
         }
 
         public ActionResult Logout()
