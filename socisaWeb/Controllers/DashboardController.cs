@@ -41,6 +41,7 @@ namespace socisaWeb.Controllers
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
+            /*
             Dosar[] ds = (Dosar[])u.GetDosareNoi(Convert.ToInt32(Session["ID_SOCIETATE"])).Result;
             List<DosarExtended> des = new List<DosarExtended>(ds.Length);
             foreach(Dosar d in ds)
@@ -57,7 +58,10 @@ namespace socisaWeb.Controllers
                 de.TipDosar = (Nomenclator)d.GetTipDosar().Result;
                 des.Add(de);
             }
-            return PartialView("_DosareNoi", des.ToArray());
+            */
+            DashBoardView dbv = new DashBoardView(u, conStr, Convert.ToInt32(Session["ID_SOCIETATE"]));
+            //return PartialView("_DosareNoi", des.ToArray());
+            return PartialView("_DosareNoi", dbv);
         }
 
     }

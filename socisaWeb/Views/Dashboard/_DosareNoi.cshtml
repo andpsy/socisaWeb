@@ -1,57 +1,194 @@
-﻿@model SOCISA.Models.DosarExtended[]
+﻿@using socisaWeb.Helpers;
+@model socisaWeb.DashBoardView
 
-<div style="width:100%;overflow:auto;" ng-init="@String.Format("model = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
-    <select class = "form-control input-sm" ng-model="query" ng-change="applyFilter()">
-        <option value="1">Toate dosarele noi</option>
-        <option value="2">Dosare noi CASCO</option>
-        <option value="3">Dosare noi RCA</option>
-    </select>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <!--
-                <th><input type="checkbox" id="chk_All" checked onchange="toggleChecks(this)" /></th>
-                -->
-                <th>NUMAR DOSAR CASCO</th>
-                <th>NUMAR SCA</th>
-                <th>DATA SCA</th>
-                <th>NUMAR POLITA CASCO</th>
-                <th>DATA EVENIMENT</th>
-                <th>SOCIETATE CASCO</th>
-                <th>ASIGURAT CASCO</th>
-                <th>NUMAR AUTO CASCO</th>
-                <th>NUMAR POLITA RCA</th>
-                <th>SOCIETATE RCA</th>
-                <th>ASIGURAT RCA</th>
-                <th>NUMAR AUTO RCA</th>
-                <th>VALOARE DAUNA</th>
-                <th>VALOARE REGRES</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in model | filter:applyFilter">
-                <!--
-                <td><input type="checkbox" checked class="checkForImport" id="chk_{{$index}}" ng-model="item.selected" /></td>
-                -->
-                    <td><a
-                <td><a href="#" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
-                <td>{{item.Dosar.NR_SCA}}</td>
-                <td>{{item.Dosar.DATA_SCA | date:"dd.MM.yyyy"}}</td>
-                <td>{{item.Dosar.NR_POLITA_CASCO}}</td>
-                <td>{{item.Dosar.DATA_EVENIMENT | date:"dd.MM.yyyy"}}</td>
-                <td>{{item.SocietateCasco.DENUMIRE_SCURTA}}</td>
-                <td>{{item.AsiguratCasco.DENUMIRE}}</td>
-                <td>{{item.AutoCasco.NR_AUTO}}</td>
-                <td>{{item.Dosar.NR_POLITA_RCA}}</td>
-                <td>{{item.SocietateRca.DENUMIRE_SCURTA}}</td>
-                <td>{{item.AsiguratRca.DENUMIRE}}</td>
-                <td>{{item.AutoRca.NR_AUTO}}</td>
-                <td>{{item.Dosar.VALOARE_DAUNA}}</td>
-                <td>{{item.Dosar.VALOARE_REGRES}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="docsRightMenu" style="right:286px;">
-        <div class="docsRightMenuButton" onclick="ToggleDiv('mainDosareNoi')">&#9668;</div>
+<div style="width:100%;" ng-init="@String.Format("model = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+    @{
+        var idSoc = Convert.ToInt32(Session["ID_SOCIETATE"]);
+    }
+    <input type="hidden" id="idSoc" value="@idSoc" />
+    <div id="resultMessageBox" ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+        <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+        <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
+        <p ng-repeat="s in result.Message.split(';')">
+            {{s}}
+        </p>
     </div>
+
+    <div class="panel panel-primary" style="margin-bottom:10px;">
+        <div class="panel-heading" style="padding:0px;">
+            <div>
+                <table>
+                    <tr>
+                        <td style="width:40px;">
+                            <div class="docsRightMenuButton" onclick="ToggleDiv('mainDosareNoi')">&#9668;</div>
+                        </td>
+                        <td style="vertical-align:middle;padding:5px;">
+                            @{
+                                var lg = Convert.ToDateTime(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).LAST_LOGIN).ToString("dd.MM.yyyy HH:mm:ss");
+                            }
+                            <h3 class="panel-title">Dosare noi de la ultimul login (@lg):</h3>
+                        </td>
+                        <td style="vertical-align:middle;padding:5px;">
+                            <select class="form-control input-sm" ng-model="query" ng-change="applyFilter()">
+                                <option value="1">Toate dosarele noi</option>
+                                <option value="2">Dosare noi CASCO</option>
+                                <option value="3">Dosare noi RCA</option>
+                            </select>
+                        </td>
+                        <td style="padding:5px;">
+                            <div class="input-group">
+                                <span class="input-group-addon">Filtrare</span>
+                                <input class="form-control input-sm" type="text" ng-model="queryText.$">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="panel-body" style="padding-top:0px;max-height:360px;min-height:360px;overflow-y:auto;">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="all_chk_Dosar" ng-model="allDosare" ng-change="toggleDashboardChecks('chk_Dosar')" />
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_DOSAR_CASCO')">NUMAR DOSAR CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_DOSAR_CASCO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_SCA')">NUMAR SCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_SCA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.DATA_SCA')">DATA SCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.DATA_SCA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_POLITA_CASCO')">NUMAR POLITA CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_POLITA_CASCO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.DATA_EVENIMENT')">DATA EVENIMENT</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.DATA_EVENIMENT'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('SocietateCasco.DENUMIRE_SCURTA')">SOCIETATE CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'SocietateCasco.DENUMIRE_SCURTA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AsiguratCasco.DENUMIRE')">ASIGURAT CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'AsiguratCasco.DENUMIRE'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AutoCasco.NR_AUTO')">NUMAR AUTO CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'AutoCasco.NR_AUTO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_POLITA_RCA')">NUMAR POLITA RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_POLITA_RCA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('SocietateRca.DENUMIRE_SCURTA')">SOCIETATE RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'SocietateRca.DENUMIRE_SCURTA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AsiguratRca.DENUMIRE')">ASIGURAT RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'AsiguratRca.DENUMIRE'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AutoRca.NR_AUTO')">NUMAR AUTO RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'AutoRca.NR_AUTO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th style="text-align:right;">
+                            <a href="#" ng-click="sortBy('Dosar.VALOARE_DAUNA')">VALOARE DAUNA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.VALOARE_DAUNA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th style="text-align:right;padding-right:10px;">
+                            <a href="#" ng-click="sortBy('Dosar.VALOARE_REGRES')">VALOARE REGRES</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.VALOARE_REGRES'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:middle;">Filtrare</td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_DOSAR_CASCO"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_SCA"></td>
+                        <td></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_POLITA_CASCO"></td>
+                        <td></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.SocietateCasco.DENUMIRE_SCURTA"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AsiguratCasco.DENUMIRE"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AutoCasco.NR_AUTO"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_POLITA_RCA"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.SocietateRca.DENUMIRE_SCURTA"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AsiguratRca.DENUMIRE"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AutoRca.NR_AUTO"></td>
+                        <td style="text-align:right;"><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.VALOARE_DAUNA"></td>
+                        <td style="text-align:right;padding-right:10px;"><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.VALOARE_REGRES"></td>
+                    </tr>
+                    <tr ng-repeat="item in dosareFiltrate = (model.DosareExtended | filter:queryText | filter:applyFilter) | orderBy:propertyName:reverse">
+                        <td><input type="checkbox" class="checkForImport" id="chk_Dosar_{{item.Dosar.ID}}" ng-model="item.selected" /></td>
+                        <td><a href="/Dosare/Index/{{item.Dosar.ID}}" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
+                        <td>{{item.Dosar.NR_SCA}}</td>
+                        <td>{{item.Dosar.DATA_SCA | date:"dd.MM.yyyy"}}</td>
+                        <td>{{item.Dosar.NR_POLITA_CASCO}}</td>
+                        <td>{{item.Dosar.DATA_EVENIMENT | date:"dd.MM.yyyy"}}</td>
+                        <td title="{{item.SocietateCasco.DENUMIRE}}">{{item.SocietateCasco.DENUMIRE_SCURTA}}</td>
+                        <td>{{item.AsiguratCasco.DENUMIRE}}</td>
+                        <td>{{item.AutoCasco.NR_AUTO}}</td>
+                        <td>{{item.Dosar.NR_POLITA_RCA}}</td>
+                        <td title="{{item.SocietateRca.DENUMIRE}}">{{item.SocietateRca.DENUMIRE_SCURTA}}</td>
+                        <td>{{item.AsiguratRca.DENUMIRE}}</td>
+                        <td>{{item.AutoRca.NR_AUTO}}</td>
+                        <td style="text-align:right;">{{item.Dosar.VALOARE_DAUNA}}</td>
+                        <td style="text-align:right;padding-right:10px;">{{item.Dosar.VALOARE_REGRES}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">Dosare selectate: {{(dosareFiltrate | filter:{'selected':true}).length}} / {{dosareFiltrate.length}}</div>
+    </div>
+
+    <div class="panel panel-primary" style="margin-bottom:10px;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Asigneaza dosarele selectate utilizatorilor:</h3>
+        </div>
+        <div class="panel-body">
+            <div style="width:100%;height:100px;overflow-y:auto;">
+                <table>
+                    <tr>
+                        <th style="padding:3px;">
+                            <input id="all_chk_Utilizator" type="checkbox" ng-model="allUtilizatori" ng-change="toggleDashboardChecks('chk_Utilizator')" />
+                        </th>
+                        <th style="padding:3px;">
+                            Toti utilizatorii
+                        </th>
+                    </tr>
+                    <tr ng-repeat="u in utilizatoriFiltrati = (model.UtilizatoriExtended | filter:myFilter) | orderBy: 'Utilizator.NUME_COMPLET'">
+                        <td style="padding:3px;">
+                            <input type="checkbox" id="chk_Utilizator_{{u.Utilizator.ID}}" data-ng-model="u.selected" />
+                        </td>
+                        <td style="padding:3px;">
+                            {{u.Utilizator.NUME_COMPLET}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">Utilizatori selectati: {{(utilizatoriFiltrati | filter:{'selected':true}).length}} / {{utilizatoriFiltrati.length}}</div>
+    </div>
+    @if (Helpers.HasRight("administrare"))
+    {
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <a href="#" class="btn btn-default btn-sm" a-disabled="!((utilizatoriFiltrati | filter:{'selected':true}).length > 0 && (dosareFiltrate | filter:{'selected':true}).length > 0)" ng-click="AssignDosareToUtilizatori()">Salveaza</a>
+            </div>
+        </div>
+    }
+    <!--
+    <div class="docsRightMenu" style="right:286px;">
+    </div>
+    -->
 </div>

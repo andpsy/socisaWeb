@@ -136,6 +136,7 @@
     <Compile Include="Controllers\MesajeController.cs" />
     <Compile Include="Controllers\UtilizatoriActionsController.cs" />
     <Compile Include="Controllers\UtilizatoriController.cs" />
+    <Compile Include="Controllers\UtilizatoriDosareController.cs" />
     <Compile Include="Controllers\UtilizatoriSocietatiAdministrateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -424,6 +425,7 @@
   <ItemGroup>
     <Folder Include="Views\Actions\" />
     <Folder Include="Views\UtilizatoriActions\" />
+    <Folder Include="Views\UtilizatoriDosare\" />
     <Folder Include="Views\UtilizatoriDrepturi\" />
     <Folder Include="Views\UtilizatoriSocietatiAdministrate\" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using SOCISA;
+using SOCISA.Models;
 
 namespace socisaWeb
 {
@@ -68,6 +69,35 @@ namespace socisaWeb
                 break;
             }
             r.Close(); r.Dispose();
+        }
+    }
+
+    public class DashBoardView
+    {
+        public DosarExtended[] DosareExtended { get; set; }
+        public UtilizatorExtended[] UtilizatoriExtended { get; set; }
+
+        public DashBoardView() { }
+
+        public DashBoardView(Utilizator utilizator, string conStr, int ID_SOCIETATE)
+        {
+            Dosar[] ds = (Dosar[])utilizator.GetDosareNoi(ID_SOCIETATE).Result;
+            List<DosarExtended> des = new List<DosarExtended>(ds.Length);
+            foreach (Dosar d in ds)
+            {
+                DosarExtended de = new DosarExtended(d);
+                des.Add(de);
+            }
+            this.DosareExtended = des.ToArray();
+
+            Utilizator[] us = (Utilizator[])utilizator.GetUtilizatoriSubordonati().Result;
+            List<UtilizatorExtended> ues = new List<UtilizatorExtended>(us.Length);
+            foreach (Utilizator u in us)
+            {
+                UtilizatorExtended ue = new UtilizatorExtended(u);
+                ues.Add(ue);
+            }
+            this.UtilizatoriExtended = ues.ToArray();
         }
     }
 }

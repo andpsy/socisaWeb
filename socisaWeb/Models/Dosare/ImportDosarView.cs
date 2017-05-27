@@ -26,7 +26,7 @@ namespace socisaWeb
 
     public class ImportDosarJson
     {
-        public bool selected { get; set; }
+        //public bool selected { get; set; } -- il avem in DosarExtended
         public response response { get; set; }
         public DosarExtended DosarExtended { get; set; }
 

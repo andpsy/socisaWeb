@@ -75,7 +75,7 @@ namespace socisaWeb.Controllers
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             return PartialView();
         }
@@ -86,6 +86,15 @@ namespace socisaWeb.Controllers
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             return PartialView("_DosareNavigator", new DosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), Convert.ToInt32(Session["ID_SOCIETATE"]), conStr));
+        }
+
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
+        [HttpGet]
+        public ActionResult Show(int id)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            Dosar d = new Dosar(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr, id);
+            return PartialView("_DosareNavigator", new DosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), Convert.ToInt32(Session["ID_SOCIETATE"]), d, conStr));
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]

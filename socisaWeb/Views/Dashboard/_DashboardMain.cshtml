@@ -5,80 +5,84 @@
     //Layout = "~/Views/Shared/_LayoutImportDosare.cshtml";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="main" style="padding-right:30px;" ng-cloak>
-    <table style="margin:10px;padding:10px;width:100%;">
-        <tr>
-            <td style="width:33%;margin:5px;padding:10px;">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <ul class="list-group" style="margin-bottom:0px;">
-                            <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_TOTAL)<span class="badge">@Html.DisplayFor(model => model.DOSARE_TOTAL)</span></li>
-                        </ul>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="main" style="padding-right:30px;" ng-cloak>
+        <table style="margin:10px;padding:10px;width:100%;">
+            <tr>
+                <td style="width:33%;margin:5px;padding:10px;">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_TOTAL)<span class="badge">@Html.DisplayFor(model => model.DOSARE_TOTAL)</span></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_CASCO_TOTAL)</span>
+                                    @Html.DisplayNameFor(model => model.DOSARE_CASCO_TOTAL)
+                                </li>
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_RCA_TOTAL)</span>
+                                    @Html.DisplayNameFor(model => model.DOSARE_RCA_TOTAL)
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer"><a href="/Dosare/Index">Mergi la dosare ...</a></div>
                     </div>
-                    <div class="panel-body">
-                        <ul class="list-group" style="margin-bottom:0px;">
-                            <li class="list-group-item" style="border-width:0px;">
-                                <span class="badge">@Html.DisplayFor(model => model.DOSARE_CASCO_TOTAL)</span>
-                                @Html.DisplayNameFor(model => model.DOSARE_CASCO_TOTAL)
-                            </li>
-                            <li class="list-group-item" style="border-width:0px;">
-                                <span class="badge">@Html.DisplayFor(model => model.DOSARE_RCA_TOTAL)</span>
-                                @Html.DisplayNameFor(model => model.DOSARE_RCA_TOTAL)
-                            </li>
-                        </ul>
+                </td>
+                <td style="width:33%;margin:5px;padding:10px;">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_FROM_LAST_LOGIN)<span class="badge">@Html.DisplayFor(model => model.DOSARE_FROM_LAST_LOGIN)</span></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_CASCO_FROM_LAST_LOGIN)</span>
+                                    @Html.DisplayNameFor(model => model.DOSARE_CASCO_FROM_LAST_LOGIN)
+                                </li>
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_RCA_FROM_LAST_LOGIN)</span>
+                                    @Html.DisplayNameFor(model => model.DOSARE_RCA_FROM_LAST_LOGIN)
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareNoi')">Mergi la dosare ...</a></div>
                     </div>
-                    <div class="panel-footer"><a href="/Dosare/Index">Mergi la dosare ...</a></div>
-                </div>
-            </td>
-            <td style="width:33%;margin:5px;padding:10px;">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <ul class="list-group" style="margin-bottom:0px;">
-                            <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_FROM_LAST_LOGIN)<span class="badge">@Html.DisplayFor(model => model.DOSARE_FROM_LAST_LOGIN)</span></li>
-                        </ul>
+                </td>
+                <td style="width:33%;margin:5px;padding:10px;">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.MESAJE_NOI)<span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI)</span></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI_DOSAR_NOU)</span>
+                                    @Html.DisplayNameFor(model => model.MESAJE_NOI_DOSAR_NOU)
+                                </li>
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI_DOCUMENT_NOU)</span>
+                                    @Html.DisplayNameFor(model => model.MESAJE_NOI_DOCUMENT_NOU)
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer"><a href="#">Mergi la mesaje ...</a></div>
                     </div>
-                    <div class="panel-body">
-                        <ul class="list-group" style="margin-bottom:0px;">
-                            <li class="list-group-item" style="border-width:0px;">
-                                <span class="badge">@Html.DisplayFor(model => model.DOSARE_CASCO_FROM_LAST_LOGIN)</span>
-                                @Html.DisplayNameFor(model => model.DOSARE_CASCO_FROM_LAST_LOGIN)
-                            </li>
-                            <li class="list-group-item" style="border-width:0px;">
-                                <span class="badge">@Html.DisplayFor(model => model.DOSARE_RCA_FROM_LAST_LOGIN)</span>
-                                @Html.DisplayNameFor(model => model.DOSARE_RCA_FROM_LAST_LOGIN)
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareNoi')">Mergi la dosare ...</a></div>
-                </div>
-            </td>
-            <td style="width:33%;margin:5px;padding:10px;">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <ul class="list-group" style="margin-bottom:0px;">
-                            <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.MESAJE_NOI)<span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI)</span></li>
-                        </ul>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group" style="margin-bottom:0px;">
-                            <li class="list-group-item" style="border-width:0px;">
-                                <span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI_DOSAR_NOU)</span>
-                                @Html.DisplayNameFor(model => model.MESAJE_NOI_DOSAR_NOU)
-                            </li>
-                            <li class="list-group-item" style="border-width:0px;">
-                                <span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI_DOCUMENT_NOU)</span>
-                                @Html.DisplayNameFor(model => model.MESAJE_NOI_DOCUMENT_NOU)
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="panel-footer"><a href="#">Mergi la mesaje ...</a></div>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
-<div id="mainDosareNoi" class="main_div" style="background-color:white;display:none;" ng-controller="DosareDashboardController" ng-cloak>
-    @{
-        Html.RenderAction("GetDosareNoi", "Dashboard");
-    }
-</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="mainDosareNoi" class="main_div" style="background-color:white;display:none;" ng-controller="DosareDashboardController" ng-cloak>
+        @{
+            Html.RenderAction("GetDosareNoi", "Dashboard");
+        }
+    </div>
+}

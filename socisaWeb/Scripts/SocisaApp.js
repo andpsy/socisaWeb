@@ -50,7 +50,7 @@ app.run(function ($http) {
 
 
     //disable IE ajax request caching
-    //$http.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+    $http.defaults.headers.common['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
     // extra
     $http.defaults.headers.common['Cache-Control'] = 'no-cache';
     $http.defaults.headers.common['Pragma'] = 'no-cache';

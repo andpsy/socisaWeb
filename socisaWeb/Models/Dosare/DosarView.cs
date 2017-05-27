@@ -27,6 +27,17 @@ namespace socisaWeb
             this.TipuriCaz = (Nomenclator[])nr.GetAll("tip_caz").Result;
             this.TipuriDosar = (Nomenclator[])nr.GetAll("tip_dosare").Result;
         }
+
+        public DosarView(int _CURENT_USER_ID, int _ID_SOCIETATE, Dosar dosar, string conStr)
+        {
+            this.Dosar = dosar;
+            this.dosarJson = new DosarJson(_CURENT_USER_ID, _ID_SOCIETATE, conStr);
+            SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(_CURENT_USER_ID, conStr);
+            this.SocietatiCASCO = this.SocietatiRCA = (SocietateAsigurare[])sar.GetAll().Result;
+            NomenclatoareRepository nr = new NomenclatoareRepository(_CURENT_USER_ID, conStr);
+            this.TipuriCaz = (Nomenclator[])nr.GetAll("tip_caz").Result;
+            this.TipuriDosar = (Nomenclator[])nr.GetAll("tip_dosare").Result;
+        }
     }
 
     public class DosarJson
