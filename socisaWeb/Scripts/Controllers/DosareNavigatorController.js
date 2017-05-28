@@ -63,6 +63,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $scope.$watch('DosarFiltru.Dosar.ID', function (newValue, oldValue) {
         if (newValue == null) {
+            $scope.switchTabsClass("#lnkDosareDetalii");
             $rootScope.dynaStyle = $rootScope.dynaStyleDefault;
         }
         if (newValue != undefined && newValue != "" && newValue != null && newValue == oldValue) {
@@ -136,6 +137,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         document.getElementById('Dosar_DATA_SCA').disabled = !(newValue == 1);
         document.getElementById('Dosar_DATA_AVIZARE').disabled = !(newValue == 1);
         document.getElementById('Dosar_DATA_NOTIFICARE').disabled = !(newValue == 1);
+        document.getElementById('Dosar_DATA_CREARE').disabled = !(newValue == 1);
         document.getElementById('Dosar_DATA_ULTIMEI_MODIFICARI').disabled = !(newValue == 1);
         document.getElementById('Dosar_DATA_IESIRE_CASCO').disabled = !(newValue == 1);
         document.getElementById('Dosar_DATA_INTRARE_RCA').disabled = !(newValue == 1);
@@ -193,18 +195,22 @@ function ($scope, $http, $filter, $rootScope, $window) {
     });
 
     $scope.$watch('TIP_CAZ', function (newValue, oldValue) {
-        $scope.DosarFiltru.Dosar.CAZ = newValue;
-        //if ($scope.searchMode == 2)
-        {
-            $scope.Afisare(newValue, null);
+        if (newValue != null && newValue != undefined && $scope.Interactive) {
+            $scope.DosarFiltru.Dosar.CAZ = newValue;
+            //if ($scope.searchMode == 2)
+            {
+                $scope.Afisare(newValue, null);
+            }
         }
     });
 
     $scope.$watch('ID_TIP_DOSAR', function (newValue, oldValue) {
-        $scope.DosarFiltru.Dosar.ID_TIP_DOSAR = newValue;
-        //if ($scope.searchMode == 2)
-        {
-            $scope.Afisare(newValue, null);
+        if (newValue != null && newValue != undefined && $scope.Interactive) {
+            $scope.DosarFiltru.Dosar.ID_TIP_DOSAR = newValue;
+            //if ($scope.searchMode == 2)
+            {
+                $scope.Afisare(newValue, null);
+            }
         }
     });
 
@@ -231,6 +237,11 @@ function ($scope, $http, $filter, $rootScope, $window) {
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataNotificareEnd', function (newValue, oldValue) {
+        if (newValue != oldValue) {
+            $scope.Afisare(newValue, null);
+        }
+    });
+    $scope.$watch('DosarFiltru.dosarJson.DataCreareEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
             $scope.Afisare(newValue, null);
         }
@@ -267,6 +278,10 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.$watch('DosarFiltru.Dosar.DATA_NOTIFICARE', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
         $scope.DosarFiltru.Dosar.DATA_NOTIFICARE = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+    });
+    $scope.$watch('DosarFiltru.Dosar.DATA_CREARE', function (newDate) {
+        if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
+        $scope.DosarFiltru.Dosar.DATA_CREARE = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
@@ -442,6 +457,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
                 var j = JSON.parse(response.data);
                 try {
                     $scope.DosarFiltru.dosarJson.NumeAsiguratCasco = j.aCasco.DENUMIRE;
+                    //alert(j.aCasco.DENUMIRE);
                     $scope.DosarFiltru.dosarJson.NumeAsiguratRca = j.aRca.DENUMIRE;
                     $scope.DosarFiltru.dosarJson.NumarAutoCasco = j.autoCasco.NR_AUTO;
                     $scope.DosarFiltru.dosarJson.NumarAutoRca = j.autoRca.NR_AUTO;
@@ -466,7 +482,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         $("#lnkMesajeDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
 
         var classToAdd = "";
-        if ($scope.searchMode == 2)
+        if ($scope.searchMode == 2 || $scope.DosarFiltru.Dosar.ID == null)
             classToAdd = "grad_tab";
         else
             classToAdd = $scope.DosarFiltru.Dosar.AVIZAT ? "grad_tab_avizat" : "grad_tab_neavizat";

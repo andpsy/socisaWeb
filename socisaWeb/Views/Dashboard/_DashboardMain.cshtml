@@ -12,20 +12,20 @@
         <table style="margin:10px;padding:10px;width:100%;">
             <tr>
                 <td style="width:33%;margin:5px;padding:10px;">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
+                    <div class="panel panel-success">
+                        <div class="panel-heading" style="padding:0px;">
                             <ul class="list-group" style="margin-bottom:0px;">
                                 <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_TOTAL)<span class="badge">@Html.DisplayFor(model => model.DOSARE_TOTAL)</span></li>
                             </ul>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="padding:0px;">
                             <ul class="list-group" style="margin-bottom:0px;">
                                 <li class="list-group-item" style="border-width:0px;">
-                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_CASCO_TOTAL)</span>
+                                    <span class="badge" style="background-color:#5B8956;">@Html.DisplayFor(model => model.DOSARE_CASCO_TOTAL)</span>
                                     @Html.DisplayNameFor(model => model.DOSARE_CASCO_TOTAL)
                                 </li>
                                 <li class="list-group-item" style="border-width:0px;">
-                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_RCA_TOTAL)</span>
+                                    <span class="badge" style="background-color:#5B8956;">@Html.DisplayFor(model => model.DOSARE_RCA_TOTAL)</span>
                                     @Html.DisplayNameFor(model => model.DOSARE_RCA_TOTAL)
                                 </li>
                             </ul>
@@ -34,20 +34,20 @@
                     </div>
                 </td>
                 <td style="width:33%;margin:5px;padding:10px;">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading" style="padding:0px;">
                             <ul class="list-group" style="margin-bottom:0px;">
                                 <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_FROM_LAST_LOGIN)<span class="badge">@Html.DisplayFor(model => model.DOSARE_FROM_LAST_LOGIN)</span></li>
                             </ul>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="padding:0px;">
                             <ul class="list-group" style="margin-bottom:0px;">
                                 <li class="list-group-item" style="border-width:0px;">
-                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_CASCO_FROM_LAST_LOGIN)</span>
+                                    <span class="badge" style="background-color:#B2935E;">@Html.DisplayFor(model => model.DOSARE_CASCO_FROM_LAST_LOGIN)</span>
                                     @Html.DisplayNameFor(model => model.DOSARE_CASCO_FROM_LAST_LOGIN)
                                 </li>
                                 <li class="list-group-item" style="border-width:0px;">
-                                    <span class="badge">@Html.DisplayFor(model => model.DOSARE_RCA_FROM_LAST_LOGIN)</span>
+                                    <span class="badge" style="background-color:#B2935E;">@Html.DisplayFor(model => model.DOSARE_RCA_FROM_LAST_LOGIN)</span>
                                     @Html.DisplayNameFor(model => model.DOSARE_RCA_FROM_LAST_LOGIN)
                                 </li>
                             </ul>
@@ -56,13 +56,66 @@
                     </div>
                 </td>
                 <td style="width:33%;margin:5px;padding:10px;">
+                    @{
+                        var ut = ((SOCISA.Models.Nomenclator)Session["CURENT_USER_TYPE"]).DENUMIRE;
+                        if (ut != "Regular")
+                        {
+                            <div class="panel panel-danger">
+                                <div class="panel-heading" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_NEASIGNATE)<span class="badge">@Html.DisplayFor(model => model.DOSARE_NEASIGNATE)</span></li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_CASCO_NEASIGNATE)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_CASCO_NEASIGNATE)
+                                        </li>
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_RCA_NEASIGNATE)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_RCA_NEASIGNATE)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareNoi')">Mergi la dosare ...</a></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="panel panel-danger">
+                                <div class="panel-heading" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_NEOPERATE)<span class="badge">@Html.DisplayFor(model => model.DOSARE_NEOPERATE)</span></li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_CASCO_NEOPERATE)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_CASCO_NEOPERATE)
+                                        </li>
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_RCA_NEOPERATE)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_RCA_NEOPERATE)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareNoi')">Mergi la dosare ...</a></div>
+                            </div>
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="width:33%;margin:5px;padding:10px;">
                     <div class="panel panel-primary">
-                        <div class="panel-heading">
+                        <div class="panel-heading" style="padding:0px;">
                             <ul class="list-group" style="margin-bottom:0px;">
                                 <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.MESAJE_NOI)<span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI)</span></li>
                             </ul>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="padding:0px;">
                             <ul class="list-group" style="margin-bottom:0px;">
                                 <li class="list-group-item" style="border-width:0px;">
                                     <span class="badge">@Html.DisplayFor(model => model.MESAJE_NOI_DOSAR_NOU)</span>
@@ -76,6 +129,10 @@
                         </div>
                         <div class="panel-footer"><a href="#">Mergi la mesaje ...</a></div>
                     </div>
+                </td>
+                <td style="width:33%;margin:5px;padding:10px;">
+                </td>
+                <td style="width:33%;margin:5px;padding:10px;">
                 </td>
             </tr>
         </table>

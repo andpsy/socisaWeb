@@ -72,6 +72,12 @@ namespace socisaWeb
         public DateTime? DataNotificareStart { get; set; }
         [Display(Name = "pana la:")]
         public DateTime? DataNotificareEnd { get; set; }
+
+        [Display(Name = "Data Creare de la:")]
+        public DateTime? DataCreareStart { get; set; }
+        [Display(Name = "pana la:")]
+        public DateTime? DataCreareEnd { get; set; }
+    
         [Display(Name = "Data Ultimei Modificari de la:")]
         public DateTime? DataUltimeiModificariStart { get; set; }
         [Display(Name = "pana la:")]

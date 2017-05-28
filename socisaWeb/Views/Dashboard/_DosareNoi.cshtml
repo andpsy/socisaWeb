@@ -4,8 +4,10 @@
 <div style="width:100%;" ng-init="@String.Format("model = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
     @{
         var idSoc = Convert.ToInt32(Session["ID_SOCIETATE"]);
+        var lastLogin = Convert.ToDateTime(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).LAST_LOGIN).ToString("yyyy-MM-ddTHH:mm:ss");
     }
     <input type="hidden" id="idSoc" value="@idSoc" />
+    <input type="hidden" id="idLastLogin" value="@lastLogin" />
     <div id="resultMessageBox" ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
         <button type="button" class="close" ng-click="showMessage = false">&times;</button>
         <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
@@ -26,19 +28,22 @@
                             @{
                                 var lg = Convert.ToDateTime(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).LAST_LOGIN).ToString("dd.MM.yyyy HH:mm:ss");
                             }
-                            <h3 class="panel-title">Dosare noi de la ultimul login (@lg):</h3>
+                            <h4 class="panel-title">Dosare neasignate: {{model.DosareExtended.length}}, din care Dosare noi de la ultimul login (@lg): {{(model.DosareExtended | filter:getItemsByDate).length}}</h4>
                         </td>
                         <td style="vertical-align:middle;padding:5px;">
                             <select class="form-control input-sm" ng-model="query" ng-change="applyFilter()">
-                                <option value="1">Toate dosarele noi</option>
-                                <option value="2">Dosare noi CASCO</option>
-                                <option value="3">Dosare noi RCA</option>
+                                <option value="1">Toate dosarele neasignate</option>
+                                <option value="2">Dosare CASCO neasignate</option>
+                                <option value="3">Dosare RCA neasignate</option>
+                                <option value="4">Dosare noi neasignate</option>
+                                <option value="5">Dosare noi CASCO neasignate</option>
+                                <option value="6">Dosare noi RCA neasignate</option>
                             </select>
                         </td>
                         <td style="padding:5px;">
                             <div class="input-group">
                                 <span class="input-group-addon">Filtrare</span>
-                                <input class="form-control input-sm" type="text" ng-model="queryText.$">
+                                <input class="form-control input-sm" type="text" ng-model="generalQueryText.$">
                             </div>
                         </td>
                     </tr>
@@ -115,9 +120,21 @@
                         <td style="vertical-align:middle;">Filtrare</td>
                         <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_DOSAR_CASCO"></td>
                         <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_SCA"></td>
-                        <td></td>
+                        <td>
+                            <input class="form-control input-sm" type="text" ng-model="generalQueryText.DATA_SCA">
+                            <!--
+                            <div class="input-group">
+                                <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                <input type="datetime" class="form-control input-sm" readonly style="width:100px;" ng-model="queryText.Dosar.DATA_SCA.Start" jqdatepicker />
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                <input type="datetime" class="form-control input-sm" readonly style="width:100px;" ng-model="queryText.Dosar.DATA_SCA.End" jqdatepicker />
+                            </div>
+                            -->
+                        </td>
                         <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_POLITA_CASCO"></td>
-                        <td></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="generalQueryText.DATA_EVENIMENT"></td>
                         <td><input class="form-control input-sm" type="text" ng-model="queryText.SocietateCasco.DENUMIRE_SCURTA"></td>
                         <td><input class="form-control input-sm" type="text" ng-model="queryText.AsiguratCasco.DENUMIRE"></td>
                         <td><input class="form-control input-sm" type="text" ng-model="queryText.AutoCasco.NR_AUTO"></td>
@@ -128,7 +145,7 @@
                         <td style="text-align:right;"><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.VALOARE_DAUNA"></td>
                         <td style="text-align:right;padding-right:10px;"><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.VALOARE_REGRES"></td>
                     </tr>
-                    <tr ng-repeat="item in dosareFiltrate = (model.DosareExtended | filter:queryText | filter:applyFilter) | orderBy:propertyName:reverse">
+                    <tr ng-repeat="item in dosareFiltrate = (model.DosareExtended | filter:queryText | filter:filterByColumns | filter:applyFilter) | orderBy:propertyName:reverse">
                         <td><input type="checkbox" class="checkForImport" id="chk_Dosar_{{item.Dosar.ID}}" ng-model="item.selected" /></td>
                         <td><a href="/Dosare/Index/{{item.Dosar.ID}}" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
                         <td>{{item.Dosar.NR_SCA}}</td>
@@ -152,10 +169,10 @@
     </div>
 
     <div class="panel panel-primary" style="margin-bottom:10px;">
-        <div class="panel-heading">
+        <div class="panel-heading" style="padding:10px;">
             <h3 class="panel-title">Asigneaza dosarele selectate utilizatorilor:</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="padding-left:5px;padding-right:0px;">
             <div style="width:100%;height:100px;overflow-y:auto;">
                 <table>
                     <tr>

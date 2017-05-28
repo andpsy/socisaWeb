@@ -255,7 +255,7 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.CAZ, htmlAttributes: new { @class = "control-label" })
-                        @Html.DropDownListFor(model => model.Dosar.CAZ, new SelectList(Model.TipuriCaz, "DENUMIRE", "DENUMIRE"), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_model = "TIP_CAZ", data_ng_init = String.Format("DosarFiltru.TipuriCaz = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.TipuriCaz)) })
+                        @Html.DropDownListFor(model => model.Dosar.CAZ, new SelectList(Model.TipuriCaz, "DENUMIRE", "DENUMIRE"), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_click = "Interactive=true;", data_ng_model = "TIP_CAZ", data_ng_init = String.Format("DosarFiltru.TipuriCaz = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.TipuriCaz)) })
                         @Html.HiddenFor(model => model.Dosar.CAZ, new { @id = "Hidden_Dosar_CAZ", data_ng_model = "DosarFiltru.Dosar.CAZ", data_ng_init = string.Format("DosarFiltru.Dosar.CAZ = '{0}'", Model.Dosar.CAZ) })
                         @Html.ValidationMessageFor(model => model.Dosar.CAZ, "", new { @class = "text-danger" })
                     </div>
@@ -271,7 +271,7 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_TIP_DOSAR, htmlAttributes: new { @class = "control-label" })
-                        @Html.DropDownListFor(model => model.Dosar.ID_TIP_DOSAR, new SelectList(Model.TipuriDosar, "ID", "DENUMIRE"), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_model = "ID_TIP_DOSAR", data_ng_init = String.Format("DosarFiltru.TipuriDosar = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.TipuriDosar)) })
+                        @Html.DropDownListFor(model => model.Dosar.ID_TIP_DOSAR, new SelectList(Model.TipuriDosar, "ID", "DENUMIRE"), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_click = "Interactive=true;", data_ng_model = "ID_TIP_DOSAR", data_ng_init = String.Format("DosarFiltru.TipuriDosar = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.TipuriDosar)) })
                         @Html.HiddenFor(model => model.Dosar.ID_TIP_DOSAR, new { @id = "Hidden_Dosar_ID_TIP_DOSAR", data_ng_model = "DosarFiltru.Dosar.ID_TIP_DOSAR", data_ng_init = string.Format("DosarFiltru.Dosar.ID_TIP_DOSAR = '{0}'", Model.Dosar.ID_TIP_DOSAR) })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_TIP_DOSAR, "", new { @class = "text-danger" })
                     </div>
@@ -466,7 +466,39 @@
             </td>
             </tr>
             <tr>
-                <td colspan="4">
+                <td>
+                    <div class="form-group" ng-show="searchMode > 0">
+                        <table>
+                            <tr ng-show="searchMode == 2">
+                                <td class="toToDates">
+                                    @Html.LabelFor(model => model.dosarJson.DataCreareStart, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.dosarJson.DataCreareStart, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataCreareStart", data_ng_init = string.Format("DosarFiltru.dosarJson.DataCreareStart = '{0}'", Model.dosarJson.DataCreareStart), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.dosarJson.DataCreareEnd, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.dosarJson.DataCreareEnd, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.dosarJson.DataCreareEnd", data_ng_init = string.Format("DosarFiltru.dosarJson.DataCreareEnd = '{0}'", Model.dosarJson.DataCreareEnd), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="searchMode == 1 || editMode == 1">
+                                <td colspan="2" style="text-align:center;white-space:nowrap;padding-top:5px;">
+                                    @Html.ValidationMessageFor(model => model.Dosar.DATA_CREARE, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Dosar.DATA_CREARE, htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_CREARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_CREARE", data_ng_init = Model.Dosar.DATA_CREARE == null ? "" : String.Format("DosarFiltru.Dosar.DATA_CREARE = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_CREARE).UnixTicks()), jqdatepicker = "" })
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td>
                     <div class="form-group" ng-show="searchMode > 0">
                         <table>
                             <tr ng-show="searchMode == 2">
@@ -498,6 +530,8 @@
                         </table>
                     </div>
                 </td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td colspan="4" style="text-align:center;">
