@@ -1,0 +1,165 @@
+﻿@using socisaWeb.Helpers;
+@model socisaWeb.DashBoardView
+
+<div style="width:100%;" ng-init="@String.Format("model = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+    @{
+        var idSoc = Convert.ToInt32(Session["ID_SOCIETATE"]);
+        var lastLogin = Convert.ToDateTime(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).LAST_LOGIN).ToString("yyyy-MM-ddTHH:mm:ss");
+    }
+    <input type="hidden" id="idSoc" value="@idSoc" />
+    <input type="hidden" id="idLastLogin" value="@lastLogin" />
+    <div id="resultMessageBox" ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+        <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+        <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
+        <p ng-repeat="s in result.Message.split(';')">
+            {{s}}
+        </p>
+    </div>
+
+    <div class="panel panel-primary" style="margin-bottom:10px;">
+        <div class="panel-heading" style="padding:0px;">
+            <div>
+                <table>
+                    <tr>
+                        <td style="width:40px;">
+                            <div class="docsRightMenuButton" onclick="ToggleDiv('mainDosareDashboardRegular')">&#9668;</div>
+                        </td>
+                        <td style="vertical-align:middle;padding:5px;">
+                            @{
+                                var lg = Convert.ToDateTime(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).LAST_LOGIN).ToString("dd.MM.yyyy HH:mm:ss");
+                            }
+                            <h4 class="panel-title">Dosare neoperate: {{model.DosareExtended.length}}, din care Dosare noi de la ultimul login (@lg): {{(model.DosareExtended | filter:getItemsByDate).length}}</h4>
+                        </td>
+                        <td style="vertical-align:middle;padding:5px;">
+                            <select class="form-control input-sm" ng-model="query" ng-change="applyFilter()">
+                                <option value="1">Toate dosarele neoperate</option>
+                                <option value="2">Dosare CASCO neoperate</option>
+                                <option value="3">Dosare RCA neoperate</option>
+                                <option value="4">Dosare noi neoperate</option>
+                                <option value="5">Dosare noi CASCO neoperate</option>
+                                <option value="6">Dosare noi RCA neoperate</option>
+                            </select>
+                        </td>
+                        <td style="padding:5px;">
+                            <div class="input-group">
+                                <span class="input-group-addon">Filtrare</span>
+                                <input class="form-control input-sm" type="text" ng-model="generalQueryText.$">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="panel-body" style="padding-top:0px; max-height:640px; min-height:360px;overflow-y:auto;">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_DOSAR_CASCO')">NUMAR DOSAR CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_DOSAR_CASCO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_SCA')">NUMAR SCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_SCA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.DATA_SCA')">DATA SCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.DATA_SCA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_POLITA_CASCO')">NUMAR POLITA CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_POLITA_CASCO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.DATA_EVENIMENT')">DATA EVENIMENT</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.DATA_EVENIMENT'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('SocietateCasco.DENUMIRE_SCURTA')">SOCIETATE CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'SocietateCasco.DENUMIRE_SCURTA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AsiguratCasco.DENUMIRE')">ASIGURAT CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'AsiguratCasco.DENUMIRE'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AutoCasco.NR_AUTO')">NUMAR AUTO CASCO</a>
+                            <span class="sortorder" ng-show="propertyName === 'AutoCasco.NR_AUTO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('Dosar.NR_POLITA_RCA')">NUMAR POLITA RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.NR_POLITA_RCA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('SocietateRca.DENUMIRE_SCURTA')">SOCIETATE RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'SocietateRca.DENUMIRE_SCURTA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AsiguratRca.DENUMIRE')">ASIGURAT RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'AsiguratRca.DENUMIRE'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortBy('AutoRca.NR_AUTO')">NUMAR AUTO RCA</a>
+                            <span class="sortorder" ng-show="propertyName === 'AutoRca.NR_AUTO'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th style="text-align:right;">
+                            <a href="#" ng-click="sortBy('Dosar.VALOARE_DAUNA')">VALOARE DAUNA</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.VALOARE_DAUNA'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                        <th style="text-align:right;padding-right:10px;">
+                            <a href="#" ng-click="sortBy('Dosar.VALOARE_REGRES')">VALOARE REGRES</a>
+                            <span class="sortorder" ng-show="propertyName === 'Dosar.VALOARE_REGRES'" ng-class="{reverse: reverse}"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_DOSAR_CASCO"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_SCA"></td>
+                        <td>
+                            <input class="form-control input-sm" type="text" ng-model="generalQueryText.DATA_SCA">
+                            <!--
+                            <div class="input-group">
+                                <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                <input type="datetime" class="form-control input-sm" readonly style="width:100px;" ng-model="queryText.Dosar.DATA_SCA.Start" jqdatepicker />
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                <input type="datetime" class="form-control input-sm" readonly style="width:100px;" ng-model="queryText.Dosar.DATA_SCA.End" jqdatepicker />
+                            </div>
+                            -->
+                        </td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_POLITA_CASCO"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="generalQueryText.DATA_EVENIMENT"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.SocietateCasco.DENUMIRE_SCURTA"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AsiguratCasco.DENUMIRE"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AutoCasco.NR_AUTO"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.NR_POLITA_RCA"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.SocietateRca.DENUMIRE_SCURTA"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AsiguratRca.DENUMIRE"></td>
+                        <td><input class="form-control input-sm" type="text" ng-model="queryText.AutoRca.NR_AUTO"></td>
+                        <td style="text-align:right;"><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.VALOARE_DAUNA"></td>
+                        <td style="text-align:right;padding-right:10px;"><input class="form-control input-sm" type="text" ng-model="queryText.Dosar.VALOARE_REGRES"></td>
+                    </tr>
+                    <tr ng-repeat="item in dosareFiltrate = (model.DosareExtended | filter:queryText | filter:filterByColumns | filter:applyFilter) | orderBy:propertyName:reverse">
+                        <td><a href="/Dosare/Index/{{item.Dosar.ID}}" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
+                        <td>{{item.Dosar.NR_SCA}}</td>
+                        <td>{{item.Dosar.DATA_SCA | date:"dd.MM.yyyy"}}</td>
+                        <td>{{item.Dosar.NR_POLITA_CASCO}}</td>
+                        <td>{{item.Dosar.DATA_EVENIMENT | date:"dd.MM.yyyy"}}</td>
+                        <td title="{{item.SocietateCasco.DENUMIRE}}">{{item.SocietateCasco.DENUMIRE_SCURTA}}</td>
+                        <td>{{item.AsiguratCasco.DENUMIRE}}</td>
+                        <td>{{item.AutoCasco.NR_AUTO}}</td>
+                        <td>{{item.Dosar.NR_POLITA_RCA}}</td>
+                        <td title="{{item.SocietateRca.DENUMIRE}}">{{item.SocietateRca.DENUMIRE_SCURTA}}</td>
+                        <td>{{item.AsiguratRca.DENUMIRE}}</td>
+                        <td>{{item.AutoRca.NR_AUTO}}</td>
+                        <td style="text-align:right;">{{item.Dosar.VALOARE_DAUNA}}</td>
+                        <td style="text-align:right;padding-right:10px;">{{item.Dosar.VALOARE_REGRES}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">Dosare selectate: {{(dosareFiltrate | filter:{'selected':true}).length}} / {{dosareFiltrate.length}}</div>
+    </div>
+</div>

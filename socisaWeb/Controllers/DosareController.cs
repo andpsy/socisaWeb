@@ -94,6 +94,14 @@ namespace socisaWeb.Controllers
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Dosar d = new Dosar(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr, id);
+            // verificam daca are drept pe dosar 
+            bool? hasWright = (bool?)d.UserHasWright(Convert.ToInt32(Session["CURENT_USER_ID"])).Result;
+            if (hasWright == null || !(bool)hasWright)
+            {
+                HttpContext.Response.Redirect("~");
+                return null;
+            }
+
             return PartialView("_DosareNavigator", new DosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), Convert.ToInt32(Session["ID_SOCIETATE"]), d, conStr));
         }
 
@@ -414,13 +422,24 @@ namespace socisaWeb.Controllers
             response r = new response();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
-            DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
-            r = dr.ExportDosarCompletToPdf(id);
-            if (r.Status)
+            Dosar d = new Dosar(_CURENT_USER_ID, conStr, id);
+            // verificam daca are drept pe dosar 
+            bool? hasWright = (bool?)d.UserHasWright(_CURENT_USER_ID).Result;
+            if (hasWright == null || !(bool)hasWright)
             {
-                r.Result = r.Message = r.Message.Substring(r.Message.LastIndexOf("\\") + 1);
+                HttpContext.Response.Redirect("~");
+                return null;
             }
-            return Json(r, JsonRequestBehavior.AllowGet);
+            else
+            {
+                DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
+                r = dr.ExportDosarCompletToPdf(id);
+                if (r.Status)
+                {
+                    r.Result = r.Message = r.Message.Substring(r.Message.LastIndexOf("\\") + 1);
+                }
+                return Json(r, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
@@ -430,8 +449,18 @@ namespace socisaWeb.Controllers
             response r = new response();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
-            DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
-            r = dr.Avizare(id, avizat);
+            //DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
+            Dosar d = new Dosar(_CURENT_USER_ID, conStr, id);
+            // verificam daca are drept pe dosar 
+            bool? hasWright = (bool?)d.UserHasWright(_CURENT_USER_ID).Result;
+            if (hasWright == null || !(bool)hasWright)
+            {
+                HttpContext.Response.Redirect("~");
+                return null;
+            }
+
+            //r = dr.Avizare(id, avizat);
+            r = d.Avizare(avizat);
             return Json(r, JsonRequestBehavior.AllowGet);
         }
     }

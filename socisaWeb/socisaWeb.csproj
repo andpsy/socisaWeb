@@ -65,6 +65,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -357,7 +359,8 @@
     <Content Include="scans\bbf38e44-f941-4bf6-89a1-609a8648e762.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Controllers\DocumenteScanateController.js" />
-    <Content Include="Scripts\Controllers\DosareDashboardController.js" />
+    <Content Include="Scripts\Controllers\DosareDashboardRegularController.js" />
+    <Content Include="Scripts\Controllers\DosareDashboardAdminAndSuperController.js" />
     <Content Include="Scripts\Controllers\DosareImportController.js" />
     <Content Include="Scripts\Controllers\DosareNavigatorController.js" />
     <Content Include="Scripts\Controllers\MesajeController.js" />
@@ -420,7 +423,8 @@
     <Content Include="Views\Utilizatori\Utilizatori.cshtml" />
     <Content Include="Views\DocumenteScanate\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\_DashboardMain.cshtml" />
-    <Content Include="Views\Dashboard\_DosareNoi.cshtml" />
+    <Content Include="Views\Dashboard\_DosareDashboardAdminAndSuper.cshtml" />
+    <Content Include="Views\Dashboard\_DosareDashboardRegular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Actions\" />
@@ -436,6 +440,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

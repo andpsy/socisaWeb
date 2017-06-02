@@ -2,7 +2,6 @@
 @model socisaWeb.DashboardJson
 @{
     ViewBag.Title = "Dashboard";
-    //Layout = "~/Views/Shared/_LayoutImportDosare.cshtml";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using (Html.BeginForm())
@@ -52,59 +51,30 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareNoi')">Mergi la dosare ...</a></div>
+                        <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareDashboardRegular')">Mergi la dosare ...</a></div>
                     </div>
                 </td>
                 <td style="width:33%;margin:5px;padding:10px;">
-                    @{
-                        var ut = ((SOCISA.Models.Nomenclator)Session["CURENT_USER_TYPE"]).DENUMIRE;
-                        if (ut != "Regular")
-                        {
-                            <div class="panel panel-danger">
-                                <div class="panel-heading" style="padding:0px;">
-                                    <ul class="list-group" style="margin-bottom:0px;">
-                                        <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_NEASIGNATE)<span class="badge">@Html.DisplayFor(model => model.DOSARE_NEASIGNATE)</span></li>
-                                    </ul>
-                                </div>
-                                <div class="panel-body" style="padding:0px;">
-                                    <ul class="list-group" style="margin-bottom:0px;">
-                                        <li class="list-group-item" style="border-width:0px;">
-                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_CASCO_NEASIGNATE)</span>
-                                            @Html.DisplayNameFor(model => model.DOSARE_CASCO_NEASIGNATE)
-                                        </li>
-                                        <li class="list-group-item" style="border-width:0px;">
-                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_RCA_NEASIGNATE)</span>
-                                            @Html.DisplayNameFor(model => model.DOSARE_RCA_NEASIGNATE)
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareNoi')">Mergi la dosare ...</a></div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="panel panel-danger">
-                                <div class="panel-heading" style="padding:0px;">
-                                    <ul class="list-group" style="margin-bottom:0px;">
-                                        <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_NEOPERATE)<span class="badge">@Html.DisplayFor(model => model.DOSARE_NEOPERATE)</span></li>
-                                    </ul>
-                                </div>
-                                <div class="panel-body" style="padding:0px;">
-                                    <ul class="list-group" style="margin-bottom:0px;">
-                                        <li class="list-group-item" style="border-width:0px;">
-                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_CASCO_NEOPERATE)</span>
-                                            @Html.DisplayNameFor(model => model.DOSARE_CASCO_NEOPERATE)
-                                        </li>
-                                        <li class="list-group-item" style="border-width:0px;">
-                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_RCA_NEOPERATE)</span>
-                                            @Html.DisplayNameFor(model => model.DOSARE_RCA_NEOPERATE)
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareNoi')">Mergi la dosare ...</a></div>
-                            </div>
-                        }
-                    }
+                    <div class="panel panel-danger">
+                        <div class="panel-heading" style="padding:0px;">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_NEOPERATE)<span class="badge">@Html.DisplayFor(model => model.DOSARE_NEOPERATE)</span></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body" style="padding:0px;">
+                            <ul class="list-group" style="margin-bottom:0px;">
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_CASCO_NEOPERATE)</span>
+                                    @Html.DisplayNameFor(model => model.DOSARE_CASCO_NEOPERATE)
+                                </li>
+                                <li class="list-group-item" style="border-width:0px;">
+                                    <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_RCA_NEOPERATE)</span>
+                                    @Html.DisplayNameFor(model => model.DOSARE_RCA_NEOPERATE)
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareDashboardRegular')">Mergi la dosare ...</a></div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -131,15 +101,71 @@
                     </div>
                 </td>
                 <td style="width:33%;margin:5px;padding:10px;">
+                    @{
+                        var ut = ((SOCISA.Models.Nomenclator)Session["CURENT_USER_TYPE"]).DENUMIRE;
+                        if (ut != "Regular")
+                        {
+                            <div class="panel panel-warning">
+                                <div class="panel-heading" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_NEASIGNATE_FROM_LAST_LOGIN)<span class="badge">@Html.DisplayFor(model => model.DOSARE_NEASIGNATE_FROM_LAST_LOGIN)</span></li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#B2935E;">@Html.DisplayFor(model => model.DOSARE_NEASIGNATE_CASCO_FROM_LAST_LOGIN)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_NEASIGNATE_CASCO_FROM_LAST_LOGIN)
+                                        </li>
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#B2935E;">@Html.DisplayFor(model => model.DOSARE_NEASIGNATE_RCA_FROM_LAST_LOGIN)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_NEASIGNATE_RCA_FROM_LAST_LOGIN)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareDashboardAdminAndSuper')">Mergi la dosare ...</a></div>
+                            </div>
+                        }
+                    }
                 </td>
                 <td style="width:33%;margin:5px;padding:10px;">
+                    @{
+                        if (ut != "Regular")
+                        {
+                            <div class="panel panel-danger">
+                                <div class="panel-heading" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="background-color:inherit;border-width:0px;">@Html.DisplayNameFor(model => model.DOSARE_NEASIGNATE)<span class="badge">@Html.DisplayFor(model => model.DOSARE_NEASIGNATE)</span></li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body" style="padding:0px;">
+                                    <ul class="list-group" style="margin-bottom:0px;">
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_CASCO_NEASIGNATE)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_CASCO_NEASIGNATE)
+                                        </li>
+                                        <li class="list-group-item" style="border-width:0px;">
+                                            <span class="badge" style="background-color:#AC5955;">@Html.DisplayFor(model => model.DOSARE_RCA_NEASIGNATE)</span>
+                                            @Html.DisplayNameFor(model => model.DOSARE_RCA_NEASIGNATE)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainDosareDashboardAdminAndSuper')">Mergi la dosare ...</a></div>
+                            </div>
+                        }
+                    }
                 </td>
             </tr>
         </table>
     </div>
-    <div id="mainDosareNoi" class="main_div" style="background-color:white;display:none;" ng-controller="DosareDashboardController" ng-cloak>
+    <div id="mainDosareDashboardAdminAndSuper" class="main_div" style="background-color:white;display:none;" ng-controller="DosareDashboardAdminAndSuperController" ng-cloak>
         @{
-            Html.RenderAction("GetDosareNoi", "Dashboard");
+            Html.RenderAction("GetDosareDashboardAdminAndSuper", "Dashboard");
+        }
+    </div>
+    <div id="mainDosareDashboardRegular" class="main_div" style="background-color:white;display:none;" ng-controller="DosareDashboardRegularController" ng-cloak>
+        @{
+            Html.RenderAction("GetDosareDashboardRegular", "Dashboard");
         }
     </div>
 }

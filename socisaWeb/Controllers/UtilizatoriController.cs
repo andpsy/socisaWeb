@@ -137,8 +137,10 @@ namespace socisaWeb
                     SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(u.ID), conStr);
                     SocietateAsigurare sa = (SocietateAsigurare)sar.Find(Convert.ToInt32(u.ID_SOCIETATE)).Result;
                     Session["SOCIETATE_ASIGURARE"] = sa;
-                    return Redirect(returnUrl ?? Url.Action("Index", "Home"));
+
                     //return RedirectToAction("Index", "Home");
+                    //return Redirect(returnUrl ?? Url.Action("Index", "Home"));
+                    return Redirect(returnUrl ?? Url.Action("IndexMain", "Dashboard"));
                 }
             }
             else
@@ -184,7 +186,8 @@ namespace socisaWeb
                 Session["ID_SOCIETATE"] = model["Societate"];
                 SocietateAsigurare sa = (SocietateAsigurare)sar.Find(Convert.ToInt32(model["Societate"])).Result;
                 Session["SOCIETATE_ASIGURARE"] = sa;
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
+                return RedirectToAction("IndexMain", "Dashboard");
             }
             else
             {

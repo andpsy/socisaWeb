@@ -1,4 +1,5 @@
-﻿@{
+﻿@using socisaWeb.Helpers;
+@{
     ViewBag.Title = "Dosare";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,6 +8,13 @@
         <li class="active"><a href="#detalii" class="grad_tab" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
         <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('documente')">DOCUMENTE</a></li>
         <li class=""><a href="#mesaje" data-toggle="tab" aria-expanded="false" id="lnkMesajeDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('mesaje')">MESAJE</a></li>
+        @{
+            var ut = ((SOCISA.Models.Nomenclator)Session["CURENT_USER_TYPE"]).DENUMIRE;
+            if (ut != "Regular")
+            {
+                <li class=""><a href="#utilizatori" data-toggle="tab" aria-expanded="false" id="lnkUtilizatoriDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('utilizatori')" title="Asignare utilizatori">UTILIZATORI</a></li>
+            }
+        }
     </ul>
     <div id="myTabContent" class="tab-content" ng-cloak>
         <div class="tab-pane fade active in" id="detalii">
@@ -34,6 +42,14 @@
                 Html.RenderAction("Index", "Mesaje");
             }
         </div>
+        @if (ut != "Regular")
+        {
+            <div class="tab-pane fade" id="utilizatori" style="padding-top:15px;" ng-controller="DosareDashboardAdminAndSuperController">
+                @{
+                    Html.RenderAction("GetDosareDashboardAdminAndSuper", "Dashboard");
+                }
+            </div>
+        }
     </div>
     <div class="calitateSocietate" ng-show="activeTab == 'detalii'">
         <table>
@@ -62,5 +78,9 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+    <div class="infoNumarDosar" ng-show="activeTab != 'detalii'">
+        <span class="navbar-brand" a-disabled="true">Numar Dosar CASCO: <b>{{DosarFiltru.Dosar.NR_DOSAR_CASCO}}</b></span>
     </div>
 </div>

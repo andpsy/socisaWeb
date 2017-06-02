@@ -11,7 +11,7 @@ function toggleDashboardChecks(id_prefix) {
 */
 var spinner = new Spinner(opts);
 
-app.controller('DosareDashboardController',
+app.controller('DosareDashboardAdminAndSuperController',
 function ($scope, $http, $filter, $rootScope, $window) {
     $scope.model = {};
     $scope.model.DosareExtended = [];
@@ -44,21 +44,23 @@ function ($scope, $http, $filter, $rootScope, $window) {
         }
     };
 
+    $rootScope.$watch('ID_DOSAR', function (newValue, oldValue) {
+        if (newValue != null && newValue != undefined && $rootScope.activeTab == 'utilizatori') {
+            $scope.getUtilizatoriAsignati();
+        }
+    });
+
+    $rootScope.$watch('activeTab', function (newValue, oldValue) {
+        if (newValue == 'utilizatori' && $rootScope.ID_DOSAR != null && $rootScope.ID_DOSAR != undefined && $scope.lastActiveIdDosar != $rootScope.ID_DOSAR) {
+            $scope.getUtilizatoriAsignati();
+            $scope.lastActiveIdDosar = $rootScope.ID_DOSAR;
+        }
+    });
+
     $scope.sortBy = function (propertyName) {
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.propertyName = propertyName;
     };
-
-    /*
-      $scope.filter_by = function(field) {
-        if ($scope.g[field] === '') {
-             delete $scope.f['__' + field];
-             return;
-        }
-        $scope.f['__' + field] = true;
-        $scope.model.forEach(function(v) { v['__' + field] = v[field] < $scope.g[field]; })
-      }
-    */
 
     $scope.applyFilter = function (element) {
         var idSoc = $('#idSoc').val();
@@ -156,33 +158,64 @@ function ($scope, $http, $filter, $rootScope, $window) {
         return toReturn1 && toReturn2 && toReturn3;
     };
 
-    $scope.AssignDosareToUtilizatori = function () {
-        for (var i = 0; i < $scope.dosareFiltrate.length; i++) {
-            if ($scope.dosareFiltrate[i].selected)
-            {
-                for (var j = 0; j < $scope.utilizatoriFiltrati.length; j++)
-                {
-                    if ($scope.utilizatoriFiltrati[j].selected)
-                    {
-                        var ud = { 'ID': null, 'ID_UTILIZATOR': $scope.utilizatoriFiltrati[j].Utilizator.ID, 'ID_DOSAR': $scope.dosareFiltrate[i].Dosar.ID };
-                        $scope.UtilizatoriDosare.push(ud);
-                        /*
-                        $http.post('/UtilizatoriDosare/Edit', { id_utilizator: $scope.utilizatoriFiltrati[j].Utilizator.ID, id_dosar: $scope.dosareFiltrate[i].Dosar.ID })
-                            .then(function (response) {
-                                if (response != 'null' && response != null && response.data != null) {
-                                    $('.alert').show();
-                                    $scope.showMessage = true;
-                                    $scope.result = response.data;
-
-                                    $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
-                                }
-                                spinner.stop();
-                            }, function (response) {
-                                spinner.stop();
-                                alert('Erroare: ' + response.status + ' - ' + response.data);
-                            });
-                        */
+    $scope.getUtilizatoriAsignati = function () {
+        $http.post('/UtilizatoriDosare/GetUtilizatoriAsignati', { 'id_dosar': $rootScope.ID_DOSAR })
+            .then(function (response) {
+                if (response != 'null' && response != null && response.data != null) {
+                    for (var j = 0; j < $scope.utilizatoriFiltrati.length; j++) {
+                        $scope.utilizatoriFiltrati[j].selected = false;
+                        for (var i = 0; i < response.data.length; i++) {
+                            if ($scope.utilizatoriFiltrati[j].Utilizator.ID == response.data[i].ID)
+                            {
+                                $scope.utilizatoriFiltrati[j].selected = true;
+                                break;
+                            }
+                        }
                     }
+                }
+                spinner.stop();
+            }, function (response) {
+                spinner.stop();
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+            });
+
+    };
+
+    $scope.AssignDosareToUtilizatori = function () {
+        if ($rootScope.ID_DOSAR == null) {
+            for (var i = 0; i < $scope.dosareFiltrate.length; i++) {
+                if ($scope.dosareFiltrate[i].selected) {
+                    for (var j = 0; j < $scope.utilizatoriFiltrati.length; j++) {
+                        if ($scope.utilizatoriFiltrati[j].selected) {
+                            var ud = { 'ID': null, 'ID_UTILIZATOR': $scope.utilizatoriFiltrati[j].Utilizator.ID, 'ID_DOSAR': $scope.dosareFiltrate[i].Dosar.ID };
+                            $scope.UtilizatoriDosare.push(ud);
+                            /*
+                            // -- pentru inserare one-by-one --
+                            $http.post('/UtilizatoriDosare/Edit', { id_utilizator: $scope.utilizatoriFiltrati[j].Utilizator.ID, id_dosar: $scope.dosareFiltrate[i].Dosar.ID })
+                                .then(function (response) {
+                                    if (response != 'null' && response != null && response.data != null) {
+                                        $('.alert').show();
+                                        $scope.showMessage = true;
+                                        $scope.result = response.data;
+    
+                                        $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
+                                    }
+                                    spinner.stop();
+                                }, function (response) {
+                                    spinner.stop();
+                                    alert('Erroare: ' + response.status + ' - ' + response.data);
+                                });
+                            */
+                        }
+                    }
+                }
+            }
+        }
+        else{
+            for (var j = 0; j < $scope.utilizatoriFiltrati.length; j++) {
+                if ($scope.utilizatoriFiltrati[j].selected) {
+                    var ud = { 'ID': null, 'ID_UTILIZATOR': $scope.utilizatoriFiltrati[j].Utilizator.ID, 'ID_DOSAR': $rootScope.ID_DOSAR };
+                    $scope.UtilizatoriDosare.push(ud);
                 }
             }
         }
@@ -194,16 +227,21 @@ function ($scope, $http, $filter, $rootScope, $window) {
                     $scope.result = response.data;
                     $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                     if ($scope.result.Status) {
-                        /*
-                        $scope.dosareFiltrate = $scope.dosareFiltrate.filter(function (item) {
-                            return !item.selected
-                        });
-                        */
-                        $scope.model.DosareExtended = $scope.model.DosareExtended.filter(function (item) {
-                            return !item.selected
-                        });
-                        for (var c = 0; c < $scope.utilizatoriFiltrati.length; c++) {
-                            $scope.utilizatoriFiltrati[c].selected = false;
+                        if ($rootScope.ID_DOSAR == null) {
+                            /*
+                            $scope.dosareFiltrate = $scope.dosareFiltrate.filter(function (item) {
+                                return !item.selected
+                            });
+                            */
+                            $scope.model.DosareExtended = $scope.model.DosareExtended.filter(function (item) {
+                                return !item.selected
+                            });
+                            for (var c = 0; c < $scope.utilizatoriFiltrati.length; c++) {
+                                $scope.utilizatoriFiltrati[c].selected = false;
+                            }
+                        }
+                        else {
+                            $scope.getUtilizatoriAsignati();
                         }
                     }
                 }

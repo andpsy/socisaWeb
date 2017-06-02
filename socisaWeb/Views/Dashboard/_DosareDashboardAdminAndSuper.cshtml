@@ -16,13 +16,13 @@
         </p>
     </div>
 
-    <div class="panel panel-primary" style="margin-bottom:10px;">
+    <div class="panel panel-primary" style="margin-bottom:10px;" ng-if="ID_DOSAR == null">
         <div class="panel-heading" style="padding:0px;">
             <div>
                 <table>
                     <tr>
                         <td style="width:40px;">
-                            <div class="docsRightMenuButton" onclick="ToggleDiv('mainDosareNoi')">&#9668;</div>
+                            <div class="docsRightMenuButton" onclick="ToggleDiv('mainDosareDashboardAdminAndSuper')">&#9668;</div>
                         </td>
                         <td style="vertical-align:middle;padding:5px;">
                             @{
@@ -168,41 +168,48 @@
         <div class="panel-footer">Dosare selectate: {{(dosareFiltrate | filter:{'selected':true}).length}} / {{dosareFiltrate.length}}</div>
     </div>
 
-    <div class="panel panel-primary" style="margin-bottom:10px;">
-        <div class="panel-heading" style="padding:10px;">
-            <h3 class="panel-title">Asigneaza dosarele selectate utilizatorilor:</h3>
-        </div>
-        <div class="panel-body" style="padding-left:5px;padding-right:0px;">
-            <div style="width:100%;height:100px;overflow-y:auto;">
-                <table>
-                    <tr>
-                        <th style="padding:3px;">
-                            <input id="all_chk_Utilizator" type="checkbox" ng-model="allUtilizatori" ng-change="toggleDashboardChecks('chk_Utilizator')" />
-                        </th>
-                        <th style="padding:3px;">
-                            Toti utilizatorii
-                        </th>
-                    </tr>
-                    <tr ng-repeat="u in utilizatoriFiltrati = (model.UtilizatoriExtended | filter:myFilter) | orderBy: 'Utilizator.NUME_COMPLET'">
-                        <td style="padding:3px;">
-                            <input type="checkbox" id="chk_Utilizator_{{u.Utilizator.ID}}" data-ng-model="u.selected" />
-                        </td>
-                        <td style="padding:3px;">
-                            {{u.Utilizator.NUME_COMPLET}}
-                        </td>
-                    </tr>
-                </table>
+    @{
+        var ut = ((SOCISA.Models.Nomenclator)Session["CURENT_USER_TYPE"]).DENUMIRE;
+        if (ut != "Regular")
+        {
+            <div class="panel panel-primary" style="margin-bottom:10px;">
+                <div class="panel-heading" style="padding:10px;">
+                    <h3 class="panel-title">Asigneaza {{ID_DOSAR == null ? "dosarele selectate" : "dosarul curent"}} utilizatorilor:</h3>
+                </div>
+                <div class="panel-body" style="padding-left:5px;padding-right:0px;">
+                    <div style="width:100%;height:100px;overflow-y:auto;">
+                        <table>
+                            <tr>
+                                <th style="padding:3px;">
+                                    <input id="all_chk_Utilizator" type="checkbox" ng-model="allUtilizatori" ng-change="toggleDashboardChecks('chk_Utilizator')" />
+                                </th>
+                                <th style="padding:3px;">
+                                    Toti utilizatorii
+                                </th>
+                            </tr>
+                            <tr ng-repeat="u in utilizatoriFiltrati = (model.UtilizatoriExtended | filter:myFilter) | orderBy: 'Utilizator.NUME_COMPLET'">
+                                <td style="padding:3px;">
+                                    <input type="checkbox" id="chk_Utilizator_{{u.Utilizator.ID}}" data-ng-model="u.selected" />
+                                </td>
+                                <td style="padding:3px;">
+                                    {{u.Utilizator.NUME_COMPLET}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer">Utilizatori selectati: {{(utilizatoriFiltrati | filter:{'selected':true}).length}} / {{utilizatoriFiltrati.length}}</div>
             </div>
-        </div>
-        <div class="panel-footer">Utilizatori selectati: {{(utilizatoriFiltrati | filter:{'selected':true}).length}} / {{utilizatoriFiltrati.length}}</div>
-    </div>
-    @if (Helpers.HasRight("administrare"))
-    {
-        <div class="btn-toolbar">
-            <div class="btn-group">
-                <a href="#" class="btn btn-default btn-sm" a-disabled="!((utilizatoriFiltrati | filter:{'selected':true}).length > 0 && (dosareFiltrate | filter:{'selected':true}).length > 0)" ng-click="AssignDosareToUtilizatori()">Salveaza</a>
+        }
+
+        if (Helpers.HasRight("administrare"))
+        {
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <a href="#" class="btn btn-default btn-sm" a-disabled="!((utilizatoriFiltrati | filter:{'selected':true}).length > 0 && (ID_DOSAR != null || (dosareFiltrate | filter:{'selected':true}).length > 0))" ng-click="AssignDosareToUtilizatori()">Salveaza</a>
+                </div>
             </div>
-        </div>
+        }
     }
     <!--
     <div class="docsRightMenu" style="right:286px;">

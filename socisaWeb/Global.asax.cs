@@ -132,6 +132,13 @@ namespace socisaWeb
                 return false;
 
             SOCISA.Models.Utilizator u = (SOCISA.Models.Utilizator)httpContext.Session["CURENT_USER"];
+            string ut = ((SOCISA.Models.Nomenclator)u.GetTipUtilizator().Result).DENUMIRE;
+            if (ut != "Administrator" || (ut == "Administrator" && httpContext.Request.Url.ToString().IndexOf("SelectSocietate") == -1))
+            {
+                if (httpContext.Session["ID_SOCIETATE"] == null)
+                    return false;
+            }
+
             SOCISA.Models.Action[] userActions = (SOCISA.Models.Action[])u.GetActions().Result;
             /*
             bool userHasAction = false;

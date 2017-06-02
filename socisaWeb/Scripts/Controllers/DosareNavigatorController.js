@@ -34,6 +34,8 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.TempDosarFilter = {};
     $scope.editMode = 0;
     $scope.DosarFiltru = {};
+    $scope.DosarFiltru.dosarJson = {};
+
     //$scope.DosarFiltru.DosareResult = [];
     $scope.curDosarIndex = -1;
     $scope.TempDosarEdit = {};
@@ -57,12 +59,16 @@ function ($scope, $http, $filter, $rootScope, $window) {
             case "mesaje":
                 lnkId = "#lnkMesajeDetalii";
                 break;
+            case "utilizatori":
+                lnkId = "#lnkUtilizatoriDetalii";
+                break;
         }
         $scope.switchTabsClass(lnkId);
     };
 
     $scope.$watch('DosarFiltru.Dosar.ID', function (newValue, oldValue) {
         if (newValue == null) {
+            //alert('aici');
             $scope.switchTabsClass("#lnkDosareDetalii");
             $rootScope.dynaStyle = $rootScope.dynaStyleDefault;
         }
@@ -456,6 +462,10 @@ function ($scope, $http, $filter, $rootScope, $window) {
             if (response != 'null' && response != null && response.data != null) {
                 var j = JSON.parse(response.data);
                 try {
+                    $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : { 'background-color': '#f8eeee' };
+                    $scope.switchTabsClass("#lnkDosareDetalii");
+                    if ($scope.DosarFiltru.dosarJson == null || $scope.DosarFiltru.dosarJson == undefined || $scope.DosarFiltru.dosarJson == "undefined")
+                        $scope.DosarFiltru.dosarJson = {};
                     $scope.DosarFiltru.dosarJson.NumeAsiguratCasco = j.aCasco.DENUMIRE;
                     //alert(j.aCasco.DENUMIRE);
                     $scope.DosarFiltru.dosarJson.NumeAsiguratRca = j.aRca.DENUMIRE;
@@ -464,9 +474,6 @@ function ($scope, $http, $filter, $rootScope, $window) {
                     $scope.DosarFiltru.dosarJson.NumeIntervenient = j.intervenient.DENUMIRE;
                     //$scope.DosarFiltru.dosarJson.TipDosar = j.tipDosar.DENUMIRE;
                     $scope.validForAvizare = j.validForAvizare;
-
-                    $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : { 'background-color': '#f8eeee' };
-                    $scope.switchTabsClass("#lnkDosareDetalii");
                 } catch (e) { }
             }
             //spinner.stop();
@@ -480,6 +487,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         $("#lnkDosareDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
         $("#lnkDocumenteScanateDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
         $("#lnkMesajeDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
+        $("#lnkUtilizatoriDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
 
         var classToAdd = "";
         if ($scope.searchMode == 2 || $scope.DosarFiltru.Dosar.ID == null)

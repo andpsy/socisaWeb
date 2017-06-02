@@ -37,32 +37,23 @@ namespace socisaWeb.Controllers
         }
 
         [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
-        public ActionResult GetDosareNoi()
+        public ActionResult GetDosareDashboardAdminAndSuper()
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
-            /*
-            Dosar[] ds = (Dosar[])u.GetDosareNoi(Convert.ToInt32(Session["ID_SOCIETATE"])).Result;
-            List<DosarExtended> des = new List<DosarExtended>(ds.Length);
-            foreach(Dosar d in ds)
-            {
-                DosarExtended de = new DosarExtended();
-                de.Dosar = d;
-                de.AsiguratCasco = (Asigurat)d.GetAsiguratCasco().Result;
-                de.AsiguratRca = (Asigurat)d.GetAsiguratCasco().Result;
-                de.AutoCasco = (Auto)d.GetAutoCasco().Result;
-                de.AutoRca = (Auto)d.GetAutoRca().Result;
-                de.Intervenient = (Intervenient)d.GetIntervenient().Result;
-                de.SocietateCasco = (SocietateAsigurare)d.GetSocietateCasco().Result;
-                de.SocietateRca = (SocietateAsigurare)d.GetSocietateRca().Result;
-                de.TipDosar = (Nomenclator)d.GetTipDosar().Result;
-                des.Add(de);
-            }
-            */
-            DashBoardView dbv = new DashBoardView(u, conStr, Convert.ToInt32(Session["ID_SOCIETATE"]));
-            //return PartialView("_DosareNoi", des.ToArray());
-            return PartialView("_DosareNoi", dbv);
+            DashBoardView dbv = new DashBoardView(u, conStr, Convert.ToInt32(Session["ID_SOCIETATE"]),1);
+            //return PartialView("_DosareDashboardAdminAndSuper", des.ToArray());
+            return PartialView("_DosareDashboardAdminAndSuper", dbv);
         }
 
+        [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
+        public ActionResult GetDosareDashboardRegular()
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            Utilizator u = (Utilizator)Session["CURENT_USER"];
+            DashBoardView dbv = new DashBoardView(u, conStr, Convert.ToInt32(Session["ID_SOCIETATE"]),2);
+            //return PartialView("_DosareDashboardRegular", des.ToArray());
+            return PartialView("_DosareDashboardRegular", dbv);
+        }
     }
 }

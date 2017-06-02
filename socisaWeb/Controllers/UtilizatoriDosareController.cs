@@ -73,5 +73,16 @@ namespace socisaWeb.Controllers
             }
             return Json(toReturn, JsonRequestBehavior.AllowGet);
         }
+
+        [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
+        [HttpPost]
+        public JsonResult GetUtilizatoriAsignati(int id_dosar)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            Dosar d = new Dosar(uid, conStr, id_dosar);
+            Utilizator[] us = (Utilizator[])d.GetUtilizatori().Result;
+            return Json(us, JsonRequestBehavior.AllowGet);
+        }
     }
 }
