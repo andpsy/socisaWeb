@@ -97,7 +97,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="panel-footer"><a href="#">Mergi la mesaje ...</a></div>
+                        <div class="panel-footer"><a href="#" onclick="ToggleDiv('mainMesajeDashboard')">Mergi la mesaje ...</a></div>
                     </div>
                 </td>
                 <td style="width:33%;margin:5px;padding:10px;">
@@ -166,6 +166,11 @@
     <div id="mainDosareDashboardRegular" class="main_div" style="background-color:white;display:none;" ng-controller="DosareDashboardRegularController" ng-cloak>
         @{
             Html.RenderAction("GetDosareDashboardRegular", "Dashboard");
+        }
+    </div>
+    <div id="mainMesajeDashboard" class="main_div" style="background-color:white;display:none;" ng-controller="MesajeController" ng-cloak>
+        @{
+            Html.RenderAction("IndexMain", "Mesaje");
         }
     </div>
 }

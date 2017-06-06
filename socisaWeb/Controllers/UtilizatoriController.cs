@@ -140,7 +140,11 @@ namespace socisaWeb
 
                     //return RedirectToAction("Index", "Home");
                     //return Redirect(returnUrl ?? Url.Action("Index", "Home"));
-                    return Redirect(returnUrl ?? Url.Action("IndexMain", "Dashboard"));
+                    //return Redirect(returnUrl ?? Url.Action("IndexMain", "Dashboard"));
+                    if (returnUrl != null && returnUrl != "/")
+                        return Redirect(returnUrl);
+                    else
+                        return RedirectToAction("IndexMain", "Dashboard");
                 }
             }
             else

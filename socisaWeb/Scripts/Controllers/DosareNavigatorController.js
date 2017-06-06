@@ -80,7 +80,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
             $scope.curDosarIndex = 0;
             $scope.ShowDosar($scope.curDosarIndex);
             $scope.ID_SOCIETATE_RCA = $scope.DosarFiltru.Dosar.ID_SOCIETATE_RCA;
-            $scope.TIP_CAZ = $scope.DosarFiltru.Dosar.TIP_CAZ;
+            $scope.TIP_CAZ = $scope.DosarFiltru.Dosar.CAZ;
             $scope.ID_TIP_DOSAR = $scope.DosarFiltru.Dosar.ID_TIP_DOSAR;
         }
     });

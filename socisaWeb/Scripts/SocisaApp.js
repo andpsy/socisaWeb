@@ -1,5 +1,6 @@
 ﻿var MESSAGE_DELAY = 3000;
 var MESSAGE_FADE_OUT = 2000;
+var MESSAGES_REFRESH_RATE = 300000;
 
 function setRequiredFields() {
     $('*').each(function () {
@@ -69,7 +70,10 @@ app.config(['$httpProvider', function ($httpProvider) {
 app.filter("dateFilter", function () {
     return function (item) {
         if (item != null) {
-            return new Date(parseInt(item.substr(6)));
+            if (Object.prototype.toString.call(item) === '[object Date]' || jQuery.type(item) === 'date' || (Date.parse(item) !== 'Invalid Date' && !isNaN(Date.parse(item)) && !isNaN(new Date(item).getMonth()) ))
+                return item;
+            else
+                return new Date(parseInt(item.substr(6)));
         }
         return "";
     };

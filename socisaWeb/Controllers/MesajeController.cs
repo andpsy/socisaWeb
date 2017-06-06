@@ -22,64 +22,110 @@ namespace socisaWeb.Controllers
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpGet]
-        public JsonResult GetMessages(int? id)
+        public ActionResult IndexMain()
         {
-            //if (id == null || id == -1) return PartialView("_MesajeView", null);
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            return PartialView("_MesajeView", new MesajView(uid, conStr));
+        }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
+        [HttpGet]
+        public JsonResult GetMessages(int? id) // id_dosar
+        {
             MesajView mv = new MesajView();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-            DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
-            Dosar d = (Dosar)dr.Find(Convert.ToInt32(id)).Result;
-
-            Mesaj mesaj = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            Mesaj mesaj = new Mesaj(uid, conStr);
             Utilizator[] us = (Utilizator[])mesaj.GetReceivers().Result;
             Utilizator s = (Utilizator)mesaj.GetSender().Result;
             Nomenclator n = (Nomenclator)mesaj.GetTipMesaj().Result;
-            DateTime? da = (DateTime?)mesaj.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result;
-
-            mv.MesajJson = new MesajJson(mesaj, s, us, n, da);
+            DateTime? da = (DateTime?)mesaj.GetMessageReadDate(uid).Result;
+            Dosar d = new Dosar(uid, conStr, Convert.ToInt32(id));
+            mv.MesajJson = new MesajJson(mesaj, d, s, us, n, da);
             mv.InvolvedParties = (Utilizator[])d.GetInvolvedParties().Result;
-            Mesaj[] ms = (Mesaj[])d.GetMesaje().Result;
+            mv.TipuriMesaj = (Nomenclator[])(new NomenclatoareRepository(uid, conStr).GetAll("tip_mesaje").Result);
             List<MesajJson> ls = new List<MesajJson>();
+            Mesaj[] ms = null;
+
+            if (id != null)
+            {
+                d = new Dosar(uid, conStr, Convert.ToInt32(id));
+                ms = (Mesaj[])d.GetMesaje().Result;
+            }
+            else
+            {
+                Utilizator u = (Utilizator)Session["CURENT_USER"];
+                ms = (Mesaj[])u.GetMesaje().Result;
+            }
+
             foreach(Mesaj m in ms)
             {
-                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result, (Nomenclator)m.GetTipMesaj().Result, (DateTime?)m.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result));
+                //ls.Add(new MesajJson(m, (Dosar)m.GetDosar().Result, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result, (Nomenclator)m.GetTipMesaj().Result, (DateTime?)m.GetMessageReadDate(uid).Result));
+                MesajJson mj = new MesajJson(m);
+                mj.DataCitire = (DateTime?)m.GetMessageReadDate(uid).Result;
+                ls.Add(mj);            
             }
 
             mv.MesajeJson = ls.ToArray();
-            mv.TipuriMesaj = (Nomenclator[])(new NomenclatoareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr).GetAll("tip_mesaje").Result);
+
             //return PartialView("_MesajeView", mv);
             return Json(mv, JsonRequestBehavior.AllowGet);
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpGet]
-        public JsonResult GetSentMessages(int? id)
+        public JsonResult GetInvolvedParties(int? id) // id_dosar
         {
-            //if (id == null || id == -1) return PartialView("_MesajeView", null);
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            Dosar d = new Dosar(uid, conStr, Convert.ToInt32(id));
+            response r = d.GetInvolvedParties();
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
 
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
+        [HttpGet]
+        public JsonResult GetSentMessages(int? id) // id_dosar
+        {
             MesajView mv = new MesajView();
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-            DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
-            Dosar d = (Dosar)dr.Find(Convert.ToInt32(id)).Result;
+            int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
 
-            Mesaj mesaj = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            Dosar d = new Dosar(uid, conStr, Convert.ToInt32(id));
+            Mesaj mesaj = new Mesaj(uid, conStr);
             Utilizator[] us = (Utilizator[])mesaj.GetReceivers().Result;
             Utilizator s = (Utilizator)mesaj.GetSender().Result;
             Nomenclator n = (Nomenclator)mesaj.GetTipMesaj().Result;
-            DateTime? da = (DateTime?)mesaj.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result;
+            DateTime? da = (DateTime?)mesaj.GetMessageReadDate(uid).Result;
 
-            mv.MesajJson = new MesajJson(mesaj, s, us, n, da);
+            mv.MesajJson = new MesajJson(mesaj, d, s, us, n, da);
             mv.InvolvedParties = (Utilizator[])d.GetInvolvedParties().Result;
-            Mesaj[] ms = (Mesaj[])d.GetSentMesaje().Result;
+            mv.TipuriMesaj = (Nomenclator[])(new NomenclatoareRepository(uid, conStr).GetAll("tip_mesaje").Result);
+
+            Mesaj[] ms = null;
             List<MesajJson> ls = new List<MesajJson>();
+            if (id != null)
+            {
+                d = new Dosar(uid, conStr, Convert.ToInt32(id));
+                ms = (Mesaj[])d.GetSentMesaje().Result;
+            }
+            else
+            {
+                Utilizator u = (Utilizator)Session["CURENT_USER"];
+                ms = (Mesaj[])u.GetSentMesaje().Result;
+            }
+
             foreach (Mesaj m in ms)
             {
-                ls.Add(new MesajJson(m, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result, (Nomenclator)m.GetTipMesaj().Result, (DateTime?)m.GetMessageReadDate(Convert.ToInt32(Session["CURENT_USER_ID"])).Result));
+                //ls.Add(new MesajJson(m, (Dosar)m.GetDosar().Result, (Utilizator)m.GetSender().Result, (Utilizator[])m.GetReceivers().Result, (Nomenclator)m.GetTipMesaj().Result, (DateTime?)m.GetMessageReadDate(uid).Result));
+                MesajJson mj = new MesajJson(m);
+                mj.DataCitire = (DateTime?)m.GetMessageReadDate(uid).Result;
+                ls.Add(mj);
             }
 
             mv.MesajeJson = ls.ToArray();
-            mv.TipuriMesaj = (Nomenclator[])(new NomenclatoareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr).GetAll("tip_mesaje").Result);
+
             //return PartialView("_MesajeView", mv);
             return Json(mv, JsonRequestBehavior.AllowGet);
         }
@@ -90,10 +136,19 @@ namespace socisaWeb.Controllers
         {
             dynamic x = JsonConvert.DeserializeObject(j);
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-            DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
-            Dosar d = (Dosar)dr.Find(Convert.ToInt32(x.id_dosar)).Result;
-            //return Json(d.GetNewMesaje(Convert.ToDateTime(x.last_refresh)), JsonRequestBehavior.AllowGet);
-            return Json(d.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
+            int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
+            if(x.id_dosar != null)
+            {
+                DosareRepository dr = new DosareRepository(uid, conStr);
+                Dosar d = (Dosar)dr.Find(Convert.ToInt32(x.id_dosar)).Result;
+                //return Json(d.GetNewMesaje(Convert.ToDateTime(x.last_refresh)), JsonRequestBehavior.AllowGet);
+                return Json(d.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                Utilizator u = (Utilizator)Session["CURENT_USER"];
+                return Json(u.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
+            }
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]

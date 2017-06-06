@@ -21,12 +21,21 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.editMode = 0;
     $scope.propertyName = 'Mesaj.DATA';
     $scope.reverse = true;
+    $scope.queryMesaje = '1';
+    $scope.queryTextMesaje = {};
+    $scope.queryTextMesaje.$ = null;
 
     $scope.lastRefresh = new Date();
     $interval(function () {
-        if($rootScope.activeTab == 'mesaje' && $rootScope.ID_DOSAR != null && $rootScope.ID_DOSAR != undefined)
-            $scope.GetNewMessages($rootScope.ID_DOSAR);
-    }, 500000);
+        if ($rootScope.ID_DOSAR == undefined) $rootScope.ID_DOSAR = null;
+
+        if ($rootScope.ID_DOSAR != null) {
+            if ($rootScope.activeTab == 'mesaje')
+                $scope.GetNewMessages($rootScope.ID_DOSAR);
+        } else {
+            $scope.GetNewMessages(null);
+        }
+    }, MESSAGES_REFRESH_RATE);
 
 
     $rootScope.$watch('ID_DOSAR', function (newValue, oldValue) {
@@ -50,6 +59,51 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.$watch('tipMesaj', function (newValue, oldValue) {
         $scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = newValue;
     });
+
+    $scope.applyFilter = function (element) {
+        var idSoc = $('#idSoc').val();
+        switch ($scope.queryMesaje) {
+            case '1':
+                return true;
+                break;
+            case '2': // mesaje Casco
+                return element.Dosar.ID_SOCIETATE_CASCO == idSoc;
+                break;
+            case '3': // mesaje RCA
+                return element.Dosar.ID_SOCIETATE_RCA == idSoc;
+                break;
+        }
+    };
+
+    $scope.filterByColumns = function (item) {
+        if ($scope.queryTextMesaje.$ == null || $scope.queryTextMesaje.$ == "") return true;
+
+        var toReturn1 = false;
+
+        if ($scope.queryTextMesaje.$ != null && $scope.queryTextMesaje.$ != "") {
+            for (var key_1 in item) { // sub objects (Dosar, AsiguratCasco, AutoCasco etc...)
+                var subItem = item[key_1];
+                for (var key_2 in subItem) {
+                    try {
+                        var str = subItem[key_2];
+                        if (key_2.toLowerCase().indexOf("data") > -1) {
+                            str = $filter('date')(str, 'dd.MM.yyyy');
+                        }
+                        if (str.toString().toLowerCase().indexOf($scope.queryTextMesaje.$.toLowerCase()) > -1) {
+                            //return true;
+                            toReturn1 = true;
+                            break;
+                        }
+                    } catch (e) {; }
+                }
+                if (toReturn1) break;
+            }
+        }
+        else {
+            toReturn1 = true;
+        }
+        return toReturn1;
+    };
 
     $scope.AddReceiver = function () {
         var este = false;
@@ -87,7 +141,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     };
 
     $scope.GetNewMessages = function (id_dosar) {
-        if (id_dosar == null) return;
+        //if (id_dosar == null) return;
         spinner.spin(document.getElementById('main'));
         //var j = {'id_dosar': id_dosar, 'last_refresh': $scope.lastRefresh};
         var j = { 'id_dosar': id_dosar, 'last_refresh': $filter('date')($scope.lastRefresh, 'dd.MM.yyyy HH:mm:ss') };
@@ -161,6 +215,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         //$scope.model.MesajJson = mesaj;
         angular.copy(mesaj, $scope.model.MesajJson);
         //$scope.tipMesaj = mesaj.Mesaj.ID_TIP_MESAJ;
+        $scope.getInvolvedParties(mesaj.Mesaj.ID_DOSAR);
         $scope.GenerateReceivers();
 
         if ($scope.model.MesajJson.DataCitire == null) {
@@ -220,9 +275,10 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     };
 
     $scope.NewMessage = function () {
+        var tmpIdDosar = $scope.model.MesajJson.Mesaj.ID_DOSAR;
         $scope.editMode = 2;
         $scope.model.MesajJson.Mesaj = {};
-        $scope.model.MesajJson.Mesaj.ID_DOSAR = $rootScope.ID_DOSAR;
+        $scope.model.MesajJson.Mesaj.ID_DOSAR = $rootScope.ID_DOSAR != null ? $rootScope.ID_DOSAR : tmpIdDosar;
         $scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.getIdTipMesajByDenumire("OBIECTIUNI");
         $scope.model.MesajJson.Receivers = [];
         $scope.AddAllReceivers();
@@ -239,6 +295,12 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.sortBy = function (propertyName) {
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.propertyName = propertyName;
+    };
+
+    $scope.getDetaliiDosar = function (mesaj) {
+        var toReturn = "Mergi la dosar... \n";
+        toReturn += (mesaj.Dosar.NR_DOSAR_CASCO + "\n");
+        return toReturn;
     };
 
     $scope.CancelMessage = function () {
@@ -281,6 +343,21 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         //$scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.tempMesaj.Mesaj.ID_TIP_MESAJ;
         $scope.model.MesajJson.Mesaj.ID_TIP_MESAJ = $scope.getIdTipMesajByDenumire("RASPUNS OBIECTIUNI");
         $scope.model.MesajJson.Mesaj.ID_DOSAR = $scope.tempMesaj.Mesaj.ID_DOSAR;
+    };
+
+    $scope.getInvolvedParties = function (id_dosar) {
+        $http.get('/Mesaje/GetInvolvedParties/' + id_dosar)
+            .then(function (response) {
+                if (response != 'null' && response != null && response.data != null) {
+                    if (response.data.Status) {
+                        $scope.model.InvolvedParties = response.data.Result;
+                    }
+                }
+                spinner.stop();
+            }, function (response) {
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+                spinner.stop();
+            });
     };
 
     $scope.getIdTipMesajByDenumire = function (denumire) {

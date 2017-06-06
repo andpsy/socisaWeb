@@ -391,7 +391,6 @@
     <Content Include="Scripts\spinner.js" />
     <Content Include="Scripts\SocisaApp.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Mesaje\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

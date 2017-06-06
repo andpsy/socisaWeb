@@ -1,21 +1,47 @@
 ﻿@model socisaWeb.MesajView
 
-<div style="border:solid 1px lightgray; padding:10px; background-color:#FAFAFA; margin:5px;">
-    <div class="btn-toolbar" ng-show="ID_DOSAR != null">
+<div style="border:solid 1px lightgray; padding:10px; background-color:#FAFAFA; margin:5px;" data-ng-init="@String.Format("model.MesajeJson = {0}; model.TipuriMesaj = {1};", Newtonsoft.Json.JsonConvert.SerializeObject(Model.MesajeJson), Newtonsoft.Json.JsonConvert.SerializeObject(Model.TipuriMesaj))">
+    <div class="btn-toolbar">
         <div class="btn-group">
             <div class="btn-group">
-                <a id="inboxLabel" href="#" class="btn btn-default btn-sm" a-disabled="ID_DOSAR == null">{{inbox}}</a>
-                <a href="#" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" a-disabled="ID_DOSAR == null"><span class="caret"></span></a>
+                <a id="inboxLabel" href="#" class="btn btn-default btn-sm">{{inbox}}</a>
+                <a href="#" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" ng-click="GetMessages(ID_DOSAR)" a-disabled="ID_DOSAR == null">Inbox</a></li>
-                    <li><a href="#" ng-click="GetSentMessages(ID_DOSAR)" a-disabled="ID_DOSAR == null">Sent</a></li>
+                    <li><a href="#" ng-click="GetMessages(ID_DOSAR)">Inbox</a></li>
+                    <li><a href="#" ng-click="GetSentMessages(ID_DOSAR)">Sent</a></li>
                 </ul>
             </div>
-            <a href="#" class="btn btn-default btn-sm" ng-click="NewMessage()" a-disabled="ID_DOSAR == null">Mesaj nou</a>
+            <a href="#" class="btn btn-default btn-sm" ng-click="NewMessage()" a-disabled="ID_DOSAR == null && model.MesajJson.Mesaj.ID_DOSAR == null">Mesaj nou</a>
             <a href="#" class="btn btn-default btn-sm" a-disabled="model.MesajJson.Mesaj.ID == null" ng-click="Reply()">Raspunde</a>
-            <a href="#" class="btn btn-default btn-sm" ng-click="GetMessages(ID_DOSAR)" a-disabled="ID_DOSAR == null">Refresh {{newMessages}}</a>
+            <a href="#" class="btn btn-default btn-sm" ng-click="GetMessages(ID_DOSAR)">Refresh {{newMessages}}</a>
         </div>
     </div>
+    <div>
+        <table>
+            <tr>
+                <td style="width:40px;">
+                    <div ng-show="ID_DOSAR == null" class="docsRightMenuButton" onclick="ToggleDiv('mainMesajeDashboard')">&#9668;</div>
+                </td>
+                <td style="vertical-align:middle;padding:5px;">
+                    <h4 class="panel-title">Total mesaje: {{model.MesajeJson.length}}, din care mesaje noi {{(model.MesajeJson | filter:{'DataCitire':null}).length}}</h4>
+                </td>
+                <td style="vertical-align:middle;padding:5px;">
+                    <select id="mesajeQueryMesaje" class="form-control input-sm" data-ng-model="queryMesaje" data-ng-change="applyFilter()">
+                        <option value="1">Toate mesajele</option>
+                        <option value="2">Mesaje CASCO</option>
+                        <option value="3">Mesaje RCA</option>
+                    </select>
+                </td>
+                <td style="padding:5px;">
+                    <div class="input-group">
+                        <span class="input-group-addon">Filtrare</span>
+                        <input id="mesajeQueryTextMesaje" class="form-control input-sm" type="text" data-ng-model="queryTextMesaje.$">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
     <div class="treeview">
         <table id="messagesTable" class="table table-striped table-hover">
             <thead>
@@ -24,39 +50,38 @@
                         <a href="#" ng-click="sortBy('Mesaj.SUBIECT')">Subiect</a>
                         <span class="sortorder" ng-show="propertyName === 'Mesaj.SUBIECT'" ng-class="{reverse: reverse}"></span>
                     </th>
-                    <th style="width:300px;">
-                        <a href="#" ng-click="sortBy('Mesaj.ID_SENDER')">De la</a>
-                        <span class="sortorder" ng-show="propertyName === 'Mesaj.Sender.NUME_COMPLET'" ng-class="{reverse: reverse}"></span>
+                    <th style="width:150px;" ng-if="ID_DOSAR == null">
+                        <a href="#" ng-click="sortBy('Dosar.NR_DOSAR_CASCO')">Dosar CASCO</a>
+                        <span class="sortorder" ng-show="propertyName === 'Dosar.NR_DOSAR_CASCO'" ng-class="{reverse: reverse}"></span>
                     </th>
-                    <th style="width:150px;">
-                        <a href="#" ng-click="sortBy('Mesaj.ID_TIP_MESAJ')">Tip mesaj</a>
-                        <span class="sortorder" ng-show="propertyName === 'Mesaj.TipMesaj.DENUMIRE'" ng-class="{reverse: reverse}"></span>
+                    <th style="width:200px;">
+                        <a href="#" ng-click="sortBy('Sender.NUME_COMPLET')">De la</a>
+                        <span class="sortorder" ng-show="propertyName === 'Sender.NUME_COMPLET'" ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th style="width:100px;">
+                        <a href="#" ng-click="sortBy('TipMesaj.DENUMIRE')">Tip mesaj</a>
+                        <span class="sortorder" ng-show="propertyName === 'TipMesaj.DENUMIRE'" ng-class="{reverse: reverse}"></span>
                     </th>
                     <!--
                     <th>Catre</th>
                     -->
-                    <th style="width:150px;">
+                    <th style="width:100px;">
                         <a href="#" ng-click="sortBy('Mesaj.DATA')">Data mesaj</a>
                         <span class="sortorder" ng-show="propertyName === 'Mesaj.DATA'" ng-class="{reverse: reverse}"></span>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <!--
-                @if (Model != null && Model.MesajeJson != null && Model.MesajeJson.Length > 0)
-                {
-                    @TreeView.GetTreeView(Model.MesajeJson, Model.MesajeJson[0].Mesaj.REPLY_TO, 0, 0)
-                }
-                -->
                 <tr>
-                    <td colspan="4">
+                    <td colspan="{{ID_DOSAR == null ? 5 : 4}}">
                         <div style="width:100%; height:300px; overflow-y:auto;">
                             <table  class="table table-striped table-hover">
-                                <tr ng-repeat="mesaj in model.MesajeJson | orderBy:propertyName:reverse">
+                                <tr ng-repeat="mesaj in model.MesajeJson | filter:filterByColumns | filter:applyFilter | orderBy:propertyName:reverse">
                                     <td style="width:300px;"><a href="#" ng-click="SelectMessage(mesaj)" style="font-weight:{{mesaj.DataCitire == null ? 'bold' : 'normal'}}">{{mesaj.Mesaj.SUBIECT}}</a></td>
-                                    <td style="width:300px;">{{mesaj.Sender.NUME_COMPLET}} ({{mesaj.Sender.EMAIL}})</td>
-                                    <td style="width:150px;">{{mesaj.TipMesaj.DENUMIRE}}</td>
-                                    <td style="width:150px;">{{mesaj.Mesaj.DATA | dateFilter | date:"dd.MM.yyyy HH:mm:ss"}}</td>
+                                    <td style="width:150px;" ng-if="ID_DOSAR == null"><a href="/Dosare/Index/{{mesaj.Dosar.ID}}" title="{{getDetaliiDosar(mesaj)}}">{{mesaj.Dosar.NR_DOSAR_CASCO}}</a></td>
+                                    <td style="width:200px;">{{mesaj.Sender.NUME_COMPLET}} ({{mesaj.Sender.EMAIL}})</td>
+                                    <td style="width:100px;">{{mesaj.TipMesaj.DENUMIRE}}</td>
+                                    <td style="width:100px;">{{mesaj.Mesaj.DATA | dateFilter | date:"dd.MM.yyyy HH:mm:ss"}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -76,7 +101,6 @@
                 {{s}}
             </p>
         </div>
-        @Html.Label("", new { data_ng_init = String.Format("model.MesajeJson = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.MesajeJson)) })
         <table class="table table-striped table-hover">
             <tr ng-show="false">
                 <td style="width:60px; white-space:nowrap;">
@@ -125,12 +149,16 @@
                     @Html.TextAreaFor(model => model.MesajJson.Mesaj.BODY, new { @class = "form-control input-sm", data_ng_disabled = "model.MesajJson.Mesaj.ID != null", data_ng_model = "model.MesajJson.Mesaj.BODY" })
                 </td>
             </tr>
-            <tr ng-if="model.MesajJson.Mesaj.ID == null">
+            <tr>
                 <td style="width:60px; white-space:nowrap;">
-
+                    <!--
+                    <div class="btn-toolbar">
+                        <a href="/Dosare/Index/{{model.MesajJson.Mesaj.ID_DOSAR}}" class="btn btn-info btn-sm">Dosar</a>
+                    </div>
+                    -->
                 </td>
                 <td>
-                    <div class="btn-toolbar">
+                    <div class="btn-toolbar"  ng-if="model.MesajJson.Mesaj.ID == null">
                         <a href="#" class="btn btn-primary btn-sm" ng-click="SendMessage()">Trimite</a>
                         <a href="#" class="btn btn-default btn-sm" ng-click="CancelMessage()">Renunta</a>
                     </div>
