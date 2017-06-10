@@ -87,7 +87,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
                     try {
                         var str = subItem[key_2];
                         if (key_2.toLowerCase().indexOf("data") > -1) {
-                            str = $filter('date')(str, 'dd.MM.yyyy');
+                            str = $filter('date')(str, $rootScope.DATE_FORMAT);
                         }
                         if (str.toString().toLowerCase().indexOf($scope.queryTextMesaje.$.toLowerCase()) > -1) {
                             //return true;
@@ -144,7 +144,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         //if (id_dosar == null) return;
         spinner.spin(document.getElementById('main'));
         //var j = {'id_dosar': id_dosar, 'last_refresh': $scope.lastRefresh};
-        var j = { 'id_dosar': id_dosar, 'last_refresh': $filter('date')($scope.lastRefresh, 'dd.MM.yyyy HH:mm:ss') };
+        var j = { 'id_dosar': id_dosar, 'last_refresh': $filter('date')($scope.lastRefresh, $rootScope.DATE_TIME_FORMAT) };
         myService.getlist('POST', '/Mesaje/GetNewMessages', { j: JSON.stringify(j) })
           .then(function (response) {
               if (response.data == null || !response.data.Status || response.data.Result <= 0) {
@@ -220,7 +220,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
 
         if ($scope.model.MesajJson.DataCitire == null) {
             spinner.spin(document.getElementById('main'));
-            $scope.model.MesajJson.DataCitire = $filter('date')(new Date(), 'dd.MM.yyyy HH:mm:ss');
+            $scope.model.MesajJson.DataCitire = $filter('date')(new Date(), $rootScope.DATE_TIME_FORMAT);
             var data = $scope.model.MesajJson;
             $http.post('/Mesaje/SetDataCitire', data)
                 .then(function (response) {

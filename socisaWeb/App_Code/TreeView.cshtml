@@ -31,7 +31,7 @@ foreach (var i in MesajeJson.Where(a => a.Mesaj.REPLY_TO.Equals(parentID)))
                 }
             </td>
             <td>
-                @i.Mesaj.DATA.ToString("dd.MM.yyyy HH:mm:ss")
+                @i.Mesaj.DATA.ToString(SOCISA.CommonFunctions.DATE_TIME_FORMAT)
             </td>
         </tr>
         if (submenu > 0)

@@ -18,11 +18,11 @@
             <tr ng-repeat="dosar in DosarFiltru.DosareResult">
                 <td ng-if="$index == curDosarIndex" colspan="2" style="padding:5px;color:red;font-weight:bold;">
                     Numar Dosar CASCO: <a href="#" ng-click="ShowDosar($index);">{{dosar.NR_DOSAR_CASCO}}</a><br />
-                    Numar SCA: <b>{{dosar.NR_SCA}} / {{dosar.DATA_SCA | dateFilter | date:"dd.MM.yyyy"}}</b>
+                    Numar SCA: <b>{{dosar.NR_SCA}} / {{dosar.DATA_SCA | dateFilter | date : DATE_FORMAT}}</b>
                 </td>
                 <td ng-if="$index != curDosarIndex" colspan="2" style="padding:5px;">
                     Numar Dosar CASCO: <a href="#" ng-click="ShowDosar($index);">{{dosar.NR_DOSAR_CASCO}}</a><br />
-                    Numar SCA: <b>{{dosar.NR_SCA}} / {{dosar.DATA_SCA | dateFilter | date:"dd.MM.yyyy"}}</b>
+                    Numar SCA: <b>{{dosar.NR_SCA}} / {{dosar.DATA_SCA | dateFilter | date : DATE_FORMAT}}</b>
                 </td>
             </tr>
         </table>
@@ -101,7 +101,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_EVENIMENT, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_EVENIMENT, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_EVENIMENT", data_ng_init = Model.Dosar.DATA_EVENIMENT == null ? "" : String.Format("DosarFiltru.Dosar.DATA_EVENIMENT = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_EVENIMENT).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_EVENIMENT, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_EVENIMENT", data_ng_init = Model.Dosar.DATA_EVENIMENT == null ? "" : String.Format("DosarFiltru.Dosar.DATA_EVENIMENT = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_EVENIMENT).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -140,7 +140,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_SCA, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_SCA, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_SCA", data_ng_init = Model.Dosar.DATA_SCA == null ? "" : String.Format("DosarFiltru.Dosar.DATA_SCA = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_SCA).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_SCA, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_SCA", data_ng_init = Model.Dosar.DATA_SCA == null ? "" : String.Format("DosarFiltru.Dosar.DATA_SCA = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_SCA).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -310,7 +310,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_IESIRE_CASCO, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_IESIRE_CASCO, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_IESIRE_CASCO", data_ng_init = Model.Dosar.DATA_IESIRE_CASCO == null ? "" : String.Format("DosarFiltru.Dosar.DATA_IESIRE_CASCO = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_IESIRE_CASCO).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_IESIRE_CASCO, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_IESIRE_CASCO", data_ng_init = Model.Dosar.DATA_IESIRE_CASCO == null ? "" : String.Format("DosarFiltru.Dosar.DATA_IESIRE_CASCO = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_IESIRE_CASCO).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -349,7 +349,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_INTRARE_RCA, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_INTRARE_RCA, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_INTRARE_RCA", data_ng_init = Model.Dosar.DATA_INTRARE_RCA == null ? "" : String.Format("DosarFiltru.Dosar.DATA_INTRARE_RCA = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_INTRARE_RCA).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_INTRARE_RCA, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_INTRARE_RCA", data_ng_init = Model.Dosar.DATA_INTRARE_RCA == null ? "" : String.Format("DosarFiltru.Dosar.DATA_INTRARE_RCA = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_INTRARE_RCA).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -390,7 +390,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_NOTIFICARE, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_NOTIFICARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_NOTIFICARE", data_ng_init = Model.Dosar.DATA_NOTIFICARE == null ? "" : String.Format("DosarFiltru.Dosar.DATA_NOTIFICARE = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_NOTIFICARE).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_NOTIFICARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_NOTIFICARE", data_ng_init = Model.Dosar.DATA_NOTIFICARE == null ? "" : String.Format("DosarFiltru.Dosar.DATA_NOTIFICARE = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_NOTIFICARE).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -457,7 +457,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_AVIZARE, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_AVIZARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_AVIZARE", data_ng_init = Model.Dosar.DATA_AVIZARE == null ? "" : String.Format("DosarFiltru.Dosar.DATA_AVIZARE = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_AVIZARE).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_AVIZARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_AVIZARE", data_ng_init = Model.Dosar.DATA_AVIZARE == null ? "" : String.Format("DosarFiltru.Dosar.DATA_AVIZARE = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_AVIZARE).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -491,7 +491,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_CREARE, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_CREARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_CREARE", data_ng_init = Model.Dosar.DATA_CREARE == null ? "" : String.Format("DosarFiltru.Dosar.DATA_CREARE = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_CREARE).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_CREARE, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_CREARE", data_ng_init = Model.Dosar.DATA_CREARE == null ? "" : String.Format("DosarFiltru.Dosar.DATA_CREARE = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_CREARE).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -523,7 +523,7 @@
                                     @Html.LabelFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, htmlAttributes: new { @class = "control-label" })
                                     <div class="input-group">
                                         <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                        @Html.TextBoxFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", datetime = "dd.MM.yyyy", data_ng_model = "DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI", data_ng_init = Model.Dosar.DATA_ULTIMEI_MODIFICARI == null ? "" : String.Format("DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_ULTIMEI_MODIFICARI).UnixTicks()), jqdatepicker = "" })
+                                        @Html.TextBoxFor(model => model.Dosar.DATA_ULTIMEI_MODIFICARI, new { @class = "form-control input-sm", @readonly = "readonly", @style = "width:100px;", data_ng_model = "DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI", data_ng_init = Model.Dosar.DATA_ULTIMEI_MODIFICARI == null ? "" : String.Format("DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI = '{0}'", Convert.ToDateTime(Model.Dosar.DATA_ULTIMEI_MODIFICARI).UnixTicks()), jqdatepicker = "" })
                                     </div>
                                 </td>
                             </tr>
@@ -540,10 +540,14 @@
                             <div style="width:100%;text-align:center;">&nbsp;</div>
                             <!--
                             <a href="#" class="btn btn-default" ng-show="false" ng-disabled="searchMode > 0 || editMode == 1">Cautare</a>
+                            @if (Helpers.HasRight("adaugare"))
+                            {
+                                <a href="#" class="btn btn-default" ng-if="cacatudraqu == 'CASCO'" a-disabled="searchMode == 2 || editMode == 1 || cacatudraqu != 'CASCO'" ng-click = "EnterAddMode()">Adaugare</a>
+                            }
                             -->
-                            @Html.Label("Adaugare", new { @class = "btn btn-default", data_ng_if= "calitateSocietateCurenta == 'CASCO'", a_disabled = "searchMode == 2 || editMode == 1", data_ng_click = "EnterAddMode()" }).HasRight("adaugare")
-                            @Html.Label("Editare", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", a_disabled = "(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1", data_ng_click = "EnterEditMode()" }).HasRight("modificare")
-                            @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "calitateSocietateCurenta == 'CASCO'", a_disabled = "(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" }).HasRight("stergere")
+                            @Html.Label("Adaugare", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "searchMode == 2 || editMode == 1 || cacatudraqu != 'CASCO'", data_ng_click = "EnterAddMode()" }).HasRight("adaugare")
+                            @Html.Label("Editare", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "(searchMode == 2 || cacatudraqu != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1", data_ng_click = "EnterEditMode()" }).HasRight("modificare")
+                            @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "(searchMode == 2 || cacatudraqu != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" }).HasRight("stergere")
 
                             <div ng-if="validForAvizare" class="btn-group">
                                 <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" a-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">
@@ -551,7 +555,7 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.Label("Avizare", new { @class = "label_a", data_ng_show = "calitateSocietateCurenta == 'CASCO'", data_ng_click = "AvizareDosar(true)" }).HasRight("avizare dosar")</li>
+                                    <li>@Html.Label("Avizare", new { @class = "label_a", data_ng_show = "cacatudraqu == 'CASCO' && !DosarFiltru.Dosar.AVIZAT", data_ng_click = "AvizareDosar(true)" }).HasRight("avizare dosar")</li>
                                     <li ng-if="DosarFiltru.Dosar.AVIZAT"><a href="#" ng-click="TiparireDosar()">Tiparire</a></li>
                                     <li ng-if="DosarFiltru.Dosar.AVIZAT"><a href="#">Email</a></li>
                                 </ul>

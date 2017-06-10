@@ -1,6 +1,17 @@
 ﻿var MESSAGE_DELAY = 3000;
 var MESSAGE_FADE_OUT = 2000;
 var MESSAGES_REFRESH_RATE = 300000;
+var DATE_FORMAT = 'dd.MM.yyyy';
+var DATE_TIME_FORMAT = 'dd.MM.yyyy HH:mm:ss';
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "200px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "50px";
+}
 
 function setRequiredFields() {
     $('*').each(function () {
@@ -16,6 +27,7 @@ function setRequiredFields() {
 };
 
 function ToggleDiv(divId) {
+    var did = '#' + divId;
     var top = document.getElementById('main').offsetTop;
     var left = document.getElementById('main').offsetLeft;
     var height = document.getElementById('main').offsetHeight;
@@ -33,7 +45,6 @@ function ToggleDiv(divId) {
     //document.getElementById(divId).style.top = top + 'px';
     document.getElementById(divId).style.marginLeft = document.getElementById('main').style.marginLeft;
     $('#main').fadeOut(1000, function () {
-        var did = '#' + divId;
         $(did).fadeIn(1000);
         var mDiv = document.getElementById(divId);
         var oDiv = document.getElementById('main');
@@ -55,6 +66,84 @@ app.run(function ($http) {
     // extra
     $http.defaults.headers.common['Cache-Control'] = 'no-cache';
     $http.defaults.headers.common['Pragma'] = 'no-cache';
+});
+
+app.run(function ($rootScope, $http) {
+    $rootScope.DATE_FORMAT = DATE_FORMAT;
+    $rootScope.DATE_TIME_FORMAT = DATE_TIME_FORMAT;
+
+    $rootScope.divId = null;
+    $rootScope.HasHtml = []; // aici stocam id-urile div-urilor generate deja, ca sa nu le incarcam de fiecare data.
+
+    $rootScope.ToggleDiv = function (divId, generateContent) {
+        $rootScope.divId = divId;
+        if (!generateContent || $rootScope.HasHtml.indexOf(divId) > -1) {
+            ToggleDiv(divId);
+            return;
+        }
+        else {
+
+            var url = '';
+            switch (divId) {
+                case "mainDosareDashboardAdminAndSuper":
+                    //url = '@Url.Action("GetDosareDashboardAdminAndSuper", "Dashboard")';
+                    url = '/Dashboard/GetDosareDashboardAdminAndSuper';
+                    break;
+                case "mainDosareDashboardRegular":
+                    //url = '@Html.Raw(Url.Action("GetDosareDashboardRegular", "Dashboard"))';
+                    url = '/Dashboard/GetDosareDashboardRegular';
+                    break;
+                case "mainMesajeDashboard":
+                    //url = '@Html.Raw(Url.Action("IndexMain", "Mesaje"))';
+                    url = '/Mesaje/IndexMain';
+                    break;
+            }
+            var did = '#' + divId;
+
+            spinner.spin(document.getElementById('main'));
+            $http.get(url)
+                .then(function (response) {
+                    spinner.stop();
+                    if (response != 'null' && response != null && response.data != null) {
+                        $rootScope.html = response.data;
+                        ToggleDiv(divId);
+                    }
+                }, function (response) {
+                    alert('Erroare: ' + response.status + ' - ' + response.data);
+                    spinner.stop();
+                });
+        }
+    };
+});
+
+app.directive('dynamic', function ($compile, $rootScope) {
+    return {
+        restrict: 'A',
+        replace: true,
+        scope: true,
+        link: function (scope, ele, attrs) {
+            scope.$watch(attrs.dynamic, function (html) {
+                if (ele.attr('id') == $rootScope.divId && $rootScope.HasHtml.indexOf(ele.attr('id')) == -1) {
+                    ele.html(html);
+                    $compile(ele.contents())(scope);
+                    $rootScope.HasHtml.push(ele.attr('id'));
+                }
+            });
+        }
+    };
+});
+
+app.directive('dynamic2', function ($compile) {
+    return {
+        restrict: 'A',
+        replace: true,
+        link: function (scope, ele, attrs) {
+            scope.$watch(attrs.dynamic2, function (html) {
+                ele.html(html);
+                $compile(ele.contents())(scope);
+            });
+        }
+    };
 });
 
 app.config(['$compileProvider',
@@ -199,32 +288,6 @@ app.factory('myService', function ($http, $q) {
         }
     }
     return this;
-});
-
-app.directive('dynamic', function ($compile) {
-    return {
-        restrict: 'A',
-        replace: true,
-        link: function (scope, ele, attrs) {
-            scope.$watch(attrs.dynamic, function (html) {
-                ele.html(html);
-                $compile(ele.contents())(scope);
-            });
-        }
-    };
-});
-
-app.directive('dynamic2', function ($compile) {
-    return {
-        restrict: 'A',
-        replace: true,
-        link: function (scope, ele, attrs) {
-            scope.$watch(attrs.dynamic2, function (html) {
-                ele.html(html);
-                $compile(ele.contents())(scope);
-            });
-        }
-    };
 });
 
 app.directive('aDisabled', function() {

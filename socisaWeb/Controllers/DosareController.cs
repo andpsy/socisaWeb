@@ -118,33 +118,35 @@ namespace socisaWeb.Controllers
             JToken jdosarJson = f["dosarJson"];
             if (jdosarJson != null)
             {
+                if (jDosar == null) jDosar = JToken.FromObject(new Dosar());
+
                 if (jdosarJson["DataEvenimentStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataEvenimentStart"].ToString()) && jdosarJson["DataEvenimentEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataEvenimentEnd"].ToString()))
                 {
-                    jDosar["DATA_EVENIMENT"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataEvenimentStart"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataEvenimentEnd"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture));
+                    jDosar["DATA_EVENIMENT"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataEvenimentStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataEvenimentEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
                 if (jdosarJson["DataScaStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataScaStart"].ToString()) && jdosarJson["DataScaEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataScaEnd"].ToString()))
                 {
-                    jDosar["DATA_SCA"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataScaStart"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataScaEnd"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture));
+                    jDosar["DATA_SCA"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataScaStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataScaEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
                 if (jdosarJson["DataAvizareStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataAvizareStart"].ToString()) && jdosarJson["DataAvizareEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataAvizareEnd"].ToString()))
                 {
-                    jDosar["DATA_AVIZARE"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataAvizareStart"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataAvizareEnd"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture));
+                    jDosar["DATA_AVIZARE"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataAvizareStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataAvizareEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
                 if (jdosarJson["DataNotificareStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataNotificareStart"].ToString()) && jdosarJson["DataNotificareEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataNotificareEnd"].ToString()))
                 {
-                    jDosar["DATA_NOTIFICARE"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataNotificareStart"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataNotificareEnd"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture));
+                    jDosar["DATA_NOTIFICARE"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataNotificareStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataNotificareEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
                 if (jdosarJson["DataUltimeiModificariStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataUltimeiModificariStart"].ToString()) && jdosarJson["DataUltimeiModificariEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataUltimeiModificariEnd"].ToString()))
                 {
-                    jDosar["DATA_ULTIMEI_MODIFICARI"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataUltimeiModificariStart"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataUltimeiModificariEnd"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture));
+                    jDosar["DATA_ULTIMEI_MODIFICARI"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataUltimeiModificariStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataUltimeiModificariEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
                 if (jdosarJson["DataIesireCascoStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataIesireCascoStart"].ToString()) && jdosarJson["DataIesireCascoEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataIesireCascoEnd"].ToString()))
                 {
-                    jDosar["DATA_IESIRE_CASCO"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIesireCascoStart"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIesireCascoEnd"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture));
+                    jDosar["DATA_IESIRE_CASCO"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIesireCascoStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIesireCascoEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
                 if (jdosarJson["DataIntrareRcaStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataIntrareRcaStart"].ToString()) && jdosarJson["DataIntrareRcaEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataIntrareRcaEnd"].ToString()))
                 {
-                    jDosar["DATA_INTRARE_RCA"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIntrareRcaStart"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIntrareRcaEnd"].ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture));
+                    jDosar["DATA_INTRARE_RCA"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIntrareRcaStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIntrareRcaEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
             }
             //response r = dr.GetFiltered(null, null, String.Format("{'jDosar':{0},'jdosarJson':{1}}", JsonConvert.SerializeObject(jDosar), JsonConvert.SerializeObject(jdosarJson)), null);
@@ -409,7 +411,7 @@ namespace socisaWeb.Controllers
                 if (!toReturn.Status)
                     return Json(toReturn, JsonRequestBehavior.AllowGet);
 
-                string s = JsonConvert.SerializeObject(DosarView.Dosar, Formatting.None, new Newtonsoft.Json.Converters.IsoDateTimeConverter() { DateTimeFormat = "dd.MM.yyyy" });
+                string s = JsonConvert.SerializeObject(DosarView.Dosar, Formatting.None, new Newtonsoft.Json.Converters.IsoDateTimeConverter() { DateTimeFormat = CommonFunctions.DATE_FORMAT });
                 r = d.Update(s);
                 return Json(r, JsonRequestBehavior.AllowGet);
             }

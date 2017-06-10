@@ -1,15 +1,7 @@
 ﻿@model SOCISA.Models.Action[]
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-<!--
-@if (Model != null)
-{
-    foreach (var item in Model)
-    {
-    <li>@Html.ActionLink(item.NAME, item.ACTION, item.OBJECT_NAME)</li>
-    }
-}
--->
+
 @if (Model != null)
 {
     @ActionsTreeView.GetActionTreeView(Model, Model[0].PARENT_ID)

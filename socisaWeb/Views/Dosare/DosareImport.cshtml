@@ -8,95 +8,97 @@
 {
     @Html.AntiForgeryToken()
     <div id="main" style="background-color:white;" ng-controller="DosareImportController" ng-cloak>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid" ng-init="@String.Format("model.ImportDates = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.ImportDates))">
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" ng-click="toggleDiv()">Import</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Istoric <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li ng-repeat="data in model.ImportDates"><a href="#" ng-click="GetDosareFromLog(data)">{{data}}</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+        <div class="inner_content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid" ng-init="@String.Format("model.ImportDates = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.ImportDates))">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#" ng-click="toggleDiv()">Import</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Istoric <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="data in model.ImportDates"><a href="#" ng-click="GetDosareFromLog(data)">{{data}}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+            <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+                <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+                <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
+                <p ng-repeat="s in result.Message.split(';')">
+                    {{s}}
+                </p>
             </div>
-        </nav>
-        <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
-            <button type="button" class="close" ng-click="showMessage = false">&times;</button>
-            <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
-            <p ng-repeat="s in result.Message.split(';')">
-                {{s}}
-            </p>
-        </div>
 
-        <div id="IncarcareFisierExcel" style="border:1px solid lightgray;border-radius: 4px; padding:10px;margin-top:5px;display:none;">
-            <div class="btn btn-primary" ngf-accept="'application/xlsx'" ngf-max-size="'20MB'" ngf-select="upload($file)">Incarca fisier...</div>
-            <!--
+            <div id="IncarcareFisierExcel" style="border:1px solid lightgray;border-radius: 4px; padding:10px;margin-top:5px;display:none;">
+                <div class="btn btn-primary" ngf-accept="'application/xlsx'" ngf-max-size="'20MB'" ngf-select="upload($file)">Incarca fisier...</div>
+                <!--
             <a href="#" ng-if="model.ImportDosarView.length > 0" class="btn btn-primary" ng-click="Import()">Importa</a>
             -->
-            <br />
-            <div ngf-drop="upload($file)" class="drop-box"
-                 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-accept="'application/xlsx'" ngf-max-size="'20MB'"
-                 ngf-pattern="'application/xlsx'">... sau Drag&Drop fisier .xlsx aici</div>
-            <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
-            <p>Sunt admise doar fisiere .xlsx cu dimensiunea maxima de 20Mb!</p>
-        </div>
-        <!--
+                <br />
+                <div ngf-drop="upload($file)" class="drop-box"
+                     ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-accept="'application/xlsx'" ngf-max-size="'20MB'"
+                     ngf-pattern="'application/xlsx'">... sau Drag&Drop fisier .xlsx aici</div>
+                <div ngf-no-file-drop>Functionalitatea Drag&Drop nu este suportata de browserul dumneavoastra</div>
+                <p>Sunt admise doar fisiere .xlsx cu dimensiunea maxima de 20Mb!</p>
+            </div>
+            <!--
         <div ng-init="@String.Format("model.ImportDates = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.ImportDates))">
             <select id="ImportDates">
                 <option ng-repeat="data in model.ImportDates" value="{{data}}" ng-click="GetDosareFromLog(data)">{{data}}</option>
             </select>
         </div>
         -->
-        <div ng-if="model.ImportDosarView.length > 0" style="width:100%;overflow:auto;">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <!--
+            <div ng-if="model.ImportDosarView.length > 0" style="width:100%;overflow:auto;">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <!--
                         <th><input type="checkbox" id="chk_All" checked onchange="toggleChecks(this)" /></th>
                         -->
-                        <th>Status</th>
-                        <th>NUMAR DOSAR CASCO</th>
-                        <th>NUMAR SCA</th>
-                        <th>DATA SCA</th>
-                        <th>NUMAR POLITA CASCO</th>
-                        <th>DATA EVENIMENT</th>
-                        <th>SOCIETATE CASCO</th>
-                        <th>ASIGURAT CASCO</th>
-                        <th>NUMAR AUTO CASCO</th>
-                        <th>NUMAR POLITA RCA</th>
-                        <th>SOCIETATE RCA</th>
-                        <th>ASIGURAT RCA</th>
-                        <th>NUMAR AUTO RCA</th>
-                        <th>VALOARE DAUNA</th>
-                        <th>VALOARE REGRES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in model.ImportDosarView">
-                        <!--
+                            <th>Status</th>
+                            <th>NUMAR DOSAR CASCO</th>
+                            <th>NUMAR SCA</th>
+                            <th>DATA SCA</th>
+                            <th>NUMAR POLITA CASCO</th>
+                            <th>DATA EVENIMENT</th>
+                            <th>SOCIETATE CASCO</th>
+                            <th>ASIGURAT CASCO</th>
+                            <th>NUMAR AUTO CASCO</th>
+                            <th>NUMAR POLITA RCA</th>
+                            <th>SOCIETATE RCA</th>
+                            <th>ASIGURAT RCA</th>
+                            <th>NUMAR AUTO RCA</th>
+                            <th>VALOARE DAUNA</th>
+                            <th>VALOARE REGRES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in model.ImportDosarView">
+                            <!--
                         <td><input type="checkbox" checked class="checkForImport" id="chk_{{$index}}" ng-model="item.selected" /></td>
                         -->
-                        <td style="text-align:center;vertical-align:middle"><img src="{{item[0].Status ? '../Content/images/ok.png' : '../Content/images/error.png'}}" width="32" height="32" data-toggle="tooltip" data-placement="right" title="{{item[0].Message.split(';').join('&#13;')}}" data-original-title="{{item[0].Message.split(';').join('&#13;')}}" /></td>
-                        <td>{{item[1].Dosar.NR_DOSAR_CASCO}}</td>
-                        <td>{{item[1].Dosar.NR_SCA}}</td>
-                        <td>{{item[1].Dosar.DATA_SCA | dateFilter | date:"dd.MM.yyyy"}}</td>
-                        <td>{{item[1].Dosar.NR_POLITA_CASCO}}</td>
-                        <td>{{item[1].Dosar.DATA_EVENIMENT | dateFilter | date:"dd.MM.yyyy"}}</td>
-                        <td>{{item[1].SocietateCasco.DENUMIRE_SCURTA}}</td>
-                        <td>{{item[1].AsiguratCasco.DENUMIRE}}</td>
-                        <td>{{item[1].AutoCasco.NR_AUTO}}</td>
-                        <td>{{item[1].Dosar.NR_POLITA_RCA}}</td>
-                        <td>{{item[1].SocietateRca.DENUMIRE_SCURTA}}</td>
-                        <td>{{item[1].AsiguratRca.DENUMIRE}}</td>
-                        <td>{{item[1].AutoRca.NR_AUTO}}</td>
-                        <td>{{item[1].Dosar.VALOARE_DAUNA}}</td>
-                        <td>{{item[1].Dosar.VALOARE_REGRES}}</td>
-                    </tr>
-                </tbody>
-            </table>
+                            <td style="text-align:center;vertical-align:middle"><img src="{{item[0].Status ? '../Content/images/ok.png' : '../Content/images/error.png'}}" width="32" height="32" data-toggle="tooltip" data-placement="right" title="{{item[0].Message.split(';').join('&#13;')}}" data-original-title="{{item[0].Message.split(';').join('&#13;')}}" /></td>
+                            <td>{{item[1].Dosar.NR_DOSAR_CASCO}}</td>
+                            <td>{{item[1].Dosar.NR_SCA}}</td>
+                            <td>{{item[1].Dosar.DATA_SCA | dateFilter | date : DATE_FORMAT}}</td>
+                            <td>{{item[1].Dosar.NR_POLITA_CASCO}}</td>
+                            <td>{{item[1].Dosar.DATA_EVENIMENT | dateFilter | date : DATE_FORMAT}}</td>
+                            <td>{{item[1].SocietateCasco.DENUMIRE_SCURTA}}</td>
+                            <td>{{item[1].AsiguratCasco.DENUMIRE}}</td>
+                            <td>{{item[1].AutoCasco.NR_AUTO}}</td>
+                            <td>{{item[1].Dosar.NR_POLITA_RCA}}</td>
+                            <td>{{item[1].SocietateRca.DENUMIRE_SCURTA}}</td>
+                            <td>{{item[1].AsiguratRca.DENUMIRE}}</td>
+                            <td>{{item[1].AutoRca.NR_AUTO}}</td>
+                            <td>{{item[1].Dosar.VALOARE_DAUNA}}</td>
+                            <td>{{item[1].Dosar.VALOARE_REGRES}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 }

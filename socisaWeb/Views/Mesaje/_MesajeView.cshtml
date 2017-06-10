@@ -20,7 +20,7 @@
         <table>
             <tr>
                 <td style="width:40px;">
-                    <div ng-show="ID_DOSAR == null" class="docsRightMenuButton" onclick="ToggleDiv('mainMesajeDashboard')">&#9668;</div>
+                    <div ng-show="ID_DOSAR == null" class="docsRightMenuButton" ng-click="ToggleDiv('mainMesajeDashboard', false)">&#9668;</div>
                 </td>
                 <td style="vertical-align:middle;padding:5px;">
                     <h4 class="panel-title">Total mesaje: {{model.MesajeJson.length}}, din care mesaje noi {{(model.MesajeJson | filter:{'DataCitire':null}).length}}</h4>
@@ -81,7 +81,7 @@
                                     <td style="width:150px;" ng-if="ID_DOSAR == null"><a href="/Dosare/Index/{{mesaj.Dosar.ID}}" title="{{getDetaliiDosar(mesaj)}}">{{mesaj.Dosar.NR_DOSAR_CASCO}}</a></td>
                                     <td style="width:200px;">{{mesaj.Sender.NUME_COMPLET}} ({{mesaj.Sender.EMAIL}})</td>
                                     <td style="width:100px;">{{mesaj.TipMesaj.DENUMIRE}}</td>
-                                    <td style="width:100px;">{{mesaj.Mesaj.DATA | dateFilter | date:"dd.MM.yyyy HH:mm:ss"}}</td>
+                                    <td style="width:100px;">{{mesaj.Mesaj.DATA | dateFilter | date : DATE_TIME_FORMAT}}</td>
                                 </tr>
                             </table>
                         </div>

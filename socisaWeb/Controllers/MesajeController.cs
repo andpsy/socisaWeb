@@ -142,12 +142,12 @@ namespace socisaWeb.Controllers
                 DosareRepository dr = new DosareRepository(uid, conStr);
                 Dosar d = (Dosar)dr.Find(Convert.ToInt32(x.id_dosar)).Result;
                 //return Json(d.GetNewMesaje(Convert.ToDateTime(x.last_refresh)), JsonRequestBehavior.AllowGet);
-                return Json(d.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
+                return Json(d.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), CommonFunctions.DATE_TIME_FORMAT, System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
             }
             else
             {
                 Utilizator u = (Utilizator)Session["CURENT_USER"];
-                return Json(u.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
+                return Json(u.GetNewMesaje(DateTime.ParseExact(Convert.ToString(x.last_refresh), CommonFunctions.DATE_TIME_FORMAT, System.Globalization.CultureInfo.InvariantCulture)), JsonRequestBehavior.AllowGet);
             }
         }
 

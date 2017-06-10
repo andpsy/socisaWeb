@@ -10,6 +10,7 @@ body {
   background-size: cover;
     padding-top: 50px;
     padding-bottom: 20px;
+    /* width:1920px !important; */
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -92,9 +93,18 @@ a.logoLink
     -webkit-box-shadow: 5px 5px 10px #363636;
     box-shadow: 5px 5px 10px #363636;
     border-radius: 4px;
+    /*
     min-height:760px;
     max-height:100%;
-    /* overflow-y:auto; */
+    */
+    min-height:460px;
+    max-height:730px;
+    overflow:auto;
+}
+
+.inner_content {
+    width:1380px !important;
+    height:700px !important;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -425,7 +435,6 @@ a.disabled {
     text-align:right;
     vertical-align:middle;
     align-items:center;
-    text-shadow:3px 3px 5px black;
 }
 
 .badgeDosar{

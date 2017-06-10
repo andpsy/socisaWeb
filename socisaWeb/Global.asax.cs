@@ -30,8 +30,8 @@ namespace socisaWeb
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            ModelBinders.Binders[typeof(DateTime)] = new DateTimeModelBinder("dd.MM.yyyy HH:mm:ss");
-            ModelBinders.Binders[typeof(DateTime?)] = new DateTimeModelBinder("dd.MM.yyyy HH:mm:ss");
+            ModelBinders.Binders[typeof(DateTime)] = new DateTimeModelBinder(SOCISA.CommonFunctions.DATE_TIME_FORMAT);
+            ModelBinders.Binders[typeof(DateTime?)] = new DateTimeModelBinder(SOCISA.CommonFunctions.DATE_TIME_FORMAT);
             //ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder("dd.MM.yyyy HH:mm:ss"));
             //ModelBinders.Binders.Add(typeof(DateTime?), new DateTimeModelBinder("dd.MM.yyyy HH:mm:ss"));
 

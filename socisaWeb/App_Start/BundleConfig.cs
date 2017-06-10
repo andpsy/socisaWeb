@@ -33,6 +33,7 @@ namespace socisaWeb
             // JQuery scripts
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
+            
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
@@ -46,8 +47,8 @@ namespace socisaWeb
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/html5shiv.js",
-                      "~/Scripts/respond.min.js"));
-
+                      "~/Scripts/respond.js"));
+            
             bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
                       "~/Scripts/Controllers/*Controller.js"));
 

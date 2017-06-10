@@ -16,17 +16,17 @@
         </p>
     </div>
 
-    <div class="panel panel-primary" style="margin-bottom:10px;" ng-if="ID_DOSAR == null">
+    <div class="panel panel-primary" style="margin-bottom:10px;" ng-show="ID_DOSAR == null">
         <div class="panel-heading" style="padding:0px;">
             <div>
                 <table>
                     <tr>
                         <td style="width:40px;">
-                            <div class="docsRightMenuButton" onclick="ToggleDiv('mainDosareDashboardAdminAndSuper')">&#9668;</div>
+                            <div class="docsRightMenuButton" ng-click="ToggleDiv('mainDosareDashboardAdminAndSuper', false)">&#9668;</div>
                         </td>
                         <td style="vertical-align:middle;padding:5px;">
                             @{
-                                var lg = Convert.ToDateTime(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).LAST_LOGIN).ToString("dd.MM.yyyy HH:mm:ss");
+                                var lg = Convert.ToDateTime(((SOCISA.Models.Utilizator)Session["CURENT_USER"]).LAST_LOGIN).ToString(SOCISA.CommonFunctions.DATE_TIME_FORMAT);
                             }
                             <h4 class="panel-title">Dosare neasignate: {{model.DosareExtended.length}}, din care Dosare noi de la ultimul login (@lg): {{(model.DosareExtended | filter:getItemsByDate).length}}</h4>
                         </td>
@@ -149,9 +149,9 @@
                         <td><input type="checkbox" class="checkForImport" id="chk_Dosar_{{item.Dosar.ID}}" ng-model="item.selected" /></td>
                         <td><a href="/Dosare/Index/{{item.Dosar.ID}}" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
                         <td>{{item.Dosar.NR_SCA}}</td>
-                        <td>{{item.Dosar.DATA_SCA | date:"dd.MM.yyyy"}}</td>
+                        <td>{{item.Dosar.DATA_SCA | date : DATE_FORMAT}}</td>
                         <td>{{item.Dosar.NR_POLITA_CASCO}}</td>
-                        <td>{{item.Dosar.DATA_EVENIMENT | date:"dd.MM.yyyy"}}</td>
+                        <td>{{item.Dosar.DATA_EVENIMENT | date : DATE_FORMAT}}</td>
                         <td title="{{item.SocietateCasco.DENUMIRE}}">{{item.SocietateCasco.DENUMIRE_SCURTA}}</td>
                         <td>{{item.AsiguratCasco.DENUMIRE}}</td>
                         <td>{{item.AutoCasco.NR_AUTO}}</td>

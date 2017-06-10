@@ -29,12 +29,14 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $rootScope.activeTab = "detalii";
     $rootScope.dynaStyle = $rootScope.dynaStyleDefault = { 'background-color': 'white' };
     $scope.tmpCalitateSocietate = "CASCO"
-    $rootScope.calitateSocietateCurenta = "CASCO";
+    $rootScope.calitateSocietateCurenta = $scope.cacatudraqu = "CASCO";
     $scope.searchMode = 1;
     $scope.TempDosarFilter = {};
     $scope.editMode = 0;
+
     $scope.DosarFiltru = {};
     $scope.DosarFiltru.dosarJson = {};
+    $scope.DosarFiltru.Dosar = {};
 
     //$scope.DosarFiltru.DosareResult = [];
     $scope.curDosarIndex = -1;
@@ -97,6 +99,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $rootScope.$watch('calitateSocietateCurenta', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            $scope.cacatudraqu = newValue;
             $scope.ClearFilters();
             document.getElementById('Dosar_ID_SOCIETATE_CASCO').disabled = !($scope.searchMode == 2 && newValue == 'RCA');
             document.getElementById('Dosar_ID_SOCIETATE_RCA').disabled = !(($scope.searchMode == 2 || $scope.editMode == 1) && newValue == 'CASCO');
@@ -271,39 +274,39 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.$watch('DosarFiltru.Dosar.DATA_EVENIMENT', function (newDate, oldDate) {
         //alert(newDate+' - '+oldDate);
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_EVENIMENT = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_EVENIMENT = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_SCA', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_SCA = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_SCA = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_AVIZARE', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_AVIZARE = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_AVIZARE = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_NOTIFICARE', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_NOTIFICARE = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_NOTIFICARE = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_CREARE', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_CREARE = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_CREARE = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_ULTIMEI_MODIFICARI = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_IESIRE_CASCO', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_IESIRE_CASCO = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_IESIRE_CASCO = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
     $scope.$watch('DosarFiltru.Dosar.DATA_INTRARE_RCA', function (newDate) {
         if (newDate == null || newDate == undefined || newDate.length <= 10 || angular.isDate(newDate)) { return; }
-        $scope.DosarFiltru.Dosar.DATA_INTRARE_RCA = $filter('date')(new Date(parseInt(newDate.substr(6))), 'dd.MM.yyyy');
+        $scope.DosarFiltru.Dosar.DATA_INTRARE_RCA = $filter('date')(new Date(parseInt(newDate.substr(6))), $rootScope.DATE_FORMAT);
     });
 
     $scope.formatDate = function(dateValue){
-        return $filter('date')(new Date(parseInt(dateValue.substr(6))), 'dd.MM.yyyy');
+        return $filter('date')(new Date(parseInt(dateValue.substr(6))), $rootScope.DATE_FORMAT);
     }
 
     $scope.compareObjects = function (o1, o2) {
@@ -331,6 +334,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
             $scope.DosarFiltru.Dosar.ID_SOCIETATE_RCA = $scope.ID_SOCIETATE_RCA = $scope.IDSocietateRep;
             $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO = $scope.ID_SOCIETATE_CASCO = "";
         }
+        console.log("ClearFilters - " + $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO);
         angular.copy($scope.DosarFiltru, $scope.TempDosarFilter);
     };
     /*
@@ -356,6 +360,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.Afisare = function (e, sender) {
         if ($scope.editMode == 1) return;
         var direct = sender == null;
+        console.log("Afisare - " + $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO);
         angular.copy($scope.DosarFiltru, $scope.TempDosarFilter);
         var now = new Date();
         var filter_value = e;
@@ -410,7 +415,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         $scope.searchMode = 2;
         $scope.switchTabsClass("#lnkDosareDetalii");
         $rootScope.dynaStyle = $rootScope.dynaStyleDefault;
-
+        console.log("SwitchBackToSearchMode - " + $scope.TempDosarFilter.Dosar.ID_SOCIETATE_CASCO);
         angular.copy($scope.TempDosarFilter, $scope.DosarFiltru);
         if ($rootScope.calitateSocietateCurenta == "CASCO")
             $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO = $scope.IDSocietateRep;
@@ -446,8 +451,17 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.ShowDosar = function (index) {               
         $scope.searchMode = 1;
         $scope.curDosarIndex = index;
-        if(!angular.equals($scope.DosarFiltru.DosareResult[index], $scope.DosarFiltru.Dosar))
+        
+        if ($scope.DosarFiltru.Dosar == null || $scope.DosarFiltru.Dosar == undefined) {
+            alert($scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO);
+            $scope.DosarFiltru.Dosar = {};
+            $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO = $scope.TempDosarEdit.Dosar.ID_SOCIETATE_CASCO;
+        }
+        
+        if (!angular.equals($scope.DosarFiltru.DosareResult[index], $scope.DosarFiltru.Dosar)) {
             angular.copy($scope.DosarFiltru.DosareResult[index], $scope.DosarFiltru.Dosar); // !!!!!!!
+            //$scope.DosarFiltru.Dosar = angular.copy($scope.DosarFiltru.DosareResult[index]); // !!!!!!!
+        }
 
         $rootScope.ID_DOSAR = $scope.DosarFiltru.Dosar.ID;
         //document.getElementById("lnkDocumenteScanateDetalii").className = document.getElementById("lnkMesajeDetalii").className = '';
@@ -593,6 +607,11 @@ function ($scope, $http, $filter, $rootScope, $window) {
         $scope.editMode = 0;
         $scope.searchMode = 1;
         angular.copy($scope.TempDosarEdit, $scope.DosarFiltru);
+        if ($rootScope.calitateSocietateCurenta == "CASCO")
+            $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO = $scope.IDSocietateRep;
+        else
+            $scope.DosarFiltru.Dosar.ID_SOCIETATE_RCA = $scope.IDSocietateRep;
+        console.log("CancelEdit - " + $scope.TempDosarEdit.Dosar.ID_SOCIETATE_CASCO);
     };
 
     $scope.TiparireDosar = function () {

@@ -21,6 +21,8 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.query = '1';
     $scope.propertyName = 'Dosar.NR_DOSAR_CASCO';
     $scope.UtilizatoriDosare = [];
+    $scope.utilizatoriFiltrati = [];
+    $scope.dosareFiltrate = [];
 
     $scope.toggleDashboardChecks = function (id_prefix) {
         var chk_All_Id = '#all_' + id_prefix;
@@ -118,7 +120,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
                     try {
                         var str = subItem[key_2];
                         if (key_2.indexOf("DATA_") > -1) {
-                            str = $filter('date')(str, 'dd.MM.yyyy');
+                            str = $filter('date')(str, $rootScope.DATE_FORMAT);
                         }
                         if (str.toString().toLowerCase().indexOf($scope.generalQueryText.$.toLowerCase()) > -1) {
                             //return true;
@@ -135,7 +137,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         }
 
         if ($scope.generalQueryText.DATA_SCA != null && $scope.generalQueryText.DATA_SCA != "") {
-            str = $filter('date')(item.Dosar.DATA_SCA, 'dd.MM.yyyy');
+            str = $filter('date')(item.Dosar.DATA_SCA, $rootScope.DATE_FORMAT);
             if (str.indexOf($scope.generalQueryText.DATA_SCA) > -1) {
                 //return true;
                 toReturn2 = true;
@@ -146,7 +148,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         }
 
         if ($scope.generalQueryText.DATA_EVENIMENT != null && $scope.generalQueryText.DATA_EVENIMENT != "") {
-            str = $filter('date')(item.Dosar.DATA_EVENIMENT, 'dd.MM.yyyy');
+            str = $filter('date')(item.Dosar.DATA_EVENIMENT, $rootScope.DATE_FORMAT);
             if (str.indexOf($scope.generalQueryText.DATA_EVENIMENT) > -1) {
                 //return true;
                 toReturn3 = true;

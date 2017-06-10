@@ -4,53 +4,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="main" ng-style="dynaStyle" ng-controller="DosareNavigatorController">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#detalii" class="grad_tab" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
-        <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('documente')">DOCUMENTE</a></li>
-        <li class=""><a href="#mesaje" data-toggle="tab" aria-expanded="false" id="lnkMesajeDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('mesaje')">MESAJE</a></li>
-        @{
-            var ut = ((SOCISA.Models.Nomenclator)Session["CURENT_USER_TYPE"]).DENUMIRE;
-            if (ut != "Regular")
-            {
-                <li class=""><a href="#utilizatori" data-toggle="tab" aria-expanded="false" id="lnkUtilizatoriDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('utilizatori')" title="Asignare utilizatori">UTILIZATORI</a></li>
-            }
-        }
-    </ul>
-    <div id="myTabContent" class="tab-content" ng-cloak>
-        <div class="tab-pane fade active in" id="detalii">
+    <div class="inner_content">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#detalii" class="grad_tab" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
+            <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('documente')">DOCUMENTE</a></li>
+            <li class=""><a href="#mesaje" data-toggle="tab" aria-expanded="false" id="lnkMesajeDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('mesaje')">MESAJE</a></li>
             @{
-                if (ViewContext.RouteData.Values["id"] == null)
+                var ut = ((SOCISA.Models.Nomenclator)Session["CURENT_USER_TYPE"]).DENUMIRE;
+                if (ut != "Regular")
                 {
-                    Html.RenderAction("Search", "Dosare");
-                }
-                else
-                {
-                    Html.RenderAction("Show", "Dosare", Request.Params["id"]);
+                    <li class=""><a href="#utilizatori" data-toggle="tab" aria-expanded="false" id="lnkUtilizatoriDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('utilizatori')" title="Asignare utilizatori">UTILIZATORI</a></li>
                 }
             }
-        </div>
-        <div class="tab-pane fade" id="documente" ng-controller="DocumenteScanateController">
-            @{
-                Html.RenderAction("Search", "DocumenteScanate");
-            }
-        </div>
-        <div class="tab-pane fade" id="mesaje" ng-controller="MesajeController">
-            <!--
-            <div dynamic="html"></div>
-            -->
-            @{
-                Html.RenderAction("Index", "Mesaje");
-            }
-        </div>
-        @if (ut != "Regular")
-        {
-            <div class="tab-pane fade" id="utilizatori" style="padding-top:15px;" ng-controller="DosareDashboardAdminAndSuperController">
+        </ul>
+        <div id="myTabContent" class="tab-content" ng-cloak>
+            <div class="tab-pane fade active in" id="detalii">
                 @{
-                    Html.RenderAction("GetDosareDashboardAdminAndSuper", "Dashboard");
+                    if (ViewContext.RouteData.Values["id"] == null)
+                    {
+                        Html.RenderAction("Search", "Dosare");
+                    }
+                    else
+                    {
+                        Html.RenderAction("Show", "Dosare", Request.Params["id"]);
+                    }
                 }
             </div>
-        }
+            <div class="tab-pane fade" id="documente" ng-controller="DocumenteScanateController">
+                @{
+                    Html.RenderAction("Search", "DocumenteScanate");
+                }
+            </div>
+            <div class="tab-pane fade" id="mesaje" ng-controller="MesajeController">
+                <!--
+                <div dynamic="html"></div>
+                -->
+                @{
+                    Html.RenderAction("Index", "Mesaje");
+                }
+            </div>
+            @if (ut != "Regular")
+            {
+                <div class="tab-pane fade" id="utilizatori" style="padding-top:15px;" ng-controller="DosareDashboardAdminAndSuperController">
+                    @{
+                        Html.RenderAction("GetDosareDashboardAdminAndSuper", "Dashboard");
+                    }
+                </div>
+            }
+        </div>
     </div>
+
     <div class="calitateSocietate" ng-show="activeTab == 'detalii'">
         <table>
             <tr>
