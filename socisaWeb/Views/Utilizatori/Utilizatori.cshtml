@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Utilizatori";
     //Layout = "~/Views/Shared/_LayoutUtilizatori.cshtml";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <!--
     <div id="main" style="background-color:white;" ng-controller="UtilizatoriController" ng-cloak>
+    -->
         <div class="inner_content">
             <nav class="navbar navbar-default">
                 <div class="container-fluid" ng-init="@String.Format("model = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
@@ -23,6 +25,9 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                         <ul class="nav navbar-nav">
+                            <li class="" ng-show="HasHtml.indexOf('mainUtilizatoriDashboard') > -1">
+                                <div class="docsRightMenuButton" ng-click="ToggleDiv('mainDashboard', false, null)">&#9668;</div>
+                            </li>
                             <li><a href="#" a-disabled="true">Utilizator:</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><b>{{UtilizatorJson.Utilizator.NUME_COMPLET}}</b> <span ng-if="UtilizatorJson.Utilizator.ID != null">({{UtilizatorJson.SocietateAsigurare.DENUMIRE}} | {{UtilizatorJson.TipUtilizator.DENUMIRE}})</span> <span class="caret"></span></a>
@@ -277,5 +282,7 @@
                 </div>
             </div>
         </div>
+    <!--
     </div>
+    -->
 }

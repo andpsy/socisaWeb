@@ -1,12 +1,19 @@
 ﻿@using socisaWeb.Helpers;
 @{
     ViewBag.Title = "Dosare";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!--
 <div id="main" ng-style="dynaStyle" ng-controller="DosareNavigatorController">
+-->
     <div class="inner_content">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#detalii" class="grad_tab" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a></li>
+            <li class="" ng-show="HasHtml.indexOf('mainDosareDashboard') > -1" >
+                <div class="docsRightMenuButton" style="margin-right:10px;margin-bottom:0px;margin-top:0px;" ng-click="ToggleDiv('mainDashboard', false, null)">&#9668;</div>
+            </li>
+            <li class="active">
+                <a href="#detalii" class="grad_tab" data-toggle="tab" aria-expanded="true" id="lnkDosareDetalii" ng-click="setActiveTab('detalii')">DETALII DOSAR</a>
+            </li>
             <li class=""><a href="#documente" data-toggle="tab" aria-expanded="false" id="lnkDocumenteScanateDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('documente')">DOCUMENTE</a></li>
             <li class=""><a href="#mesaje" data-toggle="tab" aria-expanded="false" id="lnkMesajeDetalii" a-disabled="ID_DOSAR == null || ID_DOSAR == undefined || editMode > 0 || searchMode == 2" ng-click="setActiveTab('mesaje')">MESAJE</a></li>
             @{
@@ -26,7 +33,7 @@
                     }
                     else
                     {
-                        Html.RenderAction("Show", "Dosare", Request.Params["id"]);
+                        Html.RenderAction("Show", "Dosare", ViewContext.RouteData.Values["id"]);
                     }
                 }
             </div>
@@ -86,4 +93,6 @@
     <div class="infoNumarDosar" ng-show="activeTab != 'detalii'">
         <span class="navbar-brand" a-disabled="true">Numar Dosar CASCO: <b>{{DosarFiltru.Dosar.NR_DOSAR_CASCO}}</b></span>
     </div>
+<!--
 </div>
+-->

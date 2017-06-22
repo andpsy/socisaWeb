@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AZT.NET.Insurance.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AZT.NET.Insurance.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SubrogationService_1_2_3_4.xsd" namespace="http://schemas.datacontract.org/2004/07/AZT.NET.StarStorage.Entities" />
+  <xs:import schemaLocation="SubrogationService_1_2_3_4_5_6.xsd" namespace="http://schemas.datacontract.org/2004/07/AZT.NET.Common.Entities" />
+  <xs:import schemaLocation="SubrogationService_1_2_3_4_5.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="BinaryContent">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/AZT.NET.Common.Entities" base="q1:EntityBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AZT.NET.StarStorage.Entities" minOccurs="0" name="AztObjectType" type="q2:AZTObjectType" />
+          <xs:element minOccurs="0" name="BinaryData" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="CallerId" type="xs:int" />
+          <xs:element minOccurs="0" name="CategoryType" type="xs:int" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ContentType" type="tns:BinaryContentType" />
+          <xs:element minOccurs="0" name="DigitallySigned" type="xs:int" />
+          <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IpAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjectId" type="xs:int" />
+          <xs:element minOccurs="0" name="ObjectclassVersionId" type="xs:int" />
+          <xs:element minOccurs="0" name="SealId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BinaryContent" nillable="true" type="tns:BinaryContent" />
+  <xs:simpleType name="BinaryContentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Image">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Document">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BinaryContentType" nillable="true" type="tns:BinaryContentType" />
+</xs:schema>

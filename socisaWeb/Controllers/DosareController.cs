@@ -20,7 +20,7 @@ namespace socisaWeb.Controllers
         public ActionResult Import()
         {
             string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-            return View("DosareImport", new ImportDosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr));
+            return PartialView("DosareImport", new ImportDosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr));
         }
 
         [AuthorizeUser(ActionName = "Import", Recursive = false)]

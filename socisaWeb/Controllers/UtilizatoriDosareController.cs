@@ -15,7 +15,7 @@ namespace socisaWeb.Controllers
         // GET: UtilizatoriDosare
         public ActionResult Index()
         {
-            return View();
+            return PartialView();
         }
 
         /*

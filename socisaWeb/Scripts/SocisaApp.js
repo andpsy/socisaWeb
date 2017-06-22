@@ -3,14 +3,18 @@ var MESSAGE_FADE_OUT = 2000;
 var MESSAGES_REFRESH_RATE = 300000;
 var DATE_FORMAT = 'dd.MM.yyyy';
 var DATE_TIME_FORMAT = 'dd.MM.yyyy HH:mm:ss';
+var ACTIVE_DIV_ID = 'mainDashboard';
+
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
-    document.getElementById("main").style.marginLeft = "250px";
+    //document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById(ACTIVE_DIV_ID).style.marginLeft = "250px";
 }
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "50px";
+    //document.getElementById("main").style.marginLeft = "50px";
+    document.getElementById(ACTIVE_DIV_ID).style.marginLeft = "50px";
 }
 
 function setRequiredFields() {
@@ -26,31 +30,25 @@ function setRequiredFields() {
     });
 };
 
-function ToggleDiv(divId) {
+function ToggleDivCss(divId) {
     var did = '#' + divId;
-    var top = document.getElementById('main').offsetTop;
-    var left = document.getElementById('main').offsetLeft;
-    var height = document.getElementById('main').offsetHeight;
-    var width = document.getElementById('main').offsetWidth;
+    var top = document.getElementById(ACTIVE_DIV_ID).offsetTop;
+    var left = document.getElementById(ACTIVE_DIV_ID).offsetLeft;
+    var height = document.getElementById(ACTIVE_DIV_ID).offsetHeight;
+    var width = document.getElementById(ACTIVE_DIV_ID).offsetWidth;
     var right = left + width;
-    //alert('dims: ' + top + '-' + left + '-' + height + '-' + width + '-' + right);
-    /*
-    document.getElementById('main').style.left = (left - width) + 'px';
-    document.getElementById(divId).style.top = top + 'px';
-    document.getElementById(divId).style.left = right + 'px';
-    document.getElementById(divId).style.height = height + 'px';
-    document.getElementById(divId).style.width = width + 'px';
-    document.getElementById(divId).style.left = left + 'px';
-    */
-    //document.getElementById(divId).style.top = top + 'px';
-    document.getElementById(divId).style.marginLeft = document.getElementById('main').style.marginLeft;
-    $('#main').fadeOut(1000, function () {
+    document.getElementById(divId).style.marginLeft = document.getElementById(ACTIVE_DIV_ID).style.marginLeft;
+    var tmpAId = '#' + ACTIVE_DIV_ID;
+    $(tmpAId).fadeOut(1000, function () {
         $(did).fadeIn(1000);
+        /*
         var mDiv = document.getElementById(divId);
-        var oDiv = document.getElementById('main');
+        var oDiv = document.getElementById(ACTIVE_DIV_ID);
         var tmpId = mDiv.id;
         mDiv.id = oDiv.id;
         oDiv.id = tmpId;
+        */
+        ACTIVE_DIV_ID = divId;
     });
 };
 
@@ -59,7 +57,6 @@ var app = angular.module('SocisaApp', ['ngFileUpload', 'ngAnimate', 'ngDialog'])
 app.run(function ($http) {
     $http.defaults.headers.common['__RequestVerificationToken'] = angular.element('input[name="__RequestVerificationToken"]').attr('value');
     $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
 
     //disable IE ajax request caching
     $http.defaults.headers.common['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
@@ -71,42 +68,77 @@ app.run(function ($http) {
 app.run(function ($rootScope, $http) {
     $rootScope.DATE_FORMAT = DATE_FORMAT;
     $rootScope.DATE_TIME_FORMAT = DATE_TIME_FORMAT;
+    $rootScope.ID_DOSAR = null;
 
-    $rootScope.divId = null;
+    $rootScope.divId = ACTIVE_DIV_ID;
     $rootScope.HasHtml = []; // aici stocam id-urile div-urilor generate deja, ca sa nu le incarcam de fiecare data.
+    $rootScope.HasHtml.push(ACTIVE_DIV_ID);
+    $rootScope.Url = "";
 
-    $rootScope.ToggleDiv = function (divId, generateContent) {
+    $rootScope.ToggleDiv = function (divId, generateContent, id) {
+        if (divId != "mainDosareDashboard" && generateContent && $rootScope.ID_DOSAR != null) // pastram id-ul dosarului curent din div-ul de dosare, pentru revenire.
+        {
+            console.log('1 - ' + $rootScope.ID_DOSAR + ' - ' + $rootScope.TEMP_ID_DOSAR);
+            $rootScope.TEMP_ID_DOSAR = $rootScope.ID_DOSAR;
+            $rootScope.ID_DOSAR = null;
+        }
+        if (divId == "mainDosareDashboard" && generateContent && $rootScope.TEMP_ID_DOSAR != null) // pastram id-ul dosarului curent din div-ul de dosare, pentru revenire.
+        {
+            console.log('2 - ' + $rootScope.ID_DOSAR + ' - ' + $rootScope.TEMP_ID_DOSAR);
+            $rootScope.ID_DOSAR = $rootScope.TEMP_ID_DOSAR;
+            $rootScope.TEMP_ID_DOSAR = null;
+        }
         $rootScope.divId = divId;
-        if (!generateContent || $rootScope.HasHtml.indexOf(divId) > -1) {
-            ToggleDiv(divId);
+        if ((!generateContent || $rootScope.HasHtml.indexOf(divId) > -1) && (id == null || id == undefined)) {  // mai trebuie sa punem conditia pt. id generat deja (link dosare)
+            //console.log('aici3 - ' + divId);
+            ToggleDivCss(divId);
             return;
         }
         else {
-
-            var url = '';
+            //var url = '';
             switch (divId) {
+                case "mainDashboard":
+                    //url = '@Url.Action("Index", "Dosare")';
+                    $rootScope.Url = '/Dashboard/IndexMain';
+                    break;
+                case "mainDosareDashboard":
+                    //url = '@Url.Action("Index", "Dosare")';
+                    $rootScope.Url = '/Dosare/Index';
+                    break;
                 case "mainDosareDashboardAdminAndSuper":
                     //url = '@Url.Action("GetDosareDashboardAdminAndSuper", "Dashboard")';
-                    url = '/Dashboard/GetDosareDashboardAdminAndSuper';
+                    $rootScope.Url = '/Dashboard/GetDosareDashboardAdminAndSuper';
                     break;
                 case "mainDosareDashboardRegular":
                     //url = '@Html.Raw(Url.Action("GetDosareDashboardRegular", "Dashboard"))';
-                    url = '/Dashboard/GetDosareDashboardRegular';
+                    $rootScope.Url = '/Dashboard/GetDosareDashboardRegular';
                     break;
                 case "mainMesajeDashboard":
                     //url = '@Html.Raw(Url.Action("IndexMain", "Mesaje"))';
-                    url = '/Mesaje/IndexMain';
+                    $rootScope.Url = '/Mesaje/IndexMain';
                     break;
+                case "mainUtilizatoriDashboard":
+                    //url = '@Html.Raw(Url.Action("Index", "Utilizatori"))';
+                    $rootScope.Url = '/Utilizatori/Index';
+                    break;
+                case "mainDosareImportDashboard":
+                    //url = '@Html.Raw(Url.Action("Import", "Dosare"))';
+                    $rootScope.Url = '/Dosare/Import';
+                    break;
+            }
+            if (id != null && id != undefined) {
+                $rootScope.Url += "/" + id;  // aici vom modifica pt. parametru complex ...
             }
             var did = '#' + divId;
 
-            spinner.spin(document.getElementById('main'));
-            $http.get(url)
+            spinner.spin(document.getElementById(ACTIVE_DIV_ID));
+            $http.get($rootScope.Url)
                 .then(function (response) {
                     spinner.stop();
                     if (response != 'null' && response != null && response.data != null) {
+                        //console.log('aici!!! - ' + divId);
                         $rootScope.html = response.data;
-                        ToggleDiv(divId);
+                        ToggleDivCss(divId);
                     }
                 }, function (response) {
                     alert('Erroare: ' + response.status + ' - ' + response.data);
@@ -122,17 +154,19 @@ app.directive('dynamic', function ($compile, $rootScope) {
         replace: true,
         scope: true,
         link: function (scope, ele, attrs) {
-            scope.$watch(attrs.dynamic, function (html) {
+            scope.$watch(attrs.dynamic, function (newValue, oldValue) {
+                //console.log(ele.attr('id') + ' - ' + $rootScope.divId + ' - ' + ACTIVE_DIV_ID + ' - ' + $rootScope.HasHtml.indexOf(ele.attr('id')));
                 if (ele.attr('id') == $rootScope.divId && $rootScope.HasHtml.indexOf(ele.attr('id')) == -1) {
-                    ele.html(html);
+                    ele.html(newValue);
                     $compile(ele.contents())(scope);
                     $rootScope.HasHtml.push(ele.attr('id'));
+                    //console.log('aici2 - ' + ele.attr('id'));
                 }
             });
         }
     };
 });
-
+/*
 app.directive('dynamic2', function ($compile) {
     return {
         restrict: 'A',
@@ -145,7 +179,7 @@ app.directive('dynamic2', function ($compile) {
         }
     };
 });
-
+*/
 app.config(['$compileProvider',
   function($compileProvider) {
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|ftp|blob):|data:image\//);

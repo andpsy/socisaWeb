@@ -17,7 +17,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public ActionResult Index()
         {
-            return View();
+            return PartialView();
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]

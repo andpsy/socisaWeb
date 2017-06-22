@@ -22,7 +22,7 @@
                 <table>
                     <tr>
                         <td style="width:40px;">
-                            <div class="docsRightMenuButton" ng-click="ToggleDiv('mainDosareDashboardAdminAndSuper', false)">&#9668;</div>
+                            <div class="docsRightMenuButton" ng-click="ToggleDiv('mainDashboard', false, null)">&#9668;</div>
                         </td>
                         <td style="vertical-align:middle;padding:5px;">
                             @{
@@ -147,7 +147,10 @@
                     </tr>
                     <tr ng-repeat="item in dosareFiltrate = (model.DosareExtended | filter:queryText | filter:filterByColumns | filter:applyFilter) | orderBy:propertyName:reverse">
                         <td><input type="checkbox" class="checkForImport" id="chk_Dosar_{{item.Dosar.ID}}" ng-model="item.selected" /></td>
-                        <td><a href="/Dosare/Index/{{item.Dosar.ID}}" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
+                        <!--
+                            <td><a href="/Dosare/Index/{{item.Dosar.ID}}" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
+                        -->
+                        <td><a href="#" ng-click="ToggleDiv('mainDosareDashboard', true, item.Dosar.ID)" title="Detalii dosar">{{item.Dosar.NR_DOSAR_CASCO}}</a></td>
                         <td>{{item.Dosar.NR_SCA}}</td>
                         <td>{{item.Dosar.DATA_SCA | date : DATE_FORMAT}}</td>
                         <td>{{item.Dosar.NR_POLITA_CASCO}}</td>

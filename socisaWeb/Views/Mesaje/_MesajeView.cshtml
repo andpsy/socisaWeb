@@ -20,7 +20,7 @@
         <table>
             <tr>
                 <td style="width:40px;">
-                    <div ng-show="ID_DOSAR == null" class="docsRightMenuButton" ng-click="ToggleDiv('mainMesajeDashboard', false)">&#9668;</div>
+                    <div ng-show="ID_DOSAR == null" class="docsRightMenuButton" ng-click="ToggleDiv('mainDashboard', false, null)">&#9668;</div>
                 </td>
                 <td style="vertical-align:middle;padding:5px;">
                     <h4 class="panel-title">Total mesaje: {{model.MesajeJson.length}}, din care mesaje noi {{(model.MesajeJson | filter:{'DataCitire':null}).length}}</h4>

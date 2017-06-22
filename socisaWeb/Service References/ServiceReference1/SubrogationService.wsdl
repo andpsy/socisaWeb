@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SubrogationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="ClearHttpsUsernameBinding_ISubrogationService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="SubrogationService.xsd" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="SubrogationService_1_2_3_4_5.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="SubrogationService_1.xsd" namespace="http://schemas.datacontract.org/2004/07/AZT.NET.Insurance.Entities.Subrogation" />
+      <xsd:import schemaLocation="SubrogationService_1_2.xsd" namespace="http://schemas.datacontract.org/2004/07/AZT.NET.Insurance.Entities.Claim" />
+      <xsd:import schemaLocation="SubrogationService_1_2_3.xsd" namespace="http://schemas.datacontract.org/2004/07/AZT.NET.Insurance.Entities" />
+      <xsd:import schemaLocation="SubrogationService_1_2_3_4_5_6.xsd" namespace="http://schemas.datacontract.org/2004/07/AZT.NET.Common.Entities" />
+      <xsd:import schemaLocation="SubrogationService_1_2_3_4.xsd" namespace="http://schemas.datacontract.org/2004/07/AZT.NET.StarStorage.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISubrogationService_BrowseAllSubrogations_InputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseAllSubrogations" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_BrowseAllSubrogations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseAllSubrogationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_BrowseUnreadSubrogations_InputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseUnreadSubrogations" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_BrowseUnreadSubrogations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseUnreadSubrogationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_MarkAsReadById_InputMessage">
+    <wsdl:part name="parameters" element="tns:MarkAsReadById" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_MarkAsReadById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MarkAsReadByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_MarkAsReadByClaimId_InputMessage">
+    <wsdl:part name="parameters" element="tns:MarkAsReadByClaimId" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_MarkAsReadByClaimId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MarkAsReadByClaimIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_MarkAsReadByClaimFileNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:MarkAsReadByClaimFileNo" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_MarkAsReadByClaimFileNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MarkAsReadByClaimFileNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_BrowseClaimDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseClaimDocuments" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_BrowseClaimDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseClaimDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_GetClaimDocumentDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimDocumentDetails" />
+  </wsdl:message>
+  <wsdl:message name="ISubrogationService_GetClaimDocumentDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimDocumentDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISubrogationService">
+    <wsdl:operation name="BrowseAllSubrogations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubrogationService/BrowseAllSubrogations" message="tns:ISubrogationService_BrowseAllSubrogations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubrogationService/BrowseAllSubrogationsResponse" message="tns:ISubrogationService_BrowseAllSubrogations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BrowseUnreadSubrogations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubrogationService/BrowseUnreadSubrogations" message="tns:ISubrogationService_BrowseUnreadSubrogations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubrogationService/BrowseUnreadSubrogationsResponse" message="tns:ISubrogationService_BrowseUnreadSubrogations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkAsReadById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubrogationService/MarkAsReadById" message="tns:ISubrogationService_MarkAsReadById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubrogationService/MarkAsReadByIdResponse" message="tns:ISubrogationService_MarkAsReadById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkAsReadByClaimId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubrogationService/MarkAsReadByClaimId" message="tns:ISubrogationService_MarkAsReadByClaimId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubrogationService/MarkAsReadByClaimIdResponse" message="tns:ISubrogationService_MarkAsReadByClaimId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkAsReadByClaimFileNo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubrogationService/MarkAsReadByClaimFileNo" message="tns:ISubrogationService_MarkAsReadByClaimFileNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubrogationService/MarkAsReadByClaimFileNoResponse" message="tns:ISubrogationService_MarkAsReadByClaimFileNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BrowseClaimDocuments">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubrogationService/BrowseClaimDocuments" message="tns:ISubrogationService_BrowseClaimDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubrogationService/BrowseClaimDocumentsResponse" message="tns:ISubrogationService_BrowseClaimDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimDocumentDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubrogationService/GetClaimDocumentDetails" message="tns:ISubrogationService_GetClaimDocumentDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubrogationService/GetClaimDocumentDetailsResponse" message="tns:ISubrogationService_GetClaimDocumentDetails_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClearHttpsUsernameBinding_ISubrogationService" type="tns:ISubrogationService">
+    <wsp:PolicyReference URI="#ClearHttpsUsernameBinding_ISubrogationService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BrowseAllSubrogations">
+      <soap:operation soapAction="http://tempuri.org/ISubrogationService/BrowseAllSubrogations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrowseUnreadSubrogations">
+      <soap:operation soapAction="http://tempuri.org/ISubrogationService/BrowseUnreadSubrogations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkAsReadById">
+      <soap:operation soapAction="http://tempuri.org/ISubrogationService/MarkAsReadById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkAsReadByClaimId">
+      <soap:operation soapAction="http://tempuri.org/ISubrogationService/MarkAsReadByClaimId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkAsReadByClaimFileNo">
+      <soap:operation soapAction="http://tempuri.org/ISubrogationService/MarkAsReadByClaimFileNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrowseClaimDocuments">
+      <soap:operation soapAction="http://tempuri.org/ISubrogationService/BrowseClaimDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimDocumentDetails">
+      <soap:operation soapAction="http://tempuri.org/ISubrogationService/GetClaimDocumentDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SubrogationService">
+    <wsdl:port name="ClearHttpsUsernameBinding_ISubrogationService" binding="tns:ClearHttpsUsernameBinding_ISubrogationService">
+      <soap:address location="https://aztdirect.allianztiriac.ro/SharedWebServices.Auth/SubrogationService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
