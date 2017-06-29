@@ -440,6 +440,7 @@
     <Content Include="Views\Dashboard\_DashboardMain.cshtml" />
     <Content Include="Views\Dashboard\_DosareDashboardAdminAndSuper.cshtml" />
     <Content Include="Views\Dashboard\_DosareDashboardRegular.cshtml" />
+    <Content Include="Views\test.cshtml" />
     <Content Include="Service References\ServiceReference1\socisaWeb.ServiceReference1.BinaryContent.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -471,7 +472,6 @@
     <None Include="Service References\ServiceReference1\SubrogationService_1_2_3_4_5_6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Actions\" />

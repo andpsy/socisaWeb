@@ -197,7 +197,7 @@
   </wsdl:binding>
   <wsdl:service name="SubrogationService">
     <wsdl:port name="ClearHttpsUsernameBinding_ISubrogationService" binding="tns:ClearHttpsUsernameBinding_ISubrogationService">
-      <soap:address location="https://aztdirect.allianztiriac.ro/SharedWebServices.Auth/SubrogationService.svc" />
+      <soap:address location="https://aztdirect.allianztiriac.ro/SharedWebServices.DriftData/SubrogationService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

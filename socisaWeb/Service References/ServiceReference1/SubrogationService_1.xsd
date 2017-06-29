@@ -23,6 +23,8 @@
       <xs:element minOccurs="0" name="InsuredCarChassisNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InsuredCarModelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InsuredCarPlateNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsuredFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsuredId" type="xs:int" />
       <xs:element minOccurs="0" name="InsuredPolicyNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LossCity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LossCityId" type="xs:int" />
@@ -31,13 +33,16 @@
       <xs:element minOccurs="0" name="LossCounty" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LossCountyId" type="xs:int" />
       <xs:element minOccurs="0" name="LossDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LossDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LossDistrictNo" type="xs:int" />
       <xs:element minOccurs="0" name="LossIntersection" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LossStreet" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LossStreetNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReadStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportingDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SubrogationCarChassisNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SubrogationCarPlateNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubrogationGuiltyPartner" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SubrogationInsurerCountry" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SubrogationInsurerCountryId" type="xs:int" />
       <xs:element minOccurs="0" name="SubrogationInsurerId" type="xs:int" />

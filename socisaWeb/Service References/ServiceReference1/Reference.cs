@@ -68,6 +68,12 @@ namespace socisaWeb.ServiceReference1 {
         private string InsuredCarPlateNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InsuredFullNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int InsuredIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string InsuredPolicyNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -92,6 +98,9 @@ namespace socisaWeb.ServiceReference1 {
         private System.DateTime LossDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LossDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LossDistrictNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -107,10 +116,16 @@ namespace socisaWeb.ServiceReference1 {
         private int ReadStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ReportingDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubrogationCarChassisNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubrogationCarPlateNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubrogationGuiltyPartnerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubrogationInsurerCountryField;
@@ -336,6 +351,32 @@ namespace socisaWeb.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InsuredFullName {
+            get {
+                return this.InsuredFullNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InsuredFullNameField, value) != true)) {
+                    this.InsuredFullNameField = value;
+                    this.RaisePropertyChanged("InsuredFullName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int InsuredId {
+            get {
+                return this.InsuredIdField;
+            }
+            set {
+                if ((this.InsuredIdField.Equals(value) != true)) {
+                    this.InsuredIdField = value;
+                    this.RaisePropertyChanged("InsuredId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string InsuredPolicyNo {
             get {
                 return this.InsuredPolicyNoField;
@@ -440,6 +481,19 @@ namespace socisaWeb.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LossDescription {
+            get {
+                return this.LossDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LossDescriptionField, value) != true)) {
+                    this.LossDescriptionField = value;
+                    this.RaisePropertyChanged("LossDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int LossDistrictNo {
             get {
                 return this.LossDistrictNoField;
@@ -505,6 +559,19 @@ namespace socisaWeb.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ReportingDate {
+            get {
+                return this.ReportingDateField;
+            }
+            set {
+                if ((this.ReportingDateField.Equals(value) != true)) {
+                    this.ReportingDateField = value;
+                    this.RaisePropertyChanged("ReportingDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string SubrogationCarChassisNo {
             get {
                 return this.SubrogationCarChassisNoField;
@@ -526,6 +593,19 @@ namespace socisaWeb.ServiceReference1 {
                 if ((object.ReferenceEquals(this.SubrogationCarPlateNoField, value) != true)) {
                     this.SubrogationCarPlateNoField = value;
                     this.RaisePropertyChanged("SubrogationCarPlateNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubrogationGuiltyPartner {
+            get {
+                return this.SubrogationGuiltyPartnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubrogationGuiltyPartnerField, value) != true)) {
+                    this.SubrogationGuiltyPartnerField = value;
+                    this.RaisePropertyChanged("SubrogationGuiltyPartner");
                 }
             }
         }
