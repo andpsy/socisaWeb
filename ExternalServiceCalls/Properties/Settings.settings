@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ExternalServiceCalls.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MySQLConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=localhost;Database=socisa;Uid=root;Pwd=scasca;default command timeout=7200;</Value>
+    </Setting>
+    <Setting Name="AllianzWSUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Drift Data</Value>
+    </Setting>
+    <Setting Name="AllianzWSPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">driftadata.1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

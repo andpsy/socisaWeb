@@ -28,16 +28,18 @@ app.controller('DosareNavigatorController',
 function ($scope, $http, $filter, $rootScope, $window) {
     $rootScope.activeTab = "detalii";
     $rootScope.dynaStyle = $rootScope.dynaStyleDefault = { 'background-color': 'white' };
+    $rootScope.AVIZAT = false; // variabila generala pt. statusul dosarului (vizibila intre controllere)
+    
     $scope.tmpCalitateSocietate = "CASCO"
     $rootScope.calitateSocietateCurenta = $scope.cacatudraqu = "CASCO";
     $scope.searchMode = 1;
     $scope.TempDosarFilter = {};
     $scope.editMode = 0;
-
+    
     $scope.DosarFiltru = {};
     $scope.DosarFiltru.dosarJson = {};
     $scope.DosarFiltru.Dosar = {};
-
+    
     //$scope.DosarFiltru.DosareResult = [];
     $scope.curDosarIndex = -1;
     $scope.TempDosarEdit = {};
@@ -45,12 +47,29 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.result = {};
     $scope.IDSocietateRep = "";
     $scope.Interactive = false;
-    $scope.validForAvizare = false;
+    $rootScope.validForAvizare = false; // variabila generala pt. validitatea dosarului de a fi avizat (vizibil intre controllere)
+    
 
     $scope.SetId = function (id) {
         console.log('id: ' + id);
-
+        /*
+        if ($rootScope.calitateSocietateCurenta == "CASCO") {
+            try {
+                $scope.ID_SOCIETATE_CASCO = $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO;
+            } catch (e) {
+                $scope.ID_SOCIETATE_RCA = "";
+            }
+        }
+        if ($rootScope.calitateSocietateCurenta == "RCA") {
+            try {
+                $scope.ID_SOCIETATE_RCA = $scope.DosarFiltru.Dosar.ID_SOCIETATE_RCA;
+            } catch (e) {
+                $scope.ID_SOCIETATE_CASCO = "";
+            }
+        }
+        */
         $scope.DosarFiltru.Dosar.ID = $rootScope.ID_DOSAR = id;
+        angular.copy($scope.DosarFiltru, $scope.TempDosarFilter);
         $scope.DosarFiltru.DosareResult = [];
         $scope.DosarFiltru.DosareResult.push($scope.DosarFiltru.Dosar);
         $scope.ShowDosar(0);
@@ -76,6 +95,40 @@ function ($scope, $http, $filter, $rootScope, $window) {
         }
         $scope.switchTabsClass(lnkId);
     };
+    /*
+    $rootScope.$watch('ID_DOSAR', function (newValue, oldValue) {
+        if (newValue != null && newValue != oldValue) {
+            console.log('watch ID_DOSAR - newValue= ' + newValue + ' - oldValue= ' + oldValue);
+            $scope.SetId(newValue);
+            //$scope.Afisare(newValue, null);
+        }
+    });
+    */
+    $scope.$watch('DosarFiltru.Dosar', function (newValue, oldValue) {
+        //alert(newValue.DATA_EVENIMENT);
+        console.log('watch DosarFiltru.Dosar - ' + $rootScope.ID_DOSAR);
+        if ($rootScope.calitateSocietateCurenta == "CASCO") {
+            console.log('aici2');
+            try {
+                //document.getElementById("Dosar_ID_SOCIETATE_CASCO").value = newValue.ID_SOCIETATE_CASCO;
+                $scope.ID_SOCIETATE_CASCO = newValue.ID_SOCIETATE_CASCO;
+            } catch (e) {
+                //document.getElementById("Dosar_ID_SOCIETATE_RCA").selectedIndex = -1;
+                $scope.ID_SOCIETATE_RCA = "";
+            }
+        }
+        if ($rootScope.calitateSocietateCurenta == "RCA") {
+            console.log('aici3');
+            try {
+                //document.getElementById("Dosar_ID_SOCIETATE_RCA").value = newValue.ID_SOCIETATE_RCA;
+                $scope.ID_SOCIETATE_RCA = newValue.ID_SOCIETATE_RCA;
+            } catch (e) {
+                //document.getElementById("Dosar_ID_SOCIETATE_CASCO").selectedIndex = -1;
+                $scope.ID_SOCIETATE_CASCO = "";
+            }
+        }
+        //document.getElementById("lnkDocumenteScanateDetalii").className  = document.getElementById("lnkMesajeDetalii").className  = newValue.ID == null ? 'disabled' : '';
+    });
 
     $scope.$watch('DosarFiltru.Dosar.ID', function (newValue, oldValue) {
         if (newValue == null) {
@@ -83,7 +136,12 @@ function ($scope, $http, $filter, $rootScope, $window) {
             $scope.switchTabsClass("#lnkDosareDetalii");
             $rootScope.dynaStyle = $rootScope.dynaStyleDefault;
         }
+        if (newValue != null && newValue != oldValue) {
+            $rootScope.AVIZAT = $scope.DosarFiltru.Dosar.AVIZAT;
+        }
         if (newValue != undefined && newValue != "" && newValue != null && newValue == oldValue) {
+            console.log('aici1');
+            $rootScope.AVIZAT = $scope.DosarFiltru.Dosar.AVIZAT;
             $scope.DosarFiltru.DosareResult = [];
             $scope.DosarFiltru.DosareResult.push($scope.DosarFiltru.Dosar);
             $scope.TempDosarFilter.DosareResult = [];
@@ -98,6 +156,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $scope.$watch('tmpCalitateSocietate', function (newValue, oldValue) {
         //alert(newValue);
+        console.log('watch tmpCalitateSocietate');
         $rootScope.calitateSocietateCurenta = newValue;
         if ($scope.editMode == 0 && newValue != oldValue) {
             //alert($scope.searchMode + ' - ' + $scope.editMode);
@@ -126,33 +185,10 @@ function ($scope, $http, $filter, $rootScope, $window) {
             }
         }
     });
-
-    $scope.$watch('DosarFiltru.Dosar', function (newValue, oldValue) {
-        //alert(newValue.DATA_EVENIMENT);
-        console.log('watch DosarFiltru.Dosar - ' + $rootScope.ID_DOSAR);
-        if ($rootScope.calitateSocietateCurenta == "CASCO") {
-            try {
-                //document.getElementById("Dosar_ID_SOCIETATE_CASCO").value = newValue.ID_SOCIETATE_CASCO;
-                $scope.ID_SOCIETATE_CASCO = newValue.ID_SOCIETATE_CASCO;
-            } catch (e) {
-                //document.getElementById("Dosar_ID_SOCIETATE_RCA").selectedIndex = -1;
-                $scope.ID_SOCIETATE_RCA = "";
-            }
-        }
-        if ($rootScope.calitateSocietateCurenta == "RCA")
-        {
-            try {
-                //document.getElementById("Dosar_ID_SOCIETATE_RCA").value = newValue.ID_SOCIETATE_RCA;
-                $scope.ID_SOCIETATE_RCA = newValue.ID_SOCIETATE_RCA;
-            } catch (e) {
-                //document.getElementById("Dosar_ID_SOCIETATE_CASCO").selectedIndex = -1;
-                $scope.ID_SOCIETATE_CASCO = "";
-            }
-        }
-        //document.getElementById("lnkDocumenteScanateDetalii").className  = document.getElementById("lnkMesajeDetalii").className  = newValue.ID == null ? 'disabled' : '';
-    });
     
     $scope.$watch('editMode', function (newValue, oldValue) {
+        console.log('watch editMode');
+
         document.getElementById('Dosar_DATA_EVENIMENT').disabled = !(newValue == 1);
         document.getElementById('Dosar_DATA_SCA').disabled = !(newValue == 1);
         document.getElementById('Dosar_DATA_AVIZARE').disabled = !(newValue == 1);
@@ -168,6 +204,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
     });
 
     $scope.$watch('searchMode', function (newValue, oldValue) {
+        console.log('watch searchMode - ' + newValue + ' = ' + oldValue);
         document.getElementById('Dosar_ID_SOCIETATE_CASCO').disabled = !(newValue == 2 && $rootScope.calitateSocietateCurenta == 'RCA');
         document.getElementById('Dosar_ID_SOCIETATE_RCA').disabled = !((newValue == 2 || $scope.editMode == 1) && $rootScope.calitateSocietateCurenta == 'CASCO');
         document.getElementById('Dosar_CAZ').disabled = newValue != 2 && $scope.editMode != 1;
@@ -176,7 +213,20 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $scope.$watch('DosarFiltru.Dosar.ID_SOCIETATE_RCA', function (newValue, oldValue) {
         if (newValue != null && newValue != undefined) {
+            console.log('watch DosarFiltru.Dosar.ID_SOCIETATE_RCA - ' + newValue + ' = ' + oldValue);
             document.getElementById("Dosar_ID_SOCIETATE_RCA").value = newValue;
+        }
+    });
+
+    $scope.$watch('ID_SOCIETATE_RCA', function (newValue, oldValue) {
+        console.log('watch ID_SOC_RCA - ' + newValue + ' = ' + oldValue + ' - interactive: ');
+        if (newValue != null && newValue != undefined && $scope.Interactive) {
+            $scope.DosarFiltru.Dosar.ID_SOCIETATE_RCA = newValue;
+            //if ($scope.searchMode == 2)
+            {
+                //console.log('afisare - ID_SOCIETATE_RCA');
+                $scope.Afisare(newValue, null);
+            }
         }
     });
 
@@ -187,26 +237,25 @@ function ($scope, $http, $filter, $rootScope, $window) {
         }
     });
 
-    $scope.$watch('ID_SOCIETATE_RCA', function (newValue, oldValue) {
-        //console.log('watch ID_SOC_CASCO - ' + newValue + ' = ' + oldValue);
-        if (newValue != null && newValue != undefined && $scope.Interactive) {
-            $scope.DosarFiltru.Dosar.ID_SOCIETATE_RCA = newValue;
-            //if ($scope.searchMode == 2)
-            {
-                $scope.Afisare(newValue, null);
-            }
-        }
-    });
-
     $scope.$watch('ID_SOCIETATE_CASCO', function (newValue, oldValue) {
         if (newValue != null && newValue != undefined && $scope.Interactive) {
+            console.log('watch ID_SOC_CASCO - ' + newValue + ' = ' + oldValue);
             $scope.DosarFiltru.Dosar.ID_SOCIETATE_CASCO = newValue;
             //if ($scope.searchMode == 2)
             {
+                //console.log('afisare - ID_SOCIETATE_CASCO');
                 $scope.Afisare(newValue, null);
             }
         }
     });
+    /*
+    $scope.$watch('DosarFiltru.Dosar.NR_DOSAR_CASCO', function (newValue, oldValue) {
+        if ($scope.searchMode == 2) {
+            //console.log('afisare - DosarFiltru.Dosar.NR_DOSAR_CASCO');
+            $scope.Afisare(newValue, null);
+        }
+    });
+    */
 
     $scope.$watch('DosarFiltru.Dosar.CAZ', function (newValue, oldValue) {
         document.getElementById("Dosar_CAZ").value = newValue;
@@ -218,9 +267,11 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $scope.$watch('TIP_CAZ', function (newValue, oldValue) {
         if (newValue != null && newValue != undefined && $scope.Interactive) {
+            console.log('watch TIP_CAZ - ' + newValue + ' = ' + oldValue);
             $scope.DosarFiltru.Dosar.CAZ = newValue;
             //if ($scope.searchMode == 2)
             {
+                //console.log('afisare - TIP_CAZ');
                 $scope.Afisare(newValue, null);
             }
         }
@@ -229,9 +280,11 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.$watch('ID_TIP_DOSAR', function (newValue, oldValue) {
         //console.log('watch ID_DOSAR - ' + newValue);
         if (newValue != null && newValue != undefined && $scope.Interactive) {
+            console.log('watch ID_TIP_DOSAR - ' + newValue + ' = ' + oldValue);
             $scope.DosarFiltru.Dosar.ID_TIP_DOSAR = newValue;
             //if ($scope.searchMode == 2)
             {
+                //console.log('afisare - ID_TIP_DOSAR');
                 $scope.Afisare(newValue, null);
             }
         }
@@ -240,47 +293,56 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $scope.$watch('DosarFiltru.Dosar.AVIZAT', function (newValue, oldValue) {
         if ($scope.searchMode == 2) {
+            console.log('afisare - DosarFiltru.Dosar.AVIZAT');
             $scope.Afisare(newValue, null);
         }
     });
 
     $scope.$watch('DosarFiltru.dosarJson.DataEvenimentEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DosarFiltru.Dosar.AVIZAT');
             $scope.Afisare(newValue, null);
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataScaEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DataEvenimentEnd');
             $scope.Afisare(newValue, null);
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataAvizareEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DataAvizareEnd');
             $scope.Afisare(newValue, null);
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataNotificareEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DataNotificareEnd');
             $scope.Afisare(newValue, null);
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataCreareEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DataCreareEnd');
             $scope.Afisare(newValue, null);
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataUltimeiModificariEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DataUltimeiModificariEnd');
             $scope.Afisare(newValue, null);
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataIesireCascoEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DataIesireCascoEnd');
             $scope.Afisare(newValue, null);
         }
     });
     $scope.$watch('DosarFiltru.dosarJson.DataIntrareRcaEnd', function (newValue, oldValue) {
         if (newValue != oldValue) {
+            //console.log('afisare - DataIntrareRcaEnd');
             $scope.Afisare(newValue, null);
         }
     });
@@ -374,17 +436,18 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $scope.Afisare = function (e, sender) {
         if ($scope.editMode == 1) return;
         var direct = sender == null;
-        console.log("Afisare - " + $rootScope.ID_DOSAR);
         angular.copy($scope.DosarFiltru, $scope.TempDosarFilter);
         var now = new Date();
         var filter_value = e;
         if ((now - lastkeytime <= waiting_interval && lastfiltervalue != filter_value) || (filter_value.length < 3 && !direct)) {
             setTimeout(Afisare, now - lastkeytime);
             lastkeytime = now;
+            console.log("Afisare - " + $rootScope.ID_DOSAR + ' - ' + e);
             return;
         }
         else {
             if (filter_value != "") {
+                console.log("Afisare2 - " + $rootScope.ID_DOSAR + ' - ' + e);
                 $scope.Afisare2(e);
                 lastkeytime = now;
                 //return;
@@ -394,8 +457,8 @@ function ($scope, $http, $filter, $rootScope, $window) {
     };
 
     $scope.Afisare2 = function (input_value) {
-        //spinner = new Spinner(opts).spin(document.getElementById('main'));
-        spinner.spin(document.getElementById('main'));
+        //spinner = new Spinner(opts).spin(document.getElementById(ACTIVE_DIV_ID));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         var data = $scope.DosarFiltru;
         $http.post('/Dosare/Search', data, {
             headers:
@@ -480,7 +543,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         $rootScope.ID_DOSAR = $scope.DosarFiltru.Dosar.ID;
         //document.getElementById("lnkDocumenteScanateDetalii").className = document.getElementById("lnkMesajeDetalii").className = '';
 
-        //spinner = new Spinner(opts).spin(document.getElementById('main'));
+        //spinner = new Spinner(opts).spin(document.getElementById(ACTIVE_DIV_ID));
         //$scope.DosarFiltru.Dosar.DATA_EVENIMENT = $scope.formatDate($scope.DosarFiltru.Dosar.DATA_EVENIMENT);
         var data = $scope.DosarFiltru.Dosar.ID;
         $http.get('/Dosare/Details/' + data, {
@@ -501,7 +564,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
                     $scope.DosarFiltru.dosarJson.NumarAutoRca = j.autoRca.NR_AUTO;
                     $scope.DosarFiltru.dosarJson.NumeIntervenient = j.intervenient.DENUMIRE;
                     //$scope.DosarFiltru.dosarJson.TipDosar = j.tipDosar.DENUMIRE;
-                    $scope.validForAvizare = j.validForAvizare;
+                    $rootScope.validForAvizare = j.validForAvizare;
                 } catch (e) { }
             }
             //spinner.stop();
@@ -548,7 +611,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
 
     $scope.SaveEdit = function () {
         $scope.editMode = 2;
-        spinner.spin(document.getElementById('main'))
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID))
         var data = $scope.DosarFiltru;
         /*
         try {
@@ -653,7 +716,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
         });
     };
 
-    $scope.AvizareDosar = function (_avizat) {
+    $scope.AvizareDosar = function () {
         /*
         $scope.DosarFiltru.Dosar.AVIZAT = _avizat;
         var d = new Date();
@@ -661,7 +724,8 @@ function ($scope, $http, $filter, $rootScope, $window) {
         $scope.DosarFiltru.Dosar.DATA_AVIZARE = ds;
         $scope.SaveEdit();
         */
-        spinner.spin(document.getElementById('main'))
+        var _avizat = !$scope.DosarFiltru.Dosar.AVIZAT;
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID))
         $http.post('/Dosare/Avizare', { id : $scope.DosarFiltru.Dosar.ID, avizat : _avizat})
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
@@ -673,6 +737,8 @@ function ($scope, $http, $filter, $rootScope, $window) {
                         var d = new Date();
                         var ds = (((d.getDate() < 10 ? "0" : "") + d.getDate()) + "." + ((d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1)) + "." + d.getFullYear());
                         $scope.DosarFiltru.Dosar.DATA_AVIZARE = ds;
+                        $rootScope.AVIZAT = $scope.DosarFiltru.Dosar.AVIZAT;
+                        $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : { 'background-color': '#f8eeee' };
                     }
                     $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                 }

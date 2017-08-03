@@ -146,7 +146,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
         */
         var p = $("#password").val();
         var cp = $("#confirmPassword").val();
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         $http.post('/Utilizatori/SetPassword', { id_utilizator : $scope.UtilizatorJson.Utilizator.ID, password : p, confirmPassword : cp })
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
@@ -210,7 +210,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
     };
 
     $scope.SaveUtilizator = function () {
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         $http.post('/Utilizatori/Save', $scope.UtilizatorJson.Utilizator)
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
@@ -240,7 +240,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
     };
 
     $scope.DeleteUtilizator = function () {
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         $http.post('/Utilizatori/Delete', { id: $scope.UtilizatorJson.Utilizator.ID })
             .then(function (response) {
                 if (response != 'null' && response != null && response.data != null) {
@@ -333,7 +333,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                 }
             }
             if (!gasit) {
-                spinner.spin(document.getElementById('main'));
+                spinner.spin(document.getElementById(ACTIVE_DIV_ID));
                 
                 var x = $http.post('/UtilizatoriDrepturi/Save', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_DREPT: $scope.NewRights[i].ID })
                     .then(function (response) {
@@ -360,7 +360,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                 }
             }
             if (!gasit) {
-                spinner.spin(document.getElementById('main'));
+                spinner.spin(document.getElementById(ACTIVE_DIV_ID));
                 
                 var y = $http.post('/UtilizatoriDrepturi/Delete', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_DREPT: $scope.UtilizatorJson.Drepturi[i].ID })
                     .then(function (response) {
@@ -411,7 +411,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                 }
             }
             if (!gasit) {
-                spinner.spin(document.getElementById('main'));
+                spinner.spin(document.getElementById(ACTIVE_DIV_ID));
                 var x = $http.post('/UtilizatoriActions/Save', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_ACTION: $scope.NewActions[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
@@ -442,7 +442,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                 }
             }
             if (!gasit) {
-                spinner.spin(document.getElementById('main'));
+                spinner.spin(document.getElementById(ACTIVE_DIV_ID));
                 var y = $http.post('/UtilizatoriActions/Delete', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_ACTION: $scope.UtilizatorJson.Actions[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
@@ -496,7 +496,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                 }
             }
             if (!gasit) {
-                spinner.spin(document.getElementById('main'));
+                spinner.spin(document.getElementById(ACTIVE_DIV_ID));
                 var x = $http.post('/UtilizatoriSocietatiAdministrate/Save', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_SOCIETATE_ADMINISTRATA: $scope.NewSocietatiAdministrate[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {
@@ -521,7 +521,7 @@ function ($scope, $http, $filter, $rootScope, $q) {
                 }
             }
             if (!gasit) {
-                spinner.spin(document.getElementById('main'));
+                spinner.spin(document.getElementById(ACTIVE_DIV_ID));
                 var y = $http.post('/UtilizatoriSocietatiAdministrate/Delete', { ID_UTILIZATOR: $scope.ID_UTILIZATOR, ID_SOCIETATE_ADMINISTRATA: $scope.UtilizatorJson.SocietatiAsigurareAdministrate[i].ID })
                     .then(function (response) {
                         if (response != 'null' && response != null && response.data != null) {

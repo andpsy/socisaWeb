@@ -142,7 +142,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
 
     $scope.GetNewMessages = function (id_dosar) {
         //if (id_dosar == null) return;
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         //var j = {'id_dosar': id_dosar, 'last_refresh': $scope.lastRefresh};
         var j = { 'id_dosar': id_dosar, 'last_refresh': $filter('date')($scope.lastRefresh, $rootScope.DATE_TIME_FORMAT) };
         myService.getlist('POST', '/Mesaje/GetNewMessages', { j: JSON.stringify(j) })
@@ -163,7 +163,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
 
     $scope.GetSentMessages = function (id_dosar) {
         $scope.inbox = "Sent";
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         $scope.CancelMessage();
         myService.getlist('GET', '/Mesaje/GetSentMessages/' + id_dosar, null)
           .then(function (response) {
@@ -185,7 +185,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     $scope.GetMessages = function (id_dosar) {
         $scope.newMessages = "";
         $scope.inbox = "Inbox";
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         //$scope.CancelMessage();
         myService.getlist('GET', '/Mesaje/GetMessages/' + id_dosar, null)
           .then(function (response) {
@@ -219,7 +219,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
         $scope.GenerateReceivers();
 
         if ($scope.model.MesajJson.DataCitire == null) {
-            spinner.spin(document.getElementById('main'));
+            spinner.spin(document.getElementById(ACTIVE_DIV_ID));
             $scope.model.MesajJson.DataCitire = $filter('date')(new Date(), $rootScope.DATE_TIME_FORMAT);
             var data = $scope.model.MesajJson;
             $http.post('/Mesaje/SetDataCitire', data)
@@ -247,7 +247,7 @@ function ($scope, $http, $filter, $rootScope, $compile, $interval, myService) {
     };
 
     $scope.SendMessage = function () {
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         var data = $scope.model.MesajJson;
         $http.post('/Mesaje/Send', data)
             .then(function (response) {

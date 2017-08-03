@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AZT.NET.Insurance.Entities.Subrogation" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AZT.NET.Insurance.Entities.Subrogation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfSubrogationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubrogationInfo" nillable="true" type="tns:SubrogationInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubrogationInfo" nillable="true" type="tns:ArrayOfSubrogationInfo" />
+  <xs:complexType name="SubrogationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmiableAssessmentNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssessmentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClaimFileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClaimId" type="xs:int" />
+      <xs:element minOccurs="0" name="ClaimReserveCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClaimReserveCurrencyId" type="xs:int" />
+      <xs:element minOccurs="0" name="ClaimReserveValue" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ClaimReserveValueRon" type="xs:decimal" />
+      <xs:element minOccurs="0" name="EventBaseType" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="InsuredCarBrandId" type="xs:int" />
+      <xs:element minOccurs="0" name="InsuredCarBrandName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsuredCarChassisNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsuredCarModelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsuredCarPlateNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsuredFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsuredId" type="xs:int" />
+      <xs:element minOccurs="0" name="InsuredPolicyNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LossCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LossCityId" type="xs:int" />
+      <xs:element minOccurs="0" name="LossCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LossCountryId" type="xs:int" />
+      <xs:element minOccurs="0" name="LossCounty" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LossCountyId" type="xs:int" />
+      <xs:element minOccurs="0" name="LossDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LossDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LossDistrictNo" type="xs:int" />
+      <xs:element minOccurs="0" name="LossIntersection" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LossStreet" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LossStreetNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReadStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportingDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SubrogationCarChassisNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubrogationCarPlateNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubrogationGuiltyPartner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubrogationInsurerCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubrogationInsurerCountryId" type="xs:int" />
+      <xs:element minOccurs="0" name="SubrogationInsurerId" type="xs:int" />
+      <xs:element minOccurs="0" name="SubrogationInsurerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubrogationRcoPolicyNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubrogationType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubrogationInfo" nillable="true" type="tns:SubrogationInfo" />
+</xs:schema>

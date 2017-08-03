@@ -76,6 +76,8 @@ app.run(function ($rootScope, $http) {
     $rootScope.Url = "";
 
     $rootScope.ToggleDiv = function (divId, generateContent, id) {
+        $rootScope.ID_DOSAR = id;
+        /*
         if (divId != "mainDosareDashboard" && generateContent && $rootScope.ID_DOSAR != null) // pastram id-ul dosarului curent din div-ul de dosare, pentru revenire.
         {
             console.log('1 - ' + $rootScope.ID_DOSAR + ' - ' + $rootScope.TEMP_ID_DOSAR);
@@ -88,9 +90,10 @@ app.run(function ($rootScope, $http) {
             $rootScope.ID_DOSAR = $rootScope.TEMP_ID_DOSAR;
             $rootScope.TEMP_ID_DOSAR = null;
         }
+        */
         $rootScope.divId = divId;
         if ((!generateContent || $rootScope.HasHtml.indexOf(divId) > -1) && (id == null || id == undefined)) {  // mai trebuie sa punem conditia pt. id generat deja (link dosare)
-            //console.log('aici3 - ' + divId);
+            console.log('aici3 - ' + divId);
             ToggleDivCss(divId);
             return;
         }
@@ -138,6 +141,12 @@ app.run(function ($rootScope, $http) {
                     if (response != 'null' && response != null && response.data != null) {
                         //console.log('aici!!! - ' + divId);
                         $rootScope.html = response.data;
+                        /*
+                        if (id != null && id != undefined) {
+                            $rootScope.ID_DOSAR = id;
+                            $rootScope.TEMP_ID_DOSAR = null;
+                        }
+                        */
                         ToggleDivCss(divId);
                     }
                 }, function (response) {
@@ -156,7 +165,7 @@ app.directive('dynamic', function ($compile, $rootScope) {
         link: function (scope, ele, attrs) {
             scope.$watch(attrs.dynamic, function (newValue, oldValue) {
                 //console.log(ele.attr('id') + ' - ' + $rootScope.divId + ' - ' + ACTIVE_DIV_ID + ' - ' + $rootScope.HasHtml.indexOf(ele.attr('id')));
-                if (ele.attr('id') == $rootScope.divId && $rootScope.HasHtml.indexOf(ele.attr('id')) == -1) {
+                if (ele.attr('id') == $rootScope.divId && ($rootScope.HasHtml.indexOf(ele.attr('id')) == -1 || newValue != oldValue)) {
                     ele.html(newValue);
                     $compile(ele.contents())(scope);
                     $rootScope.HasHtml.push(ele.attr('id'));

@@ -4,7 +4,7 @@
 {
     @Html.AntiForgeryToken()
     <!-- Lista dosare -->
-    <div id="dosareSideNav" style="width:0px;height:0px;overflow-y:auto;position:absolute;top:0px;left:0px;margin:5px;border-right:1px solid black;background-color:#111;opacity:0.8;filter:alpha(opacity=80);z-index:3;transition: 0.5s;">
+    <div id="dosareSideNav" style="width:0px;height:0px;overflow-y:auto;position:absolute;top:0px;left:0px;margin:5px;border-right:1px solid black;background-color:#111;opacity:0.9;filter:alpha(opacity=90);z-index:3;transition: 0.5s;">
         <table style="width:95%;padding:5px;margin:5px;">
             <tr style="border-bottom:1px solid white;">
                 <td style="padding:5px;">Lista dosare:</td>
@@ -28,7 +28,6 @@
         </table>
     </div>
     <!-- end lista dosare -->
-
     <div id="DosareSearch" style="left:220px;top:0px;margin-top:8px;" data-ng-init="@String.Format("calitateSocietateCurenta = '{0}'", Session["ID_SOCIETATE"] == null ? "" : ((Model.Dosar.ID_SOCIETATE_CASCO != null && Convert.ToInt32(Model.Dosar.ID_SOCIETATE_CASCO) == Convert.ToInt32(Session["ID_SOCIETATE"])) ? "CASCO" : "RCA"))" >
         <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
             <button type="button" class="close" ng-click="showMessage = false">&times;</button>
@@ -131,16 +130,16 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_ASIGURAT_CASCO, htmlAttributes: new { @class = "control-label" })
-                        @Html.HiddenFor(model => model.Dosar.ID_ASIGURAT_CASCO, new { data_ng_model = "DosarFiltru.Dosar.ID_ASIGURAT_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.ID_ASIGURAT_CASCO = '{0}'", Model.Dosar.ID_ASIGURAT_CASCO) })
                         @Html.TextBoxFor(model => model.dosarJson.NumeAsiguratCasco, new { @class = "form-control input-sm", data_ng_focus = "SwitchBackToSearchMode()", data_ng_keyup = "Afisare($event.target.value, $event)", data_ng_model = "DosarFiltru.dosarJson.NumeAsiguratCasco", data_ng_init = string.Format("DosarFiltru.dosarJson.NumeAsiguratCasco = '{0}'", Model.dosarJson.NumeAsiguratCasco) })
+                        @Html.HiddenFor(model => model.Dosar.ID_ASIGURAT_CASCO, new { data_ng_model = "DosarFiltru.Dosar.ID_ASIGURAT_CASCO", data_ng_init = string.Format("DosarFiltru.Dosar.ID_ASIGURAT_CASCO = '{0}'", Model.Dosar.ID_ASIGURAT_CASCO) })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_ASIGURAT_CASCO, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Dosar.ID_SOCIETATE_RCA, htmlAttributes: new { @class = "control-label" })
+                        @Html.HiddenFor(model => model.Dosar.ID_SOCIETATE_RCA, new { @id = "Hidden_Dosar_ID_SOCIETATE_RCA", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_RCA = '{0}'; ID_SOCIETATE_RCA = '{0}';", Model.Dosar.ID_SOCIETATE_RCA) })
                         @Html.DropDownListFor(model => model.Dosar.ID_SOCIETATE_RCA, new SelectList(Model.SocietatiRCA, "ID", "DENUMIRE"), "", new { @class = "form-control input-sm", @disabled = "disabled", data_ng_click = "Interactive=true;", data_ng_model="ID_SOCIETATE_RCA", data_ng_init=String.Format("DosarFiltru.SocietatiRCA = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiRCA)) })
-                        @Html.HiddenFor(model => model.Dosar.ID_SOCIETATE_RCA, new { @id= "Hidden_Dosar_ID_SOCIETATE_RCA", data_ng_model = "DosarFiltru.Dosar.ID_SOCIETATE_RCA", data_ng_init = string.Format("DosarFiltru.Dosar.ID_SOCIETATE_RCA = '{0}'; ID_SOCIETATE_RCA = '{0}';", Model.Dosar.ID_SOCIETATE_RCA) })
                         @Html.ValidationMessageFor(model => model.Dosar.ID_SOCIETATE_RCA, "", new { @class = "text-danger" })
                     </div>
                 </td>
@@ -520,13 +519,13 @@
                             @Html.Label("Editare", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "(searchMode == 2 || cacatudraqu != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1", data_ng_click = "EnterEditMode()" }).HasRight("modificare")
                             @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "(searchMode == 2 || cacatudraqu != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" }).HasRight("stergere")
 
-                            <div ng-show="validForAvizare" class="btn-group">
+                            <div a_disabled="!validForAvizare" class="btn-group">
                                 <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" a-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">
                                     Optiuni
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.Label("Avizare", new { @class = "label_a", data_ng_show = "cacatudraqu == 'CASCO' && !DosarFiltru.Dosar.AVIZAT", data_ng_click = "AvizareDosar(true)" }).HasRight("avizare dosar")</li>
+                                    <li>@Html.Label("Avizare", new { @class = "label_a", data_ng_show = "cacatudraqu == 'CASCO'", data_ng_click = "AvizareDosar()" }).HasRight("avizare dosar")</li>
                                     <li ng-show="DosarFiltru.Dosar.AVIZAT"><a href="#" ng-click="TiparireDosar()">Tiparire</a></li>
                                     <li ng-show="DosarFiltru.Dosar.AVIZAT"><a href="#">Email</a></li>
                                 </ul>
@@ -554,6 +553,6 @@
                 </td>
             </tr>
         </table>
-        @Html.HiddenFor(model => model.Dosar.ID, new { data_ng_model = "DosarFiltru.Dosar.ID", data_ng_init = ViewContext.RouteData.Values["id"] == null ? "" : String.Format("SetId({0})", Model.Dosar.ID) })
+        @Html.TextBoxFor(model => model.Dosar.ID, new { @style = "display:none;", data_ng_model = "DosarFiltru.Dosar.ID", data_ng_init = ViewContext.RouteData.Values["id"] == null ? "" : String.Format("SetId({0})", Model.Dosar.ID) })
     </div>
 }

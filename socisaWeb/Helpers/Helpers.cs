@@ -59,7 +59,7 @@ namespace socisaWeb.Helpers
             return hasRight;
         }
 
-        public static bool Avizare(int id)
+        public static bool ValidareAvizare(int id)
         {
             string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             SOCISA.Models.Utilizator u = (SOCISA.Models.Utilizator)HttpContext.Current.Session["CURENT_USER"];

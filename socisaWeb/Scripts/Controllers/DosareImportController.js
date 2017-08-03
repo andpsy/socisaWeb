@@ -11,7 +11,7 @@ function ($scope, $http, $filter, $rootScope, $window, Upload) {
 
     $scope.upload = function (file) {
         if (file == null || !Upload.isFile(file)) return;
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
 
         Upload.upload({
             url: '/Dosare/PostExcelFile',
@@ -43,7 +43,7 @@ function ($scope, $http, $filter, $rootScope, $window, Upload) {
 
     $scope.GetDosareFromLog = function (date) {
         document.getElementById("IncarcareFisierExcel").style.display = 'none';
-        spinner.spin(document.getElementById('main'));
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
         $http.post('/Dosare/GetDosareFromLog', { ImportDate: date })
             .then(function (response) {
                 $scope.model.ImportDosarView = response.data.Result;

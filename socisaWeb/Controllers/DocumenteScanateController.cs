@@ -105,6 +105,7 @@ namespace socisaWeb.Controllers
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
+        /*
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
         public JsonResult PostFile()
@@ -118,6 +119,30 @@ namespace socisaWeb.Controllers
             //return Json(toReturn, JsonRequestBehavior.AllowGet);
 
             JsonResult result = Json(toReturn, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = Int32.MaxValue;
+            return result;
+        }
+        */
+
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
+        [HttpPost]
+        public JsonResult PostFile(int id_tip_document, int id_dosar)
+        {
+            HttpPostedFileBase f = Request.Files[0];
+            string initFName = f.FileName;
+            string extension = f.FileName.Substring(f.FileName.LastIndexOf('.'));
+            string newFName = Guid.NewGuid() + extension;
+            Request.Files[0].SaveAs(System.IO.Path.Combine(CommonFunctions.GetScansFolder(), newFName));
+            //string toReturn = "{\"DENUMIRE_FISIER\":\"" + initFName + "\",\"EXTENSIE_FISIER\":\"" + extension + "\",\"CALE_FISIER\":\"" + newFName + "\"}";
+            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            DocumentScanat ds = new DocumentScanat(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            ds.ID_DOSAR = id_dosar;
+            ds.ID_TIP_DOCUMENT = id_tip_document;
+            ds.CALE_FISIER = newFName;
+            ds.DENUMIRE_FISIER = initFName;
+            ds.EXTENSIE_FISIER = extension;
+            response r = ds.Insert();
+            JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
             result.MaxJsonLength = Int32.MaxValue;
             return result;
         }

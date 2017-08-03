@@ -163,11 +163,9 @@
   <ItemGroup>
     <Content Include="App_Data\ErrorMessages.xml" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap_init.css" />
-    <Content Include="Content\bootstrap.min_init.css" />
     <Content Include="Content\calendar.gif" />
     <Content Include="Content\citysky.jpg" />
+    <Content Include="Content\empty.jpg" />
     <Content Include="Content\images\error.png" />
     <Content Include="Content\images\ok.png" />
     <Content Include="Content\images\treeview\accent.png" />
@@ -191,11 +189,8 @@
     <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jquery-ui.css" />
-    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.css" />
-    <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.css" />
-    <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="Content\loading2.gif" />
     <Content Include="Content\logo-cabinet-white.png" />
     <Content Include="Content\logo-white.png" />
@@ -342,10 +337,7 @@
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Content\arial.ttf" />
     <Content Include="Content\arialblack.ttf" />
     <Content Include="Content\arialbold.ttf" />
@@ -374,28 +366,18 @@
     <Content Include="Scripts\Controllers\UtilizatoriController.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
     <Content Include="Scripts\FileAPI.js" />
-    <Content Include="Scripts\FileAPI.min.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-file-upload-all.js" />
-    <Content Include="Scripts\ng-file-upload-all.min.js" />
     <Content Include="Scripts\ng-file-upload-shim.js" />
-    <Content Include="Scripts\ng-file-upload-shim.min.js" />
     <Content Include="Scripts\ng-file-upload.js" />
-    <Content Include="Scripts\ng-file-upload.min.js" />
     <Content Include="Scripts\ngDialog.js" />
-    <Content Include="Scripts\ngDialog.min.js" />
     <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\spinner.js" />
     <Content Include="Scripts\SocisaApp.js" />
     <Content Include="Scripts\_references.js" />
@@ -405,6 +387,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Views\DocumenteScanate\_DocumenteScanate.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -430,7 +413,6 @@
     <Content Include="Views\Dosare\_DosareNavigator.cshtml" />
     <Content Include="Views\Dosare\_ViewStart.cshtml" />
     <Content Include="Views\Dosare\Index.cshtml" />
-    <Content Include="Views\DocumenteScanate\_DocumenteScanate.cshtml" />
     <Content Include="settings\Validations.json" />
     <Content Include="App_Code\TreeView.cshtml" />
     <Content Include="Views\Mesaje\_MesajeView.cshtml" />
@@ -487,7 +469,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

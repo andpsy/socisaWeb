@@ -140,6 +140,10 @@ namespace socisaWeb.Controllers
                 {
                     jDosar["DATA_ULTIMEI_MODIFICARI"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataUltimeiModificariStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataUltimeiModificariEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
                 }
+                if (jdosarJson["DataCreareStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataCreareStart"].ToString()) && jdosarJson["DataCreareEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataCreareEnd"].ToString()))
+                {
+                    jDosar["DATA_CREARE"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataCreareStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataCreareEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
+                }
                 if (jdosarJson["DataIesireCascoStart"] != null && !String.IsNullOrEmpty(jdosarJson["DataIesireCascoStart"].ToString()) && jdosarJson["DataIesireCascoEnd"] != null && !String.IsNullOrEmpty(jdosarJson["DataIesireCascoEnd"].ToString()))
                 {
                     jDosar["DATA_IESIRE_CASCO"] = CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIesireCascoStart"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture)) + "?" + CommonFunctions.ToMySqlFormatDate(DateTime.ParseExact(jdosarJson["DataIesireCascoEnd"].ToString(), CommonFunctions.DATE_FORMAT, CultureInfo.InvariantCulture));
@@ -171,6 +175,13 @@ namespace socisaWeb.Controllers
             string toReturn = "{\"aCasco\":" + JsonConvert.SerializeObject(aCasco) + ",\"aRca\":" + JsonConvert.SerializeObject(aRca) + ",\"autoCasco\":" + JsonConvert.SerializeObject(autoCasco) + ",\"autoRca\":" + JsonConvert.SerializeObject(autoRca) + ",\"intervenient\":" + JsonConvert.SerializeObject(i) + ",\"tipDosar\":" + JsonConvert.SerializeObject(tipDosar) + ",\"validForAvizare\":" + validForAvizare.ToString().ToLower() + "}";
             object j = JsonConvert.DeserializeObject(toReturn);
             return Json(toReturn, JsonRequestBehavior.AllowGet);
+        }
+
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
+        [HttpPost]
+        public bool ValidareAvizare(int id)
+        {
+            return Helpers.Helpers.ValidareAvizare(id);
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]

@@ -4340,3 +4340,2245 @@ System.FormatException: String was not recognized as a valid DateTime.
    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
    at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
 =====================================================
+16.07.2017 00:40:00
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+16.07.2017 17:13:19
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+16.07.2017 20:38:05
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+17.07.2017 08:52:09
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+17.07.2017 18:46:55
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+18.07.2017 14:33:10
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+27.07.2017 19:19:18
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+27.07.2017 19:19:19
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+27.07.2017 19:27:54
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+27.07.2017 19:27:55
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+27.07.2017 21:28:15
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+27.07.2017 23:31:08
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+27.07.2017 23:31:09
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 14:14:30
+MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered during data read. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Reading from the stream has failed. ---> System.IO.EndOfStreamException: Attempted to read past the end of the stream.
+   at MySql.Data.MySqlClient.MySqlStream.ReadFully(Stream stream, Byte[] buffer, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.FetchDataRow(Int32 statementId, Int32 columns)
+   at MySql.Data.MySqlClient.Driver.FetchDataRow(Int32 statementId, Int32 columns)
+   at MySql.Data.MySqlClient.ResultSet.GetNextRow()
+   at MySql.Data.MySqlClient.ResultSet.NextRow(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlDataReader.Read()
+   at MySql.Data.MySqlClient.MySqlDataReader.Read()
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 741
+=====================================================
+30.07.2017 16:48:12
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+30.07.2017 19:40:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 19:40:34
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 19:41:05
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 19:41:07
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 21:46:24
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+30.07.2017 23:07:04
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:07:07
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:07:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:07:27
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:08:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:08:45
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:10:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:10:26
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:11:59
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:12:04
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:12:18
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:12:19
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:15:05
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:15:08
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:15:10
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:15:10
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:18:10
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:18:13
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:18:26
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:18:27
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:23:09
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:23:14
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:23:15
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:23:16
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:24:06
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:24:07
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:26:22
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:26:26
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:26:29
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:26:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:26:31
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+30.07.2017 23:27:54
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:54
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:55
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:55
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:55
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:55
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:55
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:56
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:56
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:56
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:56
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:56
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:57
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:57
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:57
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:57
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:57
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:57
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:58
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:27:58
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:29:54
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:29:56
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:29:58
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:29:59
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:01
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:04
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:05
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:06
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:08
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:09
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:12
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:13
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:14
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:16
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:18
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:20
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:21
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:22
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:23
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:30:25
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:42
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:42
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:43
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:44
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:44
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:44
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:45
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:46
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:46
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:46
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:49
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:50
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:51
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:51
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:32:52
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:46
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:46
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:47
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:33:48
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+30.07.2017 23:34:12
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+30.07.2017 23:34:13
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+31.07.2017 07:28:53
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:28:54
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:28:55
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:28:58
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:28:58
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:28:59
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:06
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:06
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:06
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:06
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:07
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:07
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:07
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:07
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:07
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:08
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:08
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:08
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:08
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:08
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 07:29:08
+System.ArgumentNullException: Buffer cannot be null.
+Parameter name: buffer
+   at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 354
+=====================================================
+31.07.2017 09:29:16
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+31.07.2017 18:46:30
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+31.07.2017 18:46:35
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+31.07.2017 18:47:25
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+31.07.2017 18:47:26
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+31.07.2017 20:47:54
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+31.07.2017 22:11:55
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+31.07.2017 22:11:56
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+31.07.2017 22:12:17
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+31.07.2017 22:12:18
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:23:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:23:48
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:24:04
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:24:05
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:24:06
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:24:06
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:24:31
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:24:32
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:24:33
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:24:33
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:24:59
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:25:00
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:26:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:26:25
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:26:39
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:26:40
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:26:40
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:26:41
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:26:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:26:45
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:27:33
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:27:35
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:27:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:27:48
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:02
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:03
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:05
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:05
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:08
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:09
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:10
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:10
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:11
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:13
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:14
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:14
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:41
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:43
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:45
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:46
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:46
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:48
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:49
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:50
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:51
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:35:53
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:35:54
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:45:05
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:45:06
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:45:07
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:45:08
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:45:08
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:45:09
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:45:12
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:45:12
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:45:13
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:45:14
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:45:16
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:45:17
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:49:35
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:49:36
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:49:37
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:49:38
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:49:39
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:49:40
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:49:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:49:43
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:49:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:49:45
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:49:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:49:48
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:51:03
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:51:05
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:51:06
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:51:07
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:51:07
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:51:09
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:51:10
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:51:12
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:51:12
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:51:17
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:51:18
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:51:20
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:51:35
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:51:36
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:52:15
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:52:18
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:52:43
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:52:45
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:53:55
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:53:57
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:54:16
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:54:18
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:54:54
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:54:56
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 08:56:09
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 08:56:10
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 14:27:29
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 14:27:32
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 14:40:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 14:40:25
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 14:40:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 14:40:28
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 14:40:34
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 14:40:36
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 14:40:39
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 14:40:40
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 14:41:36
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 14:41:39
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 14:41:41
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 14:41:41
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 16:50:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 16:50:23
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:21:35
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:21:37
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:23:59
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:24:01
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:24:02
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:24:03
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:24:04
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:24:06
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:24:08
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:24:11
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:24:14
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:24:18
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:24:19
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:24:20
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:29:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:29:48
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:30:37
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:30:38
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:42:48
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:52:38
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 17:56:36
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 17:56:37
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 18:08:52
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 18:08:53
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 18:32:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 18:32:26
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 19:55:16
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 19:55:18
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 20:14:37
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 20:14:38
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 20:17:05
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 20:17:06
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 20:24:56
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 20:24:57
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 20:26:58
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 20:26:59
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 20:28:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 20:28:24
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 20:33:58
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 20:33:59
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+01.08.2017 20:34:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+01.08.2017 20:34:24
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 13:25:03
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 13:25:04
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:23:27
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:23:30
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:23:32
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:23:33
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:35:18
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:35:19
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:41:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:41:30
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:41:32
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:41:34
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:42:07
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:42:08
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:42:09
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:42:10
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 17:42:34
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 17:42:35
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 19:43:07
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+02.08.2017 20:26:17
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:20
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:26
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:28
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:30
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:32
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:34
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:37
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:38
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:42
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:44
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:47
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:49
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:52
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:26:54
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:26:58
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:27:00
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:27:02
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:27:02
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:27:03
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:27:05
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:31:03
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:31:08
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:31:10
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:31:16
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:31:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:31:29
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+02.08.2017 20:33:37
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+02.08.2017 20:33:47
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+03.08.2017 00:35:06
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+03.08.2017 00:38:24
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\JJJ7656754.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDosarCompletToPdf(Int32 authenticatedUserId, String connectionString, String templateFileName, Dosar Dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 487
+=====================================================
+03.08.2017 12:10:12
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\JJJ7656754_cerere.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 95
+=====================================================
+03.08.2017 12:10:32
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.PdfGenerator.ExportDosarCompletToPdf(Int32 authenticatedUserId, String connectionString, String templateFileName, Dosar Dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 493
+=====================================================
+03.08.2017 15:15:34
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\JJJ7656754_cerere.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 95
+=====================================================
+03.08.2017 15:15:58
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\JJJ7656754_documente.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDocumenteDosarToPdf(Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 411
+=====================================================
+03.08.2017 15:18:16
+System.IO.IOException: The process cannot access the file 'C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\pdfs\JJJ7656754_cerere.pdf' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at SOCISA.PdfGenerator.ExportDosarToPdf(Byte[] template_file_content, Dosar dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 95
+=====================================================
+03.08.2017 15:18:39
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.PdfGenerator.ExportDosarCompletToPdf(Int32 authenticatedUserId, String connectionString, String templateFileName, Dosar Dosar) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\PdfGenerator.cs:line 493
+=====================================================
+03.08.2017 17:48:08
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
