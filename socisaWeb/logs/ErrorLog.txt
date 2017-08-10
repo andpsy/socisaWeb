@@ -6582,3 +6582,493 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
    at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
 =====================================================
+05.08.2017 11:40:52
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+07.08.2017 06:39:25
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+07.08.2017 10:12:51
+MySql.Data.MySqlClient.MySqlException (0x80004005): Authentication to host 'localhost' for user 'root' using method 'mysql_native_password' failed with message: Reading from the stream has failed. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Reading from the stream has failed. ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at MySql.Data.MySqlClient.TimedStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.BufferedStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.ReadFully(Stream stream, Byte[] buffer, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.Authentication.MySqlAuthenticationPlugin.ReadPacket()
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Nomenclator..ctor(Int32 _authenticatedUserId, String _connectionString, String _TableName, Int32 _ID) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Nomenclatoare.cs:line 54
+   at SOCISA.Models.Utilizator.GetTipUtilizator() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Utilizatori.cs:line 758
+=====================================================
+07.08.2017 10:13:05
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 185
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 10:41:43
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 185
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 12:14:06
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 185
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 12:29:30
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+   at MySql.Data.Common.StreamCreator.GetTcpStream(MySqlConnectionStringBuilder settings)
+   at MySql.Data.Common.StreamCreator.GetStream(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Nomenclator..ctor(Int32 _authenticatedUserId, String _connectionString, String _TableName, Int32 _ID) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Nomenclatoare.cs:line 54
+   at SOCISA.Models.Utilizator.GetTipUtilizator() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Utilizatori.cs:line 758
+=====================================================
+07.08.2017 12:31:27
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 185
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 12:35:15
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'SOCISA.Models.DocumentScanat[]'.
+   at SOCISA.FileManager.GetOrphanDocuments(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 222
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanDocuments() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 108
+=====================================================
+07.08.2017 14:05:37
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+   at MySql.Data.Common.StreamCreator.GetTcpStream(MySqlConnectionStringBuilder settings)
+   at MySql.Data.Common.StreamCreator.GetStream(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Nomenclator..ctor(Int32 _authenticatedUserId, String _connectionString, String _TableName, Int32 _ID) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Nomenclatoare.cs:line 54
+   at SOCISA.Models.Utilizator.GetTipUtilizator() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Utilizatori.cs:line 758
+=====================================================
+07.08.2017 14:09:38
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 198
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 16:23:27
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 198
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 17:02:20
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 205
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 17:02:22
+MySql.Data.MySqlClient.MySqlException (0x80004005): Authentication to host 'localhost' for user 'root' using method 'mysql_native_password' failed with message: Reading from the stream has failed. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Reading from the stream has failed. ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at MySql.Data.MySqlClient.TimedStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.BufferedStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.ReadFully(Stream stream, Byte[] buffer, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.Authentication.MySqlAuthenticationPlugin.ReadPacket()
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Nomenclator..ctor(Int32 _authenticatedUserId, String _connectionString, String _TableName, Int32 _ID) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Nomenclatoare.cs:line 54
+   at SOCISA.Models.Utilizator.GetTipUtilizator() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Utilizatori.cs:line 758
+=====================================================
+07.08.2017 17:04:55
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 205
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+07.08.2017 17:24:55
+System.InvalidCastException: Unable to cast object of type 'System.Object[]' to type 'System.String[]'.
+   at SOCISA.FileManager.GetOrphanFiles(Int32 _authenticatedUserId, String _connectionString) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\FilesManager\FileManager.cs:line 207
+   at SOCISA.Models.DocumenteScanateRepository.GetOrphanFiles() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\IDocumenteScanateRepository.cs:line 96
+=====================================================
+08.08.2017 07:41:37
+MySql.Data.MySqlClient.MySqlException (0x80004005): Authentication to host 'localhost' for user 'root' using method 'mysql_native_password' failed with message: Reading from the stream has failed. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Reading from the stream has failed. ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at MySql.Data.MySqlClient.TimedStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.BufferedStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.ReadFully(Stream stream, Byte[] buffer, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.Authentication.MySqlAuthenticationPlugin.ReadPacket()
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 171
+   at SOCISA.Models.Nomenclator..ctor(Int32 _authenticatedUserId, String _connectionString, String _TableName, Int32 _ID) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Nomenclatoare.cs:line 54
+   at SOCISA.Models.Utilizator.GetTipUtilizator() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Utilizatori.cs:line 758
+=====================================================
+08.08.2017 11:55:05
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+10.08.2017 15:07:46
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 15:08:32
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 15:09:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:24
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:09:25
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 15:10:56
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 15:17:06
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 15:18:32
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 17:18:34
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+10.08.2017 17:23:54
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Web.Security.FormsAuthentication.SignOut()
+   at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 54
+=====================================================
+10.08.2017 21:58:37
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 22:04:35
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 22:40:40
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SOCISA.response.AddResponse(response _toAdd) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 72
+   at SOCISA.Models.Mesaj.SendToInvolvedParties() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Mesaje.cs:line 458
+=====================================================
+10.08.2017 22:57:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:21
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:22
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================
+10.08.2017 22:57:23
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 83
+=====================================================

@@ -128,6 +128,10 @@ app.run(function ($rootScope, $http) {
                     //url = '@Html.Raw(Url.Action("Import", "Dosare"))';
                     $rootScope.Url = '/Dosare/Import';
                     break;
+                case "mainFileManagerDashboard":
+                    //url = '@Html.Raw(Url.Action("Index", "FileManager"))';
+                    $rootScope.Url = '/FileManager/Index';
+                    break;
             }
             if (id != null && id != undefined) {
                 $rootScope.Url += "/" + id;  // aici vom modifica pt. parametru complex ...

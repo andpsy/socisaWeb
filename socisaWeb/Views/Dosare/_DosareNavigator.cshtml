@@ -368,7 +368,7 @@
                     </div>
                 </td>
                 <td>
-                    <div ng-class="searchMode == 2 || (searchMode == 1 && (curDosarIndex == -1 || DosarFiltru.Dosar.ID == null)) ? 'badgeDosar' : DosarFiltru.Dosar.AVIZAT ? 'badgeDosarAvizat' : 'badgeDosarNeAvizat'" ng-show="searchMode > 0">
+                    <div ng-class="searchMode == 2 || (searchMode == 1 && (curDosarIndex == -1 || DosarFiltru.Dosar.ID == null)) ? 'badgeDosar' : (DosarFiltru.Dosar.AVIZAT ? 'badgeDosarAvizat' : (validForAvizare ? 'badgeDosarNeAvizat' : 'badgeDosarIncomplet'))" ng-show="searchMode > 0">
                         <!--
                         @Html.LabelFor(model => model.Dosar.AVIZAT, htmlAttributes: new { @class = "control-label" })
                         -->
@@ -378,17 +378,25 @@
                                     @Html.Label("Viza CASCO", new { @class = "control-label" })<br />
                                 </td>
                                 <td style="text-align:center;vertical-align:middle;width:30px;">
+                                    <!--
                                     @Html.CheckBoxFor(model => model.Dosar.AVIZAT, new { data_ng_model = "DosarFiltru.Dosar.AVIZAT", data_ng_init=String.Format("DosarFiltru.Dosar.AVIZAT={0}", Model.Dosar.AVIZAT.ToString().ToLower()), a_disabled= "(calitateSocietateCurenta == 'RCA' || tmpCalitateSocietate == 'RCA') || searchMode != 2" })
+                                    -->
+                                    @Html.CheckBoxFor(model => model.Dosar.AVIZAT, new { data_ng_model = "DosarFiltru.Dosar.AVIZAT", a_disabled = "(calitateSocietateCurenta == 'RCA' || tmpCalitateSocietate == 'RCA') || searchMode != 2" })
                                 </td>
                             </tr>
                             <tr ng-show="!(searchMode == 2 || (searchMode == 1 && (curDosarIndex == -1 || DosarFiltru.Dosar.ID == null))) && DosarFiltru.Dosar.AVIZAT">
                                 <td colspan="2">
-                                    <h4>Dosarul este avizat!</h4>
+                                    <h4>AVIZAT</h4>
                                 </td>
                             </tr>
-                            <tr ng-show="!(searchMode == 2 || (searchMode == 1 && (curDosarIndex == -1 || DosarFiltru.Dosar.ID == null))) && !DosarFiltru.Dosar.AVIZAT">
+                            <tr ng-show="!(searchMode == 2 || (searchMode == 1 && (curDosarIndex == -1 || DosarFiltru.Dosar.ID == null))) && !DosarFiltru.Dosar.AVIZAT && validForAvizare">
                                 <td colspan="2">
-                                    <h4>Dosarul nu este avizat!</h4>
+                                    <h4>NEAVIZAT</h4>
+                                </td>
+                            </tr>
+                            <tr ng-show="!(searchMode == 2 || (searchMode == 1 && (curDosarIndex == -1 || DosarFiltru.Dosar.ID == null))) && !DosarFiltru.Dosar.AVIZAT && !validForAvizare">
+                                <td colspan="2">
+                                    <h4>INCOMPLET</h4>
                                 </td>
                             </tr>
                             <tr>
@@ -512,20 +520,20 @@
                             <a href="#" class="btn btn-default" ng-show="false" ng-disabled="searchMode > 0 || editMode == 1">Cautare</a>
                             @if (Helpers.HasRight("adaugare"))
                             {
-                                <a href="#" class="btn btn-default" ng-show="cacatudraqu == 'CASCO'" a-disabled="searchMode == 2 || editMode == 1 || cacatudraqu != 'CASCO'" ng-click = "EnterAddMode()">Adaugare</a>
+                                <a href="#" class="btn btn-default" ng-show="ccalitatedr == 'CASCO'" a-disabled="searchMode == 2 || editMode == 1 || ccalitatedr != 'CASCO'" ng-click = "EnterAddMode()">Adaugare</a>
                             }
                             -->
-                            @Html.Label("Adaugare", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "searchMode == 2 || editMode == 1 || cacatudraqu != 'CASCO'", data_ng_click = "EnterAddMode()" }).HasRight("adaugare")
-                            @Html.Label("Editare", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "(searchMode == 2 || cacatudraqu != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1", data_ng_click = "EnterEditMode()" }).HasRight("modificare")
-                            @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "cacatudraqu == 'CASCO'", a_disabled = "(searchMode == 2 || cacatudraqu != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" }).HasRight("stergere")
+                            @Html.Label("Adaugare", new { @class = "btn btn-default", data_ng_if = "ccalitatedr == 'CASCO'", a_disabled = "searchMode == 2 || editMode == 1 || ccalitatedr != 'CASCO'", data_ng_click = "EnterAddMode()" }).HasRight("adaugare")
+                            @Html.Label("Editare", new { @class = "btn btn-default", data_ng_if = "ccalitatedr == 'CASCO'", a_disabled = "(searchMode == 2 || ccalitatedr != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1", data_ng_click = "EnterEditMode()" }).HasRight("modificare")
+                            @Html.Label("Stergere", new { @class = "btn btn-default", data_ng_if = "ccalitatedr == 'CASCO'", a_disabled = "(searchMode == 2 || ccalitatedr != 'CASCO' || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1" }).HasRight("stergere")
 
-                            <div a_disabled="!validForAvizare" class="btn-group">
-                                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" a-disabled="(searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-default dropdown-toggle" style="top:-120%" data-toggle="dropdown" aria-expanded="false" a-disabled="!validForAvizare || (searchMode == 2 || (DosarFiltru == null || DosarFiltru.Dosar == null || compareObjects(DosarFiltru.Dosar, {}) || DosarFiltru.Dosar.ID == undefined || DosarFiltru.Dosar.ID == '')) || editMode == 1">
                                     Optiuni
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.Label("Avizare", new { @class = "label_a", data_ng_show = "cacatudraqu == 'CASCO'", data_ng_click = "AvizareDosar()" }).HasRight("avizare dosar")</li>
+                                    <li>@Html.Label("Avizare", new { @class = "label_a", data_ng_show = "ccalitatedr == 'CASCO'", data_ng_click = "AvizareDosar()" }).HasRight("avizare dosar")</li>
                                     <li ng-show="DosarFiltru.Dosar.AVIZAT"><a href="#" ng-click="TiparireDosar()">Tiparire</a></li>
                                     <li ng-show="DosarFiltru.Dosar.AVIZAT"><a href="#">Email</a></li>
                                 </ul>
@@ -539,7 +547,7 @@
                             <a href="#" class="btn btn-default" title="Navigare la dosarul anterior" ng-click="prevDosar()">&lt;</a>
                             <a href="#" class="btn btn-default" title="Afisare campuri filtru activ" ng-click="SwitchBackToSearchMode()">&yen;</a>
                             <a href="#" class="btn btn-default" title="Anulare filtre active" ng-click="ClearFilters()">&Chi;</a>
-                            <a href="#" class="btn btn-default" title="Afisare lista dosare gasite" onclick="showDosareSideNav(true)">&equiv;</a>
+                            <a href="#" class="btn btn-default" title="Afisare lista dosare gasite" onclick="showDosareSideNav(true)" id="buttonShowListaDosare">&equiv;</a>
                             <a href="#" class="btn btn-default" title="Navigare la dosarul urmator" ng-click="nextDosar()">&gt;</a>
                             <a href="#" class="btn btn-default" title="Navigare la ultimul dosar" ng-click="lastDosar()">&gt;|</a>
                         </div>

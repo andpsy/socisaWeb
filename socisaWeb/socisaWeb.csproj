@@ -134,6 +134,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DocumenteScanateController.cs" />
     <Compile Include="Controllers\DosareController.cs" />
+    <Compile Include="Controllers\FileManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MesajeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Models\Dosare\DosarView.cs" />
     <Compile Include="Models\Dosare\ImportDosarView.cs" />
     <Compile Include="Models\Dosare\MesajView.cs" />
+    <Compile Include="Models\FileManager\FileManagerView.cs" />
     <Compile Include="Models\Utilizatori\DashboardJson.cs" />
     <Compile Include="Models\Utilizatori\LoginJson.cs" />
     <Compile Include="Models\Utilizatori\UtilizatorView.cs" />
@@ -362,6 +364,7 @@
     <Content Include="Scripts\Controllers\DosareDashboardAdminAndSuperController.js" />
     <Content Include="Scripts\Controllers\DosareImportController.js" />
     <Content Include="Scripts\Controllers\DosareNavigatorController.js" />
+    <Content Include="Scripts\Controllers\FileManagerController.js" />
     <Content Include="Scripts\Controllers\MesajeController.js" />
     <Content Include="Scripts\Controllers\UtilizatoriController.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
@@ -454,6 +457,7 @@
     <None Include="Service References\ServiceReference1\SubrogationService_1_2_3_4_5_6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\FileManager\FileManagerView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Actions\" />

@@ -7,22 +7,41 @@ var lastfiltervalue = "";
 var spinner = new Spinner(opts);
 
 function showDosareSideNav(on_off) {
-    var x = document.getElementById("dosareSideNav");
+    var dosareSideNav = document.getElementById("dosareSideNav");
     var relTarget = document.getElementById("DosareSearch");
     var rect = relTarget.getBoundingClientRect();
     if (on_off) {
-        x.style.top = (Math.round(rect.top))-5 + 'px'; // relTarget.style.top;
-        x.style.left = (Math.round(rect.left))-5 + 'px'; // relTarget.style.left;
-        x.style.height = (Math.round(rect.bottom) - Math.round(rect.top))+10 + 'px'; // relTarget.style.height;
-        x.style.width = '250px';
+        dosareSideNav.style.top = (Math.round(rect.top))-5 + 'px'; // relTarget.style.top;
+        dosareSideNav.style.left = (Math.round(rect.left))-5 + 'px'; // relTarget.style.left;
+        dosareSideNav.style.height = (Math.round(rect.bottom) - Math.round(rect.top))+10 + 'px'; // relTarget.style.height;
+        dosareSideNav.style.width = '250px';
     }
     else {
-        x.style.top = 0;
-        x.style.left = 0;
-        x.style.height = 0;
-        x.style.width = 0;
+        console.log('showDosareSideNav - ' + on_off);
+        dosareSideNav.style.top = 0;
+        dosareSideNav.style.left = 0;
+        dosareSideNav.style.height = 0;
+        dosareSideNav.style.width = 0;
     }
 }
+
+$(document).on('click', function (e) {
+    var dosareSideNav = document.getElementById("dosareSideNav");
+    if (dosareSideNav != null && dosareSideNav != undefined && dosareSideNav.style.width == '250px' && e.target.id != 'buttonShowListaDosare') {
+        console.log('click - ');
+        //$(elem).hide();
+        showDosareSideNav(false);
+    }
+});
+
+$(document).on('keydown', function (e) {
+    var dosareSideNav = document.getElementById("dosareSideNav");
+    if (e.keyCode === 27 && dosareSideNav != null && dosareSideNav != undefined && dosareSideNav.style.width == '250px') {
+        console.log('keydown - ');
+        //$(elem).hide();
+        showDosareSideNav(false);
+    }
+});
 
 app.controller('DosareNavigatorController',
 function ($scope, $http, $filter, $rootScope, $window) {
@@ -31,7 +50,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $rootScope.AVIZAT = false; // variabila generala pt. statusul dosarului (vizibila intre controllere)
     
     $scope.tmpCalitateSocietate = "CASCO"
-    $rootScope.calitateSocietateCurenta = $scope.cacatudraqu = "CASCO";
+    $rootScope.calitateSocietateCurenta = $scope.ccalitatedr = "CASCO";
     $scope.searchMode = 1;
     $scope.TempDosarFilter = {};
     $scope.editMode = 0;
@@ -168,7 +187,7 @@ function ($scope, $http, $filter, $rootScope, $window) {
     $rootScope.$watch('calitateSocietateCurenta', function (newValue, oldValue) {
         if (newValue != oldValue) {
             console.log('watch calitate - ' + $rootScope.ID_DOSAR);
-            $scope.cacatudraqu = newValue;
+            $scope.ccalitatedr = newValue;
             $scope.ClearFilters();
             document.getElementById('Dosar_ID_SOCIETATE_CASCO').disabled = !($scope.searchMode == 2 && newValue == 'RCA');
             document.getElementById('Dosar_ID_SOCIETATE_RCA').disabled = !(($scope.searchMode == 2 || $scope.editMode == 1) && newValue == 'CASCO');
@@ -446,7 +465,8 @@ function ($scope, $http, $filter, $rootScope, $window) {
             return;
         }
         else {
-            if (filter_value != "") {
+            console.log("afisare2 = filter_value (e) - " + filter_value + ' - ' + e);
+            if (filter_value !== "") {
                 console.log("Afisare2 - " + $rootScope.ID_DOSAR + ' - ' + e);
                 $scope.Afisare2(e);
                 lastkeytime = now;
@@ -553,18 +573,17 @@ function ($scope, $http, $filter, $rootScope, $window) {
             if (response != 'null' && response != null && response.data != null) {
                 var j = JSON.parse(response.data);
                 try {
-                    $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : { 'background-color': '#f8eeee' };
-                    $scope.switchTabsClass("#lnkDosareDetalii");
                     if ($scope.DosarFiltru.dosarJson == null || $scope.DosarFiltru.dosarJson == undefined || $scope.DosarFiltru.dosarJson == "undefined")
                         $scope.DosarFiltru.dosarJson = {};
                     $scope.DosarFiltru.dosarJson.NumeAsiguratCasco = j.aCasco.DENUMIRE;
-                    //alert(j.aCasco.DENUMIRE);
                     $scope.DosarFiltru.dosarJson.NumeAsiguratRca = j.aRca.DENUMIRE;
                     $scope.DosarFiltru.dosarJson.NumarAutoCasco = j.autoCasco.NR_AUTO;
                     $scope.DosarFiltru.dosarJson.NumarAutoRca = j.autoRca.NR_AUTO;
                     $scope.DosarFiltru.dosarJson.NumeIntervenient = j.intervenient.DENUMIRE;
                     //$scope.DosarFiltru.dosarJson.TipDosar = j.tipDosar.DENUMIRE;
                     $rootScope.validForAvizare = j.validForAvizare;
+                    $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : ($rootScope.validForAvizare ? { 'background-color': '#fffff0' } : { 'background-color': '#f8eeee' });
+                    $scope.switchTabsClass("#lnkDosareDetalii");
                 } catch (e) { }
             }
             //spinner.stop();
@@ -575,16 +594,16 @@ function ($scope, $http, $filter, $rootScope, $window) {
     };
 
     $scope.switchTabsClass = function (lnkId) {
-        $("#lnkDosareDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
-        $("#lnkDocumenteScanateDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
-        $("#lnkMesajeDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
-        $("#lnkUtilizatoriDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat");
+        $("#lnkDosareDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat").removeClass("grad_tab_incomplet");
+        $("#lnkDocumenteScanateDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat").removeClass("grad_tab_incomplet");
+        $("#lnkMesajeDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat").removeClass("grad_tab_incomplet");
+        $("#lnkUtilizatoriDetalii").removeClass("grad_tab").removeClass("grad_tab_avizat").removeClass("grad_tab_neavizat").removeClass("grad_tab_incomplet");
 
         var classToAdd = "";
         if ($scope.searchMode == 2 || $scope.DosarFiltru.Dosar.ID == null)
             classToAdd = "grad_tab";
         else
-            classToAdd = $scope.DosarFiltru.Dosar.AVIZAT ? "grad_tab_avizat" : "grad_tab_neavizat";
+            classToAdd = $scope.DosarFiltru.Dosar.AVIZAT ? "grad_tab_avizat" : ($rootScope.validForAvizare ? "grad_tab_neavizat" : "grad_tab_incomplet");
         $(lnkId).addClass(classToAdd);
     };
 
@@ -738,7 +757,8 @@ function ($scope, $http, $filter, $rootScope, $window) {
                         var ds = (((d.getDate() < 10 ? "0" : "") + d.getDate()) + "." + ((d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1)) + "." + d.getFullYear());
                         $scope.DosarFiltru.Dosar.DATA_AVIZARE = ds;
                         $rootScope.AVIZAT = $scope.DosarFiltru.Dosar.AVIZAT;
-                        $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : { 'background-color': '#f8eeee' };
+                        $rootScope.dynaStyle = $scope.DosarFiltru.Dosar.AVIZAT ? { 'background-color': '#e3eded' } : ($rootScope.validForAvizare ? { 'background-color': '#fffff0' } : { 'background-color': '#f8eeee' });
+                        $scope.switchTabsClass("#lnkDosareDetalii");
                     }
                     $(".alert").delay(MESSAGE_DELAY).fadeOut(MESSAGE_FADE_OUT);
                 }

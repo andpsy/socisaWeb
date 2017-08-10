@@ -1,0 +1,81 @@
+﻿@model IEnumerable<socisaWeb.FileManagerView>
+@{
+    ViewBag.Title = "Manager fisiere";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+
+    <div class="inner_content">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav">
+                        <li class="" ng-show="HasHtml.indexOf('mainFileManagerDashboard') > -1">
+                            <div class="docsRightMenuButton" ng-click="ToggleDiv('mainDashboard', false, null)">&#9668;</div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Fisiere orfane <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" ng-click="GetOrphanFiles()">Fisiere orfane</a></li>
+                                <li><a href="#" ng-click="GetOrphanDocuments()">Documente orfane</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div ng-show="(result.Status == true || result.Status == false) && showMessage" ng-class="result.Status == false ? 'alert alert-danger' : 'alert alert-success'">
+            <button type="button" class="close" ng-click="showMessage = false">&times;</button>
+            <strong>{{result.Status ? 'Succes!' : 'Eroare!'}}</strong><br />
+            <p ng-repeat="s in result.Message.split(';')">
+                {{s}}
+            </p>
+        </div>
+        <div style="width:100%;overflow:auto;">
+            <table ng-show="deAfisat==0">
+                <tr>
+                    <th>
+                        <input type="checkbox" ng-model="all_files" ng-change="CheckAllFiles()" />
+                    </th>
+                    <th>
+                        Fisier
+                    </th>
+                </tr>
+                <tr ng-repeat="of in OrphanFiles">
+                    <td style="padding-right:5px">
+                        <input type="checkbox" id="{{of.FILE_NAME}}" ng-model="of.SELECTED" />
+                    </td>
+                    <td>
+                        <label for="{{of.FILE_NAME}}">{{of.FILE_NAME}}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" align="center">
+                        <input type="button" name="Stergere" value="Stergere" title="Sterge fisierele orfane selectate" ng-click="DeleteOrphanFiles()" />
+                    </th>
+                </tr>
+            </table>
+            <table ng-show="deAfisat==1">
+                <tr>
+                    <th>
+                        <input type="checkbox" ng-model="all_docs" ng-change="CheckAllDocs()" />
+                    </th>
+                </tr>
+                <tr ng-repeat="doc in OrphanDocuments">
+                    <td style="padding-right:5px">
+                        <input type="checkbox" id="{{doc.DOCUMENT_SCANAT.CALE_FISIER}}" ng-model="doc.SELECTED" />
+                    </td>
+                    <td>
+                        <label for="{{doc.DOCUMENT_SCANAT.CALE_FISIER}}">{{doc.DOCUMENT_SCANAT.CALE_FISIER}}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" align="center">
+                        <input type="button" name="Recuperare" value="Recuperare" title="Recupereaza pe File system fisierele existente doar in Baza de date" ng-click="RestoreOrphanDocuments()" />
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+}

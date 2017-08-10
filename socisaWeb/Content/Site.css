@@ -404,6 +404,15 @@ a.disabled {
 
 .grad_tab_neavizat {
     background: white; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, #fffff0); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, #fffff0); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #fffff0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #fffff0); /* Standard syntax */
+    border-bottom:0px solid transparent;
+}
+
+.grad_tab_incomplet {
+    background: white; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, #f8eeee); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(white, #f8eeee); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(white, #f8eeee); /* For Firefox 3.6 to 15 */
@@ -470,6 +479,25 @@ a.disabled {
 }
 
 .badgeDosarNeAvizat{
+    max-width:280px;
+    background-color: yellow;
+    border-radius: 5px;
+    opacity: 0.9;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    margin-right: 20px;
+    color: white;
+    /*
+    background: red; 
+    background: -webkit-linear-gradient(left, #f8eeee, red, #f8eeee); 
+    background: -o-linear-gradient(right, #f8eeee, red, #f8eeee); 
+    background: -moz-linear-gradient(right, #f8eeee, red, #f8eeee); 
+    background: linear-gradient(to right, #f8eeee, red, #f8eeee); 
+    */
+}
+
+.badgeDosarIncomplet{
     max-width:280px;
     background-color: red;
     border-radius: 5px;
