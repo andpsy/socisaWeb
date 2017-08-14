@@ -19,7 +19,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Import", Recursive = false)]
         public ActionResult Import()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             return PartialView("DosareImport", new ImportDosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr));
         }
 
@@ -27,7 +27,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult PostExcelFile()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             HttpPostedFileBase f = Request.Files[0];
             string initFName = f.FileName;
             string extension = f.FileName.Substring(f.FileName.LastIndexOf('.'));
@@ -49,7 +49,7 @@ namespace socisaWeb.Controllers
                 response toReturn = new response(false, String.Format("Nu puteti incarca dosare pentru alta societate decat cea curenta ({0})!", ((SocietateAsigurare)Session["SOCIETATE_ASIGURARE"]).DENUMIRE), null, null, null);
                 return Json(toReturn, JsonRequestBehavior.AllowGet);
             }
-            r = dr.ImportDosareDirect("Sheet1", newFName);
+            r = dr.ImportDosareDirect("Sheet1", newFName, 0); // 0 = import manual
             JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
             result.MaxJsonLength = Int32.MaxValue;
             return result;
@@ -59,7 +59,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult GetDosareFromLog(DateTime ImportDate)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             response r = dr.GetDosareFromLog(ImportDate);
             JsonResult result = Json(r, JsonRequestBehavior.AllowGet);
@@ -84,7 +84,7 @@ namespace socisaWeb.Controllers
         [HttpGet]
         public ActionResult Search()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             return PartialView("_DosareNavigator", new DosarView(Convert.ToInt32(Session["CURENT_USER_ID"]), Convert.ToInt32(Session["ID_SOCIETATE"]), conStr));
         }
 
@@ -92,7 +92,7 @@ namespace socisaWeb.Controllers
         [HttpGet]
         public ActionResult Show(int id)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Dosar d = new Dosar(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr, id);
             // verificam daca are drept pe dosar 
             bool? hasWright = (bool?)d.UserHasWright(Convert.ToInt32(Session["CURENT_USER_ID"])).Result;
@@ -109,7 +109,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult Search(DosarView DosarView)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
             //string jsonFilter = JsonConvert.SerializeObject(DosarView);
@@ -162,7 +162,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public JsonResult Details(int id)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Dosar d = (Dosar)dr.Find(id).Result;
             Asigurat aCasco = (Asigurat)d.GetAsiguratCasco().Result;
@@ -179,6 +179,19 @@ namespace socisaWeb.Controllers
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
+        public JsonResult MovePendinToOk(ImportDosarJson dosar)
+        {
+            response r = dosar.DosarExtended.Dosar.Validare();
+            if (!r.Status)
+                return Json(r, JsonRequestBehavior.AllowGet);
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
+            r = dr.MovePendinToOk(Convert.ToInt32( dosar.DosarExtended.Dosar.ID));
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
+        [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
+        [HttpPost]
         public bool ValidareAvizare(int id)
         {
             return Helpers.Helpers.ValidareAvizare(id);
@@ -191,7 +204,7 @@ namespace socisaWeb.Controllers
             response r = new response();
             response toReturn = new response(true, "", null, null, new List<Error>());
 
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
             if (DosarView.Dosar.ID == null) // insert
@@ -433,7 +446,7 @@ namespace socisaWeb.Controllers
         public JsonResult Print(int id)
         {
             response r = new response();
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             Dosar d = new Dosar(_CURENT_USER_ID, conStr, id);
             // verificam daca are drept pe dosar 
@@ -460,7 +473,7 @@ namespace socisaWeb.Controllers
         public JsonResult Avizare(int id, bool avizat)
         {
             response r = new response();
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             //DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
             Dosar d = new Dosar(_CURENT_USER_ID, conStr, id);

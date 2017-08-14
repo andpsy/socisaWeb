@@ -15,7 +15,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult Index()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
             DashboardJson dj = new DashboardJson(Convert.ToInt32( u.ID), Convert.ToInt32(Session["ID_SOCIETATE"]), conStr);
             /*
@@ -30,7 +30,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult IndexMain()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
             DashboardJson dj = new DashboardJson(Convert.ToInt32(u.ID), Convert.ToInt32(Session["ID_SOCIETATE"]), conStr);
             return PartialView("_DashboardMain", dj);
@@ -39,7 +39,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult GetDosareDashboardAdminAndSuper()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
             DashBoardView dbv = new DashBoardView(u, conStr, Convert.ToInt32(Session["ID_SOCIETATE"]),1);
             //return PartialView("_DosareDashboardAdminAndSuper", des.ToArray());
@@ -49,7 +49,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult GetDosareDashboardRegular()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
             DashBoardView dbv = new DashBoardView(u, conStr, Convert.ToInt32(Session["ID_SOCIETATE"]),2);
             //return PartialView("_DosareDashboardRegular", des.ToArray());

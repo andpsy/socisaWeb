@@ -7,7 +7,9 @@ var spinner = new Spinner(opts);
 app.controller('DosareImportController',
 function ($scope, $http, $filter, $rootScope, $window, Upload) {
     $scope.model = {};
+    $scope.curDosar = [];
     $scope.model.ImportDates = [];
+    $scope.editMode = 0;
 
     $scope.upload = function (file) {
         if (file == null || !Upload.isFile(file)) return;
@@ -52,5 +54,30 @@ function ($scope, $http, $filter, $rootScope, $window, Upload) {
                 spinner.stop();
                 alert('Erroare: ' + response.status + ' - ' + response.data);
             });
+    };
+
+    $scope.EditMode = function (dosar) {
+        angular.copy(dosar, $scope.curDosar);
+        $scope.editMode = 1;
+    };
+
+    $scope.Save = function (dosar) {
+        spinner.spin(document.getElementById(ACTIVE_DIV_ID));
+        $http.post('/Dosare/MovePendinToOk', { dosar: dosar })
+            .then(function (response) {
+
+                spinner.stop();
+            }, function (response) {
+                spinner.stop();
+                alert('Erroare: ' + response.status + ' - ' + response.data);
+            });
+
+        $scope.curDosar = [];
+        $scope.editMode = 0;
+    };
+
+    $scope.Cancel = function () {
+        $scope.curDosar = [];
+        $scope.editMode = 0;
     };
 });

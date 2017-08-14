@@ -40,24 +40,12 @@
                             <td style="text-align:center;">
                                 <!-- carusel -->
                                 <div id="thumbScroller">
-                                    <!--
-                                    <ul class="pagination pagination-sm">
-                                        <li><a href="#">&laquo;</a></li>
-                                        <li ng-repeat="documentScanat in model.TipuriDocumente[curDocumentIndex].DocumenteScanate" class={{model.TipuriDocumente[curDocumentIndex].DocumenteScanate[$index].ID == documentScanat.ID ? 'active' : ''}}>
-                                            <a href="#">
-                                                <img ng-src="data:image/JPEG;base64,{{documentScanat.SMALL_ICON | bytetobase}}" width="100" height="130" ng-click="SetCurDocument(documentScanat, $index)" />
-                                                <input type="checkbox" class="checkOverImage" />
-                                            </a>
-                                        </li>
-                                        <li><a href="#">&raquo;</a></li>
-                                    </ul>
-                                    -->
                                     <div id="thumbScrollerContent" style="width:{{model.TipuriDocumente[curDocumentIndex].DocumenteScanate.length * 137}}px;">
                                         <div id="thumbScrollerThumb" ng-repeat="documentScanat in model.TipuriDocumente[curDocumentIndex].DocumenteScanate">
                                             <!--
                                             <img ng-src="data:image/JPEG;base64,{{documentScanat.SMALL_ICON | bytetobase}}" width="100" height="130" ng-click="SetCurDocument(documentScanat, $index)" style="cursor:pointer;" />
                                             -->
-                                            <img ng-src="{{getThumbnailFile(documentScanat.CALE_FISIER, documentScanat.EXTENSIE_FISIER)}}" width="100" height="130" ng-click="SetCurDocument(documentScanat, $index)" style="cursor:pointer;" />
+                                            <img ng-src="{{getThumbnailFile(documentScanat.CALE_FISIER, documentScanat.EXTENSIE_FISIER)}}" ng-attr-title="{{documentScanat.DENUMIRE_FISIER}}" width="100" height="130" ng-click="SetCurDocument(documentScanat, $index)" style="cursor:pointer;" />
                                             @if (Helpers.HasRight("avizare dosar"))
                                             {
                                                 <input id="chk_{{documentScanat.ID}}" type="checkbox" class="checkOverImage" ng-attr-title="{{AVIZAT ? 'Nu puteti modifica documentele unui dosar avizat!' : 'Selecteaza/Deselecteaza pentru avizare sau stergere'}}" a-disabled="AVIZAT" ng-model="documentScanat.VIZA_CASCO" ng-change="AvizareDocument(documentScanat)" />

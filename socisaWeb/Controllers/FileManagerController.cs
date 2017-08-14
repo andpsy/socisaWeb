@@ -21,7 +21,7 @@ namespace socisaWeb.Controllers
         [HttpGet]
         public JsonResult GetOrphanFiles()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int id = Convert.ToInt32(Session["CURENT_USER_ID"]);
             DocumenteScanateRepository dsr = new DocumenteScanateRepository(id, conStr);
             string[] files = (string[])dsr.GetOrphanFiles().Result;
@@ -39,7 +39,7 @@ namespace socisaWeb.Controllers
         [HttpGet]
         public JsonResult GetOrphanDocuments()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int id = Convert.ToInt32(Session["CURENT_USER_ID"]);
             DocumenteScanateRepository dsr = new DocumenteScanateRepository(id, conStr);
             DocumentScanat[] docs = (DocumentScanat[])dsr.GetOrphanDocuments().Result;
@@ -57,7 +57,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult DeleteOrphanFile(string fileName)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int id = Convert.ToInt32(Session["CURENT_USER_ID"]);
             DocumenteScanateRepository dsr = new DocumenteScanateRepository(id, conStr);
             response r = dsr.DeleteOrphanFile(fileName);
@@ -68,7 +68,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult RestoreOrphanDocument(int id)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _id = Convert.ToInt32(Session["CURENT_USER_ID"]);
             DocumenteScanateRepository dsr = new DocumenteScanateRepository(_id, conStr);
             response r = dsr.RestoreOrphanDocument(id);

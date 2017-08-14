@@ -16,7 +16,7 @@ namespace socisaWeb
         [HttpPost]
         public JsonResult Save(int ID_UTILIZATOR, int ID_DREPT)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             UtilizatorDrept ud = new UtilizatorDrept(_CURENT_USER_ID, conStr);
             ud.ID_UTILIZATOR = ID_UTILIZATOR;
@@ -29,7 +29,7 @@ namespace socisaWeb
         [HttpPost]
         public JsonResult Delete(int ID_UTILIZATOR, int ID_DREPT)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             UtilizatorDrept ud = new UtilizatorDrept(_CURENT_USER_ID, conStr);
             ud.ID_UTILIZATOR = ID_UTILIZATOR;

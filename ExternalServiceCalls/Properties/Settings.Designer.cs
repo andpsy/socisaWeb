@@ -22,33 +22,5 @@ namespace ExternalServiceCalls.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Database=socisa;Uid=root;Pwd=scasca;default command timeout=7200" +
-            ";")]
-        public string MySQLConnectionString {
-            get {
-                return ((string)(this["MySQLConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Drift Data")]
-        public string AllianzWSUser {
-            get {
-                return ((string)(this["AllianzWSUser"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("driftadata.1")]
-        public string AllianzWSPassword {
-            get {
-                return ((string)(this["AllianzWSPassword"]));
-            }
-        }
     }
 }

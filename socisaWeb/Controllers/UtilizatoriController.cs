@@ -18,7 +18,7 @@ namespace socisaWeb
         [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
         public ActionResult Index()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             UtilizatorView uv = new UtilizatorView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             return PartialView("Utilizatori", uv);
         }
@@ -26,7 +26,7 @@ namespace socisaWeb
         [AuthorizeUser(ActionName = "Utilizatori", Recursive = false)]
         public JsonResult IndexJson()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString();  //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             UtilizatorView uv = new UtilizatorView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             return Json(uv, JsonRequestBehavior.AllowGet);
         }
@@ -37,7 +37,7 @@ namespace socisaWeb
         {
             response r = new response();
 
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString();  //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             UtilizatoriRepository ur = new UtilizatoriRepository(_CURENT_USER_ID, conStr);
             Utilizator u = new Utilizator(_CURENT_USER_ID, conStr);
@@ -67,7 +67,7 @@ namespace socisaWeb
                 r = new response(false, "Parolele nu coincid!", null, null, new List<Error>() { ErrorParser.ErrorMessage("passwordsDontMatch") });
                 return Json(r, JsonRequestBehavior.AllowGet);
             }
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString();  //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             UtilizatoriRepository ur = new UtilizatoriRepository(_CURENT_USER_ID, conStr);
             r = ur.SetPassword(id_utilizator, password);
@@ -80,7 +80,7 @@ namespace socisaWeb
         {
             response r = new response();
 
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString();  //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
             UtilizatoriRepository ur = new UtilizatoriRepository(_CURENT_USER_ID, conStr);
             Utilizator u = new Utilizator(_CURENT_USER_ID, conStr, id);
@@ -104,8 +104,11 @@ namespace socisaWeb
             {
                 return View(model);
             }
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-            UtilizatoriRepository ur = new UtilizatoriRepository(null, conStr);
+            //string conStr = null;
+            //conStr = Request.Url.ToString().IndexOf("_test") > 0 || Request.Url.ToString().IndexOf("8081") > 0 ? ConfigurationManager.ConnectionStrings["MySQLConnectionString_test"].ConnectionString : ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString; // separam socisa de socisa_test
+            //Session["conStr"] = conStr;
+            //UtilizatoriRepository ur = new UtilizatoriRepository(null, conStr);
+            UtilizatoriRepository ur = new UtilizatoriRepository(null, Session["conStr"].ToString());
             response r = ur.Login(model.Username, model.Password);
             if (r.Result != null)
             {
@@ -117,7 +120,8 @@ namespace socisaWeb
                 Session["CURENT_USER"] = u;
                 Session["CURENT_USER_ID"] = u.ID;
                 FormsAuthentication.SetAuthCookie(u.USER_NAME, false);
-                NomenclatoareRepository nr = new NomenclatoareRepository(Convert.ToInt32(u.ID), conStr);
+                //NomenclatoareRepository nr = new NomenclatoareRepository(Convert.ToInt32(u.ID), conStr);
+                NomenclatoareRepository nr = new NomenclatoareRepository(Convert.ToInt32(u.ID), Session["conStr"].ToString());
                 Nomenclator n = (Nomenclator)nr.Find("TIP_UTILIZATORI", Convert.ToInt32(u.ID_TIP_UTILIZATOR)).Result;
 
                 Session["CURENT_USER_TYPE"] = n;
@@ -134,7 +138,8 @@ namespace socisaWeb
                 else
                 {
                     Session["ID_SOCIETATE"] = u.ID_SOCIETATE;
-                    SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(u.ID), conStr);
+                    //SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(u.ID), conStr);
+                    SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(u.ID), Session["conStr"].ToString());
                     SocietateAsigurare sa = (SocietateAsigurare)sar.Find(Convert.ToInt32(u.ID_SOCIETATE)).Result;
                     Session["SOCIETATE_ASIGURARE"] = sa;
 
@@ -157,7 +162,7 @@ namespace socisaWeb
         [AuthorizeUser(ActionName = "Dashboard", Recursive = false)]
         public ActionResult SelectSocietate()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
             SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(u.ID), conStr);
             SocietateAsigurare[] sas = (SocietateAsigurare[])sar.GetAll().Result;
@@ -168,7 +173,7 @@ namespace socisaWeb
         [HttpPost]
         public ActionResult SelectSocietate(FormCollection model)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); // ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             Utilizator u = (Utilizator)Session["CURENT_USER"];
             SocietatiAsigurareRepository sar = new SocietatiAsigurareRepository(Convert.ToInt32(u.ID), conStr);
             SocietateAsigurare[] sas = (SocietateAsigurare[])sar.GetAll().Result;

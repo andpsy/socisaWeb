@@ -517,7 +517,13 @@ function ($scope, $http, $filter, $rootScope, $window, $q, Upload, ngDialog, Pro
     };
 
     $scope.getThumbnailFile = function (file_name, ext) {
-        var thumb = "../scans/" + file_name.substring(0, file_name.indexOf(ext)) + "_Custom.jpg";
+        var supported_extensions = ".jpg,.jpeg,.png,.bmp,.pdf";
+        var thumb = "";
+        if (file_name == null || file_name == "" || ext == null || supported_extensions.indexOf(ext.toLowerCase()) == -1) {
+            thumb = "../content/images/UnsupportedType_Custom.jpg";
+        } else {
+            thumb = "../scans/" + file_name.substring(0, file_name.indexOf(ext)) + "_Custom.jpg";
+        }
         return thumb;
     };
 });

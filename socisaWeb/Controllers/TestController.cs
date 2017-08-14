@@ -19,7 +19,7 @@ namespace socisaWeb.Controllers
             try
             {
                 int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
-                string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+                string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
                 SubrogationServiceClient s = new SubrogationServiceClient();
                 s.ClientCredentials.UserName.UserName = "Drift Data";
                 s.ClientCredentials.UserName.Password = "driftdata.1";

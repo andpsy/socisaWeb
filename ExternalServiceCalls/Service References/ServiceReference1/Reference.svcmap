@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="81daafd8-f8ab-43d6-beca-b589d373812b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="06efcb66-e126-4fd7-adba-fe8f07626cc1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="c:\TEMP\subrogation\SubrogationService_1.wsdl" Protocol="file" SourceId="1" />
+    <MetadataSource Address="c:\TEMP\wsdl_azt\SubrogationService_1.wsdl" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SubrogationService.xsd" MetadataType="Schema" ID="14ecafa6-e189-423f-9c49-7940cbb70ef4" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService.xsd" />
-    <MetadataFile FileName="SubrogationService_1.xsd" MetadataType="Schema" ID="d35a0472-0c2f-4e70-97da-deacc1821992" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService_1.xsd" />
-    <MetadataFile FileName="SubrogationService_1_2_3_4_5.xsd" MetadataType="Schema" ID="2a546289-32cd-4d54-9815-43abf3a0bdb8" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService_1_2_3_4_5.xsd" />
-    <MetadataFile FileName="SubrogationService_1_2_3_4.xsd" MetadataType="Schema" ID="fc5175d0-fa18-41a3-a554-73657681a00a" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService_1_2_3_4.xsd" />
-    <MetadataFile FileName="SubrogationService_1_2_3_4_5_6.xsd" MetadataType="Schema" ID="cc83f6dc-fac7-46a8-9ce4-7b27e8992479" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService_1_2_3_4_5_6.xsd" />
-    <MetadataFile FileName="SubrogationService_1_2_3.xsd" MetadataType="Schema" ID="6d65b34c-2e47-4876-bb8e-3bf5e2e08a99" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService_1_2_3.xsd" />
-    <MetadataFile FileName="SubrogationService.wsdl" MetadataType="Wsdl" ID="22f8d9a2-c9ac-4eb2-8c01-b4d3a6f12850" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService_1.wsdl" />
-    <MetadataFile FileName="SubrogationService_1_2.xsd" MetadataType="Schema" ID="91ed3557-887f-46d4-95df-620cc06871a2" SourceId="1" SourceUrl="file:///c:/TEMP/subrogation/SubrogationService_1_2.xsd" />
+    <MetadataFile FileName="SubrogationService_1_2.xsd" MetadataType="Schema" ID="92febf86-2a3b-4e65-bf7d-37792a58814f" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService_1_2.xsd" />
+    <MetadataFile FileName="SubrogationService_1_2_3.xsd" MetadataType="Schema" ID="3fa61bbe-76cf-42b9-92eb-8a02c5deda5c" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService_1_2_3.xsd" />
+    <MetadataFile FileName="SubrogationService_1_2_3_4_5_6.xsd" MetadataType="Schema" ID="5ffa2417-02e1-4534-ba74-c82a0ae011bb" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService_1_2_3_4_5_6.xsd" />
+    <MetadataFile FileName="SubrogationService_1_2_3_4.xsd" MetadataType="Schema" ID="a38e0438-9431-4c91-8b69-bcfc23ce1e14" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService_1_2_3_4.xsd" />
+    <MetadataFile FileName="SubrogationService.wsdl" MetadataType="Wsdl" ID="a80fd125-7d86-4a57-bd9e-5707f04dae28" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService_1.wsdl" />
+    <MetadataFile FileName="SubrogationService.xsd" MetadataType="Schema" ID="c96d1caa-9db3-4078-9fc0-e1a2e8e15893" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService.xsd" />
+    <MetadataFile FileName="SubrogationService_1.xsd" MetadataType="Schema" ID="f0992c13-97cf-454a-ba64-0503709dc40a" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService_1.xsd" />
+    <MetadataFile FileName="SubrogationService_1_2_3_4_5.xsd" MetadataType="Schema" ID="6b6b1a10-5495-42c3-b876-231afc4755af" SourceId="1" SourceUrl="file:///c:/TEMP/wsdl_azt/SubrogationService_1_2_3_4_5.xsd" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

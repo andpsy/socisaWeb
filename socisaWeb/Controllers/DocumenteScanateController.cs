@@ -23,14 +23,14 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public ActionResult Search()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             return PartialView("_DocumenteScanate", new DocumentView(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr));
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public JsonResult Details(int id)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             /*
             DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             Dosar d = (Dosar)dr.Find(id).Result;
@@ -49,7 +49,7 @@ namespace socisaWeb.Controllers
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         public JsonResult Detail(int id)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             response r = dsr.Find(id);
 
@@ -64,7 +64,7 @@ namespace socisaWeb.Controllers
         public JsonResult Edit(DocumentScanat CurDocumentScanat)
         {
             response r = new response();
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             if (CurDocumentScanat.ID == null) // insert
             {
                 DocumentScanat d = new DocumentScanat(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
@@ -98,7 +98,7 @@ namespace socisaWeb.Controllers
         public JsonResult Avizare(DocumentScanat CurDocumentScanat)
         {
             response r = new response();
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             DocumentScanat d = (DocumentScanat)dsr.Find(Convert.ToInt32(CurDocumentScanat.ID)).Result;
             r = d.Avizare(CurDocumentScanat.VIZA_CASCO);
@@ -134,7 +134,7 @@ namespace socisaWeb.Controllers
             string newFName = Guid.NewGuid() + extension;
             Request.Files[0].SaveAs(System.IO.Path.Combine(CommonFunctions.GetScansFolder(), newFName));
             //string toReturn = "{\"DENUMIRE_FISIER\":\"" + initFName + "\",\"EXTENSIE_FISIER\":\"" + extension + "\",\"CALE_FISIER\":\"" + newFName + "\"}";
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             DocumentScanat ds = new DocumentScanat(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             ds.ID_DOSAR = id_dosar;
             ds.ID_TIP_DOCUMENT = id_tip_document;
@@ -151,7 +151,7 @@ namespace socisaWeb.Controllers
         [HttpGet]
         public JsonResult Delete(int id)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             DocumenteScanateRepository dsr = new DocumenteScanateRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             DocumentScanat d = (DocumentScanat)dsr.Find(id).Result;
             response r = d.Delete();

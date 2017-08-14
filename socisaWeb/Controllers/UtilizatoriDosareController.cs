@@ -23,7 +23,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult Edit(int id_utilizator, int id_dosar)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             UtilizatorDosar ud = new UtilizatorDosar(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             ud.ID_UTILIZATOR = id_utilizator;
             ud.ID_DOSAR = id_dosar;
@@ -37,7 +37,7 @@ namespace socisaWeb.Controllers
         public JsonResult Edit(UtilizatorDosar[] UtilizatoriDosare)
         {
             response toReturn = new response(true, "", null, null, new List<Error>());
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int curent_user_id = Convert.ToInt32(Session["CURENT_USER_ID"]);
             foreach (UtilizatorDosar udP in UtilizatoriDosare)
             {
@@ -78,7 +78,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult GetUtilizatoriAsignati(int id_dosar)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
             Dosar d = new Dosar(uid, conStr, id_dosar);
             Utilizator[] us = (Utilizator[])d.GetUtilizatori().Result;

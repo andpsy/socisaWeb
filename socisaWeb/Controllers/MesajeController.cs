@@ -24,7 +24,7 @@ namespace socisaWeb.Controllers
         [HttpGet]
         public ActionResult IndexMain()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
             return PartialView("_MesajeView", new MesajView(uid, conStr));
         }
@@ -34,7 +34,7 @@ namespace socisaWeb.Controllers
         public JsonResult GetMessages(int? id) // id_dosar
         {
             MesajView mv = new MesajView();
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
             Mesaj mesaj = new Mesaj(uid, conStr);
             Utilizator[] us = (Utilizator[])mesaj.GetReceivers().Result;
@@ -77,7 +77,7 @@ namespace socisaWeb.Controllers
         [HttpGet]
         public JsonResult GetInvolvedParties(int? id) // id_dosar
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
             Dosar d = new Dosar(uid, conStr, Convert.ToInt32(id));
             response r = d.GetInvolvedParties();
@@ -89,7 +89,7 @@ namespace socisaWeb.Controllers
         public JsonResult GetSentMessages(int? id) // id_dosar
         {
             MesajView mv = new MesajView();
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
 
             Dosar d = new Dosar(uid, conStr, Convert.ToInt32(id));
@@ -135,7 +135,7 @@ namespace socisaWeb.Controllers
         public JsonResult GetNewMessages(string j)
         {
             dynamic x = JsonConvert.DeserializeObject(j);
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             int uid = Convert.ToInt32(Session["CURENT_USER_ID"]);
             if(x.id_dosar != null)
             {
@@ -155,7 +155,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult Send(MesajJson MesajJson)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             response r = new response();
             Mesaj m = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             PropertyInfo[] pis = m.GetType().GetProperties();
@@ -183,7 +183,7 @@ namespace socisaWeb.Controllers
         [HttpPost]
         public JsonResult SetDataCitire(MesajJson MesajJson)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
+            string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
             response r = new response();
             Mesaj m = new Mesaj(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
             PropertyInfo[] pis = m.GetType().GetProperties();

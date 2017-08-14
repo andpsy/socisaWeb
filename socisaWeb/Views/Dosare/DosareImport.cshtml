@@ -52,7 +52,10 @@
             </div>
 
             <div ng-show="model.ImportDosarView.length > 0" style="width:100%;overflow:auto;">
-                <table class="table table-striped table-hover">
+                @{ 
+                    string x = String.Format("model.SocietatiRCA = {0}", Newtonsoft.Json.JsonConvert.SerializeObject(Model.SocietatiRCA));
+                }
+                <table class="table table-striped table-hover" ng-init="@x">
                     <thead>
                         <tr>
                             <!--
@@ -80,21 +83,77 @@
                             <!--
                         <td><input type="checkbox" checked class="checkForImport" id="chk_{{$index}}" ng-model="item.selected" /></td>
                         -->
-                            <td style="text-align:center;vertical-align:middle"><img src="{{item[0].Status ? '../Content/images/ok.png' : '../Content/images/error.png'}}" width="32" height="32" data-toggle="tooltip" data-placement="right" title="{{item[0].Message.split(';').join('&#13;')}}" data-original-title="{{item[0].Message.split(';').join('&#13;')}}" /></td>
-                            <td>{{item[1].Dosar.NR_DOSAR_CASCO}}</td>
-                            <td>{{item[1].Dosar.NR_SCA}}</td>
-                            <td>{{item[1].Dosar.DATA_SCA | dateFilter | date : DATE_FORMAT}}</td>
-                            <td>{{item[1].Dosar.NR_POLITA_CASCO}}</td>
-                            <td>{{item[1].Dosar.DATA_EVENIMENT | dateFilter | date : DATE_FORMAT}}</td>
-                            <td>{{item[1].SocietateCasco.DENUMIRE_SCURTA}}</td>
-                            <td>{{item[1].AsiguratCasco.DENUMIRE}}</td>
-                            <td>{{item[1].AutoCasco.NR_AUTO}}</td>
-                            <td>{{item[1].Dosar.NR_POLITA_RCA}}</td>
-                            <td>{{item[1].SocietateRca.DENUMIRE_SCURTA}}</td>
-                            <td>{{item[1].AsiguratRca.DENUMIRE}}</td>
-                            <td>{{item[1].AutoRca.NR_AUTO}}</td>
-                            <td>{{item[1].Dosar.VALOARE_DAUNA}}</td>
-                            <td>{{item[1].Dosar.VALOARE_REGRES}}</td>
+                            <td style="text-align:center;vertical-align:middle">
+                                <img ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO" src="{{item[0].Status ? '../Content/images/ok.png' : '../Content/images/error.png'}}" width="32" height="32" data-toggle="tooltip" ng-click="EditMode(item)" data-placement="right" ng-attr-title="{{item[0].Message.split(';').join('&#13;')}}" data-original-title="{{item[0].Message.split(';').join('&#13;')}}" />
+                                <span>
+                                    <img src="../Content/images/save.gif" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" ng-click="Save(item)" />
+                                    <img src="../Content/images/cancel.gif" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" ng-click="Cancel()" />
+                                </span>
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_DOSAR_CASCO}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_DOSAR_CASCO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_SCA}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_SCA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-init="item[1].Dosar.DATA_SCA = (item[1].Dosar.DATA_SCA | dateFilter | date : DATE_FORMAT)" ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.DATA_SCA}}</span>
+                                <div class="input-group" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO">
+                                    <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                    <input type="text" class="form-control input-sm" style="width:100px;" ng-model="item[1].Dosar.DATA_SCA" jqdatepicker />
+                                </div>                            
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_POLITA_CASCO}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_POLITA_CASCO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-init="item[1].Dosar.DATA_EVENIMENT = (item[1].Dosar.DATA_EVENIMENT | dateFilter | date : DATE_FORMAT)" ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.DATA_EVENIMENT}}</span>
+                                <div class="input-group" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO">
+                                    <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
+                                    <input type="text" class="form-control input-sm" style="width:100px;" ng-model="item[1].Dosar.DATA_EVENIMENT" jqdatepicker />
+                                </div>
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].SocietateCasco.DENUMIRE_SCURTA}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].SocietateCasco.DENUMIRE_SCURTA" readonly ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AsiguratCasco.DENUMIRE}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].AsiguratCasco.DENUMIRE" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>   
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AutoCasco.NR_AUTO}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].AutoCasco.NR_AUTO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_POLITA_RCA}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_POLITA_RCA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].SocietateRca.DENUMIRE_SCURTA}}</span>
+                                <select class="form-control input-sm" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" ng-model="item[1].Dosar.ID_SOCIETATE_RCA">
+                                    <option ng-repeat="soc in model.SocietatiRCA" ng-value="soc.ID" ng-selected="soc.ID == item[1].Dosar.ID_SOCIETATE_RCA">{{soc.DENUMIRE_SCURTA}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AsiguratRca.DENUMIRE}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].AsiguratRca.DENUMIRE" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AutoRca.NR_AUTO}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].AutoRca.NR_AUTO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.VALOARE_DAUNA}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.VALOARE_DAUNA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
+                            <td>
+                                <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.VALOARE_REGRES}}</span>
+                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.VALOARE_REGRES" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                            </td>
                         </tr>
                     </tbody>
                 </table>
