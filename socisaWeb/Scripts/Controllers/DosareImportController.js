@@ -63,17 +63,21 @@ function ($scope, $http, $filter, $rootScope, $window, Upload) {
 
     $scope.Save = function (dosar) {
         spinner.spin(document.getElementById(ACTIVE_DIV_ID));
-        $http.post('/Dosare/MovePendinToOk', { dosar: dosar })
+        $http.post('/Dosare/MovePendinToOk', { dosar: $scope.curDosar[1] })
             .then(function (response) {
+                angular.copy($scope.curDosar, dosar);
+                dosar[0].Status = response.data.Status;
+                dosar[0].Message = response.data.Message;
+                dosar[0].Errors = response.data.Errors;
+                dosar[0].InsertedId = response.data.InsertedId;
+                $scope.curDosar = [];
+                $scope.editMode = 0;
 
                 spinner.stop();
             }, function (response) {
                 spinner.stop();
                 alert('Erroare: ' + response.status + ' - ' + response.data);
             });
-
-        $scope.curDosar = [];
-        $scope.editMode = 0;
     };
 
     $scope.Cancel = function () {

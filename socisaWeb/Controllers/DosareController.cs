@@ -179,15 +179,135 @@ namespace socisaWeb.Controllers
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]
         [HttpPost]
-        public JsonResult MovePendinToOk(ImportDosarJson dosar)
+        public JsonResult MovePendinToOk(DosarExtended dosar)
         {
-            response r = dosar.DosarExtended.Dosar.Validare();
-            if (!r.Status)
-                return Json(r, JsonRequestBehavior.AllowGet);
             string conStr = Session["conStr"].ToString(); //ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-            DosareRepository dr = new DosareRepository(Convert.ToInt32(Session["CURENT_USER_ID"]), conStr);
-            r = dr.MovePendinToOk(Convert.ToInt32( dosar.DosarExtended.Dosar.ID));
-            return Json(r, JsonRequestBehavior.AllowGet);
+            int _CURENT_USER_ID = Convert.ToInt32(Session["CURENT_USER_ID"]);
+
+            Asigurat x = new Asigurat(_CURENT_USER_ID, conStr);
+            PropertyInfo[] pis = dosar.AsiguratCasco.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(x, pi.GetValue(dosar.AsiguratCasco));
+            }
+            if (x.ID == null)
+            {
+                response r = x.Insert();
+                x.ID = r.InsertedId;
+            }else
+            {
+                x.Update();
+            }
+            dosar.Dosar.ID_ASIGURAT_CASCO = x.ID;
+
+
+            x = new Asigurat(_CURENT_USER_ID, conStr);
+            pis = dosar.AsiguratRca.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(x, pi.GetValue(dosar.AsiguratRca));
+            }
+            if (x.ID == null)
+            {
+                response r = x.Insert();
+                x.ID = r.InsertedId;
+            }
+            else
+            {
+                x.Update();
+            }
+            dosar.Dosar.ID_ASIGURAT_RCA = x.ID;
+
+
+            Auto y = new Auto(_CURENT_USER_ID, conStr);
+            pis = dosar.AutoCasco.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(y, pi.GetValue(dosar.AutoCasco));
+            }
+            if (y.ID == null)
+            {
+                response r = y.Insert();
+                y.ID = r.InsertedId;
+            }
+            else
+            {
+                y.Update();
+            }
+            dosar.Dosar.ID_AUTO_CASCO = y.ID;
+
+
+            y = new Auto(_CURENT_USER_ID, conStr);
+            pis = dosar.AutoRca.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(y, pi.GetValue(dosar.AutoRca));
+            }
+            if (y.ID == null)
+            {
+                response r = y.Insert();
+                y.ID = r.InsertedId;
+            }
+            else
+            {
+                y.Update();
+            }
+            dosar.Dosar.ID_AUTO_RCA = y.ID;
+
+
+
+            SocietateAsigurare z = new SocietateAsigurare(_CURENT_USER_ID, conStr);
+            pis = dosar.SocietateCasco.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(z, pi.GetValue(dosar.SocietateCasco));
+            }
+            if (z.ID == null)
+            {
+                response r = y.Insert();
+                z.ID = r.InsertedId;
+            }
+            else
+            {
+                z.Update();
+            }
+            dosar.Dosar.ID_SOCIETATE_CASCO = z.ID;
+
+
+            z = new SocietateAsigurare(_CURENT_USER_ID, conStr);
+            pis = dosar.SocietateRca.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(z, pi.GetValue(dosar.SocietateRca));
+            }
+            if (z.ID == null)
+            {
+                response r = y.Insert();
+                z.ID = r.InsertedId;
+            }
+            else
+            {
+                z.Update();
+            }
+            dosar.Dosar.ID_SOCIETATE_RCA = z.ID;
+
+
+            Dosar d = new Dosar(_CURENT_USER_ID, conStr);
+            pis = dosar.Dosar.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(d, pi.GetValue(dosar.Dosar));
+            }
+
+            response toReturn = d.UpdateWithErrors();
+            if (!toReturn.Status)
+                return Json(toReturn, JsonRequestBehavior.AllowGet);
+            toReturn = d.Validare();
+            if (!toReturn.Status)
+                return Json(toReturn, JsonRequestBehavior.AllowGet);
+            DosareRepository dr = new DosareRepository(_CURENT_USER_ID, conStr);
+            toReturn = dr.MovePendinToOk(Convert.ToInt32(d.ID));
+            return Json(toReturn, JsonRequestBehavior.AllowGet);
         }
 
         [AuthorizeUser(ActionName = "Dosare", Recursive = false)]

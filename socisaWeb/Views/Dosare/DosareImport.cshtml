@@ -92,67 +92,67 @@
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_DOSAR_CASCO}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_DOSAR_CASCO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].Dosar.NR_DOSAR_CASCO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_SCA}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_SCA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].Dosar.NR_SCA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-init="item[1].Dosar.DATA_SCA = (item[1].Dosar.DATA_SCA | dateFilter | date : DATE_FORMAT)" ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.DATA_SCA}}</span>
                                 <div class="input-group" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO">
                                     <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                    <input type="text" class="form-control input-sm" style="width:100px;" ng-model="item[1].Dosar.DATA_SCA" jqdatepicker />
+                                    <input type="text" class="form-control input-sm" style="width:100px;" ng-model="curDosar[1].Dosar.DATA_SCA" jqdatepicker />
                                 </div>                            
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_POLITA_CASCO}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_POLITA_CASCO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].Dosar.NR_POLITA_CASCO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-init="item[1].Dosar.DATA_EVENIMENT = (item[1].Dosar.DATA_EVENIMENT | dateFilter | date : DATE_FORMAT)" ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.DATA_EVENIMENT}}</span>
                                 <div class="input-group" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO">
                                     <span class="input-group-addon"><img src="~/Content/calendar.gif" /></span>
-                                    <input type="text" class="form-control input-sm" style="width:100px;" ng-model="item[1].Dosar.DATA_EVENIMENT" jqdatepicker />
+                                    <input type="text" class="form-control input-sm" style="width:100px;" ng-model="curDosar[1].Dosar.DATA_EVENIMENT" jqdatepicker />
                                 </div>
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].SocietateCasco.DENUMIRE_SCURTA}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].SocietateCasco.DENUMIRE_SCURTA" readonly ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].SocietateCasco.DENUMIRE_SCURTA" readonly ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AsiguratCasco.DENUMIRE}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].AsiguratCasco.DENUMIRE" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].AsiguratCasco.DENUMIRE" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>   
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AutoCasco.NR_AUTO}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].AutoCasco.NR_AUTO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].AutoCasco.NR_AUTO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.NR_POLITA_RCA}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.NR_POLITA_RCA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].Dosar.NR_POLITA_RCA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].SocietateRca.DENUMIRE_SCURTA}}</span>
-                                <select class="form-control input-sm" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" ng-model="item[1].Dosar.ID_SOCIETATE_RCA">
+                                <select class="form-control input-sm" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" ng-model="curDosar[1].Dosar.ID_SOCIETATE_RCA">
                                     <option ng-repeat="soc in model.SocietatiRCA" ng-value="soc.ID" ng-selected="soc.ID == item[1].Dosar.ID_SOCIETATE_RCA">{{soc.DENUMIRE_SCURTA}}</option>
                                 </select>
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AsiguratRca.DENUMIRE}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].AsiguratRca.DENUMIRE" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].AsiguratRca.DENUMIRE" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].AutoRca.NR_AUTO}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].AutoRca.NR_AUTO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].AutoRca.NR_AUTO" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.VALOARE_DAUNA}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.VALOARE_DAUNA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].Dosar.VALOARE_DAUNA" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                             <td>
                                 <span ng-show="editMode == 0 || curDosar[1].Dosar.NR_DOSAR_CASCO != item[1].Dosar.NR_DOSAR_CASCO">{{item[1].Dosar.VALOARE_REGRES}}</span>
-                                <input class="form-control input-sm" type="text" ng-model="item[1].Dosar.VALOARE_REGRES" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
+                                <input class="form-control input-sm" type="text" ng-model="curDosar[1].Dosar.VALOARE_REGRES" ng-show="editMode == 1 && curDosar[1].Dosar.NR_DOSAR_CASCO == item[1].Dosar.NR_DOSAR_CASCO" />
                             </td>
                         </tr>
                     </tbody>

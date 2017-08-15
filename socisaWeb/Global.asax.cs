@@ -50,7 +50,8 @@ namespace socisaWeb
         {
             string key = this.RetrieveKey();
 
-            string conStr = Server.MapPath("~").ToLower().IndexOf("test") > 0 ? StringCipher.Decrypt(System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString_test"].ConnectionString, key) : StringCipher.Decrypt(System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString, key); // separam socisa de socisa_test
+            //string conStr = Server.MapPath("~").ToLower().IndexOf("test") > 0 ? StringCipher.Decrypt(System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString_test"].ConnectionString, key) : StringCipher.Decrypt(System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString, key); // separam socisa de socisa_test
+            string conStr = StringCipher.Decrypt(System.Configuration.ConfigurationManager.ConnectionStrings["MySQLConnectionString_test"].ConnectionString, key);
             HttpContext.Current.Session["conStr"] = conStr;
         }
 

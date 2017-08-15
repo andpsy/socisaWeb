@@ -206,17 +206,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="logs\ErrorLog.txt" />
-    <Content Include="scans\2f2548e3-be3e-40f6-bf21-2156baf7522e.png" />
-    <Content Include="scans\2f2548e3-be3e-40f6-bf21-2156baf7522e_Custom.jpg" />
-    <Content Include="scans\584da368-d911-4bfb-96f3-041211727b48_Custom.jpg" />
-    <Content Include="scans\71a716fa-ccf4-4a6d-9ebc-807ef8fbd741.jpg" />
-    <Content Include="scans\71a716fa-ccf4-4a6d-9ebc-807ef8fbd741_Custom.jpg" />
-    <Content Include="scans\99336a78-485b-4b94-bdb4-2b53736e5eb9_Custom.jpg" />
-    <Content Include="scans\a47349d6-ccac-4a58-8628-4c72f4e713e2.jpg" />
-    <Content Include="scans\a47349d6-ccac-4a58-8628-4c72f4e713e2_Custom.jpg" />
-    <Content Include="scans\f7aa1dbb-112c-4775-8784-8499585da835.jpg" />
-    <Content Include="scans\f7aa1dbb-112c-4775-8784-8499585da835_Custom.jpg" />
-    <Content Include="scans\fc3072ca-d0b2-4bf8-960c-58383bdda77f.jpg" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
@@ -225,9 +214,6 @@
     <Content Include="Content\arialblack.ttf" />
     <Content Include="Content\arialbold.ttf" />
     <Content Include="imports\Import dosare.xlsx" />
-    <Content Include="pdfs\AA89989898.pdf" />
-    <Content Include="pdfs\AA89989898_cerere.pdf" />
-    <Content Include="pdfs\AA89989898_documente.pdf" />
     <Content Include="AppSettings.json" />
     <Content Include="App_Code\ActionsTreeView.cshtml" />
     <None Include="Properties\PublishProfiles\socisaWeb.pubxml" />
@@ -337,6 +323,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="pdfs\" />
+    <Folder Include="scans\" />
     <Folder Include="Views\Actions\" />
     <Folder Include="Views\Test\" />
     <Folder Include="Views\UtilizatoriActions\" />

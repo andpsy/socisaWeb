@@ -104,59 +104,71 @@ namespace ExternalServiceCalls
 
                             try
                             {
-                                Asigurat aCasco = new Asigurat(uid, conStr, si.InsuredFullName);
-                                if (aCasco == null || aCasco.ID == null)
+                                if (!String.IsNullOrWhiteSpace(si.InsuredFullName))
                                 {
-                                    aCasco = new Asigurat(uid, conStr);
-                                    aCasco.DENUMIRE = si.InsuredFullName;
-                                    r = aCasco.Insert();
+                                    Asigurat aCasco = new Asigurat(uid, conStr, si.InsuredFullName);
+                                    if (aCasco == null || aCasco.ID == null)
+                                    {
+                                        aCasco = new Asigurat(uid, conStr);
+                                        aCasco.DENUMIRE = si.InsuredFullName;
+                                        r = aCasco.Insert();
+                                    }
+                                    d.ID_ASIGURAT_CASCO = aCasco.ID;
                                 }
-                                d.ID_ASIGURAT_CASCO = aCasco.ID;
                             }
                             catch { }
 
                             try
                             {
-                                Asigurat aRca = new Asigurat(uid, conStr, si.SubrogationGuiltyPartner);
-                                if (aRca == null || aRca.ID == null)
+                                if (!String.IsNullOrWhiteSpace(si.SubrogationGuiltyPartner))
                                 {
-                                    aRca = new Asigurat(uid, conStr);
-                                    aRca.DENUMIRE = si.SubrogationGuiltyPartner;
-                                    r = aRca.Insert();
+                                    Asigurat aRca = new Asigurat(uid, conStr, si.SubrogationGuiltyPartner);
+                                    if (aRca == null || aRca.ID == null)
+                                    {
+                                        aRca = new Asigurat(uid, conStr);
+                                        aRca.DENUMIRE = si.SubrogationGuiltyPartner;
+                                        r = aRca.Insert();
+                                    }
+                                    d.ID_ASIGURAT_RCA = aRca.ID;
                                 }
-                                d.ID_ASIGURAT_RCA = aRca.ID;
                             }
                             catch { }
 
                             try
                             {
-                                Auto autoCasco = new Auto(uid, conStr, si.InsuredCarPlateNo);
-                                if (autoCasco == null || autoCasco.ID == null)
+                                if (!String.IsNullOrWhiteSpace(si.InsuredCarPlateNo))
                                 {
-                                    autoCasco = new Auto(uid, conStr);
-                                    autoCasco.NR_AUTO = si.InsuredCarPlateNo;
-                                    autoCasco.MARCA = si.InsuredCarBrandName;
-                                    autoCasco.MODEL = si.InsuredCarModelName;
-                                    autoCasco.SERIE_SASIU = si.InsuredCarChassisNo;
-                                    r = autoCasco.Insert();
+                                    Auto autoCasco = new Auto(uid, conStr, si.InsuredCarPlateNo);
+                                    if (autoCasco == null || autoCasco.ID == null)
+                                    {
+                                        autoCasco = new Auto(uid, conStr);
+                                        autoCasco.NR_AUTO = si.InsuredCarPlateNo;
+                                        autoCasco.MARCA = si.InsuredCarBrandName;
+                                        autoCasco.MODEL = si.InsuredCarModelName;
+                                        autoCasco.SERIE_SASIU = si.InsuredCarChassisNo;
+                                        r = autoCasco.Insert();
+                                    }
+                                    d.ID_AUTO_CASCO = autoCasco.ID;
                                 }
-                                d.ID_AUTO_CASCO = autoCasco.ID;
                             }
                             catch { }
 
                             try
                             {
-                                Auto autoRca = new Auto(uid, conStr, si.SubrogationCarPlateNo);
-                                if (autoRca == null || autoRca.ID == null)
+                                if (!String.IsNullOrWhiteSpace(si.SubrogationCarPlateNo))
                                 {
-                                    autoRca = new Auto(uid, conStr);
-                                    autoRca.NR_AUTO = si.SubrogationCarPlateNo;
-                                    //autoRca.MARCA = si.SubrogationCarBrandName;
-                                    //autoRca.MODEL = si.SubrogationCarModelName;
-                                    autoRca.SERIE_SASIU = si.SubrogationCarChassisNo;
-                                    r = autoRca.Insert();
+                                    Auto autoRca = new Auto(uid, conStr, si.SubrogationCarPlateNo);
+                                    if (autoRca == null || autoRca.ID == null)
+                                    {
+                                        autoRca = new Auto(uid, conStr);
+                                        autoRca.NR_AUTO = si.SubrogationCarPlateNo;
+                                        //autoRca.MARCA = si.SubrogationCarBrandName;
+                                        //autoRca.MODEL = si.SubrogationCarModelName;
+                                        autoRca.SERIE_SASIU = si.SubrogationCarChassisNo;
+                                        r = autoRca.Insert();
+                                    }
+                                    d.ID_AUTO_RCA = autoRca.ID;
                                 }
-                                d.ID_AUTO_RCA = autoRca.ID;
                             }
                             catch { }
 

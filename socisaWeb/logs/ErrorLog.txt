@@ -3,3 +3,195 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at System.Web.Security.FormsAuthentication.SignOut()
    at socisaWeb.MvcApplication.Session_End(Object sender, EventArgs e) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 65
 =====================================================
+15.08.2017 10:49:59
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:03:31
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:03:31
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:22:16
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:22:17
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:46:02
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:46:03
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:52:48
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:53:20
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 11:54:33
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 12:07:00
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 12:11:03
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 13:57:56
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 14:00:53
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:00:58
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:01:11
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:01:14
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:35:26
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:35:33
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:35:36
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:35:54
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:35:56
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:36:06
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:36:09
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:38:52
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:38:57
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:39:04
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:39:26
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:40:09
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:40:15
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 14:40:22
+MySql.Data.MySqlClient.MySqlException (0x80004005): The user specified as a definer ('root'@'92.81.81.147') does not exist
+   at SOCISA.DataAccess.ExecuteSelectQuery() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\DataAccess.cs:line 173
+   at SOCISA.Models.Dosar.GetDocumente() in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaDll_461\Models\Dosare.cs:line 739
+=====================================================
+15.08.2017 15:27:52
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 15:29:44
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 15:33:02
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
+15.08.2017 15:41:48
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at socisaWeb.DateTimeModelBinder.System.Web.Mvc.IModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Users\AndreiLiviu\Documents\Visual Studio 2015\Projects\socisaWeb\socisaWeb\socisaWeb\Global.asax.cs:line 196
+=====================================================
